@@ -1,19 +1,23 @@
 #!/usr/bin/env node
 /**
- * Lấy video mới từ kênh YouTube của Hội thánh và ghi vào data/youtube.json.
+ * Lấy video từ các kênh YouTube trong data/sermons.json (church.channels) và ghi vào data/youtube.json.
  *
- *  - Không cần khoá: đọc RSS của kênh (15 video mới nhất). Chạy hằng ngày nên
- *    video cũ vẫn được giữ lại trong file, danh sách lớn dần theo thời gian.
- *  - Có biến môi trường YOUTUBE_API_KEY: dùng YouTube Data API để lấy TOÀN BỘ
- *    video của kênh (kể cả video cũ) và cả thời lượng.
+ *  - Lần đầu (hoặc với --backfill): lấy TOÀN BỘ video của kênh bằng yt-dlp (không cần khoá API;
+ *    ngày đăng chỉ gần đúng nếu tiêu đề không ghi ngày).
+ *  - Các lần sau: đọc RSS của kênh (15 video mới nhất, có mô tả và giờ đăng chính xác).
+ *  - Có YOUTUBE_API_KEY: dùng YouTube Data API thay cho cả hai (đầy đủ, chính xác nhất).
  *
- * Mỗi video được tự động phân loại (Chúa Nhật / Hằng ngày / Khác), gắn chủ đề
+ * Mỗi video được tự động phân loại (Chúa Nhật / Giữa tuần / Camp / Hằng ngày / Sứ điệp / Khác), gắn chủ đề
  * theo từ khoá, tìm câu Kinh Thánh và tên diễn giả trong tiêu đề / mô tả.
  *
  *   node scripts/sync-youtube.mjs                  # chạy thật
+ *   node scripts/sync-youtube.mjs --backfill       # lấy lại toàn bộ video của mọi kênh
+ *   node scripts/sync-youtube.mjs --offline        # không tải gì, chỉ xử lý lại dữ liệu đã có
  *   node scripts/sync-youtube.mjs --fixture f.xml  # thử với file RSS có sẵn
  */
 import fs from 'node:fs/promises';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
@@ -24,6 +28,8 @@ const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Geck
 
 const args = process.argv.slice(2);
 const fixture = args.includes('--fixture') ? args[args.indexOf('--fixture') + 1] : null;
+const offline = args.includes('--offline');   // don't fetch; just re-derive stored videos with the current rules
+const forceBackfill = args.includes('--backfill');
 const outPath = args.includes('--out') ? path.resolve(args[args.indexOf('--out') + 1]) : OUT;
 
 /* ---------------- text helpers ---------------- */
@@ -65,21 +71,36 @@ function isoDuration(s = '') {
 const DAILY = /tinh nguyen|hang ngay|moi ngay|linh luong|daily|devotion|suy gam|suy ngam/;
 const SUNDAY = /chua nhat|chu nhat|tho phuong|le thanh chua nhat|sunday|bai giang|giang luan/;
 const OTHER = /thanh ca|biet thanh ca|ton vinh|hop xuong|lyric|\bmv\b|music|thong bao|trailer|teaser|highlight|hau truong|livestream test/;
+// Monthly camps / retreats (Remnant camp, trại hè, tĩnh tâm…)
+const CAMP = /\bcamp\b|\bretreat\b|trai he|trai dong|hoi trai|tinh tam|trai remnant|trai thanh nien|trai thieu nhi/;
 
+/**
+ * chua-nhat  Sunday services ("Lễ 1", "Lễ 2", "Lễ tạ ơn")
+ * giua-tuan  mid-week services ("Thứ 4")
+ * camp       monthly camps / retreats
+ * hang-ngay  daily devotions
+ * su-diep    messages from another channel (that channel's `type` in data/sermons.json)
+ * khac       hymns, shorts, announcements
+ */
 export function classify(v) {
   const t = norm(v.title);
   if (v.isShort) return 'khac';
+  const service = norm(parseTitle(v.title).service);
+  if (CAMP.test(t) || CAMP.test(service)) return 'camp';
+  if (OTHER.test(t)) return 'khac';
+  if (v.channelType) return v.channelType;
+  if (/^le( |$)/.test(service) || /chua nhat|chu nhat/.test(service)) return 'chua-nhat';  // "Lễ 1", "Lễ tạ ơn"
+  if (/^thu [2-7]/.test(service)) return 'giua-tuan';                                       // "Thứ 4"
   if (DAILY.test(t)) return 'hang-ngay';
   if (SUNDAY.test(t)) return 'chua-nhat';
-  if (OTHER.test(t)) return 'khac';
-  if (v.at && isSunday(v.at)) return 'chua-nhat';
-  return 'hang-ngay';
+  if (v.at && !v.atApprox && isSunday(v.at)) return 'chua-nhat';
+  return 'giua-tuan';
 }
 
 const TOPIC_WORDS = {
-  'Đức tin': ['duc tin', 'tin cay', 'tin nhan chua'],
+  'Đức tin': ['duc tin', 'tin cay', 'tin nhan chua', 'tiep nhan'],
   'Cầu nguyện': ['cau nguyen', 'nai xin', 'cau thay'],
-  'Ân điển': ['an dien', 'cuu roi', 'thap tu', 'thap gia'],
+  'Ân điển': ['an dien', 'cuu roi', 'thap tu', 'thap gia', 'chuoc', 'cuu chuoc'],
   'Tình yêu thương': ['yeu thuong', 'tinh yeu', 'yeu nhau'],
   'Gia đình': ['gia dinh', 'hon nhan', 'vo chong', 'cha me', 'con cai'],
   'Tạ ơn': ['ta on', 'biet on', 'cam ta'],
@@ -87,9 +108,11 @@ const TOPIC_WORDS = {
   'Lời Chúa': ['loi chua', 'loi hang song', 'loi cua chua'],
   'Sự bình an': ['binh an', 'lo lang', 'so hai', 'lo au'],
   'Ăn năn & tha thứ': ['an nan', 'tha thu', 'xung toi', 'toi loi'],
-  'Truyền giáo': ['truyen giao', 'phuc am', 'lam chung', 'dai mang lenh'],
-  'Môn đồ': ['mon do', 'hau viec', 'phuc vu chua', 'theo chua'],
-  'Thánh Linh': ['thanh linh', 'duc thanh linh'],
+  'Truyền giáo': ['truyen giao', 'truyen dao', 'phuc am', 'lam chung', 'dai mang lenh'],
+  'Môn đồ': ['mon do', 'hau viec', 'phuc vu chua', 'theo chua', 'bong trai', 'ket qua', 'doi song'],
+  'Thánh Linh': ['thanh linh', 'duc thanh linh', 'thuoc linh', 'ngu tuan'],
+  'Nước Thiên Đàng': ['thien dang', 'nuoc duc chua troi', 'nuoc troi', 'vua muon vua'],
+  'Hội thánh & Nhóm': ['nhom', 'nhom nho', 'than the dang christ'],  // not "hội thánh": it is in the church's own name
   'Giáng sinh': ['giang sinh', 'noel', 'mua vong', 'giang ha'],
   'Phục sinh': ['phuc sinh', 'song lai'],
 };
@@ -112,13 +135,23 @@ const BOOKS = [
   'Tít', 'Phi-lê-môn', 'Hê-bơ-rơ', 'Gia-cơ', '1 Phi-e-rơ', '2 Phi-e-rơ', '1 Giăng', '2 Giăng', '3 Giăng',
   'Giu-đe', 'Khải huyền',
 ];
+// Short forms this church (and Vietnamese Bibles generally) use in titles, e.g. "Mat 22;1-14", "Công 2;32".
+const ALIASES = {
+  'Ma-thi-ơ': ['Mat', 'Mt'], 'Công vụ': ['Công', 'Cv'], 'Rô-ma': ['Rô'], 'Hê-bơ-rơ': ['Hê'], 'Khải huyền': ['Khải'],
+  'Lu-ca': ['Lu'], 'Thi thiên': ['Thi'], 'Châm ngôn': ['Châm'], 'Sáng thế ký': ['Sáng'], 'Xuất Ê-díp-tô ký': ['Xuất'],
+  '1 Cô-rinh-tô': ['1 Cô'], '2 Cô-rinh-tô': ['2 Cô'], 'Ga-la-ti': ['Ga'], 'Ê-phê-sô': ['Êph'], 'Phi-líp': ['Phil'],
+  'Gia-cơ': ['Gia'], 'Ê-sai': ['Ês'],
+};
+const VERSES = String.raw`\d{1,3}(?:\s*[-–]\s*\d{1,3})?(?:\s*,\s*\d{1,3}(?:\s*[-–]\s*\d{1,3})?)*`;
 const BOOK_RES = BOOKS.map(name => {
-  const m = name.match(/^([123]) (.+)$/);
-  const base = norm(m ? m[2] : name).replace(/[\s-]+/g, '[\\s-]*');
-  const num = m ? `(?:${m[1]}|${'i'.repeat(+m[1])})[\\s.]*` : '';
+  const forms = [name, ...(ALIASES[name] || [])].map(f => {
+    const m = f.match(/^([123]) (.+)$/);
+    const num = m ? `(?:${m[1]}|${'i'.repeat(+m[1])})[\\s.]*` : '';
+    return num + norm(m ? m[2] : f).replace(/[\s-]+/g, '[\\s-]*');
+  });
   return {
     name,
-    re: new RegExp(`(?:^|[^a-z0-9])${num}${base}\\s*(\\d{1,3})(?:\\s*[:.,]\\s*(\\d{1,3})(?:\\s*[-–]\\s*(\\d{1,3}))?)?(?![0-9])`, 'g'),
+    re: new RegExp(`(?:^|[^a-z0-9])(?:${forms.join('|')})\\.?\\s*(\\d{1,3})(?:\\s*[:;.]\\s*(${VERSES}))?(?![0-9])`, 'g'),
   };
 });
 
@@ -131,8 +164,32 @@ export function findScripture(text) {
     if (m && (!best || m.index < best.index)) best = { index: m.index, b, m };
   }
   if (!best) return '';
-  const [, ch, v1, v2] = best.m;
-  return `${best.b.name} ${ch}${v1 ? ':' + v1 : ''}${v2 ? '-' + v2 : ''}`;
+  const [, ch, verses] = best.m;
+  const v = verses ? ':' + verses.replace(/\s+/g, '').replace(/–/g, '-').replace(/,/g, ', ') : '';
+  return `${best.b.name} ${ch}${v}`;
+}
+
+/**
+ * Split the channel's title convention into parts:
+ *   "20261122 [Lễ tạ ơn] Người sở hữu nước thiên đàng (Giăng 14;1-14)"
+ *   → { date: '2026-11-22', service: 'Lễ tạ ơn', title: 'Người sở hữu nước thiên đàng' }
+ * Titles that don't follow it come back unchanged.
+ */
+export function parseTitle(raw = '') {
+  let t = String(raw).trim(), date = '', service = '';
+  const d = t.match(/^(20\d{2})(\d{2})(\d{2})(?!\d)[\s._-]*/);
+  if (d && +d[2] >= 1 && +d[2] <= 12 && +d[3] >= 1 && +d[3] <= 31) {
+    date = `${d[1]}-${d[2]}-${d[3]}`;
+    t = t.slice(d[0].length);
+  }
+  const b = t.match(/^\[([^\]]{1,40})\]\s*[-–:|]?\s*/);
+  const w = !b && t.match(/^(Lễ\s*\d+|Thứ\s*[2-7]|Chúa Nhật|Chủ Nhật)(?![\p{L}])\s*[-–:|]?\s*/iu);
+  if (b) { service = b[1].trim(); t = t.slice(b[0].length); }
+  else if (w) { service = w[1].replace(/\s+/g, ' '); t = t.slice(w[0].length); }
+  const ref = t.match(/\s*[(\[]([^()\[\]]+)[)\]]\s*$/);
+  if (ref && findScripture(ref[1])) t = t.slice(0, ref.index);
+  t = t.trim();
+  return { date, service, title: t || String(raw).trim() };
 }
 
 const TITLES = { 'ms': 'Mục sư', 'mục sư': 'Mục sư', 'msnc': 'Mục sư Nhiệm chức', 'mục sư nhiệm chức': 'Mục sư Nhiệm chức', 'tđ': 'Truyền đạo', 'truyền đạo': 'Truyền đạo', 'mstđ': 'Mục sư', 'giáo sĩ': 'Giáo sĩ' };
@@ -175,12 +232,16 @@ function cleanDescription(desc, common) {
 export function toSermon(v, common = new Set()) {
   const desc = cleanDescription(v.description || '', common);
   const text = `${v.title}\n${desc}`;
-  const date = dateFromTitle(v.title) || (v.at ? localDate(v.at) : '');
-  const summary = desc.split('\n').slice(0, 4).join(' ').slice(0, 420);
+  const parts = parseTitle(v.title);
+  const date = parts.date || dateFromTitle(v.title) || (v.at ? localDate(v.at) : '');
+  let summary = desc.split('\n').slice(0, 4).join(' ').slice(0, 420);
+  if (norm(summary).replace(/[^a-z0-9]/g, '').startsWith(norm(parts.title).replace(/[^a-z0-9]/g, '')) &&
+      summary.length < parts.title.length + 40) summary = '';
   const out = {
     id: `yt-${v.videoId}`,
     type: classify(v),
-    title: v.title.trim(),
+    title: parts.title,
+    service: parts.service,
     speaker: findSpeaker(text),
     date,
     video: `https://www.youtube.com/watch?v=${v.videoId}`,
@@ -189,9 +250,14 @@ export function toSermon(v, common = new Set()) {
     topics: topicsFor(text),
     summary: summary + (summary.length >= 420 ? '…' : ''),
     source: 'youtube',
+    channel: v.channel || '',
     publishedAt: v.at ? v.at.toISOString() : '',
+    dateApprox: !parts.date && !!v.atApprox,
+    // Original YouTube data, so later rule changes can re-derive every field (see --offline).
+    raw: { title: v.title, description: (v.description || '').slice(0, 1500), at: v.at ? v.at.toISOString() : '', atApprox: !!v.atApprox,
+      isShort: !!v.isShort, duration: v.duration || '', channel: v.channel || '' },
   };
-  Object.keys(out).forEach(k => (out[k] === '' || (Array.isArray(out[k]) && !out[k].length)) && delete out[k]);
+  Object.keys(out).forEach(k => (out[k] === '' || out[k] === false || (Array.isArray(out[k]) && !out[k].length)) && delete out[k]);
   return out;
 }
 
@@ -238,6 +304,58 @@ async function fromRss(channelId) {
   return parseRss(await get(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`));
 }
 
+const run = promisify(execFile);
+const fmtSeconds = sec => {
+  if (!sec) return '';
+  sec = Math.round(sec);
+  const h = Math.floor(sec / 3600), m = Math.floor(sec / 60) % 60, p = n => String(n).padStart(2, '0');
+  return h ? `${h}:${p(m)}:${p(sec % 60)}` : `${m}:${p(sec % 60)}`;
+};
+
+export async function hasYtDlp() {
+  try { await run('yt-dlp', ['--version']); return true; } catch { return false; }
+}
+
+// Map one yt-dlp --flat-playlist entry to our raw video shape.
+export function fromYtDlpEntry(e) {
+  if (!e || !e.id || e.live_status === 'is_upcoming' || e.availability === 'subscriber_only') return null;
+  // Flat listings only carry dates estimated from "2 years ago"-style text (approximate_date),
+  // so they never count as exact; RSS or the API later replace them for recent videos.
+  let at = null;
+  const atApprox = true;
+  if (e.timestamp || e.release_timestamp) at = new Date((e.release_timestamp || e.timestamp) * 1000);
+  else if (/^\d{8}$/.test(e.upload_date || '')) at = new Date(`${e.upload_date.slice(0, 4)}-${e.upload_date.slice(4, 6)}-${e.upload_date.slice(6)}T12:00:00Z`);
+  return {
+    videoId: e.id,
+    title: e.title || '',
+    description: e.description || '',
+    at, atApprox,
+    duration: fmtSeconds(e.duration),
+    isShort: /\/shorts\//.test(e.url || '') || (e.duration > 0 && e.duration <= 60),
+  };
+}
+
+// Every video and past live stream of a channel, without an API key.
+async function fromYtDlp(handle) {
+  const h = handle.startsWith('@') ? handle : '@' + handle;
+  const out = [];
+  for (const tab of ['videos', 'streams']) {
+    try {
+      const { stdout } = await run('yt-dlp', ['--flat-playlist', '--dump-single-json', '--ignore-errors', '--no-warnings',
+        '--extractor-args', 'youtubetab:approximate_date', `https://www.youtube.com/${h}/${tab}`],
+      { maxBuffer: 256 * 1024 * 1024, timeout: 10 * 60 * 1000 });
+      const j = JSON.parse(stdout);
+      const entries = (j.entries || []).map(fromYtDlpEntry).filter(Boolean);
+      console.log(`  yt-dlp ${h}/${tab}: ${entries.length} video`);
+      out.push(...entries);
+    } catch (e) {
+      // a channel without a "streams" tab is normal
+      console.log(`  yt-dlp ${h}/${tab}: bỏ qua (${String(e.message).split('\n')[0].slice(0, 120)})`);
+    }
+  }
+  return out;
+}
+
 async function fromApi(channelId, knownIds) {
   const key = process.env.YOUTUBE_API_KEY;
   const uploads = 'UU' + channelId.slice(2);
@@ -276,42 +394,89 @@ async function fromApi(channelId, knownIds) {
 
 /* ---------------- main ---------------- */
 
+export function channelsFromConfig(cfg) {
+  const list = cfg.church?.channels?.length ? cfg.church.channels : [{ handle: cfg.church?.youtubeChannel || '@immanuelhanoi' }];
+  return list.map(c => ({ ...c, handle: c.handle.startsWith('@') ? c.handle : '@' + c.handle }));
+}
+
 async function main() {
   const cfg = JSON.parse(await fs.readFile(path.join(ROOT, 'data/sermons.json'), 'utf8'));
-  const handle = process.env.YT_HANDLE || cfg.church?.youtubeChannel || '@immanuelhanoi';
+  const channels = channelsFromConfig(cfg);
   let existing = { videos: [] };
   try { existing = JSON.parse(await fs.readFile(outPath, 'utf8')); } catch { /* first run */ }
 
-  let channelId = existing.channelId || '';
-  let fresh;
-  if (fixture) {
-    fresh = parseRss(await fs.readFile(fixture, 'utf8'));
-  } else {
-    channelId = await resolveChannelId(handle, channelId);
-    const known = new Set((existing.videos || []).map(v => v.id.replace(/^yt-/, '')));
-    fresh = process.env.YOUTUBE_API_KEY ? await fromApi(channelId, known) : await fromRss(channelId);
-  }
-  console.log(`Kênh ${handle} (${channelId || 'fixture'}): nhận ${fresh.length} video.`);
+  // channel state; older files stored a single channel at the top level
+  const state = existing.channels || (existing.channel ? { [existing.channel]: { id: existing.channelId || '' } } : {});
+  const legacyChannel = existing.channel || channels[0].handle;
+  const typeOf = Object.fromEntries(channels.map(c => [c.handle, c.type || '']));
 
-  const common = boilerplate(fresh.map(v => v.description || ''));
-  const byId = new Map((existing.videos || []).map(v => [v.id, v]));
+  const fresh = [];   // [{...raw, channel}]
+  if (fixture) {
+    parseRss(await fs.readFile(fixture, 'utf8')).forEach(v => fresh.push({ ...v, channel: channels[0].handle }));
+  } else if (!offline) {
+    const known = new Set((existing.videos || []).map(v => v.id.replace(/^yt-/, '')));
+    const ytdlp = await hasYtDlp();
+    for (const ch of channels) {
+      const st = state[ch.handle] = { ...(state[ch.handle] || {}) };
+      try {
+        st.id = await resolveChannelId(ch.handle, st.id);
+        let got = [];
+        if (process.env.YOUTUBE_API_KEY) {
+          got = await fromApi(st.id, known);
+        } else {
+          if (ytdlp && (forceBackfill || !st.backfilledAt)) {
+            const all = await fromYtDlp(ch.handle);
+            if (all.length) { got.push(...all); st.backfilledAt = new Date().toISOString(); }
+          }
+          got.push(...await fromRss(st.id));   // RSS last: exact dates and descriptions win
+        }
+        got.forEach(v => fresh.push({ ...v, channel: ch.handle }));
+        console.log(`Kênh ${ch.handle} (${st.id}): nhận ${got.length} video.`);
+      } catch (e) {
+        console.error(`Kênh ${ch.handle}: lỗi – ${e.message}`);   // one failing channel must not block the others
+      }
+    }
+  }
+
+  // Every stored video keeps its original YouTube data, so re-derive all of them: improved rules
+  // then also fix older videos that RSS no longer returns. Older entries without `raw` are rebuilt
+  // from what was stored.
+  const rawById = new Map();
+  for (const v of existing.videos || []) {
+    const r = v.raw || { title: v.title, description: v.summary || '', at: v.publishedAt || '', duration: v.duration || '' };
+    rawById.set(v.id.replace(/^yt-/, ''), { videoId: v.id.replace(/^yt-/, ''), ...r, channel: r.channel || v.channel || legacyChannel, at: r.at ? new Date(r.at) : null });
+  }
   let added = 0;
   for (const v of fresh) {
-    const s = toSermon(v, common);
-    if (!byId.has(s.id)) added++;
-    byId.set(s.id, s);
+    const prev = rawById.get(v.videoId);
+    if (!prev) added++;
+    // a later source only improves a field: keep descriptions, exact dates and durations already known
+    const exact = v.at && !v.atApprox;
+    rawById.set(v.videoId, {
+      ...(prev || {}), ...v,
+      description: v.description || (prev && prev.description) || '',
+      at: exact || !prev || !prev.at ? (v.at || (prev && prev.at) || null) : prev.at,
+      atApprox: exact ? false : (prev && prev.at ? !!prev.atApprox : !!v.atApprox),
+      duration: v.duration || (prev && prev.duration) || '',
+    });
   }
-  const videos = [...byId.values()].sort((a, b) => (b.publishedAt || b.date || '').localeCompare(a.publishedAt || a.date || ''));
+  const raws = [...rawById.values()].map(v => ({ ...v, channelType: typeOf[v.channel] || '' }));
+  const common = boilerplate(raws.map(v => v.description || ''));
+  const videos = raws.map(v => toSermon(v, common))
+    // newest day first; within a day "Lễ 1" before "Lễ 2"
+    .sort((a, b) => (b.date || '').localeCompare(a.date || '') || (a.service || '').localeCompare(b.service || '', 'vi', { numeric: true }) ||
+      (b.publishedAt || '').localeCompare(a.publishedAt || ''));
 
-  const out = { channel: handle, channelId, videos };
-  const prev = JSON.stringify({ ...existing, updatedAt: undefined });
-  if (JSON.stringify({ ...out }) === prev) {
+  const out = { channels: state, videos };
+  const prevJson = JSON.stringify({ channels: existing.channels, videos: existing.videos });
+  if (JSON.stringify(out) === prevJson) {
     console.log('Không có thay đổi.');
     return;
   }
   out.updatedAt = new Date().toISOString();
   await fs.writeFile(outPath, JSON.stringify(out, null, 2) + '\n');
-  console.log(`Đã ghi ${videos.length} video (${added} mới) vào ${path.relative(ROOT, outPath)}.`);
+  const byType = videos.reduce((m, v) => (m[v.type] = (m[v.type] || 0) + 1, m), {});
+  console.log(`Đã ghi ${videos.length} video (${added} mới) vào ${path.relative(ROOT, outPath)}:`, JSON.stringify(byType));
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1])) {

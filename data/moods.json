@@ -1,0 +1,166 @@
+{
+  "_huongdan": "Danh sách tâm trạng cho trang 'Tâm tình'. Câu Kinh Thánh: Bản Truyền Thống 1926 – nhờ ban biên tập dò lại. 'words': từ người dùng có thể gõ (không dấu, chữ thường). 'topics': chủ đề bài giảng liên quan. 'keywords': từ trong tiêu đề/tóm tắt bài giảng (không dấu). 'care': hiện lời nhắn chăm sóc sức khoẻ tinh thần.",
+  "moods": [
+    {
+      "id": "chan-nan",
+      "name": "Chán nản, trầm cảm",
+      "emoji": "🌧️",
+      "care": true,
+      "message": "Chúa ở gần những tấm lòng tan vỡ. Bạn không cần mạnh mẽ một mình — hãy để Ngài nâng đỡ bạn hôm nay, từng chút một.",
+      "words": ["chan", "chan nan", "tram cam", "buon", "nan long", "that vong", "mat hy vong", "tuyet vong", "vo vong", "khong muon", "met moi tinh than", "ngan", "u uat", "depressed", "sad"],
+      "topics": ["Hy vọng", "Sự bình an", "Đức tin", "Nước Thiên Đàng"],
+      "keywords": ["hy vong", "suc moi", "an ui", "vuot qua", "chien thang", "phuoc", "tro lai", "song lai", "giai phong", "loi hua"],
+      "verses": [
+        { "ref": "Thi thiên 34:18", "text": "Đức Giê-hô-va ở gần những người có lòng đau thương, và cứu những kẻ có tâm hồn thống-hối." },
+        { "ref": "Thi thiên 42:11", "text": "Hỡi linh hồn ta, cớ sao ngươi sờn ngã và bồn chồn trong mình ta? Hãy trông cậy nơi Đức Chúa Trời; ta sẽ còn ngợi khen Ngài nữa; Ngài là sự cứu rỗi của mặt ta, và là Đức Chúa Trời ta." },
+        { "ref": "Ma-thi-ơ 11:28", "text": "Hỡi những kẻ mệt mỏi và gánh nặng, hãy đến cùng ta, ta sẽ cho các ngươi được yên nghỉ." },
+        { "ref": "2 Cô-rinh-tô 4:8-9", "text": "Chúng tôi bị ép đủ cách, nhưng không đến cùng; bị túng thế, nhưng không ngã lòng; bị bắt bớ, nhưng không đến bỏ; bị đánh đập, nhưng không đến chết mất." },
+        { "ref": "Ca thương 3:22-23", "text": "Ấy là nhờ sự nhân từ của Đức Giê-hô-va mà chúng ta chưa tuyệt. Vì sự thương xót của Ngài chẳng dứt. Mỗi buổi sáng thì lại mới luôn, sự thành tín Ngài là lớn lắm." }
+      ]
+    },
+    {
+      "id": "lo-au",
+      "name": "Lo âu, bất an",
+      "emoji": "😟",
+      "message": "Bạn không phải gánh mọi điều một mình. Hãy trao lo lắng cho Chúa — Ngài quan tâm đến bạn.",
+      "words": ["lo", "lo lang", "lo au", "bat an", "cang thang", "stress", "ap luc", "hoang mang", "boi roi", "anxious", "worry"],
+      "topics": ["Sự bình an", "Cầu nguyện", "Đức tin"],
+      "keywords": ["binh an", "lo lang", "tin cay", "phu thac", "cau nguyen", "25 gio", "yen nghi"],
+      "verses": [
+        { "ref": "Phi-líp 4:6-7", "text": "Chớ lo phiền chi hết, nhưng trong mọi sự hãy dùng lời cầu nguyện, nài xin, và sự tạ ơn mà trình các sự cầu xin của mình cho Đức Chúa Trời. Sự bình an của Đức Chúa Trời vượt quá mọi sự hiểu biết, sẽ giữ gìn lòng và ý tưởng anh em trong Đức Chúa Jêsus Christ." },
+        { "ref": "1 Phi-e-rơ 5:7", "text": "Lại hãy trao mọi điều lo lắng mình cho Ngài, vì Ngài hay săn sóc anh em." },
+        { "ref": "Ma-thi-ơ 6:34", "text": "Vậy, chớ lo lắng chi về ngày mai; vì ngày mai sẽ tự lo về việc ngày mai. Sự khó nhọc ngày nào đủ cho ngày ấy." },
+        { "ref": "Giăng 14:27", "text": "Ta để sự bình an lại cho các ngươi; ta ban sự bình an ta cho các ngươi; ta cho các ngươi sự bình an chẳng phải như thế gian cho. Lòng các ngươi chớ bối rối và đừng sợ hãi." }
+      ]
+    },
+    {
+      "id": "so-hai",
+      "name": "Sợ hãi",
+      "emoji": "😨",
+      "message": "Chúa ở cùng bạn trong mọi nơi bạn đi. Sự sợ hãi không có tiếng nói cuối cùng.",
+      "words": ["so", "so hai", "hoang so", "run so", "e ngai", "khiep so", "fear", "scared"],
+      "topics": ["Đức tin", "Sự bình an", "Thánh Linh"],
+      "keywords": ["dung so", "can dam", "vung long", "chien thang", "quyen nang", "thuoc linh"],
+      "verses": [
+        { "ref": "Ê-sai 41:10", "text": "Đừng sợ, vì ta ở với ngươi; chớ kinh khiếp, vì ta là Đức Chúa Trời ngươi! Ta sẽ bổ sức cho ngươi; phải, ta sẽ giúp đỡ ngươi, lấy tay hữu công bình ta mà nâng đỡ ngươi." },
+        { "ref": "Giô-suê 1:9", "text": "Ta há không có phán dặn ngươi sao? Hãy vững lòng bền chí, chớ run sợ, chớ kinh khủng; vì Giê-hô-va Đức Chúa Trời ngươi vẫn ở cùng ngươi trong mọi nơi ngươi đi." },
+        { "ref": "2 Ti-mô-thê 1:7", "text": "Vì Đức Chúa Trời chẳng ban cho chúng ta tâm thần nhút nhát, bèn là tâm thần mạnh mẽ, có tình thương yêu và dè giữ." },
+        { "ref": "Thi thiên 27:1", "text": "Đức Giê-hô-va là ánh sáng và là sự cứu rỗi tôi: tôi sẽ sợ ai? Đức Giê-hô-va là đồn lũy của mạng sống tôi: tôi sẽ hãi hùng ai?" }
+      ]
+    },
+    {
+      "id": "co-don",
+      "name": "Cô đơn",
+      "emoji": "🥀",
+      "care": true,
+      "message": "Bạn không bị bỏ quên. Chúa đã hứa: Ta sẽ chẳng lìa ngươi đâu. Và Hội thánh là gia đình của bạn.",
+      "words": ["co don", "mot minh", "lac loi", "bi bo roi", "khong ai", "lonely", "alone"],
+      "topics": ["Hội thánh & Nhóm", "Tình yêu thương", "Gia đình"],
+      "keywords": ["o cung", "nhom", "gia dinh", "yeu thuong", "tham giao", "hiep nhat", "ban huu"],
+      "verses": [
+        { "ref": "Hê-bơ-rơ 13:5", "text": "…vì chính Đức Chúa Trời có phán rằng: Ta sẽ chẳng lìa ngươi đâu, chẳng bỏ ngươi đâu." },
+        { "ref": "Thi thiên 23:4", "text": "Dầu khi tôi đi trong trũng bóng chết, tôi sẽ chẳng sợ tai họa nào; vì Chúa ở cùng tôi: Cây trượng và cây gậy của Chúa an ủi tôi." },
+        { "ref": "Ma-thi-ơ 28:20", "text": "…Và nầy, ta thường ở cùng các ngươi luôn cho đến tận thế." }
+      ]
+    },
+    {
+      "id": "met-moi",
+      "name": "Mệt mỏi, kiệt sức",
+      "emoji": "😮‍💨",
+      "message": "Nghỉ ngơi không phải là thất bại. Hãy đến với Chúa — Ngài ban sức mới cho người trông đợi Ngài.",
+      "words": ["met", "met moi", "kiet suc", "duoi suc", "kiet que", "qua tai", "burnout", "tired", "exhausted"],
+      "topics": ["Hy vọng", "Sự bình an", "Thánh Linh"],
+      "keywords": ["suc moi", "yen nghi", "nghi ngoi", "trong doi", "quyen nang", "thuoc linh"],
+      "verses": [
+        { "ref": "Ê-sai 40:31", "text": "Nhưng ai trông đợi Đức Giê-hô-va thì chắc được sức mới, cất cánh bay cao như chim ưng; chạy mà không mệt nhọc, đi mà không mòn mỏi." },
+        { "ref": "Ma-thi-ơ 11:28", "text": "Hỡi những kẻ mệt mỏi và gánh nặng, hãy đến cùng ta, ta sẽ cho các ngươi được yên nghỉ." },
+        { "ref": "Phi-líp 4:13", "text": "Tôi làm được mọi sự nhờ Đấng ban thêm sức cho tôi." }
+      ]
+    },
+    {
+      "id": "toi-loi",
+      "name": "Mặc cảm tội lỗi",
+      "emoji": "💔",
+      "message": "Không tội lỗi nào lớn hơn ân điển của Chúa. Hãy đến với Ngài như bạn đang là.",
+      "words": ["toi loi", "mac cam", "hoi han", "an han", "xau ho", "that bai", "vap nga", "guilt", "shame"],
+      "topics": ["Ân điển", "Ăn năn & tha thứ"],
+      "keywords": ["tha thu", "an dien", "chuoc", "cuu roi", "thap tu", "xung toi", "nguoi moi", "duoc chuoc"],
+      "verses": [
+        { "ref": "1 Giăng 1:9", "text": "Còn nếu chúng ta xưng tội mình, thì Ngài là thành tín công bình để tha tội cho chúng ta, và làm cho chúng ta sạch mọi điều gian ác." },
+        { "ref": "Rô-ma 8:1", "text": "Cho nên hiện nay chẳng còn có sự đoán phạt nào cho những kẻ ở trong Đức Chúa Jêsus Christ." },
+        { "ref": "2 Cô-rinh-tô 5:17", "text": "Vậy, nếu ai ở trong Đấng Christ, thì nấy là người dựng nên mới; những sự cũ đã qua đi, nầy, mọi sự đều trở nên mới." }
+      ]
+    },
+    {
+      "id": "mat-phuong-huong",
+      "name": "Mất phương hướng",
+      "emoji": "🧭",
+      "message": "Khi chưa thấy đường, hãy nhìn lên Chúa. Lời Ngài là ngọn đèn cho từng bước đi.",
+      "words": ["phuong huong", "lac huong", "khong biet", "quyet dinh", "chon lua", "tuong lai", "boi roi", "confused", "direction"],
+      "topics": ["Lời Chúa", "Cầu nguyện", "Môn đồ"],
+      "keywords": ["y muon", "huong dan", "loi chua", "ke hoach", "su menh", "thoi gian bieu", "dan dat"],
+      "verses": [
+        { "ref": "Châm ngôn 3:5-6", "text": "Hãy hết lòng tin cậy Đức Giê-hô-va, chớ nương cậy nơi sự thông sáng của con; phàm trong các việc làm của con, khá nhận biết Ngài, thì Ngài sẽ chỉ dẫn các nẻo của con." },
+        { "ref": "Thi thiên 32:8", "text": "Ta sẽ dạy dỗ ngươi, chỉ cho ngươi con đường phải đi; mắt ta sẽ chăm xem ngươi mà khuyên dạy ngươi." },
+        { "ref": "Thi thiên 119:105", "text": "Lời Chúa là ngọn đèn cho chân tôi, ánh sáng cho đường lối tôi." },
+        { "ref": "Gia-cơ 1:5", "text": "Ví bằng trong anh em có kẻ kém khôn ngoan, hãy cầu xin Đức Chúa Trời, là Đấng ban cho mọi người cách rộng rãi, không trách móc ai, thì kẻ ấy sẽ được ban cho." }
+      ]
+    },
+    {
+      "id": "duc-tin-yeu",
+      "name": "Đức tin yếu đuối",
+      "emoji": "🌱",
+      "message": "Đức tin nhỏ như hạt cải cũng đủ để bắt đầu. Hãy thành thật với Chúa về những nghi ngờ của bạn.",
+      "words": ["duc tin yeu", "nghi ngo", "yeu duoi", "nguoi lanh", "xa chua", "khong tin", "doubt", "weak faith"],
+      "topics": ["Đức tin", "Lời Chúa", "Thánh Linh"],
+      "keywords": ["duc tin", "tiep nhan", "loi chua", "thuoc linh", "nhan biet", "tin cay"],
+      "verses": [
+        { "ref": "Mác 9:24", "text": "…Tôi tin; xin Chúa giúp đỡ sự không tin của tôi!" },
+        { "ref": "Rô-ma 10:17", "text": "Như vậy, đức tin đến bởi sự người ta nghe, mà người ta nghe, là khi lời của Đấng Christ được rao giảng." },
+        { "ref": "Hê-bơ-rơ 11:1", "text": "Vả, đức tin là sự biết chắc vững vàng của những điều mình đang trông mong, là bằng cớ của những điều mình chẳng xem thấy." }
+      ]
+    },
+    {
+      "id": "thu-thach",
+      "name": "Gặp thử thách",
+      "emoji": "⛰️",
+      "message": "Thử thách không phải là dấu hiệu Chúa bỏ rơi bạn. Ngài đang làm việc — và Ngài đã thắng thế gian.",
+      "words": ["thu thach", "kho khan", "kho khan", "hoan nan", "benh", "mat viec", "no nan", "bi ket", "kho", "trial", "hard"],
+      "topics": ["Đức tin", "Hy vọng", "Cầu nguyện"],
+      "keywords": ["thu thach", "hoan nan", "vuot qua", "chien thang", "nhin nhuc", "loi hua", "cau nguyen"],
+      "verses": [
+        { "ref": "Rô-ma 8:28", "text": "Vả, chúng ta biết rằng mọi sự hiệp lại làm ích cho kẻ yêu mến Đức Chúa Trời, tức là cho kẻ được gọi theo ý muốn Ngài đã định." },
+        { "ref": "Gia-cơ 1:2-3", "text": "Hỡi anh em, hãy coi sự thử thách trăm chiều xảy đến cho mình như là điều vui mừng trọn vẹn, vì biết rằng sự thử thách đức tin anh em sanh ra sự nhịn nhục." },
+        { "ref": "Giăng 16:33", "text": "…Các ngươi sẽ có sự hoạn nạn trong thế gian, nhưng hãy cứ vững lòng, ta đã thắng thế gian rồi!" }
+      ]
+    },
+    {
+      "id": "gian-du",
+      "name": "Giận dữ, tổn thương",
+      "emoji": "😤",
+      "message": "Cảm xúc của bạn là thật và Chúa hiểu. Hãy mang vết thương đến với Ngài trước khi để nó điều khiển bạn.",
+      "words": ["gian", "gian du", "buc", "uc che", "ton thuong", "bi phan boi", "han", "oan", "angry", "hurt"],
+      "topics": ["Ăn năn & tha thứ", "Tình yêu thương"],
+      "keywords": ["tha thu", "yeu thuong", "hoa giai", "nhin nhuc", "chua lanh"],
+      "verses": [
+        { "ref": "Ê-phê-sô 4:26", "text": "Ví thử anh em đương cơn giận, thì chớ phạm tội; chớ căm giận cho đến khi mặt trời lặn." },
+        { "ref": "Ê-phê-sô 4:32", "text": "Hãy ở với nhau cách nhân từ, đầy dẫy lòng thương xót, tha thứ nhau như Đức Chúa Trời đã tha thứ anh em trong Đấng Christ vậy." },
+        { "ref": "Thi thiên 147:3", "text": "Ngài chữa lành người có lòng đau thương, và bó vít của họ." }
+      ]
+    },
+    {
+      "id": "biet-on",
+      "name": "Vui mừng, biết ơn",
+      "emoji": "🙌",
+      "message": "Thật đáng ngợi khen! Hãy dâng lời cảm tạ lên Chúa và chia sẻ niềm vui này với người khác.",
+      "words": ["vui", "vui mung", "biet on", "cam ta", "ta on", "hanh phuc", "phuoc", "happy", "thankful", "grateful"],
+      "topics": ["Tạ ơn", "Truyền giáo", "Nước Thiên Đàng"],
+      "keywords": ["ta on", "vui mung", "ngoi khen", "phuoc", "lam chung", "truyen dao"],
+      "verses": [
+        { "ref": "1 Tê-sa-lô-ni-ca 5:16-18", "text": "Hãy vui mừng mãi mãi, cầu nguyện không thôi, phàm làm việc gì cũng phải tạ ơn Chúa; vì ý muốn của Đức Chúa Trời trong Đức Chúa Jêsus Christ đối với anh em là như vậy." },
+        { "ref": "Thi thiên 118:24", "text": "Nầy là ngày Đức Giê-hô-va làm nên, chúng ta sẽ mừng rỡ và vui vẻ trong ngày ấy." },
+        { "ref": "Thi thiên 100:4", "text": "Hãy cảm tạ mà vào các cửa Ngài, hãy ngợi khen mà vào hành lang Ngài. Khá cảm tạ Ngài, chúc tụng danh của Ngài." }
+      ]
+    }
+  ]
+}

@@ -51,7 +51,10 @@ jobs:
           distribution: temurin
           java-version: 21
 
-      - uses: android-actions/setup-android@v3
+      # The ubuntu runner image already ships the Android SDK (ANDROID_HOME) with licenses accepted;
+      # Gradle downloads any missing platform itself.
+      - name: Android SDK
+        run: echo "ANDROID_HOME=$ANDROID_HOME" && test -d "$ANDROID_HOME"
 
       - name: Cài thư viện & chép giao diện vào app
         run: |
