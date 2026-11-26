@@ -1,5 +1,5 @@
-# Tự động lấy video mới từ kênh YouTube và cập nhật trang web (GitHub Pages).
-# App Android tải dữ liệu từ trang web này nên cũng tự cập nhật theo.
+# Tự động lấy video mới từ các kênh YouTube, tóm tắt bằng AI (nếu có khoá) và cập nhật trang web.
+# App Android/iPhone tải dữ liệu từ trang web này nên cũng tự cập nhật theo.
 name: Cập nhật video & đăng web
 
 on:
@@ -10,6 +10,15 @@ on:
     - cron: '47 10 * * *'     # 17:47 chiều mỗi ngày
     - cron: '7 3,6,9 * * 0'   # Chúa Nhật: 10:07, 13:07, 16:07 – ngay sau giờ thờ phượng
   workflow_dispatch:           # bấm "Run workflow" để cập nhật ngay
+    inputs:
+      backfill:
+        description: 'Lấy lại TOÀN BỘ video của mọi kênh'
+        type: boolean
+        default: false
+      ai_batch:
+        description: 'Số bài tóm tắt AI lần này (cần ANTHROPIC_API_KEY)'
+        type: number
+        default: 8
 
 permissions:
   contents: write
@@ -23,6 +32,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 90
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
@@ -32,29 +42,49 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
+
+      # yt-dlp lists every video of a channel and downloads captions; it needs a JavaScript runtime for YouTube.
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - name: Cài công cụ
+        run: |
+          npm ci
+          pip install --upgrade "yt-dlp[default]"
+          yt-dlp --version
 
       - name: Lấy video mới từ YouTube
         id: sync
         continue-on-error: true   # YouTube lỗi tạm thời thì vẫn đăng web với dữ liệu cũ
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-        run: node scripts/sync-youtube.mjs
+        run: node scripts/sync-youtube.mjs ${{ inputs.backfill && '--backfill' || '' }}
+
+      - name: Tóm tắt bài giảng bằng AI
+        continue-on-error: true   # thiếu khoá / hết hạn mức thì vẫn đăng web
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          AI_MODEL: ${{ vars.AI_MODEL }}
+          AI_MAX_PER_RUN: ${{ inputs.ai_batch || vars.AI_MAX_PER_RUN || 8 }}
+        run: node scripts/ai-enrich.mjs
 
       - name: Lưu dữ liệu mới vào repository
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/youtube.json
+          git add data/youtube.json data/ai.json
           if git diff --cached --quiet; then
-            echo "Không có video mới."
+            echo "Không có gì mới."
           else
             git commit -m "Cập nhật video YouTube $(TZ=Asia/Ho_Chi_Minh date +'%d/%m/%Y %H:%M')"
+            git pull --rebase --autostash origin main
             git push
           fi
 
       - name: Kiểm tra & đóng gói trang web
         run: |
-          node --test scripts/test/*.test.mjs
+          npm test
           node scripts/build-www.mjs
 
       - uses: actions/configure-pages@v5

@@ -19,8 +19,10 @@
     "@capacitor/local-notifications": "^8.3.1"
   },
   "devDependencies": {
+    "@anthropic-ai/sdk": "^1.14.0",
     "@capacitor/assets": "^4.0.0",
     "@capacitor/cli": "^8.6.3",
-    "playwright": "^1.63.0"
+    "playwright": "^1.63.0",
+    "zod": "^4.6.7"
   }
 }

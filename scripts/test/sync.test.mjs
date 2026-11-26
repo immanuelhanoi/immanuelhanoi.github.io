@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
-import { parseRss, toSermon, findScripture, findSpeaker, topicsFor, classify, parseTitle } from '../sync-youtube.mjs';
+import { parseRss, toSermon, findScripture, findSpeaker, topicsFor, classify, parseTitle, fromYtDlpEntry, channelsFromConfig } from '../sync-youtube.mjs';
 
 test('parse RSS feed fixture', async () => {
   const xml = await fs.readFile(new URL('./sample-feed.xml', import.meta.url), 'utf8');
@@ -38,7 +38,9 @@ test('classification', () => {
   assert.equal(classify({ title: 'Thờ phượng Chúa Nhật', at: monday }), 'chua-nhat');
   assert.equal(classify({ title: 'Biệt thánh ca', at: sunday }), 'khac');
   assert.equal(classify({ title: 'Sống đẹp lòng Chúa', at: sunday }), 'chua-nhat');
-  assert.equal(classify({ title: 'Sống đẹp lòng Chúa', at: monday }), 'hang-ngay');
+  assert.equal(classify({ title: 'Sống đẹp lòng Chúa', at: monday }), 'giua-tuan');
+  // an estimated date must not decide that a video is a Sunday service
+  assert.equal(classify({ title: 'Sống đẹp lòng Chúa', at: sunday, atApprox: true }), 'giua-tuan');
 });
 
 test('date from title wins; Vietnam time zone otherwise', () => {
@@ -83,7 +85,33 @@ test('channel classification and record', () => {
   assert.equal(sun.summary, undefined);           // description only repeats the title
   const wed = toSermon({ videoId: 'b', title: '20261022 Thứ 4 Lập nhân sự truyền đạo nhóm (Công vụ 11;19-30)',
     at: new Date('2026-10-21T16:55:00Z') });
-  assert.equal(wed.type, 'hang-ngay');
+  assert.equal(wed.type, 'giua-tuan');
   assert.equal(wed.date, '2026-10-22');           // title date wins over upload time
   assert.deepEqual(wed.topics, ['Truyền giáo', 'Hội thánh & Nhóm']);
+});
+
+test('camp, guest channel and hymn categories', () => {
+  assert.equal(classify({ title: 'Remnant Camp tháng 11 - Bài 1 (Công 1;8)' }), 'camp');
+  assert.equal(classify({ title: '20261012 [Trại hè] Thế hệ 237' }), 'camp');
+  assert.equal(classify({ title: 'Ba sự kiện của Đấng Christ', channelType: 'su-diep' }), 'su-diep');
+  assert.equal(classify({ title: 'Biệt thánh ca: Ân Điển', channelType: 'su-diep' }), 'khac');
+  assert.equal(classify({ title: 'Bông trái của môn đồ' }), 'giua-tuan');   // "trái" is not "trại"
+});
+
+test('yt-dlp flat entries', () => {
+  const v = fromYtDlpEntry({ id: 'abcdefghijk', title: '20250105 Lễ 1 Khởi đầu mới (Ê-sai 43;18-19)', duration: 3725, upload_date: '20250105', url: 'https://www.youtube.com/watch?v=abcdefghijk' });
+  assert.equal(v.videoId, 'abcdefghijk');
+  assert.equal(v.duration, '1:02:05');
+  assert.equal(v.atApprox, true);
+  assert.equal(fromYtDlpEntry({ id: 'x', live_status: 'is_upcoming' }), null);
+  const s = toSermon({ ...v, channel: '@immanuelhanoi' });
+  assert.equal(s.date, '2025-01-05');
+  assert.equal(s.type, 'chua-nhat');
+  assert.equal(s.scripture, 'Ê-sai 43:18-19');
+  assert.equal(s.dateApprox, undefined);           // the title carries the real date
+});
+
+test('channel config', () => {
+  assert.deepEqual(channelsFromConfig({ church: { youtubeChannel: 'immanuelhanoi' } }), [{ handle: '@immanuelhanoi' }]);
+  assert.equal(channelsFromConfig({ church: { channels: [{ handle: '@a', type: 'su-diep' }] } })[0].type, 'su-diep');
 });

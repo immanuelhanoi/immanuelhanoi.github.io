@@ -230,3 +230,31 @@ pre.code {
 .switch-row input:checked::after { transform: translateX(20px); }
 .time-row { display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: .9rem; }
 .time-row input { font: inherit; padding: 6px 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--text); }
+
+/* v3: moods, hymns, AI summary, library */
+.badge.mid { background: color-mix(in srgb, #3b82a0 16%, transparent); color: #2f6f8a; }
+.badge.camp { background: color-mix(in srgb, #3f8f4f 16%, transparent); color: #3a7d48; }
+.badge.guest { background: color-mix(in srgb, #7a4fa0 16%, transparent); color: #6b4590; }
+@media (prefers-color-scheme: dark) { .badge.mid { color: #8cc7df; } .badge.camp { color: #9fd6a9; } .badge.guest { color: #cbb0e6; } }
+.ai-dot { position: absolute; margin: -2px 0 0 0; right: 14px; font-size: .8rem; opacity: .7; }
+.card { position: relative; }
+.mood-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+.mood { display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: var(--radius); background: var(--surface);
+  border: 1px solid var(--line); text-decoration: none; color: var(--text); font-weight: 600; font-size: .93rem; box-shadow: var(--shadow); }
+.mood span { font-size: 1.4rem; }
+.mood:hover { border-color: var(--brand); }
+.feel { display: flex; gap: 8px; margin-bottom: 16px; }
+.feel input { flex: 1; min-width: 0; font: inherit; padding: 11px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--text); }
+.mood-message { font-size: 1.08rem; line-height: 1.6; margin: 0 0 16px; }
+.care { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, var(--surface)); }
+.care p { margin: 6px 0 0; font-size: .92rem; }
+.crumb { margin: 0 0 6px; font-size: .9rem; }
+.crumb a { text-decoration: none; }
+.hymn { display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); text-decoration: none; color: var(--text); }
+.hymn:hover { border-color: var(--brand); }
+.hymn-icon { font-size: 1.3rem; }
+.hymn-go { margin-left: auto; color: var(--brand); }
+.ai-box h4 { margin: 12px 0 4px; font-size: .9rem; color: var(--muted); }
+.ai-box ul { margin: 0; padding-left: 1.2rem; }
+.ai-box p { margin: 0 0 6px; }

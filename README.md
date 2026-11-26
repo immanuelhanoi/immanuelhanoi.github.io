@@ -66,6 +66,34 @@ Không có video mới thì app cũng không cần cài lại. Chỉ khi đổi 
 
 Phân loại sai thì sửa tay theo bảng trên, hoặc nhờ chỉnh từ khoá cho khớp cách đặt tên video của kênh.
 
+## Tóm tắt sứ điệp bằng AI (tuỳ chọn, có phí)
+
+Mỗi lần chạy, workflow lấy **phụ đề tiếng Việt** của video (phụ đề tự động của YouTube) và nhờ **Claude**
+(AI của Anthropic) viết: tóm tắt 3–5 câu, ý chính, câu Kinh Thánh chính, gợi ý áp dụng, chủ đề, và
+**những tâm trạng bài giảng có thể khích lệ**. Phần này giúp trang *Tâm tình* gợi ý đúng bài hơn nhiều.
+
+**Bật:** tạo khoá tại console.anthropic.com (nạp tiền trả trước), rồi thêm secret `ANTHROPIC_API_KEY`
+trong *Settings → Secrets and variables → Actions*. Không có khoá thì bước này tự bỏ qua, không tốn gì.
+
+**Chi phí ước tính** (một bài giảng ~1 giờ ≈ 20–30 nghìn token):
+
+| Model (đặt trong *Variables* → `AI_MODEL`) | Mỗi bài | ~600 bài cũ | Hằng tháng (~15 bài mới) |
+|---|---|---|---|
+| `claude-opus-5-5` (mặc định, chất lượng cao nhất) | ~0,12 USD | ~70 USD | ~2 USD |
+| `claude-sonnet-5-5` | ~0,06 USD | ~35 USD | ~1 USD |
+| `claude-haiku-5-5` (rẻ nhất) | ~0,003 USD | ~2 USD | < 0,1 USD |
+
+Mặc định tóm tắt **8 bài mỗi lần chạy** (2 lần/ngày) để chi phí rải đều; muốn nhanh hơn: *Run workflow*
+và tăng *Số bài tóm tắt AI*. Có thể đặt giới hạn chi tiêu hằng tháng trong console.anthropic.com.
+Tóm tắt do AI viết nên có thể chưa chính xác hoàn toàn; app ghi rõ điều này dưới mỗi bản tóm tắt.
+
+## Thêm kênh YouTube, Thánh ca, Tâm trạng
+
+- **Kênh:** `data/sermons.json` → `church.channels`. Kênh có `"type": "su-diep"` hiện thành mục riêng.
+- **Thánh ca:** `data/hymns.json` — số bài, tên, tâm trạng/chủ đề phù hợp, link video (không chép lời).
+- **Tâm trạng & câu Kinh Thánh an ủi:** `data/moods.json`.
+- **Lấy lại toàn bộ video cũ:** *Actions → Cập nhật video & đăng web → Run workflow →* tick *Lấy lại TOÀN BỘ video*.
+
 ## Dành cho người phát triển
 
 ```bash

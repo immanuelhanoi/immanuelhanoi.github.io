@@ -1,0 +1,4 @@
+{
+  "_huongdan": "Danh sách thánh ca để gợi ý theo tâm trạng/chủ đề. Mỗi bài: {\"so\": \"Thánh ca 123\", \"ten\": \"Tên bài\", \"moods\": [\"chan-nan\"], \"topics\": [\"Hy vọng\"], \"video\": \"link YouTube (tuỳ chọn)\"}. 'moods' dùng id trong data/moods.json. Không chép lời bài hát vào đây (bản quyền).",
+  "hymns": []
+}
