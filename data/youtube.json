@@ -11,31 +11,12 @@
   },
   "videos": [
     {
-      "id": "yt-MJntO_n1MKk",
-      "type": "su-diep",
-      "title": "Lập tháp canh Ngôi trong đồng vắng (Giô 10;12-14)",
-      "date": "2027-09-27",
-      "video": "https://www.youtube.com/watch?v=MJntO_n1MKk",
-      "duration": "41:41",
-      "source": "youtube",
-      "channel": "@minhphuongnguyen6368",
-      "publishedAt": "2026-10-02T17:00:06.000Z",
-      "raw": {
-        "title": "20270927 Lập tháp canh Ngôi trong đồng vắng (Giô 10;12-14)",
-        "description": "Lập tháp canh Ngôi trong đồng vắng (Giô 10;12-14)",
-        "at": "2026-10-02T17:00:06.000Z",
-        "atApprox": false,
-        "isShort": false,
-        "duration": "41:41",
-        "channel": "@minhphuongnguyen6368"
-      }
-    },
-    {
       "id": "yt-YZF63Cjad1k",
       "type": "su-diep",
-      "title": "Ứng đáp thật trong kinh thánh là gì (Êx 37;1-10)",
+      "title": "Ứng đáp thật trong kinh thánh là gì",
       "date": "2026-11-22",
       "video": "https://www.youtube.com/watch?v=YZF63Cjad1k",
+      "scripture": "Ê-xê-chi-ên 37:1-10",
       "source": "youtube",
       "channel": "@minhphuongnguyen6368",
       "publishedAt": "2026-11-22T09:43:52.000Z",
@@ -78,12 +59,11 @@
     {
       "id": "yt-mV2wrltEti0",
       "type": "su-diep",
-      "title": "202261115 Với những người bỏ lỡ lễ thu hoạch",
+      "title": "Với những người bỏ lỡ lễ thu hoạch",
       "date": "2026-11-21",
       "video": "https://www.youtube.com/watch?v=mV2wrltEti0",
       "duration": "26:47",
       "scripture": "Ê-sai 6:1-13",
-      "summary": "Với những người bỏ lỡ lễ thu hoạch (Ê sai 6;1-13)",
       "source": "youtube",
       "channel": "@minhphuongnguyen6368",
       "publishedAt": "2026-11-20T17:00:10.000Z",
@@ -244,10 +224,11 @@
     {
       "id": "yt-pTbFJMWr7AM",
       "type": "su-diep",
-      "title": "Môn đồ theo hoàn cảnh, môn đồ theo giao ước (II Vua 2;9-11)",
+      "title": "Môn đồ theo hoàn cảnh, môn đồ theo giao ước",
       "date": "2026-11-01",
       "video": "https://www.youtube.com/watch?v=pTbFJMWr7AM",
       "duration": "28:55",
+      "scripture": "2 Các vua 2:9-11",
       "topics": [
         "Môn đồ"
       ],
@@ -606,10 +587,11 @@
     {
       "id": "yt-35jzUey4qkU",
       "type": "su-diep",
-      "title": "Vận động Mích ba và tháp canh thế giới (I Sam 7;1-15)",
+      "title": "Vận động Mích ba và tháp canh thế giới",
       "date": "2026-10-04",
       "video": "https://www.youtube.com/watch?v=35jzUey4qkU",
       "duration": "33:30",
+      "scripture": "1 Sa-mu-ên 7:1-15",
       "source": "youtube",
       "channel": "@minhphuongnguyen6368",
       "publishedAt": "2026-10-10T09:42:41.000Z",
@@ -671,6 +653,27 @@
         "isShort": false,
         "duration": "32:33",
         "channel": "@immanuelhanoi"
+      }
+    },
+    {
+      "id": "yt-MJntO_n1MKk",
+      "type": "su-diep",
+      "title": "Lập tháp canh Ngôi trong đồng vắng",
+      "date": "2026-10-03",
+      "video": "https://www.youtube.com/watch?v=MJntO_n1MKk",
+      "duration": "41:41",
+      "scripture": "Giô-suê 10:12-14",
+      "source": "youtube",
+      "channel": "@minhphuongnguyen6368",
+      "publishedAt": "2026-10-02T17:00:06.000Z",
+      "raw": {
+        "title": "20270927 Lập tháp canh Ngôi trong đồng vắng (Giô 10;12-14)",
+        "description": "Lập tháp canh Ngôi trong đồng vắng (Giô 10;12-14)",
+        "at": "2026-10-02T17:00:06.000Z",
+        "atApprox": false,
+        "isShort": false,
+        "duration": "41:41",
+        "channel": "@minhphuongnguyen6368"
       }
     },
     {
@@ -744,10 +747,11 @@
     {
       "id": "yt-rZKyhiYQuzM",
       "type": "su-diep",
-      "title": "Tháp canh được lập trong đồng vắng (Phục 6;4-9)",
+      "title": "Tháp canh được lập trong đồng vắng",
       "date": "2026-09-20",
       "video": "https://www.youtube.com/watch?v=rZKyhiYQuzM",
       "duration": "36:57",
+      "scripture": "Phục truyền luật lệ ký 6:4-9",
       "source": "youtube",
       "channel": "@minhphuongnguyen6368",
       "publishedAt": "2026-09-25T17:00:08.000Z",
@@ -828,11 +832,12 @@
     {
       "id": "yt-Vc4bmwFJbQA",
       "type": "giua-tuan",
-      "title": "Hãy tận hưởng ân điển trong Jesus Christ (Rôm 6;1-14)",
+      "title": "Hãy tận hưởng ân điển trong Jesus Christ",
       "service": "Thứ 4",
       "date": "2026-09-09",
       "video": "https://www.youtube.com/watch?v=Vc4bmwFJbQA",
       "duration": "33:22",
+      "scripture": "Rô-ma 6:1-14",
       "topics": [
         "Ân điển"
       ],
@@ -1252,10 +1257,11 @@
     {
       "id": "yt-d45z7d6EOLk",
       "type": "giua-tuan",
-      "title": "Chớ phán xét anh em mình (Math 7;1-5)",
+      "title": "Chớ phán xét anh em mình",
       "date": "2026-07-12",
       "video": "https://www.youtube.com/watch?v=d45z7d6EOLk",
       "duration": "35:21",
+      "scripture": "Ma-thi-ơ 7:1-5",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2026-07-27T00:00:00.000Z",
@@ -1518,10 +1524,11 @@
     {
       "id": "yt-O43qFAEqIsI",
       "type": "su-diep",
-      "title": "1 Lời Chúa phán với người đang bế tắc (Giê r 33;1-16)",
+      "title": "1 Lời Chúa phán với người đang bế tắc",
       "date": "2026-06-14",
       "video": "https://www.youtube.com/watch?v=O43qFAEqIsI",
       "duration": "33:17",
+      "scripture": "Giê-rê-mi 33:1-16",
       "topics": [
         "Lời Chúa"
       ],
@@ -1609,10 +1616,11 @@
     {
       "id": "yt-rELs-0oBQ8g",
       "type": "su-diep",
-      "title": "1 Dù Đức Chúa Trời không cứu chúng tôi đi nữa (Đan 3;14-18)",
+      "title": "1 Dù Đức Chúa Trời không cứu chúng tôi đi nữa",
       "date": "2026-05-31",
       "video": "https://www.youtube.com/watch?v=rELs-0oBQ8g",
       "duration": "26:19",
+      "scripture": "Dân số ký 3:14-18",
       "source": "youtube",
       "channel": "@minhphuongnguyen6368",
       "publishedAt": "2026-06-27T00:00:00.000Z",
@@ -1656,7 +1664,7 @@
       "date": "2026-05-31",
       "video": "https://www.youtube.com/watch?v=DgMKbiNXwEk",
       "duration": "26:45",
-      "scripture": "1 Cô-rinh-tô 10:20",
+      "scripture": "Ga-la-ti 4:8",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2026-06-27T00:00:00.000Z",
@@ -1971,11 +1979,12 @@
     {
       "id": "yt-JcVOjZMl2Lc",
       "type": "giua-tuan",
-      "title": "Dạy dỗ trong chức vụ của Chúa Jesus (Luc 3;21-23)",
+      "title": "Dạy dỗ trong chức vụ của Chúa Jesus",
       "service": "Thứ 4",
       "date": "2026-05-06",
       "video": "https://www.youtube.com/watch?v=JcVOjZMl2Lc",
       "duration": "30:26",
+      "scripture": "Lu-ca 3:21-23",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2026-05-27T00:00:00.000Z",
@@ -2380,11 +2389,12 @@
     {
       "id": "yt-DEfuZqYO9uo",
       "type": "giua-tuan",
-      "title": "(Sứ điệp hiện trường) Động cơ và nội dung phúc âm (Rôm 3;10, 23)",
+      "title": "(Sứ điệp hiện trường) Động cơ và nội dung phúc âm",
       "service": "Thứ 4",
       "date": "2026-03-18",
       "video": "https://www.youtube.com/watch?v=DEfuZqYO9uo",
       "duration": "35:55",
+      "scripture": "Rô-ma 3:10, 23",
       "topics": [
         "Truyền giáo"
       ],
@@ -2522,11 +2532,12 @@
     {
       "id": "yt-ej0X4fcM3dk",
       "type": "chua-nhat",
-      "title": "Đức Chúa Trời ban mọi phước lành (Phục 28;1-14)",
+      "title": "Đức Chúa Trời ban mọi phước lành",
       "service": "Lễ 1",
       "date": "2026-02-22",
       "video": "https://www.youtube.com/watch?v=ej0X4fcM3dk",
       "duration": "40:06",
+      "scripture": "Phục truyền luật lệ ký 28:1-14",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2026-02-27T00:00:00.000Z",
@@ -3264,11 +3275,12 @@
     {
       "id": "yt-t6caezGBJy8",
       "type": "giua-tuan",
-      "title": "Tiên tri bị người nhà khinh rể (Luc 4;14-30)",
+      "title": "Tiên tri bị người nhà khinh rể",
       "service": "Thứ 4",
       "date": "2025-11-26",
       "video": "https://www.youtube.com/watch?v=t6caezGBJy8",
       "duration": "35:30",
+      "scripture": "Lu-ca 4:14-30",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -3447,11 +3459,12 @@
     {
       "id": "yt-jwOjFRmmQUE",
       "type": "chua-nhat",
-      "title": "Lời tiên tri phục hồi thờ phượng (Hê b 9;1-5)",
+      "title": "Lời tiên tri phục hồi thờ phượng",
       "service": "Lễ 2",
       "date": "2025-11-09",
       "video": "https://www.youtube.com/watch?v=jwOjFRmmQUE",
       "duration": "1:14:23",
+      "scripture": "Hê-bơ-rơ 9:1-5",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -3699,11 +3712,12 @@
     {
       "id": "yt-fVCaUyjRD5Q",
       "type": "giua-tuan",
-      "title": "Người nhận ân điển ĐCT (Ê ph 2;1-10)",
+      "title": "Người nhận ân điển ĐCT",
       "service": "Thứ 4",
       "date": "2025-10-08",
       "video": "https://www.youtube.com/watch?v=fVCaUyjRD5Q",
       "duration": "28:22",
+      "scripture": "Ê-phê-sô 2:1-10",
       "topics": [
         "Ân điển"
       ],
@@ -3819,7 +3833,7 @@
       "date": "2025-09-28",
       "video": "https://www.youtube.com/watch?v=10tSmAgMs-k",
       "duration": "36:13",
-      "scripture": "Xuất Ê-díp-tô ký 13:17-22",
+      "scripture": "Dân số ký 24",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -4416,11 +4430,12 @@
     {
       "id": "yt-4FAOSJbY21w",
       "type": "chua-nhat",
-      "title": "Chuẩn bị tương lai bằng lời Chúa (II Tim 3;14-17)",
+      "title": "Chuẩn bị tương lai bằng lời Chúa",
       "service": "Lễ 1",
       "date": "2025-08-17",
       "video": "https://www.youtube.com/watch?v=4FAOSJbY21w",
       "duration": "38:05",
+      "scripture": "2 Ti-mô-thê 3:14-17",
       "topics": [
         "Lời Chúa"
       ],
@@ -4440,11 +4455,12 @@
     {
       "id": "yt-eoyrEMGMPmM",
       "type": "chua-nhat",
-      "title": "Gia phả của Chúa Jesus Christ (Math 1;1-17)",
+      "title": "Gia phả của Chúa Jesus Christ",
       "service": "Lễ 2",
       "date": "2025-08-17",
       "video": "https://www.youtube.com/watch?v=eoyrEMGMPmM",
       "duration": "27:56",
+      "scripture": "Ma-thi-ơ 1:1-17",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -4508,11 +4524,12 @@
     {
       "id": "yt-qhMw7ZECAyA",
       "type": "hang-ngay",
-      "title": "Lý do nhận chúc phúc từ ngôi (Phục 15;1-6)",
+      "title": "Lý do nhận chúc phúc từ ngôi",
       "service": "Tĩnh nguyện",
       "date": "2025-08-13",
       "video": "https://www.youtube.com/watch?v=qhMw7ZECAyA",
       "duration": "19:22",
+      "scripture": "Phục truyền luật lệ ký 15:1-6",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -4727,11 +4744,12 @@
     {
       "id": "yt-6ojr0A1pvps",
       "type": "hang-ngay",
-      "title": "Hãy đi theo lời ĐCT hướng dẫn (Phục 8;1-5)",
+      "title": "Hãy đi theo lời ĐCT hướng dẫn",
       "service": "Tĩnh nguyện",
       "date": "2025-07-25",
       "video": "https://www.youtube.com/watch?v=6ojr0A1pvps",
       "duration": "19:25",
+      "scripture": "Phục truyền luật lệ ký 8:1-5",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -4747,7 +4765,7 @@
     },
     {
       "id": "yt-5REemqFM8hM",
-      "type": "giua-tuan",
+      "type": "camp",
       "title": "Sự giáng sinh của Chúa Jesus",
       "service": "Kinh thánh hè",
       "date": "2025-07-24",
@@ -4773,11 +4791,12 @@
     {
       "id": "yt-TLQoXJxFTr4",
       "type": "hang-ngay",
-      "title": "Thế hệ sau chiến thắng bằng lời Đức Chúa Trời (Phục 6;4-9)",
+      "title": "Thế hệ sau chiến thắng bằng lời Đức Chúa Trời",
       "service": "Tĩnh nguyện",
       "date": "2025-07-24",
       "video": "https://www.youtube.com/watch?v=TLQoXJxFTr4",
       "duration": "19:41",
+      "scripture": "Phục truyền luật lệ ký 6:4-9",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -4794,11 +4813,12 @@
     {
       "id": "yt-Irk6S7-rmbU",
       "type": "giua-tuan",
-      "title": "Phục hồi thân phận ban đầu (Ê ph 5;8-14)",
+      "title": "Phục hồi thân phận ban đầu",
       "service": "Thứ 4",
       "date": "2025-07-23",
       "video": "https://www.youtube.com/watch?v=Irk6S7-rmbU",
       "duration": "37:27",
+      "scripture": "Ê-phê-sô 5:8-14",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -4836,7 +4856,7 @@
     },
     {
       "id": "yt-T4o2iWuYS9g",
-      "type": "giua-tuan",
+      "type": "camp",
       "title": "Giô na chạy trốn Đức Chúa Trời",
       "service": "Kinh thánh hè",
       "date": "2025-07-22",
@@ -4909,11 +4929,12 @@
     {
       "id": "yt-UBi8xahX0Ck",
       "type": "giua-tuan",
-      "title": "Lý do gì bị A sy ri, Sy ri xâm chiếm (II Vua 6;15-19)",
+      "title": "Lý do gì bị A sy ri, Sy ri xâm chiếm",
       "service": "TTN",
       "date": "2025-07-19",
       "video": "https://www.youtube.com/watch?v=UBi8xahX0Ck",
       "duration": "36:04",
+      "scripture": "2 Các vua 6:15-19",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -4930,11 +4951,12 @@
     {
       "id": "yt-LyYdZlJEB3k",
       "type": "hang-ngay",
-      "title": "Điều răn về chúc phúc và rủa sả (Phục 5;6-10)",
+      "title": "Điều răn về chúc phúc và rủa sả",
       "service": "Tĩnh nguyện",
       "date": "2025-07-18",
       "video": "https://www.youtube.com/watch?v=LyYdZlJEB3k",
       "duration": "18:33",
+      "scripture": "Phục truyền luật lệ ký 5:6-10",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -4950,12 +4972,13 @@
     },
     {
       "id": "yt-4Il_EPMEngk",
-      "type": "giua-tuan",
-      "title": "Đa ni ên quyết định không chịu ô uế bởi đồ ăn của vua (Đan 1;8-9)",
+      "type": "camp",
+      "title": "Đa ni ên quyết định không chịu ô uế bởi đồ ăn của vua",
       "service": "Kinh thánh hè",
       "date": "2025-07-17",
       "video": "https://www.youtube.com/watch?v=4Il_EPMEngk",
       "duration": "28:03",
+      "scripture": "Dân số ký 1:8-9",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -4972,11 +4995,12 @@
     {
       "id": "yt-7DMb1PW3bqc",
       "type": "hang-ngay",
-      "title": "Dân khôn ngoan thông sáng nhất (Phục 4;5-8)",
+      "title": "Dân khôn ngoan thông sáng nhất",
       "service": "Tĩnh nguyện",
       "date": "2025-07-17",
       "video": "https://www.youtube.com/watch?v=7DMb1PW3bqc",
       "duration": "18:08",
+      "scripture": "Phục truyền luật lệ ký 4:5-8",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -5018,11 +5042,12 @@
     {
       "id": "yt-DZ5WN00JPmE",
       "type": "hang-ngay",
-      "title": "ĐCT hướng dẫn 40 năm đồng vắng (Phục truyền 2;7)",
+      "title": "ĐCT hướng dẫn 40 năm đồng vắng",
       "service": "Tĩnh nguyện",
       "date": "2025-07-16",
       "video": "https://www.youtube.com/watch?v=DZ5WN00JPmE",
       "duration": "20:02",
+      "scripture": "Dân số ký 40",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -5038,7 +5063,7 @@
     },
     {
       "id": "yt-1xYdU_pv3nc",
-      "type": "giua-tuan",
+      "type": "camp",
       "title": "Tuổi thơ Đa vít chuẩn bị đỉnh cao",
       "service": "Kinh thánh hè",
       "date": "2025-07-15",
@@ -5126,11 +5151,12 @@
     {
       "id": "yt-1QwPixKYMYk",
       "type": "giua-tuan",
-      "title": "Lý do YS bị hoạn nạn bởi Phi li tin (I Sam 7;3-11)",
+      "title": "Lý do YS bị hoạn nạn bởi Phi li tin",
       "service": "TTN",
       "date": "2025-07-12",
       "video": "https://www.youtube.com/watch?v=1QwPixKYMYk",
       "duration": "33:31",
+      "scripture": "1 Sa-mu-ên 7:3-11",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -5168,12 +5194,13 @@
     },
     {
       "id": "yt-YY8_k8-uljw",
-      "type": "giua-tuan",
-      "title": "An ne cầu nguyện giao ước người Na xi rê (I Sam 1;9-11)",
+      "type": "camp",
+      "title": "An ne cầu nguyện giao ước người Na xi rê",
       "service": "Kinh thánh hè",
       "date": "2025-07-10",
       "video": "https://www.youtube.com/watch?v=YY8_k8-uljw",
       "duration": "20:45",
+      "scripture": "1 Sa-mu-ên 1:9-11",
       "topics": [
         "Cầu nguyện"
       ],
@@ -5281,11 +5308,12 @@
     {
       "id": "yt-TVn2gCAOZoE",
       "type": "hang-ngay",
-      "title": "Phần thưởng của đức tin (I Phi 1;3-9)",
+      "title": "Phần thưởng của đức tin",
       "service": "Tĩnh nguyện",
       "date": "2025-07-04",
       "video": "https://www.youtube.com/watch?v=TVn2gCAOZoE",
       "duration": "18:19",
+      "scripture": "1 Phi-e-rơ 1:3-9",
       "topics": [
         "Đức tin"
       ],
@@ -5352,11 +5380,12 @@
     {
       "id": "yt-XDERZncmoAo",
       "type": "hang-ngay",
-      "title": "Người trọng trách ẩn mình (Giô 14;6-12)",
+      "title": "Người trọng trách ẩn mình",
       "service": "Tĩnh nguyện",
       "date": "2025-07-02",
       "video": "https://www.youtube.com/watch?v=XDERZncmoAo",
       "duration": "19:43",
+      "scripture": "Giô-suê 14:6-12",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -5372,7 +5401,7 @@
     },
     {
       "id": "yt-DEfgiW3opzk",
-      "type": "giua-tuan",
+      "type": "camp",
       "title": "Hoàng tử đến từ dòng sông",
       "service": "Kinh thánh hè",
       "date": "2025-07-01",
@@ -5417,11 +5446,12 @@
     {
       "id": "yt-QWxDv68m2bk",
       "type": "chua-nhat",
-      "title": "Người trọng trách ẩn mình (Giô 14;6-15)",
+      "title": "Người trọng trách ẩn mình",
       "service": "Lễ 1",
       "date": "2025-06-29",
       "video": "https://www.youtube.com/watch?v=QWxDv68m2bk",
       "duration": "33:07",
+      "scripture": "Giô-suê 14:6-15",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -5460,11 +5490,12 @@
     {
       "id": "yt-Nqwhy4drsFk",
       "type": "giua-tuan",
-      "title": "Những môn đồ phúc âm hóa Rô ma (Rôm 16;25-27)",
+      "title": "Những môn đồ phúc âm hóa Rô ma",
       "service": "TTN",
       "date": "2025-06-28",
       "video": "https://www.youtube.com/watch?v=Nqwhy4drsFk",
       "duration": "26:57",
+      "scripture": "Rô-ma 16:25-27",
       "topics": [
         "Truyền giáo",
         "Môn đồ"
@@ -5506,7 +5537,7 @@
     },
     {
       "id": "yt-XMNt_I_oT14",
-      "type": "giua-tuan",
+      "type": "camp",
       "title": "Đức Chúa Trời ở cùng Giô sép",
       "service": "Kinh thánh hè",
       "date": "2025-06-26",
@@ -5681,7 +5712,7 @@
     },
     {
       "id": "yt-51X2HYP0jBg",
-      "type": "giua-tuan",
+      "type": "camp",
       "title": "Chúa gọi Áp ra ham",
       "service": "Kinh thánh hè",
       "date": "2025-06-19",
@@ -5751,11 +5782,12 @@
     {
       "id": "yt-Q5qw8T65xO4",
       "type": "hang-ngay",
-      "title": "Hãy đánh sập Giê ri cô trong tôi (Giô 6;1-5)",
+      "title": "Hãy đánh sập Giê ri cô trong tôi",
       "service": "Tĩnh nguyện",
       "date": "2025-06-18",
       "video": "https://www.youtube.com/watch?v=Q5qw8T65xO4",
       "duration": "20:04",
+      "scripture": "Giô-suê 6:1-5",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -5771,7 +5803,7 @@
     },
     {
       "id": "yt-A-1VIIilD2M",
-      "type": "giua-tuan",
+      "type": "camp",
       "title": "Nô ê và đại hồng thủy",
       "service": "Kinh thánh hè",
       "date": "2025-06-17",
@@ -5816,11 +5848,12 @@
     {
       "id": "yt-bZ9qRLzvtAE",
       "type": "chua-nhat",
-      "title": "Hãy đánh sập Giê ri cô (Giô 6;1-11)",
+      "title": "Hãy đánh sập Giê ri cô",
       "service": "Lễ 1",
       "date": "2025-06-15",
       "video": "https://www.youtube.com/watch?v=bZ9qRLzvtAE",
       "duration": "39:32",
+      "scripture": "Giô-suê 6:1-11",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -5902,7 +5935,7 @@
     },
     {
       "id": "yt-NEbdmAima40",
-      "type": "giua-tuan",
+      "type": "camp",
       "title": "Con người bị cám dỗ rơi vào tội lỗi",
       "service": "Kinh thánh hè",
       "date": "2025-06-12",
@@ -5993,7 +6026,7 @@
     },
     {
       "id": "yt-1-tK9ho4gBc",
-      "type": "giua-tuan",
+      "type": "camp",
       "title": "Ban đầu ĐCT dựng lên trời đất",
       "service": "Kinh thánh hè",
       "date": "2025-06-10",
@@ -6038,11 +6071,12 @@
     {
       "id": "yt-nhKq3LEYZGQ",
       "type": "chua-nhat",
-      "title": "Xác nhận tôi là dân giao ước (Giô 5;1-8)",
+      "title": "Xác nhận tôi là dân giao ước",
       "service": "Lễ 1",
       "date": "2025-06-08",
       "video": "https://www.youtube.com/watch?v=nhKq3LEYZGQ",
       "duration": "32:27",
+      "scripture": "Giô-suê 5:1-8",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -6440,11 +6474,12 @@
     {
       "id": "yt-zbjfuAqYSkY",
       "type": "giua-tuan",
-      "title": "Hãy bước theo hòm giao ước (Giô 3;1-6)",
+      "title": "Hãy bước theo hòm giao ước",
       "service": "Thứ 4",
       "date": "2025-05-21",
       "video": "https://www.youtube.com/watch?v=zbjfuAqYSkY",
       "duration": "33:53",
+      "scripture": "Giô-suê 3:1-6",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -6505,11 +6540,12 @@
     {
       "id": "yt-LWhaG0TmO8k",
       "type": "chua-nhat",
-      "title": "Đường lần đầu, phải đi theo giao ước (Giô 3;1-13)",
+      "title": "Đường lần đầu, phải đi theo giao ước",
       "service": "Lễ 1",
       "date": "2025-05-18",
       "video": "https://www.youtube.com/watch?v=LWhaG0TmO8k",
       "duration": "35:38",
+      "scripture": "Giô-suê 3:1-13",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -6689,11 +6725,12 @@
     {
       "id": "yt-2YAxwN4nPr4",
       "type": "chua-nhat",
-      "title": "Đức tin của Ra háp (Giô 2;1-16)",
+      "title": "Đức tin của Ra háp",
       "service": "Lễ 1",
       "date": "2025-05-11",
       "video": "https://www.youtube.com/watch?v=2YAxwN4nPr4",
       "duration": "36:23",
+      "scripture": "Giô-suê 2:1-16",
       "topics": [
         "Đức tin"
       ],
@@ -6735,11 +6772,12 @@
     {
       "id": "yt-7D3KbXaxeKo",
       "type": "hang-ngay",
-      "title": "Tuần lễ của cha mẹ (Phục 6;4-12)",
+      "title": "Tuần lễ của cha mẹ",
       "service": "Tĩnh nguyện",
       "date": "2025-05-10",
       "video": "https://www.youtube.com/watch?v=7D3KbXaxeKo",
       "duration": "18:47",
+      "scripture": "Phục truyền luật lệ ký 6:4-12",
       "topics": [
         "Gia đình"
       ],
@@ -6925,11 +6963,12 @@
     {
       "id": "yt-Trb-dBUWsFM",
       "type": "chua-nhat",
-      "title": "Điều phải truyền cho thế hệ sau (Phục 6;1-12)",
+      "title": "Điều phải truyền cho thế hệ sau",
       "service": "Lễ 2",
       "date": "2025-05-04",
       "video": "https://www.youtube.com/watch?v=Trb-dBUWsFM",
       "duration": "37:36",
+      "scripture": "Phục truyền luật lệ ký 6:1-12",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -7011,11 +7050,12 @@
     {
       "id": "yt-UeUoVd0XqM0",
       "type": "giua-tuan",
-      "title": "Sứ mệnh của người truyền đạo (II Vua 5;1-14)",
+      "title": "Sứ mệnh của người truyền đạo",
       "service": "Thứ 4",
       "date": "2025-04-23",
       "video": "https://www.youtube.com/watch?v=UeUoVd0XqM0",
       "duration": "24:34",
+      "scripture": "2 Các vua 5:1-14",
       "topics": [
         "Truyền giáo"
       ],
@@ -7059,7 +7099,7 @@
     },
     {
       "id": "yt-iLYGudJ9GWc",
-      "type": "giua-tuan",
+      "type": "chua-nhat",
       "title": "Kỷ niệm thương khó của Chúa Jesus",
       "service": "Lễ1",
       "date": "2025-04-20",
@@ -7104,11 +7144,12 @@
     {
       "id": "yt-pFrFGR6-uZo",
       "type": "giua-tuan",
-      "title": "Đời sống là hành trình của ngôi ĐCT (Đan 6;9-11)",
+      "title": "Đời sống là hành trình của ngôi ĐCT",
       "service": "TTN",
       "date": "2025-04-19",
       "video": "https://www.youtube.com/watch?v=pFrFGR6-uZo",
       "duration": "29:52",
+      "scripture": "Dân số ký 6:9-11",
       "topics": [
         "Môn đồ"
       ],
@@ -7128,11 +7169,12 @@
     {
       "id": "yt-KF9CHWirqdQ",
       "type": "hang-ngay",
-      "title": "Kỷ niệm thương khó của Chúa Jesus (Luc 22;14-20)",
+      "title": "Kỷ niệm thương khó của Chúa Jesus",
       "service": "Tĩnh nguyện",
       "date": "2025-04-18",
       "video": "https://www.youtube.com/watch?v=KF9CHWirqdQ",
       "duration": "21:15",
+      "scripture": "Lu-ca 22:14-20",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -7218,11 +7260,12 @@
     {
       "id": "yt-8sChdr6uNdI",
       "type": "chua-nhat",
-      "title": "Hãy vững lòng bền chí và cẩn thẩn làm theo (Giô 1;1-9)",
+      "title": "Hãy vững lòng bền chí và cẩn thẩn làm theo",
       "service": "Lễ 1",
       "date": "2025-04-13",
       "video": "https://www.youtube.com/watch?v=8sChdr6uNdI",
       "duration": "35:17",
+      "scripture": "Giô-suê 1:1-9",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -7418,11 +7461,12 @@
     {
       "id": "yt-rX_2Kx8rYC8",
       "type": "chua-nhat",
-      "title": "Người chuẩn bị tương lai (II Tim 3;14-17)",
+      "title": "Người chuẩn bị tương lai",
       "service": "Lễ 1",
       "date": "2025-04-06",
       "video": "https://www.youtube.com/watch?v=rX_2Kx8rYC8",
       "duration": "39:39",
+      "scripture": "2 Ti-mô-thê 3:14-17",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -7530,11 +7574,12 @@
     {
       "id": "yt-PQi1ZwsBuzw",
       "type": "hang-ngay",
-      "title": "Tin lành là quyền phép ĐCT (Rôm 1;16-17)",
+      "title": "Tin lành là quyền phép ĐCT",
       "service": "Tĩnh nguyện",
       "date": "2025-04-03",
       "video": "https://www.youtube.com/watch?v=PQi1ZwsBuzw",
       "duration": "18:26",
+      "scripture": "Rô-ma 1:16-17",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -7551,11 +7596,12 @@
     {
       "id": "yt-xVTZjFn9R1o",
       "type": "giua-tuan",
-      "title": "Người công bình sống bởi đức tin (Rôm 1;16-17)",
+      "title": "Người công bình sống bởi đức tin",
       "service": "Thứ 4",
       "date": "2025-04-02",
       "video": "https://www.youtube.com/watch?v=xVTZjFn9R1o",
       "duration": "35:28",
+      "scripture": "Rô-ma 1:16-17",
       "topics": [
         "Đức tin"
       ],
@@ -7619,11 +7665,12 @@
     {
       "id": "yt-RxG_PvlDmjA",
       "type": "chua-nhat",
-      "title": "Người biết sức mạnh cầu nguyện (Đan 6;1-10)",
+      "title": "Người biết sức mạnh cầu nguyện",
       "service": "Lễ 1",
       "date": "2025-03-30",
       "video": "https://www.youtube.com/watch?v=RxG_PvlDmjA",
       "duration": "37:46",
+      "scripture": "Dân số ký 6:1-10",
       "topics": [
         "Cầu nguyện"
       ],
@@ -7824,11 +7871,12 @@
     {
       "id": "yt-3ymuy4AqWuk",
       "type": "chua-nhat",
-      "title": "Môn đồ có thần Chúa cảm động (Đan 5;13-16)",
+      "title": "Môn đồ có thần Chúa cảm động",
       "service": "Lễ 1",
       "date": "2025-03-23",
       "video": "https://www.youtube.com/watch?v=3ymuy4AqWuk",
       "duration": "39:37",
+      "scripture": "Dân số ký 5:13-16",
       "topics": [
         "Môn đồ"
       ],
@@ -8030,11 +8078,12 @@
     {
       "id": "yt-hZEklhTyPhU",
       "type": "chua-nhat",
-      "title": "Môn đồ đánh trận thuộc linh (Đan 3;16-30)",
+      "title": "Môn đồ đánh trận thuộc linh",
       "service": "Lễ 1",
       "date": "2025-03-16",
       "video": "https://www.youtube.com/watch?v=hZEklhTyPhU",
       "duration": "36:10",
+      "scripture": "Dân số ký 3:16-30",
       "topics": [
         "Môn đồ",
         "Thánh Linh"
@@ -8234,11 +8283,12 @@
     {
       "id": "yt-c_hs1qZ-IXc",
       "type": "chua-nhat",
-      "title": "Đa ni ên giải mộng cho vua (Đan 2;36-49)",
+      "title": "Đa ni ên giải mộng cho vua",
       "service": "Lễ 1",
       "date": "2025-03-09",
       "video": "https://www.youtube.com/watch?v=c_hs1qZ-IXc",
       "duration": "34:37",
+      "scripture": "Dân số ký 2:36-49",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -8434,11 +8484,12 @@
     {
       "id": "yt-aflAhnb-JpM",
       "type": "chua-nhat",
-      "title": "Chinh phục hiện trường bằng sức thuộc linh (Đan 1;8-21)",
+      "title": "Chinh phục hiện trường bằng sức thuộc linh",
       "service": "Lễ 1",
       "date": "2025-03-02",
       "video": "https://www.youtube.com/watch?v=aflAhnb-JpM",
       "duration": "32:36",
+      "scripture": "Dân số ký 1:8-21",
       "topics": [
         "Thánh Linh"
       ],
@@ -9032,11 +9083,12 @@
     {
       "id": "yt-vi-xrv60GVI",
       "type": "hang-ngay",
-      "title": "Bàn chân người truyền đạo đẹp biết bao (Rôm 10;14-17)",
+      "title": "Bàn chân người truyền đạo đẹp biết bao",
       "service": "Tĩnh nguyện",
       "date": "2025-02-12",
       "video": "https://www.youtube.com/watch?v=vi-xrv60GVI",
       "duration": "20:56",
+      "scripture": "Rô-ma 10:14-17",
       "topics": [
         "Truyền giáo"
       ],
@@ -9056,11 +9108,12 @@
     {
       "id": "yt-J7UEFb_bHfI",
       "type": "hang-ngay",
-      "title": "Cứu rỗi đến bởi đức tin (Rôm 10;8-10)",
+      "title": "Cứu rỗi đến bởi đức tin",
       "service": "Tĩnh nguyện",
       "date": "2025-02-11",
       "video": "https://www.youtube.com/watch?v=J7UEFb_bHfI",
       "duration": "19:55",
+      "scripture": "Rô-ma 10:8-10",
       "topics": [
         "Đức tin",
         "Ân điển"
@@ -9147,11 +9200,12 @@
     {
       "id": "yt-XKHzbx8Xwls",
       "type": "hang-ngay",
-      "title": "Đức Chúa Trời bảo vệ thánh đồ (Rôm 8;33-39)",
+      "title": "Đức Chúa Trời bảo vệ thánh đồ",
       "service": "Tĩnh nguyện",
       "date": "2025-02-08",
       "video": "https://www.youtube.com/watch?v=XKHzbx8Xwls",
       "duration": "22:09",
+      "scripture": "Rô-ma 8:33-39",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -9190,11 +9244,12 @@
     {
       "id": "yt-nWxn6FMKnGQ",
       "type": "hang-ngay",
-      "title": "Một đời sống thánh hoá (Rôm 8;28-30)",
+      "title": "Một đời sống thánh hoá",
       "service": "Tĩnh nguyện",
       "date": "2025-02-07",
       "video": "https://www.youtube.com/watch?v=nWxn6FMKnGQ",
       "duration": "18:54",
+      "scripture": "Rô-ma 8:28-30",
       "topics": [
         "Môn đồ"
       ],
@@ -9214,11 +9269,12 @@
     {
       "id": "yt-1sipXnNITWI",
       "type": "hang-ngay",
-      "title": "Người được Thánh Linh hướng dẫn (Rôm 8;12-17)",
+      "title": "Người được Thánh Linh hướng dẫn",
       "service": "Tĩnh nguyện",
       "date": "2025-02-06",
       "video": "https://www.youtube.com/watch?v=1sipXnNITWI",
       "duration": "19:58",
+      "scripture": "Rô-ma 8:12-17",
       "topics": [
         "Thánh Linh"
       ],
@@ -9264,11 +9320,12 @@
     {
       "id": "yt-HAbca_zxYmU",
       "type": "hang-ngay",
-      "title": "Người được hoà thuận với ĐCT (Rôm 5;6-11)",
+      "title": "Người được hoà thuận với ĐCT",
       "service": "Tĩnh nguyện",
       "date": "2025-02-05",
       "video": "https://www.youtube.com/watch?v=HAbca_zxYmU",
       "duration": "21:54",
+      "scripture": "Rô-ma 5:6-11",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -9285,11 +9342,12 @@
     {
       "id": "yt-8L0F83v_Hq8",
       "type": "hang-ngay",
-      "title": "Người được xưng công bình (Rôm 3;21-26)",
+      "title": "Người được xưng công bình",
       "service": "Tĩnh nguyện",
       "date": "2025-02-04",
       "video": "https://www.youtube.com/watch?v=8L0F83v_Hq8",
       "duration": "20:18",
+      "scripture": "Rô-ma 3:21-26",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -9443,11 +9501,12 @@
     {
       "id": "yt-0wJKWdjQDxk",
       "type": "hang-ngay",
-      "title": "Phúc âm là quyền phép của Đức Chúa Trời (Rôm 1;16-17)",
+      "title": "Phúc âm là quyền phép của Đức Chúa Trời",
       "service": "Tĩnh nguyện",
       "date": "2025-01-24",
       "video": "https://www.youtube.com/watch?v=0wJKWdjQDxk",
       "duration": "18:13",
+      "scripture": "Rô-ma 1:16-17",
       "topics": [
         "Truyền giáo"
       ],
@@ -9744,11 +9803,12 @@
     {
       "id": "yt-_FoDs2wRj3U",
       "type": "chua-nhat",
-      "title": "Thánh đồ chuẩn bị phúc âm, bí mật cầu nguyện, tận hưởng thể chất (Đan 2;46-49)",
+      "title": "Thánh đồ chuẩn bị phúc âm, bí mật cầu nguyện, tận hưởng thể chất",
       "service": "Lễ 1",
       "date": "2025-01-12",
       "video": "https://www.youtube.com/watch?v=_FoDs2wRj3U",
       "duration": "39:06",
+      "scripture": "Dân số ký 2:46-49",
       "topics": [
         "Cầu nguyện",
         "Truyền giáo"
@@ -10252,11 +10312,12 @@
     {
       "id": "yt-f386wa7UZl0",
       "type": "hang-ngay",
-      "title": "Vua bình an giáng sinh (Luc 2;8-14)",
+      "title": "Vua bình an giáng sinh",
       "service": "Tĩnh nguyện",
       "date": "2024-12-26",
       "video": "https://www.youtube.com/watch?v=f386wa7UZl0",
       "duration": "21:16",
+      "scripture": "Lu-ca 2:8-14",
       "topics": [
         "Sự bình an",
         "Giáng sinh"
@@ -10323,7 +10384,7 @@
     },
     {
       "id": "yt-3a-3zEyRwR8",
-      "type": "giua-tuan",
+      "type": "chua-nhat",
       "title": "Thân phận và quyền phép của con Đức Chúa Trời",
       "service": "CN Lễ 2",
       "date": "2024-12-22",
@@ -10437,11 +10498,12 @@
     {
       "id": "yt-u8jcxjgc9fU",
       "type": "giua-tuan",
-      "title": "Hãy hạ bỏ cái tôi trong tôi (II Vua 5;1-14)",
+      "title": "Hãy hạ bỏ cái tôi trong tôi",
       "service": "Thứ 4",
       "date": "2024-12-18",
       "video": "https://www.youtube.com/watch?v=u8jcxjgc9fU",
       "duration": "32:22",
+      "scripture": "2 Các vua 5:1-14",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2025-11-27T00:00:00.000Z",
@@ -10532,7 +10594,7 @@
     },
     {
       "id": "yt-csDkrUFhEkA",
-      "type": "giua-tuan",
+      "type": "chua-nhat",
       "title": "Chuyên môn - nền tảng kinh tế, truyền đạo",
       "service": "CN Lễ 1",
       "date": "2024-12-15",
@@ -10557,7 +10619,7 @@
     },
     {
       "id": "yt-S6H7wl5ISns",
-      "type": "giua-tuan",
+      "type": "chua-nhat",
       "title": "Thành Sô đôm bị huỷ diệt",
       "service": "CN Lễ 2",
       "date": "2024-12-15",
@@ -10740,11 +10802,12 @@
     {
       "id": "yt-yz121Eap40Q",
       "type": "chua-nhat",
-      "title": "Hãy để lại dấu chân đức tin (Rôm 16;17-20)",
+      "title": "Hãy để lại dấu chân đức tin",
       "service": "Lễ 1",
       "date": "2024-12-08",
       "video": "https://www.youtube.com/watch?v=yz121Eap40Q",
       "duration": "36:46",
+      "scripture": "Rô-ma 16:17-20",
       "topics": [
         "Đức tin"
       ],
@@ -11013,7 +11076,7 @@
     {
       "id": "yt-X8QqsEdIKZg",
       "type": "giua-tuan",
-      "title": "202400612 Người nhận phần thưởng đức tin",
+      "title": "Người nhận phần thưởng đức tin",
       "date": "2024-11-27",
       "video": "https://www.youtube.com/watch?v=X8QqsEdIKZg",
       "duration": "32:25",
@@ -11190,10 +11253,11 @@
     {
       "id": "yt-O2NwOs0EpQc",
       "type": "giua-tuan",
-      "title": "Đức tin của đàn bà Sa rép ta (I Vua 17;8-16)",
+      "title": "Đức tin của đàn bà Sa rép ta",
       "date": "2024-11-20",
       "video": "https://www.youtube.com/watch?v=O2NwOs0EpQc",
       "duration": "32:34",
+      "scripture": "1 Các vua 17:8-16",
       "topics": [
         "Đức tin"
       ],
@@ -11484,11 +11548,12 @@
     {
       "id": "yt-uMdwy5tICtY",
       "type": "chua-nhat",
-      "title": "Sự thành công của Sa lô môn (I Vua 3;1-10)",
+      "title": "Sự thành công của Sa lô môn",
       "service": "Lễ 1",
       "date": "2024-10-06",
       "video": "https://www.youtube.com/watch?v=uMdwy5tICtY",
       "duration": "38:48",
+      "scripture": "1 Các vua 3:1-10",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2024-11-27T00:00:00.000Z",
@@ -11505,11 +11570,12 @@
     {
       "id": "yt-T6pdU0tF7Ew",
       "type": "chua-nhat",
-      "title": "Sự thất bại của Sa lô môn (I Vua 11;1-8)",
+      "title": "Sự thất bại của Sa lô môn",
       "service": "Lễ 2",
       "date": "2024-10-06",
       "video": "https://www.youtube.com/watch?v=T6pdU0tF7Ew",
       "duration": "28:03",
+      "scripture": "1 Các vua 11:1-8",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2024-11-27T00:00:00.000Z",
@@ -11658,11 +11724,12 @@
     {
       "id": "yt-ywsRtwWSPNE",
       "type": "chua-nhat",
-      "title": "Ba thanh niên chứng nhân thời Ba by lôn (Đan 3;16-18)",
+      "title": "Ba thanh niên chứng nhân thời Ba by lôn",
       "service": "Lễ 2",
       "date": "2024-09-15",
       "video": "https://www.youtube.com/watch?v=ywsRtwWSPNE",
       "duration": "30:23",
+      "scripture": "Dân số ký 3:16-18",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2024-11-27T00:00:00.000Z",
@@ -11725,11 +11792,12 @@
     {
       "id": "yt-3IzESbkeZ0E",
       "type": "chua-nhat",
-      "title": "Đa ni ên nhà lãnh đạo thời Ba by lôn (Đan 1;8-9)",
+      "title": "Đa ni ên nhà lãnh đạo thời Ba by lôn",
       "service": "Lễ 2",
       "date": "2024-09-08",
       "video": "https://www.youtube.com/watch?v=3IzESbkeZ0E",
       "duration": "36:17",
+      "scripture": "Dân số ký 1:8-9",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2024-11-27T00:00:00.000Z",
@@ -11859,11 +11927,12 @@
     {
       "id": "yt-kLviwz6A3Vg",
       "type": "chua-nhat",
-      "title": "Các môn đồ chinh phục thời đại Sy ri (II Vua 2;1-12)",
+      "title": "Các môn đồ chinh phục thời đại Sy ri",
       "service": "Lễ 2",
       "date": "2024-08-25",
       "video": "https://www.youtube.com/watch?v=kLviwz6A3Vg",
       "duration": "41:01",
+      "scripture": "2 Các vua 2:1-12",
       "topics": [
         "Môn đồ"
       ],
@@ -11883,10 +11952,11 @@
     {
       "id": "yt-2RWg2VVYso8",
       "type": "giua-tuan",
-      "title": "Người biết thành công thật (II Sam 17;27-29)",
+      "title": "Người biết thành công thật",
       "date": "2024-08-21",
       "video": "https://www.youtube.com/watch?v=2RWg2VVYso8",
       "duration": "34:16",
+      "scripture": "2 Sa-mu-ên 17:27-29",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2024-11-27T00:00:00.000Z",
@@ -11925,11 +11995,12 @@
     {
       "id": "yt-f9FRfBQfqzc",
       "type": "chua-nhat",
-      "title": "Áp đia nhà trọng trách thời Sy ri (I Vua 18;1-13)",
+      "title": "Áp đia nhà trọng trách thời Sy ri",
       "service": "Lễ 2",
       "date": "2024-08-18",
       "video": "https://www.youtube.com/watch?v=f9FRfBQfqzc",
       "duration": "35:48",
+      "scripture": "1 Các vua 18:1-13",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2024-11-27T00:00:00.000Z",
@@ -11968,11 +12039,12 @@
     {
       "id": "yt-kR5uC-n5I4s",
       "type": "chua-nhat",
-      "title": "Ê  li se không đánh mà thắng thời đại Sy ri (II Vua 6;8-17)",
+      "title": "Ê  li se không đánh mà thắng thời đại Sy ri",
       "service": "Lễ 2",
       "date": "2024-08-11",
       "video": "https://www.youtube.com/watch?v=kR5uC-n5I4s",
       "duration": "37:20",
+      "scripture": "2 Các vua 6:8-17",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2024-11-27T00:00:00.000Z",
@@ -12056,11 +12128,12 @@
     {
       "id": "yt-mVNcKgBZdVw",
       "type": "chua-nhat",
-      "title": "Ê li chuẩn bị thời đại Sy ri (I Vua 19;1-12)",
+      "title": "Ê li chuẩn bị thời đại Sy ri",
       "service": "Lễ 2",
       "date": "2024-08-04",
       "video": "https://www.youtube.com/watch?v=mVNcKgBZdVw",
       "duration": "36:35",
+      "scripture": "1 Các vua 19:1-12",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2024-11-27T00:00:00.000Z",
@@ -12077,10 +12150,11 @@
     {
       "id": "yt-3y6p1TbXBsk",
       "type": "giua-tuan",
-      "title": "Người hiểu biết phúc âm (I Sam 18;6-9)",
+      "title": "Người hiểu biết phúc âm",
       "date": "2024-07-31",
       "video": "https://www.youtube.com/watch?v=3y6p1TbXBsk",
       "duration": "33:13",
+      "scripture": "1 Sa-mu-ên 18:6-9",
       "topics": [
         "Truyền giáo"
       ],
@@ -12122,11 +12196,12 @@
     {
       "id": "yt-VmxfUcOWllk",
       "type": "chua-nhat",
-      "title": "Đa vít chinh phục Phi li tin (I Sam 17;41-47)",
+      "title": "Đa vít chinh phục Phi li tin",
       "service": "Lễ 2",
       "date": "2024-07-28",
       "video": "https://www.youtube.com/watch?v=VmxfUcOWllk",
       "duration": "36:37",
+      "scripture": "1 Sa-mu-ên 17:41-47",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2024-11-27T00:00:00.000Z",
@@ -12186,11 +12261,12 @@
     {
       "id": "yt-Fsz4eUAjiCE",
       "type": "chua-nhat",
-      "title": "Y Sai người trọng trách thấy thời Phi li tin (I Sam 16;7-13)",
+      "title": "Y Sai người trọng trách thấy thời Phi li tin",
       "service": "Lễ 2",
       "date": "2024-07-21",
       "video": "https://www.youtube.com/watch?v=Fsz4eUAjiCE",
       "duration": "36:50",
+      "scripture": "1 Sa-mu-ên 16:7-13",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2024-11-27T00:00:00.000Z",
@@ -12232,11 +12308,12 @@
     {
       "id": "yt-e4pzDMfURPw",
       "type": "chua-nhat",
-      "title": "Sa mu ên sứ giả thời đại Phi li tin (I Sam 3;1 5,19)",
+      "title": "Sa mu ên sứ giả thời đại Phi li tin",
       "service": "Lễ 2",
       "date": "2024-07-14",
       "video": "https://www.youtube.com/watch?v=e4pzDMfURPw",
       "duration": "33:11",
+      "scripture": "1 Sa-mu-ên 3:1",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2024-11-27T00:00:00.000Z",
@@ -12298,11 +12375,12 @@
     {
       "id": "yt-ttLuztNrEkI",
       "type": "chua-nhat",
-      "title": "An ne chuẩn bị thời đại Phi li tin (I Sam 1;4-11)",
+      "title": "An ne chuẩn bị thời đại Phi li tin",
       "service": "Lễ 2",
       "date": "2024-07-07",
       "video": "https://www.youtube.com/watch?v=ttLuztNrEkI",
       "duration": "36:28",
+      "scripture": "1 Sa-mu-ên 1:4-11",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2024-11-27T00:00:00.000Z",
@@ -12341,11 +12419,12 @@
     {
       "id": "yt-dve2TXNT8Po",
       "type": "chua-nhat",
-      "title": "Xuất hiện của lãnh đạo Sa mu ên (I Sam 3;15-21)",
+      "title": "Xuất hiện của lãnh đạo Sa mu ên",
       "service": "Lễ 2",
       "date": "2024-06-30",
       "video": "https://www.youtube.com/watch?v=dve2TXNT8Po",
       "duration": "35:31",
+      "scripture": "1 Sa-mu-ên 3:15-21",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2024-11-27T00:00:00.000Z",
@@ -12362,10 +12441,11 @@
     {
       "id": "yt-_WZFbelqWvE",
       "type": "giua-tuan",
-      "title": "Phải đứng đỉnh cao thuộc linh (I Sam 17;41-47)",
+      "title": "Phải đứng đỉnh cao thuộc linh",
       "date": "2024-06-26",
       "video": "https://www.youtube.com/watch?v=_WZFbelqWvE",
       "duration": "44:01",
+      "scripture": "1 Sa-mu-ên 17:41-47",
       "topics": [
         "Thánh Linh"
       ],
@@ -12516,11 +12596,12 @@
     {
       "id": "yt-Q6HUN9vuIo0",
       "type": "chua-nhat",
-      "title": "Ứng đáp trước sau không có (Giô 10;1-13)",
+      "title": "Ứng đáp trước sau không có",
       "service": "Lễ 2",
       "date": "2024-06-09",
       "video": "https://www.youtube.com/watch?v=Q6HUN9vuIo0",
       "duration": "32:14",
+      "scripture": "Giô-suê 10:1-13",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2024-11-27T00:00:00.000Z",
@@ -12562,11 +12643,12 @@
     {
       "id": "yt-LCqZWesm9KI",
       "type": "chua-nhat",
-      "title": "Sự kiện vượt sông Giô đanh (Giô 3;1-13)",
+      "title": "Sự kiện vượt sông Giô đanh",
       "service": "Lễ 2",
       "date": "2024-05-26",
       "video": "https://www.youtube.com/watch?v=LCqZWesm9KI",
       "duration": "32:37",
+      "scripture": "Giô-suê 3:1-13",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2024-11-27T00:00:00.000Z",
@@ -12608,11 +12690,12 @@
     {
       "id": "yt-z0VfZbad-JQ",
       "type": "chua-nhat",
-      "title": "Điều ban cho Giô suê và Ca lép (Giô 1;1-9)",
+      "title": "Điều ban cho Giô suê và Ca lép",
       "service": "Lễ 2",
       "date": "2024-05-19",
       "video": "https://www.youtube.com/watch?v=z0VfZbad-JQ",
       "duration": "35:05",
+      "scripture": "Giô-suê 1:1-9",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2024-11-27T00:00:00.000Z",
@@ -12629,11 +12712,12 @@
     {
       "id": "yt-XIx9LhPTzag",
       "type": "chua-nhat",
-      "title": "Điều cha mẹ phải truyền đạt cho thế hệ sau (Phục 6;1-12)",
+      "title": "Điều cha mẹ phải truyền đạt cho thế hệ sau",
       "service": "Lễ 1",
       "date": "2024-05-12",
       "video": "https://www.youtube.com/watch?v=XIx9LhPTzag",
       "duration": "31:45",
+      "scripture": "Phục truyền luật lệ ký 6:1-12",
       "topics": [
         "Gia đình"
       ],
@@ -12653,11 +12737,12 @@
     {
       "id": "yt-Q5GAWpiFE3A",
       "type": "chua-nhat",
-      "title": "Vận động thế hệ sau tại đồng vắng (Phục 6;4-9)",
+      "title": "Vận động thế hệ sau tại đồng vắng",
       "service": "Lễ 2",
       "date": "2024-05-12",
       "video": "https://www.youtube.com/watch?v=Q5GAWpiFE3A",
       "duration": "33:27",
+      "scripture": "Phục truyền luật lệ ký 6:4-9",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2024-11-27T00:00:00.000Z",
@@ -12673,7 +12758,7 @@
     },
     {
       "id": "yt-27bkqb8BX3Q",
-      "type": "giua-tuan",
+      "type": "chua-nhat",
       "title": "Hãy mạnh mẽ làm chứng về ta tại Rô ma",
       "service": "Lễ1",
       "date": "2024-05-05",
@@ -12698,7 +12783,7 @@
     },
     {
       "id": "yt-ibxYzw3j7ro",
-      "type": "giua-tuan",
+      "type": "chua-nhat",
       "title": "Ba kỳ lễ",
       "service": "Lễ2",
       "date": "2024-05-05",
@@ -13500,11 +13585,12 @@
     {
       "id": "yt-dwxsR0BD6-I",
       "type": "chua-nhat",
-      "title": "Người biết kinh thánh (II Tim 3;14-17)",
+      "title": "Người biết kinh thánh",
       "service": "Lễ 2",
       "date": "2023-12-17",
       "video": "https://www.youtube.com/watch?v=dwxsR0BD6-I",
       "duration": "27:49",
+      "scripture": "2 Ti-mô-thê 3:14-17",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2024-11-27T00:00:00.000Z",
@@ -14838,10 +14924,11 @@
     {
       "id": "yt-h5Q0KinXKUc",
       "type": "giua-tuan",
-      "title": "2 Đảm bảo của Đức Chúa Trời \"Kinh thánh\" (II Tim 3;14-17)",
+      "title": "2 Đảm bảo của Đức Chúa Trời \"Kinh thánh\"",
       "date": "2023-06-25",
       "video": "https://www.youtube.com/watch?v=h5Q0KinXKUc",
       "duration": "32:14",
+      "scripture": "2 Ti-mô-thê 3:14-17",
       "source": "youtube",
       "channel": "@immanuelhanoi",
       "publishedAt": "2023-11-27T00:00:00.000Z",
@@ -15050,5 +15137,5 @@
       }
     }
   ],
-  "updatedAt": "2026-11-26T17:09:54.627Z"
+  "updatedAt": "2026-11-26T17:30:20.281Z"
 }
