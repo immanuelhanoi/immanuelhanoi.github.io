@@ -131,9 +131,9 @@ Không cần đăng ký tài khoản. Không quảng cáo. Không thu thập d�
 
 **Danh mục:** Google: *Lối sống (Lifestyle)* · Apple: chính *Lifestyle*, phụ *Reference*
 
-**Trang chính sách quyền riêng tư:** `https://lehanhk46h3-web.github.io/Claude/privacy.html`
+**Trang chính sách quyền riêng tư:** `https://immanuelhanoi.github.io/privacy.html`
 
-**Trang hỗ trợ (Apple bắt buộc):** `https://lehanhk46h3-web.github.io/Claude/`
+**Trang hỗ trợ (Apple bắt buộc):** `https://immanuelhanoi.github.io/`
 (hoặc trang web / Facebook chính thức của Hội thánh)
 
 ---

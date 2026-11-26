@@ -30,9 +30,9 @@ dùng câu gốc của bài đó; ngày khác lấy lần lượt từ `data/ver
 1. **Gộp code vào nhánh `main`** (tạo Pull Request rồi Merge).
 2. **Bật GitHub Pages**: *Settings → Pages → Build and deployment → Source:* chọn **GitHub Actions**.
 3. Vào tab **Actions** → chọn **“Cập nhật video & đăng web”** → **Run workflow**.
-   Sau 1–2 phút, web chạy tại: **https://lehanhk46h3-web.github.io/Claude/**
+   Sau 1–2 phút, web chạy tại: **https://immanuelhanoi.github.io/**
 4. Workflow **“Đóng gói app Android”** tự chạy. Sau khoảng 5–10 phút, file APK có tại:
-   **https://github.com/lehanhk46h3-web/Claude/releases/tag/app-android**
+   **https://github.com/immanuelhanoi/immanuelhanoi.github.io/releases/tag/app-android**
 
 ### Cài app lên điện thoại Android
 Mở link Releases ở trên bằng điện thoại → tải `imanuel-hanoi.apk` → mở file → cho phép

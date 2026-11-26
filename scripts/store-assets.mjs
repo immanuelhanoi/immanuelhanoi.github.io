@@ -60,7 +60,7 @@ for (const [platform, device] of Object.entries(DEVICES)) {
     } } };
   });
   // The app would fetch from the live site; serve the local build instead.
-  await ctx.route('https://lehanhk46h3-web.github.io/**', r => r.abort());
+  await ctx.route('https://immanuelhanoi.github.io/**', r => r.abort());
   // Replace the YouTube player with its thumbnail so the screenshot is clean and deterministic.
   await ctx.route(/youtube-nocookie\.com\/embed\//, r => {
     const id = new URL(r.request().url()).pathname.split('/').pop();
