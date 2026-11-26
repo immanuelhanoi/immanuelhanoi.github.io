@@ -40,14 +40,16 @@ Mở link Releases ở trên bằng điện thoại → tải `imanuel-hanoi.apk
 
 ### iPhone
 Mở trang web bằng Safari → nút Chia sẻ → **Thêm vào MH chính**.
-(App iPhone thật và thông báo trên iPhone cần máy Mac và tài khoản Apple Developer 99 USD/năm.)
+
+### Đưa lên CH Play và App Store
+Xem hướng dẫn từng bước: **[store/HUONG-DAN.md](store/HUONG-DAN.md)**. Không cần máy Mac: GitHub build cả bản iPhone.
 
 ## Tuỳ chọn nâng cao
 
 | Việc | Cách làm |
 |---|---|
 | **Lấy toàn bộ video cũ của kênh** (mặc định chỉ lấy 15 video mới nhất, sau đó tích luỹ dần) | Tạo khoá *YouTube Data API v3* miễn phí trên Google Cloud Console, thêm vào *Settings → Secrets and variables → Actions* với tên `YOUTUBE_API_KEY`. |
-| **Cập nhật app qua bản mới mà không phải gỡ app cũ** / đưa lên Google Play | Tạo khoá ký: `keytool -genkey -v -keystore release.keystore -alias imanuel -keyalg RSA -keysize 2048 -validity 10000`, rồi thêm 3 secret: `ANDROID_KEYSTORE_BASE64` (kết quả `base64 -w0 release.keystore`), `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS` (= `imanuel`). **Giữ file keystore cẩn thận, mất là không cập nhật app được nữa.** |
+| **Cập nhật APK mà không phải gỡ app cũ** / đưa lên CH Play | Tạo khoá ký: xem [store/HUONG-DAN.md](store/HUONG-DAN.md) mục A1. |
 | **Sửa thông tin một video** (tên diễn giả, chủ đề, dàn bài…) | Thêm vào `"sermons"` trong `data/sermons.json` một mục có cùng link `video`; các trường điền ở đây sẽ thay cho thông tin tự động. Trang `#/them` có biểu mẫu tạo sẵn đoạn mã. |
 | **Ẩn video không phải bài giảng** | Thêm `{ "video": "link-youtube", "hidden": true }` vào `"sermons"`. |
 | **Thêm bài không có trên YouTube** | Dùng biểu mẫu ở `#/them`, dán vào `"sermons"`. |
@@ -71,7 +73,7 @@ npm install
 npm run serve            # xem web tại http://localhost:8000
 npm test                 # kiểm thử phần đồng bộ YouTube
 npm run sync-youtube     # lấy video mới (cần mạng tới YouTube)
-npm run android:prepare  # tạo thư mục android/ (cần Android SDK để build)
+npm run native:prepare   # cập nhật icon & chép giao diện vào android/ và ios/
 ```
 
 ```
@@ -81,5 +83,8 @@ data/youtube.json           Video tự động từ kênh (do GitHub Actions ghi
 data/verses.json            Câu Kinh Thánh cho thông báo
 scripts/sync-youtube.mjs    Đồng bộ & phân loại video
 .github/workflows/          Tự động cập nhật, đăng web, build APK
-capacitor.config.json       Cấu hình app Android
+android/, ios/              Dự án app Android & iPhone (Capacitor)
+capacitor.config.json       Cấu hình app
+store/                      Hướng dẫn & ảnh cho cửa hàng
+privacy.html                Chính sách quyền riêng tư
 ```

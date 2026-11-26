@@ -7,7 +7,12 @@
   },
   "plugins": {
     "LocalNotifications": {
+      "smallIcon": "ic_stat_cross",
       "iconColor": "#7a2e1f"
     }
+  },
+  "ios": {
+    "contentInset": "never",
+    "scheme": "Imanuel"
   }
 }

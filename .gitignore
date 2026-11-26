@@ -1,7 +1,6 @@
 node_modules/
 www/
-android/
-ios/
 *.apk
 *.keystore
 *.jks
+store/generated/

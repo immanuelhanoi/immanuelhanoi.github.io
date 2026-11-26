@@ -708,7 +708,7 @@
       const m = path.match(re);
       if (m) { html = fn(m, params); tab = t; break; }
     }
-    $app.innerHTML = html + `<p class="footer-note">${esc(DATA.church.name || '')} · Soli Deo Gloria</p>`;
+    $app.innerHTML = html + `<p class="footer-note">${esc(DATA.church.name || '')} · Soli Deo Gloria · <a href="privacy.html">Quyền riêng tư</a></p>`;
     document.querySelectorAll('.tabbar a').forEach(a => a.classList.toggle('active', a.dataset.tab === tab));
     window.scrollTo(0, 0);
   }
