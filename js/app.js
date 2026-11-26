@@ -188,7 +188,7 @@
   function haystack(s) {
     if (!s._hay) {
       s._hay = norm([
-        s.title, s.speaker, s.series, s.scripture, s.verse, s.summary,
+        s.title, s.service, s.speaker, s.series, s.scripture, s.verse, s.summary, s.raw && s.raw.title,
         (s.topics || []).join(' '), (s.points || []).join(' '),
       ].join(' \u0001 '));
       s._title = norm(s.title);
@@ -259,7 +259,7 @@
         <span class="badge ${t.cls}">${t.label}</span>
         <span class="card-title">${q ? highlight(s.title, q) : esc(s.title)}</span>
         ${s.scripture ? `<span class="ref">${esc(s.scripture)}</span>` : ''}
-        <span class="meta">${esc(s.speaker || '')}${s.date ? ' · ' + fmtDate(s.date) : ''}</span>
+        <span class="meta">${[s.service, s.speaker, s.date && fmtDate(s.date)].filter(Boolean).map(esc).join(' · ')}</span>
       </div>
     </a>`;
   }
@@ -396,7 +396,10 @@
   }
 
   function pageTopics() {
-    const names = allTopicNames();
+    // topics that have videos first; hide empty ones once there is content
+    const all = allTopicNames().map(n => [n, countByTopic(n)]);
+    const names = (all.some(([, c]) => c) ? all.filter(([, c]) => c) : all)
+      .sort((a, b) => b[1] - a[1]).map(([n]) => n);
     return `
       <h1>Chủ đề</h1>
       <p class="lead">Chọn một chủ đề để xem tất cả bài giảng và bài tĩnh nguyện liên quan.</p>
@@ -527,6 +530,7 @@
       <span class="badge ${t.cls}">${t.label}</span>
       <h1 style="margin-top:6px">${esc(s.title)}</h1>
       <div class="detail-meta">
+        ${s.service ? `<span>⛪ ${esc(s.service)}</span>` : ''}
         ${s.speaker ? `<span>🎤 ${esc(s.speaker)}</span>` : ''}
         ${s.date ? `<span>📅 ${fmtDate(s.date)}</span>` : ''}
         ${s.series ? `<a href="#/chua-nhat?loat=${encodeURIComponent(s.series)}">📚 ${esc(s.series)}</a>` : ''}

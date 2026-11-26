@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
-import { parseRss, toSermon, findScripture, findSpeaker, topicsFor, classify } from '../sync-youtube.mjs';
+import { parseRss, toSermon, findScripture, findSpeaker, topicsFor, classify, parseTitle } from '../sync-youtube.mjs';
 
 test('parse RSS feed fixture', async () => {
   const xml = await fs.readFile(new URL('./sample-feed.xml', import.meta.url), 'utf8');
@@ -47,4 +47,43 @@ test('date from title wins; Vietnam time zone otherwise', () => {
   const b = toSermon({ videoId: 'y', title: 'Bài mới', at: new Date('2025-11-24T22:00:00Z') });
   assert.equal(b.date, '2025-11-25');
   assert.equal(b.video, 'https://www.youtube.com/watch?v=y');
+});
+
+// Titles exactly as they appear on youtube.com/@immanuelhanoi
+test('channel title convention', () => {
+  assert.deepEqual(parseTitle('20261122 [Lễ tạ ơn] Người sở hữu nước thiên đàng (Giăng 14;1-14)'),
+    { date: '2026-11-22', service: 'Lễ tạ ơn', title: 'Người sở hữu nước thiên đàng' });
+  assert.deepEqual(parseTitle('20261115 Lễ 2 Người được mời dự tiệc thiên đàng (Mat 22;1-14)'),
+    { date: '2026-11-15', service: 'Lễ 2', title: 'Người được mời dự tiệc thiên đàng' });
+  assert.deepEqual(parseTitle('20261018  Lễ 1 Cầu nguyện cá nhân (Công 2;1-4)'),
+    { date: '2026-10-18', service: 'Lễ 1', title: 'Cầu nguyện cá nhân' });
+  assert.deepEqual(parseTitle('20261022 Thứ 4 Lập nhân sự truyền đạo nhóm (Công vụ 11;19-30)'),
+    { date: '2026-10-22', service: 'Thứ 4', title: 'Lập nhân sự truyền đạo nhóm' });
+  assert.deepEqual(parseTitle('Bài giảng không theo mẫu'), { date: '', service: '', title: 'Bài giảng không theo mẫu' });
+  // a bracket that is not a Bible reference stays in the title
+  assert.equal(parseTitle('Sống đẹp lòng Chúa (phần 2)').title, 'Sống đẹp lòng Chúa (phần 2)');
+});
+
+test('channel scripture style', () => {
+  assert.equal(findScripture('(Giăng 14;1-14)'), 'Giăng 14:1-14');
+  assert.equal(findScripture('(Mat 22;1-14)'), 'Ma-thi-ơ 22:1-14');
+  assert.equal(findScripture('(Công 2;32-41)'), 'Công vụ 2:32-41');
+  assert.equal(findScripture('(Công vụ 11;19-30)'), 'Công vụ 11:19-30');
+  assert.equal(findScripture('(Giăng 14;16-17, 26-27)'), 'Giăng 14:16-17, 26-27');
+  assert.equal(findScripture('công việc 3 người'), '');
+});
+
+test('channel classification and record', () => {
+  const sun = toSermon({ videoId: 'a', title: '20261115 Lễ 1 Bông trái - thời gian biểu và môn đồ (Công 2;32-41)',
+    description: 'Bông trái - thời gian biểu và môn đồ (Công 2;32-41)', at: new Date('2026-11-15T09:05:00Z') });
+  assert.equal(sun.type, 'chua-nhat');
+  assert.equal(sun.service, 'Lễ 1');
+  assert.equal(sun.title, 'Bông trái - thời gian biểu và môn đồ');
+  assert.equal(sun.scripture, 'Công vụ 2:32-41');
+  assert.equal(sun.summary, undefined);           // description only repeats the title
+  const wed = toSermon({ videoId: 'b', title: '20261022 Thứ 4 Lập nhân sự truyền đạo nhóm (Công vụ 11;19-30)',
+    at: new Date('2026-10-21T16:55:00Z') });
+  assert.equal(wed.type, 'hang-ngay');
+  assert.equal(wed.date, '2026-10-22');           // title date wins over upload time
+  assert.deepEqual(wed.topics, ['Truyền giáo', 'Hội thánh & Nhóm']);
 });

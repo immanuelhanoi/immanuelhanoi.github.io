@@ -24,6 +24,7 @@ const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Geck
 
 const args = process.argv.slice(2);
 const fixture = args.includes('--fixture') ? args[args.indexOf('--fixture') + 1] : null;
+const offline = args.includes('--offline');   // don't fetch; just re-derive stored videos with the current rules
 const outPath = args.includes('--out') ? path.resolve(args[args.indexOf('--out') + 1]) : OUT;
 
 /* ---------------- text helpers ---------------- */
@@ -69,6 +70,9 @@ const OTHER = /thanh ca|biet thanh ca|ton vinh|hop xuong|lyric|\bmv\b|music|thon
 export function classify(v) {
   const t = norm(v.title);
   if (v.isShort) return 'khac';
+  const service = norm(parseTitle(v.title).service);
+  if (/^le( |$)/.test(service) || /chua nhat|chu nhat/.test(service)) return 'chua-nhat';  // "Lễ 1", "Lễ tạ ơn"
+  if (/^thu [2-7]/.test(service)) return 'hang-ngay';                                       // "Thứ 4" mid-week service
   if (DAILY.test(t)) return 'hang-ngay';
   if (SUNDAY.test(t)) return 'chua-nhat';
   if (OTHER.test(t)) return 'khac';
@@ -77,9 +81,9 @@ export function classify(v) {
 }
 
 const TOPIC_WORDS = {
-  'Đức tin': ['duc tin', 'tin cay', 'tin nhan chua'],
+  'Đức tin': ['duc tin', 'tin cay', 'tin nhan chua', 'tiep nhan'],
   'Cầu nguyện': ['cau nguyen', 'nai xin', 'cau thay'],
-  'Ân điển': ['an dien', 'cuu roi', 'thap tu', 'thap gia'],
+  'Ân điển': ['an dien', 'cuu roi', 'thap tu', 'thap gia', 'chuoc', 'cuu chuoc'],
   'Tình yêu thương': ['yeu thuong', 'tinh yeu', 'yeu nhau'],
   'Gia đình': ['gia dinh', 'hon nhan', 'vo chong', 'cha me', 'con cai'],
   'Tạ ơn': ['ta on', 'biet on', 'cam ta'],
@@ -87,9 +91,11 @@ const TOPIC_WORDS = {
   'Lời Chúa': ['loi chua', 'loi hang song', 'loi cua chua'],
   'Sự bình an': ['binh an', 'lo lang', 'so hai', 'lo au'],
   'Ăn năn & tha thứ': ['an nan', 'tha thu', 'xung toi', 'toi loi'],
-  'Truyền giáo': ['truyen giao', 'phuc am', 'lam chung', 'dai mang lenh'],
-  'Môn đồ': ['mon do', 'hau viec', 'phuc vu chua', 'theo chua'],
-  'Thánh Linh': ['thanh linh', 'duc thanh linh'],
+  'Truyền giáo': ['truyen giao', 'truyen dao', 'phuc am', 'lam chung', 'dai mang lenh'],
+  'Môn đồ': ['mon do', 'hau viec', 'phuc vu chua', 'theo chua', 'bong trai', 'ket qua', 'doi song'],
+  'Thánh Linh': ['thanh linh', 'duc thanh linh', 'thuoc linh', 'ngu tuan'],
+  'Nước Thiên Đàng': ['thien dang', 'nuoc duc chua troi', 'nuoc troi', 'vua muon vua'],
+  'Hội thánh & Nhóm': ['nhom', 'nhom nho', 'than the dang christ'],  // not "hội thánh": it is in the church's own name
   'Giáng sinh': ['giang sinh', 'noel', 'mua vong', 'giang ha'],
   'Phục sinh': ['phuc sinh', 'song lai'],
 };
@@ -112,13 +118,23 @@ const BOOKS = [
   'Tít', 'Phi-lê-môn', 'Hê-bơ-rơ', 'Gia-cơ', '1 Phi-e-rơ', '2 Phi-e-rơ', '1 Giăng', '2 Giăng', '3 Giăng',
   'Giu-đe', 'Khải huyền',
 ];
+// Short forms this church (and Vietnamese Bibles generally) use in titles, e.g. "Mat 22;1-14", "Công 2;32".
+const ALIASES = {
+  'Ma-thi-ơ': ['Mat', 'Mt'], 'Công vụ': ['Công', 'Cv'], 'Rô-ma': ['Rô'], 'Hê-bơ-rơ': ['Hê'], 'Khải huyền': ['Khải'],
+  'Lu-ca': ['Lu'], 'Thi thiên': ['Thi'], 'Châm ngôn': ['Châm'], 'Sáng thế ký': ['Sáng'], 'Xuất Ê-díp-tô ký': ['Xuất'],
+  '1 Cô-rinh-tô': ['1 Cô'], '2 Cô-rinh-tô': ['2 Cô'], 'Ga-la-ti': ['Ga'], 'Ê-phê-sô': ['Êph'], 'Phi-líp': ['Phil'],
+  'Gia-cơ': ['Gia'], 'Ê-sai': ['Ês'],
+};
+const VERSES = String.raw`\d{1,3}(?:\s*[-–]\s*\d{1,3})?(?:\s*,\s*\d{1,3}(?:\s*[-–]\s*\d{1,3})?)*`;
 const BOOK_RES = BOOKS.map(name => {
-  const m = name.match(/^([123]) (.+)$/);
-  const base = norm(m ? m[2] : name).replace(/[\s-]+/g, '[\\s-]*');
-  const num = m ? `(?:${m[1]}|${'i'.repeat(+m[1])})[\\s.]*` : '';
+  const forms = [name, ...(ALIASES[name] || [])].map(f => {
+    const m = f.match(/^([123]) (.+)$/);
+    const num = m ? `(?:${m[1]}|${'i'.repeat(+m[1])})[\\s.]*` : '';
+    return num + norm(m ? m[2] : f).replace(/[\s-]+/g, '[\\s-]*');
+  });
   return {
     name,
-    re: new RegExp(`(?:^|[^a-z0-9])${num}${base}\\s*(\\d{1,3})(?:\\s*[:.,]\\s*(\\d{1,3})(?:\\s*[-–]\\s*(\\d{1,3}))?)?(?![0-9])`, 'g'),
+    re: new RegExp(`(?:^|[^a-z0-9])(?:${forms.join('|')})\\.?\\s*(\\d{1,3})(?:\\s*[:;.]\\s*(${VERSES}))?(?![0-9])`, 'g'),
   };
 });
 
@@ -131,8 +147,32 @@ export function findScripture(text) {
     if (m && (!best || m.index < best.index)) best = { index: m.index, b, m };
   }
   if (!best) return '';
-  const [, ch, v1, v2] = best.m;
-  return `${best.b.name} ${ch}${v1 ? ':' + v1 : ''}${v2 ? '-' + v2 : ''}`;
+  const [, ch, verses] = best.m;
+  const v = verses ? ':' + verses.replace(/\s+/g, '').replace(/–/g, '-').replace(/,/g, ', ') : '';
+  return `${best.b.name} ${ch}${v}`;
+}
+
+/**
+ * Split the channel's title convention into parts:
+ *   "20261122 [Lễ tạ ơn] Người sở hữu nước thiên đàng (Giăng 14;1-14)"
+ *   → { date: '2026-11-22', service: 'Lễ tạ ơn', title: 'Người sở hữu nước thiên đàng' }
+ * Titles that don't follow it come back unchanged.
+ */
+export function parseTitle(raw = '') {
+  let t = String(raw).trim(), date = '', service = '';
+  const d = t.match(/^(20\d{2})(\d{2})(\d{2})(?!\d)[\s._-]*/);
+  if (d && +d[2] >= 1 && +d[2] <= 12 && +d[3] >= 1 && +d[3] <= 31) {
+    date = `${d[1]}-${d[2]}-${d[3]}`;
+    t = t.slice(d[0].length);
+  }
+  const b = t.match(/^\[([^\]]{1,40})\]\s*[-–:|]?\s*/);
+  const w = !b && t.match(/^(Lễ\s*\d+|Thứ\s*[2-7]|Chúa Nhật|Chủ Nhật)(?![\p{L}])\s*[-–:|]?\s*/iu);
+  if (b) { service = b[1].trim(); t = t.slice(b[0].length); }
+  else if (w) { service = w[1].replace(/\s+/g, ' '); t = t.slice(w[0].length); }
+  const ref = t.match(/\s*[(\[]([^()\[\]]+)[)\]]\s*$/);
+  if (ref && findScripture(ref[1])) t = t.slice(0, ref.index);
+  t = t.trim();
+  return { date, service, title: t || String(raw).trim() };
 }
 
 const TITLES = { 'ms': 'Mục sư', 'mục sư': 'Mục sư', 'msnc': 'Mục sư Nhiệm chức', 'mục sư nhiệm chức': 'Mục sư Nhiệm chức', 'tđ': 'Truyền đạo', 'truyền đạo': 'Truyền đạo', 'mstđ': 'Mục sư', 'giáo sĩ': 'Giáo sĩ' };
@@ -175,12 +215,16 @@ function cleanDescription(desc, common) {
 export function toSermon(v, common = new Set()) {
   const desc = cleanDescription(v.description || '', common);
   const text = `${v.title}\n${desc}`;
-  const date = dateFromTitle(v.title) || (v.at ? localDate(v.at) : '');
-  const summary = desc.split('\n').slice(0, 4).join(' ').slice(0, 420);
+  const parts = parseTitle(v.title);
+  const date = parts.date || dateFromTitle(v.title) || (v.at ? localDate(v.at) : '');
+  let summary = desc.split('\n').slice(0, 4).join(' ').slice(0, 420);
+  if (norm(summary).replace(/[^a-z0-9]/g, '').startsWith(norm(parts.title).replace(/[^a-z0-9]/g, '')) &&
+      summary.length < parts.title.length + 40) summary = '';
   const out = {
     id: `yt-${v.videoId}`,
     type: classify(v),
-    title: v.title.trim(),
+    title: parts.title,
+    service: parts.service,
     speaker: findSpeaker(text),
     date,
     video: `https://www.youtube.com/watch?v=${v.videoId}`,
@@ -190,6 +234,8 @@ export function toSermon(v, common = new Set()) {
     summary: summary + (summary.length >= 420 ? '…' : ''),
     source: 'youtube',
     publishedAt: v.at ? v.at.toISOString() : '',
+    // Original YouTube data, so later rule changes can re-derive every field (see --offline).
+    raw: { title: v.title, description: (v.description || '').slice(0, 1500), at: v.at ? v.at.toISOString() : '', isShort: !!v.isShort, duration: v.duration || '' },
   };
   Object.keys(out).forEach(k => (out[k] === '' || (Array.isArray(out[k]) && !out[k].length)) && delete out[k]);
   return out;
@@ -284,7 +330,9 @@ async function main() {
 
   let channelId = existing.channelId || '';
   let fresh;
-  if (fixture) {
+  if (offline) {
+    fresh = [];
+  } else if (fixture) {
     fresh = parseRss(await fs.readFile(fixture, 'utf8'));
   } else {
     channelId = await resolveChannelId(handle, channelId);
@@ -293,15 +341,26 @@ async function main() {
   }
   console.log(`Kênh ${handle} (${channelId || 'fixture'}): nhận ${fresh.length} video.`);
 
-  const common = boilerplate(fresh.map(v => v.description || ''));
-  const byId = new Map((existing.videos || []).map(v => [v.id, v]));
+  // Every stored video keeps its original YouTube data, so re-derive all of them: improved rules
+  // then also fix older videos that RSS no longer returns. Older entries without `raw` are rebuilt
+  // from what was stored.
+  const rawById = new Map();
+  for (const v of existing.videos || []) {
+    const r = v.raw || { title: v.title, description: v.summary || '', at: v.publishedAt || '', duration: v.duration || '' };
+    rawById.set(v.id.replace(/^yt-/, ''), { videoId: v.id.replace(/^yt-/, ''), ...r, at: r.at ? new Date(r.at) : null });
+  }
   let added = 0;
   for (const v of fresh) {
-    const s = toSermon(v, common);
-    if (!byId.has(s.id)) added++;
-    byId.set(s.id, s);
+    if (!rawById.has(v.videoId)) added++;
+    const prevRaw = rawById.get(v.videoId);
+    rawById.set(v.videoId, { ...v, duration: v.duration || (prevRaw && prevRaw.duration) || '' });
   }
-  const videos = [...byId.values()].sort((a, b) => (b.publishedAt || b.date || '').localeCompare(a.publishedAt || a.date || ''));
+  const raws = [...rawById.values()];
+  const common = boilerplate(raws.map(v => v.description || ''));
+  const videos = raws.map(v => toSermon(v, common))
+    // newest day first; within a day "Lễ 1" before "Lễ 2"
+    .sort((a, b) => (b.date || '').localeCompare(a.date || '') || (a.service || '').localeCompare(b.service || '', 'vi', { numeric: true }) ||
+      (b.publishedAt || '').localeCompare(a.publishedAt || ''));
 
   const out = { channel: handle, channelId, videos };
   const prev = JSON.stringify({ ...existing, updatedAt: undefined });
