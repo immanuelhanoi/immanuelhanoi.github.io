@@ -1,0 +1,225 @@
+{
+  "church": {
+    "name": "Hội thánh Imanuel Hà Nội",
+    "youtubeChannel": "",
+    "schedule": [
+      { "label": "Thờ phượng Chúa Nhật", "time": "Chúa Nhật hằng tuần" },
+      { "label": "Tĩnh nguyện hằng ngày", "time": "Mỗi sáng" }
+    ]
+  },
+
+  "topics": [
+    { "name": "Đức tin", "emoji": "🛡️" },
+    { "name": "Cầu nguyện", "emoji": "🙏" },
+    { "name": "Ân điển", "emoji": "✝️" },
+    { "name": "Tình yêu thương", "emoji": "❤️" },
+    { "name": "Gia đình", "emoji": "🏠" },
+    { "name": "Tạ ơn", "emoji": "🌾" },
+    { "name": "Hy vọng", "emoji": "🌅" },
+    { "name": "Lời Chúa", "emoji": "📖" },
+    { "name": "Sự bình an", "emoji": "🕊️" },
+    { "name": "Ăn năn & tha thứ", "emoji": "💧" },
+    { "name": "Truyền giáo", "emoji": "🌏" },
+    { "name": "Môn đồ", "emoji": "👣" }
+  ],
+
+  "sermons": [
+    {
+      "id": "cn-2026-11-22",
+      "type": "chua-nhat",
+      "title": "Tạ ơn trong mọi hoàn cảnh",
+      "speaker": "Mục sư Quản nhiệm",
+      "date": "2026-11-22",
+      "video": "",
+      "duration": "",
+      "series": "Mùa Tạ ơn",
+      "scripture": "1 Tê-sa-lô-ni-ca 5:16-18",
+      "verse": "Hãy vui mừng mãi mãi, cầu nguyện không thôi, phàm làm việc gì cũng phải tạ ơn Chúa; vì ý muốn của Đức Chúa Trời trong Đức Chúa Jêsus Christ đối với anh em là như vậy.",
+      "topics": ["Tạ ơn", "Cầu nguyện"],
+      "summary": "(Nội dung mẫu) Lòng biết ơn không phụ thuộc vào hoàn cảnh mà đến từ việc nhận biết Đức Chúa Trời đang tể trị. Bài giảng giúp hội chúng tập sống tạ ơn mỗi ngày.",
+      "points": [
+        "Tạ ơn là ý muốn của Đức Chúa Trời dành cho chúng ta",
+        "Tạ ơn ngay cả khi chưa thấy câu trả lời",
+        "Tạ ơn biến đổi cách chúng ta nhìn hoàn cảnh"
+      ],
+      "questions": [
+        "Tuần này tôi có thể tạ ơn Chúa về điều gì mà trước nay tôi xem là bình thường?"
+      ]
+    },
+    {
+      "id": "cn-2026-11-15",
+      "type": "chua-nhat",
+      "title": "Đức tin là sự biết chắc",
+      "speaker": "Mục sư Quản nhiệm",
+      "date": "2026-11-15",
+      "video": "",
+      "duration": "",
+      "series": "Những anh hùng đức tin",
+      "scripture": "Hê-bơ-rơ 11:1-6",
+      "verse": "Vả, đức tin là sự biết chắc vững vàng của những điều mình đang trông mong, là bằng cớ của những điều mình chẳng xem thấy.",
+      "topics": ["Đức tin", "Hy vọng"],
+      "summary": "(Nội dung mẫu) Đức tin không phải là cảm xúc nhất thời mà là sự tin cậy vững vàng nơi lời hứa của Đức Chúa Trời.",
+      "points": [
+        "Đức tin đặt nền trên lời hứa của Chúa",
+        "Không có đức tin thì không thể đẹp lòng Đức Chúa Trời",
+        "Đức tin được bày tỏ qua sự vâng phục"
+      ],
+      "questions": [
+        "Lĩnh vực nào trong đời sống tôi cần bước đi bằng đức tin hơn?"
+      ]
+    },
+    {
+      "id": "cn-2026-11-08",
+      "type": "chua-nhat",
+      "title": "Ta và nhà ta sẽ phục sự Chúa",
+      "speaker": "Mục sư Quản nhiệm",
+      "date": "2026-11-08",
+      "video": "",
+      "duration": "",
+      "series": "",
+      "scripture": "Giô-suê 24:14-15",
+      "verse": "Nhưng ta và nhà ta sẽ phục sự Đức Giê-hô-va.",
+      "topics": ["Gia đình", "Môn đồ"],
+      "summary": "(Nội dung mẫu) Một gia đình kính sợ Chúa bắt đầu từ quyết định của từng thành viên, đặc biệt là người làm cha mẹ.",
+      "points": [
+        "Mỗi gia đình đều phải chọn lựa",
+        "Người lãnh đạo gia đình làm gương",
+        "Bàn thờ gia đình: cầu nguyện và đọc Lời Chúa cùng nhau"
+      ],
+      "questions": [
+        "Gia đình tôi có thể dành thời gian nào trong tuần để cùng cầu nguyện?"
+      ]
+    },
+    {
+      "id": "cn-2026-11-01",
+      "type": "chua-nhat",
+      "title": "Được cứu bởi ân điển",
+      "speaker": "Mục sư khách mời",
+      "date": "2026-11-01",
+      "video": "",
+      "duration": "",
+      "series": "",
+      "scripture": "Ê-phê-sô 2:1-10",
+      "verse": "Vả, ấy là nhờ ân điển, bởi đức tin, mà anh em được cứu, điều đó không phải đến từ anh em, bèn là sự ban cho của Đức Chúa Trời.",
+      "topics": ["Ân điển", "Đức tin"],
+      "summary": "(Nội dung mẫu) Sự cứu rỗi là món quà của Đức Chúa Trời, không phải phần thưởng cho việc làm của con người.",
+      "points": [
+        "Chúng ta đã chết trong tội lỗi",
+        "Nhưng Đức Chúa Trời giàu lòng thương xót",
+        "Được cứu để làm việc lành Chúa đã sắm sẵn"
+      ],
+      "questions": []
+    },
+    {
+      "id": "cn-2026-10-25",
+      "type": "chua-nhat",
+      "title": "Điều răn mới: hãy yêu nhau",
+      "speaker": "Mục sư Quản nhiệm",
+      "date": "2026-10-25",
+      "video": "",
+      "duration": "",
+      "series": "",
+      "scripture": "Giăng 13:31-35",
+      "verse": "Ta ban cho các ngươi một điều răn mới, nghĩa là các ngươi phải yêu nhau; như ta đã yêu các ngươi thể nào, thì các ngươi cũng hãy yêu nhau thể ấy.",
+      "topics": ["Tình yêu thương", "Môn đồ", "Truyền giáo"],
+      "summary": "(Nội dung mẫu) Tình yêu thương giữa các tín hữu là dấu hiệu để thế gian nhận biết chúng ta là môn đồ của Chúa Jêsus.",
+      "points": [
+        "Thước đo của tình yêu: như Chúa đã yêu",
+        "Tình yêu được bày tỏ trong hành động",
+        "Tình yêu là lời chứng mạnh mẽ nhất"
+      ],
+      "questions": []
+    },
+
+    {
+      "id": "hn-2026-11-26",
+      "type": "hang-ngay",
+      "title": "Lời Chúa là ngọn đèn",
+      "speaker": "Mục sư Quản nhiệm",
+      "date": "2026-11-26",
+      "video": "",
+      "duration": "",
+      "scripture": "Thi thiên 119:105",
+      "verse": "Lời Chúa là ngọn đèn cho chân tôi, ánh sáng cho đường lối tôi.",
+      "topics": ["Lời Chúa"],
+      "summary": "(Nội dung mẫu) Ngọn đèn không chiếu sáng cả chặng đường, nhưng đủ cho bước kế tiếp. Hôm nay hãy để Lời Chúa soi sáng bước đi của bạn.",
+      "questions": ["Hôm nay tôi cần Lời Chúa soi sáng quyết định nào?"],
+      "prayer": "Lạy Chúa, xin Lời Ngài soi sáng từng bước con đi hôm nay. Amen."
+    },
+    {
+      "id": "hn-2026-11-25",
+      "type": "hang-ngay",
+      "title": "Chớ lo phiền chi hết",
+      "speaker": "Mục sư Quản nhiệm",
+      "date": "2026-11-25",
+      "video": "",
+      "duration": "",
+      "scripture": "Phi-líp 4:6-7",
+      "verse": "Chớ lo phiền chi hết, nhưng trong mọi sự hãy dùng lời cầu nguyện, nài xin, và sự tạ ơn mà trình các sự cầu xin của mình cho Đức Chúa Trời.",
+      "topics": ["Sự bình an", "Cầu nguyện"],
+      "summary": "(Nội dung mẫu) Thay vì mang gánh nặng lo âu, hãy mang nó đến với Chúa trong sự cầu nguyện và tạ ơn.",
+      "questions": ["Điều gì đang khiến tôi lo lắng mà tôi chưa trao cho Chúa?"],
+      "prayer": "Lạy Chúa, con trao cho Ngài mọi lo lắng của con. Xin ban sự bình an của Ngài. Amen."
+    },
+    {
+      "id": "hn-2026-11-24",
+      "type": "hang-ngay",
+      "title": "Hết lòng tin cậy",
+      "speaker": "Mục sư Quản nhiệm",
+      "date": "2026-11-24",
+      "video": "",
+      "duration": "",
+      "scripture": "Châm ngôn 3:5-6",
+      "verse": "Hãy hết lòng tin cậy Đức Giê-hô-va, chớ nương cậy nơi sự thông sáng của con; phàm trong các việc làm của con, khá nhận biết Ngài, thì Ngài sẽ chỉ dẫn các nẻo của con.",
+      "topics": ["Đức tin"],
+      "summary": "(Nội dung mẫu) Tin cậy Chúa nghĩa là nhường quyền chỉ dẫn cho Ngài, kể cả khi chúng ta chưa hiểu hết.",
+      "questions": ["Tôi đang dựa vào sự hiểu biết của riêng mình trong việc gì?"],
+      "prayer": "Lạy Chúa, con chọn tin cậy Ngài hết lòng hôm nay. Amen."
+    },
+    {
+      "id": "hn-2026-11-23",
+      "type": "hang-ngay",
+      "title": "Sức mới cho người trông đợi",
+      "speaker": "Mục sư Quản nhiệm",
+      "date": "2026-11-23",
+      "video": "",
+      "duration": "",
+      "scripture": "Ê-sai 40:31",
+      "verse": "Nhưng ai trông đợi Đức Giê-hô-va thì chắc được sức mới, cất cánh bay cao như chim ưng; chạy mà không mệt nhọc, đi mà không mòn mỏi.",
+      "topics": ["Hy vọng"],
+      "summary": "(Nội dung mẫu) Khi kiệt sức, hãy dừng lại và trông đợi Chúa. Ngài là nguồn sức lực không bao giờ cạn.",
+      "questions": [],
+      "prayer": "Lạy Chúa, xin ban sức mới cho con trong tuần này. Amen."
+    },
+    {
+      "id": "hn-2026-11-21",
+      "type": "hang-ngay",
+      "title": "Mọi sự hiệp lại làm ích",
+      "speaker": "Mục sư Quản nhiệm",
+      "date": "2026-11-21",
+      "video": "",
+      "duration": "",
+      "scripture": "Rô-ma 8:28",
+      "verse": "Vả, chúng ta biết rằng mọi sự hiệp lại làm ích cho kẻ yêu mến Đức Chúa Trời, tức là cho kẻ được gọi theo ý muốn Ngài đã định.",
+      "topics": ["Hy vọng", "Đức tin"],
+      "summary": "(Nội dung mẫu) Ngay cả những điều khó khăn cũng nằm trong bàn tay tể trị của Đức Chúa Trời.",
+      "questions": [],
+      "prayer": "Lạy Chúa, con tin Ngài đang làm việc trong mọi hoàn cảnh của con. Amen."
+    },
+    {
+      "id": "hn-2026-11-20",
+      "type": "hang-ngay",
+      "title": "Xưng tội và được tha",
+      "speaker": "Mục sư Quản nhiệm",
+      "date": "2026-11-20",
+      "video": "",
+      "duration": "",
+      "scripture": "1 Giăng 1:9",
+      "verse": "Còn nếu chúng ta xưng tội mình, thì Ngài là thành tín công bình để tha tội cho chúng ta, và làm cho chúng ta sạch mọi điều gian ác.",
+      "topics": ["Ăn năn & tha thứ", "Ân điển"],
+      "summary": "(Nội dung mẫu) Chúa không chờ chúng ta hoàn hảo mới đến với Ngài. Ngài chờ một tấm lòng thành thật xưng nhận.",
+      "questions": [],
+      "prayer": "Lạy Chúa, xin tha thứ và làm sạch lòng con. Amen."
+    }
+  ]
+}
