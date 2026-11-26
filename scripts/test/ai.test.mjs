@@ -38,6 +38,8 @@ test('which videos get summarized', () => {
     'yt-e': { status: 'no-transcript', at: '2026-10-01T00:00:00Z' },         // retry now
   };
   assert.deepEqual(pickCandidates(videos, items, now).map(v => v.id), ['yt-a', 'yt-e']);
+  // only new videos: nothing before the cut-off date
+  assert.deepEqual(pickCandidates(videos, items, now, '2026-11-10').map(v => v.id), ['yt-a']);
 });
 
 test('prompt lists the allowed topics and moods', () => {

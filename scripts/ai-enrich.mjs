@@ -161,10 +161,11 @@ async function readJson(file, fallback) {
   try { return JSON.parse(await fs.readFile(file, 'utf8')); } catch { return fallback; }
 }
 
-export function pickCandidates(videos, items, now = Date.now()) {
+export function pickCandidates(videos, items, now = Date.now(), since = '') {
   const retryMs = RETRY_NO_TRANSCRIPT_DAYS * 864e5;
   return videos
     .filter(v => v.type !== 'khac' && v.video)
+    .filter(v => !since || (v.date || '') >= since)   // only videos from this date on (older ones stay unsummarized)
     .filter(v => {
       const it = items[v.id];
       if (!it) return true;
@@ -184,7 +185,8 @@ async function main() {
   ]);
   const topics = (cfg.topics || []).map(t => t.name);
   const moods = moodsFile.moods || [];
-  const candidates = pickCandidates(yt.videos || [], ai.items || {});
+  const since = process.env.AI_SINCE || cfg.ai?.since || '';
+  const candidates = pickCandidates(yt.videos || [], ai.items || {}, Date.now(), since);
   const id = v => v.video.split('v=')[1];
 
   if (probe || !process.env.ANTHROPIC_API_KEY) {
@@ -203,7 +205,7 @@ async function main() {
   const system = buildSystem(topics, moods);
   ai.items = ai.items || {};
   let done = 0, spent = 0;
-  console.log(`${candidates.length} bài chờ tóm tắt; lần này tối đa ${MAX_PER_RUN} (model ${MODEL}, effort ${EFFORT}).`);
+  console.log(`${candidates.length} bài chờ tóm tắt${since ? ` (từ ${since})` : ''}; lần này tối đa ${MAX_PER_RUN} (model ${MODEL}, effort ${EFFORT}).`);
 
   for (const v of candidates.slice(0, MAX_PER_RUN)) {
     const t = await fetchTranscript(id(v));
