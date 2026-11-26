@@ -1,0 +1,5339 @@
+{
+ "_huongdan": "Hành trình đọc Kinh Thánh. Mỗi chặng: bài đọc (mã sách USFM), câu gốc, 5 câu hỏi kiểm tra (a = vị trí đáp án đúng, tính từ 0). Tên riêng theo Bản Truyền Thống 1926. Qua chặng khi đúng từ 4/5 câu.",
+ "passScore": 0.8,
+ "books": [
+  {
+   "code": "GEN",
+   "name": "Sáng thế ký",
+   "chapters": 50
+  },
+  {
+   "code": "EXO",
+   "name": "Xuất Ê-díp-tô ký",
+   "chapters": 40
+  },
+  {
+   "code": "LEV",
+   "name": "Lê-vi ký",
+   "chapters": 27
+  },
+  {
+   "code": "NUM",
+   "name": "Dân số ký",
+   "chapters": 36
+  },
+  {
+   "code": "DEU",
+   "name": "Phục truyền luật lệ ký",
+   "chapters": 34
+  },
+  {
+   "code": "JOS",
+   "name": "Giô-suê",
+   "chapters": 24
+  },
+  {
+   "code": "JDG",
+   "name": "Các quan xét",
+   "chapters": 21
+  },
+  {
+   "code": "RUT",
+   "name": "Ru-tơ",
+   "chapters": 4
+  },
+  {
+   "code": "1SA",
+   "name": "1 Sa-mu-ên",
+   "chapters": 31
+  },
+  {
+   "code": "2SA",
+   "name": "2 Sa-mu-ên",
+   "chapters": 24
+  },
+  {
+   "code": "1KI",
+   "name": "1 Các vua",
+   "chapters": 22
+  },
+  {
+   "code": "2KI",
+   "name": "2 Các vua",
+   "chapters": 25
+  },
+  {
+   "code": "1CH",
+   "name": "1 Sử ký",
+   "chapters": 29
+  },
+  {
+   "code": "2CH",
+   "name": "2 Sử ký",
+   "chapters": 36
+  },
+  {
+   "code": "EZR",
+   "name": "E-xơ-ra",
+   "chapters": 10
+  },
+  {
+   "code": "NEH",
+   "name": "Nê-hê-mi",
+   "chapters": 13
+  },
+  {
+   "code": "EST",
+   "name": "Ê-xơ-tê",
+   "chapters": 10
+  },
+  {
+   "code": "JOB",
+   "name": "Gióp",
+   "chapters": 42
+  },
+  {
+   "code": "PSA",
+   "name": "Thi thiên",
+   "chapters": 150
+  },
+  {
+   "code": "PRO",
+   "name": "Châm ngôn",
+   "chapters": 31
+  },
+  {
+   "code": "ECC",
+   "name": "Truyền đạo",
+   "chapters": 12
+  },
+  {
+   "code": "SNG",
+   "name": "Nhã ca",
+   "chapters": 8
+  },
+  {
+   "code": "ISA",
+   "name": "Ê-sai",
+   "chapters": 66
+  },
+  {
+   "code": "JER",
+   "name": "Giê-rê-mi",
+   "chapters": 52
+  },
+  {
+   "code": "LAM",
+   "name": "Ca thương",
+   "chapters": 5
+  },
+  {
+   "code": "EZK",
+   "name": "Ê-xê-chi-ên",
+   "chapters": 48
+  },
+  {
+   "code": "DAN",
+   "name": "Đa-ni-ên",
+   "chapters": 12
+  },
+  {
+   "code": "HOS",
+   "name": "Ô-sê",
+   "chapters": 14
+  },
+  {
+   "code": "JOL",
+   "name": "Giô-ên",
+   "chapters": 3
+  },
+  {
+   "code": "AMO",
+   "name": "A-mốt",
+   "chapters": 9
+  },
+  {
+   "code": "OBA",
+   "name": "Áp-đia",
+   "chapters": 1
+  },
+  {
+   "code": "JON",
+   "name": "Giô-na",
+   "chapters": 4
+  },
+  {
+   "code": "MIC",
+   "name": "Mi-chê",
+   "chapters": 7
+  },
+  {
+   "code": "NAM",
+   "name": "Na-hum",
+   "chapters": 3
+  },
+  {
+   "code": "HAB",
+   "name": "Ha-ba-cúc",
+   "chapters": 3
+  },
+  {
+   "code": "ZEP",
+   "name": "Sô-phô-ni",
+   "chapters": 3
+  },
+  {
+   "code": "HAG",
+   "name": "A-ghê",
+   "chapters": 2
+  },
+  {
+   "code": "ZEC",
+   "name": "Xa-cha-ri",
+   "chapters": 14
+  },
+  {
+   "code": "MAL",
+   "name": "Ma-la-chi",
+   "chapters": 4
+  },
+  {
+   "code": "MAT",
+   "name": "Ma-thi-ơ",
+   "chapters": 28
+  },
+  {
+   "code": "MRK",
+   "name": "Mác",
+   "chapters": 16
+  },
+  {
+   "code": "LUK",
+   "name": "Lu-ca",
+   "chapters": 24
+  },
+  {
+   "code": "JHN",
+   "name": "Giăng",
+   "chapters": 21
+  },
+  {
+   "code": "ACT",
+   "name": "Công vụ các Sứ đồ",
+   "chapters": 28
+  },
+  {
+   "code": "ROM",
+   "name": "Rô-ma",
+   "chapters": 16
+  },
+  {
+   "code": "1CO",
+   "name": "1 Cô-rinh-tô",
+   "chapters": 16
+  },
+  {
+   "code": "2CO",
+   "name": "2 Cô-rinh-tô",
+   "chapters": 13
+  },
+  {
+   "code": "GAL",
+   "name": "Ga-la-ti",
+   "chapters": 6
+  },
+  {
+   "code": "EPH",
+   "name": "Ê-phê-sô",
+   "chapters": 6
+  },
+  {
+   "code": "PHP",
+   "name": "Phi-líp",
+   "chapters": 4
+  },
+  {
+   "code": "COL",
+   "name": "Cô-lô-se",
+   "chapters": 4
+  },
+  {
+   "code": "1TH",
+   "name": "1 Tê-sa-lô-ni-ca",
+   "chapters": 5
+  },
+  {
+   "code": "2TH",
+   "name": "2 Tê-sa-lô-ni-ca",
+   "chapters": 3
+  },
+  {
+   "code": "1TI",
+   "name": "1 Ti-mô-thê",
+   "chapters": 6
+  },
+  {
+   "code": "2TI",
+   "name": "2 Ti-mô-thê",
+   "chapters": 4
+  },
+  {
+   "code": "TIT",
+   "name": "Tít",
+   "chapters": 3
+  },
+  {
+   "code": "PHM",
+   "name": "Phi-lê-môn",
+   "chapters": 1
+  },
+  {
+   "code": "HEB",
+   "name": "Hê-bơ-rơ",
+   "chapters": 13
+  },
+  {
+   "code": "JAS",
+   "name": "Gia-cơ",
+   "chapters": 5
+  },
+  {
+   "code": "1PE",
+   "name": "1 Phi-e-rơ",
+   "chapters": 5
+  },
+  {
+   "code": "2PE",
+   "name": "2 Phi-e-rơ",
+   "chapters": 3
+  },
+  {
+   "code": "1JN",
+   "name": "1 Giăng",
+   "chapters": 5
+  },
+  {
+   "code": "2JN",
+   "name": "2 Giăng",
+   "chapters": 1
+  },
+  {
+   "code": "3JN",
+   "name": "3 Giăng",
+   "chapters": 1
+  },
+  {
+   "code": "JUD",
+   "name": "Giu-đe",
+   "chapters": 1
+  },
+  {
+   "code": "REV",
+   "name": "Khải huyền",
+   "chapters": 22
+  }
+ ],
+ "tracks": [
+  {
+   "id": "kinh-thanh",
+   "title": "Theo dòng Kinh Thánh",
+   "emoji": "📖",
+   "desc": "Từ sự sáng tạo đến trời mới đất mới: đi qua Cựu Ước và Tân Ước theo thứ tự câu chuyện.",
+   "stages": [
+    {
+     "id": "sang-tao",
+     "emoji": "🌍",
+     "era": "Cựu Ước",
+     "title": "Sự sáng tạo và sa ngã",
+     "intro": "Kinh Thánh mở đầu bằng câu chuyện Đức Chúa Trời dựng nên trời đất, muôn vật và loài người. Rồi tội lỗi bước vào thế gian, nhưng ngay lúc ấy Đức Chúa Trời đã hứa ban sự cứu rỗi.",
+     "readings": [
+      {
+       "book": "GEN",
+       "from": 1,
+       "to": 1,
+       "label": "Sáng thế ký 1"
+      },
+      {
+       "book": "GEN",
+       "from": 2,
+       "to": 2,
+       "label": "Sáng thế ký 2"
+      },
+      {
+       "book": "GEN",
+       "from": 3,
+       "to": 3,
+       "label": "Sáng thế ký 3"
+      }
+     ],
+     "verse": {
+      "ref": "Sáng thế ký 1:1",
+      "book": "GEN",
+      "ch": 1,
+      "v": [
+       1,
+       1
+      ],
+      "text": "Ban đầu Đức Chúa Trời dựng nên trời đất."
+     },
+     "quiz": [
+      {
+       "q": "Ngày thứ nhất, Đức Chúa Trời dựng nên điều gì?",
+       "options": [
+        {
+         "t": "Sự sáng",
+         "img": "💡"
+        },
+        {
+         "t": "Cây cối",
+         "img": "🌳"
+        },
+        {
+         "t": "Loài cá",
+         "img": "🐟"
+        },
+        {
+         "t": "Loài người",
+         "img": "🧍"
+        }
+       ],
+       "a": 0,
+       "why": "Đức Chúa Trời phán: Phải có sự sáng, thì có sự sáng.",
+       "ref": "Sáng thế ký 1:3"
+      },
+      {
+       "q": "Mặt trời, mặt trăng và các ngôi sao được dựng nên vào ngày thứ mấy?",
+       "options": [
+        {
+         "t": "Ngày thứ nhất"
+        },
+        {
+         "t": "Ngày thứ tư"
+        },
+        {
+         "t": "Ngày thứ sáu"
+        },
+        {
+         "t": "Ngày thứ bảy"
+        }
+       ],
+       "a": 1,
+       "why": "Ngày thứ tư Đức Chúa Trời làm hai vì sáng lớn và các ngôi sao.",
+       "ref": "Sáng thế ký 1:14-19"
+      },
+      {
+       "q": "Loài người được dựng nên theo hình ảnh của ai?",
+       "options": [
+        {
+         "t": "Các thiên sứ",
+         "img": "😇"
+        },
+        {
+         "t": "Đức Chúa Trời",
+         "img": "✨"
+        },
+        {
+         "t": "Loài thú",
+         "img": "🦁"
+        },
+        {
+         "t": "Mặt trời",
+         "img": "☀️"
+        }
+       ],
+       "a": 1,
+       "why": "Đức Chúa Trời dựng nên loài người như hình Ngài.",
+       "ref": "Sáng thế ký 1:27"
+      },
+      {
+       "q": "Ngày thứ bảy, Đức Chúa Trời đã làm gì?",
+       "options": [
+        {
+         "t": "Dựng nên loài chim",
+         "img": "🐦"
+        },
+        {
+         "t": "Nghỉ các công việc Ngài đã làm",
+         "img": "🌙"
+        },
+        {
+         "t": "Dựng nên biển",
+         "img": "🌊"
+        },
+        {
+         "t": "Trồng vườn Ê-đen",
+         "img": "🌳"
+        }
+       ],
+       "a": 1,
+       "why": "Ngày thứ bảy Đức Chúa Trời nghỉ các công việc Ngài đã làm và ban phước cho ngày ấy.",
+       "ref": "Sáng thế ký 2:2-3"
+      },
+      {
+       "q": "A-đam và Ê-va không được ăn trái của cây nào?",
+       "options": [
+        {
+         "t": "Cây sự sống"
+        },
+        {
+         "t": "Cây biết điều thiện và điều ác"
+        },
+        {
+         "t": "Cây vả"
+        },
+        {
+         "t": "Cây ô-li-ve"
+        }
+       ],
+       "a": 1,
+       "why": "Đức Chúa Trời phán: về cây biết điều thiện và điều ác thì chớ hề ăn đến.",
+       "ref": "Sáng thế ký 2:17"
+      }
+     ]
+    },
+    {
+     "id": "nuoc-lut",
+     "emoji": "🌈",
+     "era": "Cựu Ước",
+     "title": "Nô-ê và cơn nước lụt",
+     "intro": "Khi loài người ngày càng gian ác, Đức Chúa Trời đã cứu Nô-ê, một người công bình, cùng gia đình ông qua chiếc tàu lớn. Cầu vồng là dấu giao ước Ngài lập với muôn loài.",
+     "readings": [
+      {
+       "book": "GEN",
+       "from": 6,
+       "to": 6,
+       "label": "Sáng thế ký 6"
+      },
+      {
+       "book": "GEN",
+       "from": 7,
+       "to": 7,
+       "label": "Sáng thế ký 7"
+      },
+      {
+       "book": "GEN",
+       "from": 8,
+       "to": 8,
+       "label": "Sáng thế ký 8"
+      },
+      {
+       "book": "GEN",
+       "from": 9,
+       "to": 9,
+       "label": "Sáng thế ký 9"
+      }
+     ],
+     "verse": {
+      "ref": "Sáng thế ký 6:9",
+      "book": "GEN",
+      "ch": 6,
+      "v": [
+       9,
+       9
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Đức Chúa Trời bảo Nô-ê đóng vật gì?",
+       "options": [
+        {
+         "t": "Một cái tháp",
+         "img": "🗼"
+        },
+        {
+         "t": "Một chiếc tàu",
+         "img": "🚢"
+        },
+        {
+         "t": "Một ngôi nhà",
+         "img": "🏠"
+        },
+        {
+         "t": "Một bàn thờ",
+         "img": "🪨"
+        }
+       ],
+       "a": 1,
+       "why": "Ngươi hãy đóng một chiếc tàu bằng cây gô-phe.",
+       "ref": "Sáng thế ký 6:14"
+      },
+      {
+       "q": "Mưa đổ xuống đất trong bao lâu?",
+       "options": [
+        {
+         "t": "7 ngày"
+        },
+        {
+         "t": "40 ngày 40 đêm"
+        },
+        {
+         "t": "100 ngày"
+        },
+        {
+         "t": "1 năm"
+        }
+       ],
+       "a": 1,
+       "why": "Mưa sa trên mặt đất trọn bốn mươi ngày và bốn mươi đêm.",
+       "ref": "Sáng thế ký 7:12"
+      },
+      {
+       "q": "Chim bồ câu bay về mang theo vật gì?",
+       "options": [
+        {
+         "t": "Một lá ô-li-ve",
+         "img": "🌿"
+        },
+        {
+         "t": "Một con cá",
+         "img": "🐟"
+        },
+        {
+         "t": "Một hòn đá",
+         "img": "🪨"
+        },
+        {
+         "t": "Một bông hoa",
+         "img": "🌸"
+        }
+       ],
+       "a": 0,
+       "why": "Chim bồ câu trở về, ngậm trong mỏ một lá ô-li-ve tươi.",
+       "ref": "Sáng thế ký 8:11"
+      },
+      {
+       "q": "Dấu của giao ước Đức Chúa Trời lập với Nô-ê là gì?",
+       "options": [
+        {
+         "t": "Ngôi sao",
+         "img": "⭐"
+        },
+        {
+         "t": "Cái mống (cầu vồng)",
+         "img": "🌈"
+        },
+        {
+         "t": "Mặt trăng",
+         "img": "🌙"
+        },
+        {
+         "t": "Ngọn lửa",
+         "img": "🔥"
+        }
+       ],
+       "a": 1,
+       "why": "Ta đặt mống của ta trên từng mây, dùng làm dấu giao ước.",
+       "ref": "Sáng thế ký 9:13"
+      },
+      {
+       "q": "Vì sao người ta không xây xong tháp Ba-bên?",
+       "options": [
+        {
+         "t": "Vì hết vật liệu"
+        },
+        {
+         "t": "Vì Đức Chúa Trời làm lộn xộn tiếng nói của họ"
+        },
+        {
+         "t": "Vì động đất"
+        },
+        {
+         "t": "Vì chiến tranh"
+        }
+       ],
+       "a": 1,
+       "why": "Đức Giê-hô-va làm lộn xộn tiếng nói của cả thế gian và làm tản lạc loài người.",
+       "ref": "Sáng thế ký 11:7-9"
+      }
+     ]
+    },
+    {
+     "id": "to-phu",
+     "emoji": "⛺",
+     "era": "Cựu Ước",
+     "title": "Các tổ phụ: Áp-ra-ham, Y-sác, Gia-cốp",
+     "intro": "Đức Chúa Trời kêu gọi Áp-ra-ham rời quê hương và hứa ban cho ông dòng dõi đông như sao trên trời. Lời hứa ấy được truyền qua Y-sác và Gia-cốp.",
+     "readings": [
+      {
+       "book": "GEN",
+       "from": 12,
+       "to": 12,
+       "label": "Sáng thế ký 12"
+      },
+      {
+       "book": "GEN",
+       "from": 15,
+       "to": 15,
+       "label": "Sáng thế ký 15"
+      },
+      {
+       "book": "GEN",
+       "from": 22,
+       "to": 22,
+       "label": "Sáng thế ký 22"
+      },
+      {
+       "book": "GEN",
+       "from": 28,
+       "to": 28,
+       "label": "Sáng thế ký 28"
+      }
+     ],
+     "verse": {
+      "ref": "Sáng thế ký 12:2",
+      "book": "GEN",
+      "ch": 12,
+      "v": [
+       2,
+       2
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Đức Chúa Trời hứa dòng dõi Áp-ra-ham sẽ đông như gì?",
+       "options": [
+        {
+         "t": "Các ngôi sao trên trời",
+         "img": "✨"
+        },
+        {
+         "t": "Cây trong rừng",
+         "img": "🌲"
+        },
+        {
+         "t": "Chim trên trời",
+         "img": "🐦"
+        },
+        {
+         "t": "Cá dưới biển",
+         "img": "🐟"
+        }
+       ],
+       "a": 0,
+       "why": "Hãy ngó lên trời và đếm các ngôi sao… dòng dõi ngươi cũng sẽ như vậy.",
+       "ref": "Sáng thế ký 15:5"
+      },
+      {
+       "q": "Áp-ra-ham bao nhiêu tuổi khi sanh Y-sác?",
+       "options": [
+        {
+         "t": "75 tuổi"
+        },
+        {
+         "t": "90 tuổi"
+        },
+        {
+         "t": "100 tuổi"
+        },
+        {
+         "t": "120 tuổi"
+        }
+       ],
+       "a": 2,
+       "why": "Áp-ra-ham được một trăm tuổi khi Y-sác, con người, sanh ra.",
+       "ref": "Sáng thế ký 21:5"
+      },
+      {
+       "q": "Trên núi Mô-ri-a, Đức Chúa Trời đã sắm sẵn con gì để dâng thay cho Y-sác?",
+       "options": [
+        {
+         "t": "Một con chiên đực",
+         "img": "🐏"
+        },
+        {
+         "t": "Một con bò",
+         "img": "🐂"
+        },
+        {
+         "t": "Một con chim bồ câu",
+         "img": "🕊️"
+        },
+        {
+         "t": "Một con dê",
+         "img": "🐐"
+        }
+       ],
+       "a": 0,
+       "why": "Áp-ra-ham thấy một con chiên đực… bắt con chiên đực đó dâng làm của lễ thiêu thay cho con mình.",
+       "ref": "Sáng thế ký 22:13"
+      },
+      {
+       "q": "Tại Bê-tên, Gia-cốp chiêm bao thấy gì?",
+       "options": [
+        {
+         "t": "Một cái thang bắc từ đất đến trời",
+         "img": "🪜"
+        },
+        {
+         "t": "Bảy con bò",
+         "img": "🐄"
+        },
+        {
+         "t": "Một bụi gai cháy",
+         "img": "🔥"
+        },
+        {
+         "t": "Một chiếc tàu",
+         "img": "🚢"
+        }
+       ],
+       "a": 0,
+       "why": "Gia-cốp chiêm bao thấy một cái thang bắc từ dưới đất, đầu đến tận trời, các thiên sứ lên xuống trên thang đó.",
+       "ref": "Sáng thế ký 28:12"
+      },
+      {
+       "q": "Đức Chúa Trời đổi tên Gia-cốp thành gì?",
+       "options": [
+        {
+         "t": "Áp-ram"
+        },
+        {
+         "t": "Y-sơ-ra-ên"
+        },
+        {
+         "t": "Ê-sau"
+        },
+        {
+         "t": "Giu-đa"
+        }
+       ],
+       "a": 1,
+       "why": "Tên ngươi sẽ chẳng làm Gia-cốp nữa, nhưng tên là Y-sơ-ra-ên.",
+       "ref": "Sáng thế ký 32:28"
+      }
+     ]
+    },
+    {
+     "id": "gio-sep",
+     "emoji": "🧥",
+     "era": "Cựu Ước",
+     "title": "Giô-sép: từ tù nhân đến tể tướng",
+     "intro": "Giô-sép bị các anh bán làm nô lệ, bị vu oan vào tù, nhưng Đức Chúa Trời ở cùng ông và dùng ông cứu cả gia đình khỏi nạn đói.",
+     "readings": [
+      {
+       "book": "GEN",
+       "from": 37,
+       "to": 37,
+       "label": "Sáng thế ký 37"
+      },
+      {
+       "book": "GEN",
+       "from": 39,
+       "to": 39,
+       "label": "Sáng thế ký 39"
+      },
+      {
+       "book": "GEN",
+       "from": 41,
+       "to": 41,
+       "label": "Sáng thế ký 41"
+      },
+      {
+       "book": "GEN",
+       "from": 45,
+       "to": 45,
+       "label": "Sáng thế ký 45"
+      }
+     ],
+     "verse": {
+      "ref": "Sáng thế ký 50:20",
+      "book": "GEN",
+      "ch": 50,
+      "v": [
+       20,
+       20
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Gia-cốp may cho Giô-sép vật gì đặc biệt?",
+       "options": [
+        {
+         "t": "Một áo có nhiều sắc",
+         "img": "🧥"
+        },
+        {
+         "t": "Một mão vàng",
+         "img": "👑"
+        },
+        {
+         "t": "Một đôi dép",
+         "img": "🩴"
+        },
+        {
+         "t": "Một cây gậy",
+         "img": "🦯"
+        }
+       ],
+       "a": 0,
+       "why": "Y-sơ-ra-ên may cho Giô-sép một cái áo có nhiều sắc.",
+       "ref": "Sáng thế ký 37:3"
+      },
+      {
+       "q": "Các anh bán Giô-sép với giá bao nhiêu?",
+       "options": [
+        {
+         "t": "Mười miếng bạc"
+        },
+        {
+         "t": "Hai mươi miếng bạc"
+        },
+        {
+         "t": "Ba mươi miếng bạc"
+        },
+        {
+         "t": "Một trăm miếng bạc"
+        }
+       ],
+       "a": 1,
+       "why": "Họ bán Giô-sép giá hai mươi miếng bạc cho dân Ích-ma-ên.",
+       "ref": "Sáng thế ký 37:28"
+      },
+      {
+       "q": "Pha-ra-ôn chiêm bao thấy bảy con bò mập và bảy con bò gầy. Điều đó có nghĩa gì?",
+       "options": [
+        {
+         "t": "Bảy năm chiến tranh"
+        },
+        {
+         "t": "Bảy năm được mùa rồi bảy năm đói kém"
+        },
+        {
+         "t": "Bảy vị vua"
+        },
+        {
+         "t": "Bảy ngày lễ"
+        }
+       ],
+       "a": 1,
+       "why": "Bảy con bò tốt là bảy năm được mùa; bảy con bò xấu là bảy năm đói kém.",
+       "ref": "Sáng thế ký 41:26-30"
+      },
+      {
+       "q": "Ai đã giúp Giô-sép giải nghĩa các giấc chiêm bao?",
+       "options": [
+        {
+         "t": "Các thuật sĩ Ê-díp-tô"
+        },
+        {
+         "t": "Đức Chúa Trời"
+        },
+        {
+         "t": "Cha ông là Gia-cốp"
+        },
+        {
+         "t": "Pha-ra-ôn"
+        }
+       ],
+       "a": 1,
+       "why": "Giô-sép thưa: Đó chẳng phải tôi, ấy là Đức Chúa Trời đáp lại.",
+       "ref": "Sáng thế ký 41:16"
+      },
+      {
+       "q": "Khi gặp lại các anh, Giô-sép đã làm gì?",
+       "options": [
+        {
+         "t": "Báo thù họ"
+        },
+        {
+         "t": "Tha thứ và chăm sóc họ"
+        },
+        {
+         "t": "Đuổi họ về"
+        },
+        {
+         "t": "Bắt tất cả vào tù"
+        }
+       ],
+       "a": 1,
+       "why": "Giô-sép nói: Các anh toan hại tôi, nhưng Đức Chúa Trời lại toan làm điều ích cho tôi… tôi sẽ cấp dưỡng các anh.",
+       "ref": "Sáng thế ký 50:20-21"
+      }
+     ]
+    },
+    {
+     "id": "xuat-ai-cap",
+     "emoji": "🌊",
+     "era": "Cựu Ước",
+     "title": "Môi-se và cuộc ra khỏi Ê-díp-tô",
+     "intro": "Dân Y-sơ-ra-ên làm nô lệ tại Ê-díp-tô. Đức Chúa Trời gọi Môi-se từ bụi gai cháy, giáng mười tai vạ, rồi rẽ Biển Đỏ để giải cứu dân Ngài.",
+     "readings": [
+      {
+       "book": "EXO",
+       "from": 2,
+       "to": 2,
+       "label": "Xuất Ê-díp-tô ký 2"
+      },
+      {
+       "book": "EXO",
+       "from": 3,
+       "to": 3,
+       "label": "Xuất Ê-díp-tô ký 3"
+      },
+      {
+       "book": "EXO",
+       "from": 12,
+       "to": 12,
+       "label": "Xuất Ê-díp-tô ký 12"
+      },
+      {
+       "book": "EXO",
+       "from": 14,
+       "to": 14,
+       "label": "Xuất Ê-díp-tô ký 14"
+      }
+     ],
+     "verse": {
+      "ref": "Xuất Ê-díp-tô ký 14:14",
+      "book": "EXO",
+      "ch": 14,
+      "v": [
+       14,
+       14
+      ],
+      "text": "Đức Giê-hô-va sẽ chiến cự cho, còn các ngươi cứ yên lặng."
+     },
+     "quiz": [
+      {
+       "q": "Khi còn nhỏ, Môi-se được đặt trong vật gì trên sông?",
+       "options": [
+        {
+         "t": "Một cái rương bằng cói",
+         "img": "🧺"
+        },
+        {
+         "t": "Một chiếc thuyền lớn",
+         "img": "⛵"
+        },
+        {
+         "t": "Một cái bè gỗ",
+         "img": "🪵"
+        },
+        {
+         "t": "Một cái bình",
+         "img": "🏺"
+        }
+       ],
+       "a": 0,
+       "why": "Mẹ người lấy một cái rương mây, đặt đứa trẻ vào, rồi để rương trong đám sậy dọc theo mé sông.",
+       "ref": "Xuất Ê-díp-tô ký 2:3"
+      },
+      {
+       "q": "Đức Chúa Trời hiện ra với Môi-se trong điều gì?",
+       "options": [
+        {
+         "t": "Một cơn gió lớn",
+         "img": "🌪️"
+        },
+        {
+         "t": "Một bụi gai cháy mà không tàn",
+         "img": "🔥"
+        },
+        {
+         "t": "Một đám mây",
+         "img": "☁️"
+        },
+        {
+         "t": "Một giấc chiêm bao",
+         "img": "💤"
+        }
+       ],
+       "a": 1,
+       "why": "Bụi gai cháy lửa, nhưng không hề tàn.",
+       "ref": "Xuất Ê-díp-tô ký 3:2"
+      },
+      {
+       "q": "Trong đêm Lễ Vượt Qua, dân Y-sơ-ra-ên bôi huyết chiên con ở đâu?",
+       "options": [
+        {
+         "t": "Trên mái nhà"
+        },
+        {
+         "t": "Trên cây cột và mày cửa"
+        },
+        {
+         "t": "Trên áo"
+        },
+        {
+         "t": "Trên bàn thờ"
+        }
+       ],
+       "a": 1,
+       "why": "Họ lấy huyết bôi trên hai cây cột và mày cửa của nhà.",
+       "ref": "Xuất Ê-díp-tô ký 12:7"
+      },
+      {
+       "q": "Đức Chúa Trời đã làm gì với Biển Đỏ?",
+       "options": [
+        {
+         "t": "Làm nước biển khô thành đất khô cho dân đi qua",
+         "img": "🌊"
+        },
+        {
+         "t": "Làm biển đóng băng",
+         "img": "🧊"
+        },
+        {
+         "t": "Ban một chiếc cầu",
+         "img": "🌉"
+        },
+        {
+         "t": "Ban nhiều thuyền",
+         "img": "⛵"
+        }
+       ],
+       "a": 0,
+       "why": "Đức Giê-hô-va dẫn trận gió đông thổi mạnh… biển bày ra khô, nước phân rẽ; dân đi giữa lòng biển như trên đất cạn.",
+       "ref": "Xuất Ê-díp-tô ký 14:21-22"
+      },
+      {
+       "q": "Có bao nhiêu tai vạ giáng trên xứ Ê-díp-tô?",
+       "options": [
+        {
+         "t": "Bảy"
+        },
+        {
+         "t": "Mười"
+        },
+        {
+         "t": "Mười hai"
+        },
+        {
+         "t": "Bốn mươi"
+        }
+       ],
+       "a": 1,
+       "why": "Mười tai vạ, từ nước hóa ra huyết đến con trưởng nam bị chết.",
+       "ref": "Xuất Ê-díp-tô ký 7–12"
+      }
+     ]
+    },
+    {
+     "id": "luat-phap",
+     "emoji": "📜",
+     "era": "Cựu Ước",
+     "title": "Mười điều răn và bốn mươi năm đồng vắng",
+     "intro": "Tại núi Si-na-i, Đức Chúa Trời ban Mười Điều Răn. Trong đồng vắng, Ngài nuôi dân bằng ma-na; nhưng vì không tin, dân phải lưu lạc bốn mươi năm.",
+     "readings": [
+      {
+       "book": "EXO",
+       "from": 16,
+       "to": 16,
+       "label": "Xuất Ê-díp-tô ký 16"
+      },
+      {
+       "book": "EXO",
+       "from": 20,
+       "to": 20,
+       "label": "Xuất Ê-díp-tô ký 20"
+      },
+      {
+       "book": "NUM",
+       "from": 13,
+       "to": 13,
+       "label": "Dân số ký 13"
+      },
+      {
+       "book": "NUM",
+       "from": 14,
+       "to": 14,
+       "label": "Dân số ký 14"
+      }
+     ],
+     "verse": {
+      "ref": "Xuất Ê-díp-tô ký 20:3",
+      "book": "EXO",
+      "ch": 20,
+      "v": [
+       3,
+       3
+      ],
+      "text": "Trước mặt ta, ngươi chớ có các thần khác."
+     },
+     "quiz": [
+      {
+       "q": "Đức Chúa Trời nuôi dân Y-sơ-ra-ên trong đồng vắng bằng thức ăn gì từ trời?",
+       "options": [
+        {
+         "t": "Ma-na",
+         "img": "🍞"
+        },
+        {
+         "t": "Trái cây",
+         "img": "🍎"
+        },
+        {
+         "t": "Cá",
+         "img": "🐟"
+        },
+        {
+         "t": "Mật ong",
+         "img": "🍯"
+        }
+       ],
+       "a": 0,
+       "why": "Nhà Y-sơ-ra-ên đặt tên lương thực nầy là ma-na.",
+       "ref": "Xuất Ê-díp-tô ký 16:31"
+      },
+      {
+       "q": "Mười Điều Răn được ban trên núi nào?",
+       "options": [
+        {
+         "t": "Núi Cạt-mên"
+        },
+        {
+         "t": "Núi Si-na-i"
+        },
+        {
+         "t": "Núi Ô-li-ve"
+        },
+        {
+         "t": "Núi Mô-ri-a"
+        }
+       ],
+       "a": 1,
+       "why": "Đức Giê-hô-va giáng lâm trên đỉnh núi Si-na-i.",
+       "ref": "Xuất Ê-díp-tô ký 19:20"
+      },
+      {
+       "q": "Môi-se sai bao nhiêu người đi do thám xứ Ca-na-an?",
+       "options": [
+        {
+         "t": "Hai"
+        },
+        {
+         "t": "Bảy"
+        },
+        {
+         "t": "Mười hai"
+        },
+        {
+         "t": "Bốn mươi"
+        }
+       ],
+       "a": 2,
+       "why": "Môi-se sai mười hai người, mỗi chi phái một người.",
+       "ref": "Dân số ký 13:2"
+      },
+      {
+       "q": "Hai người do thám nào tin cậy Đức Chúa Trời và khuyên dân vào xứ?",
+       "options": [
+        {
+         "t": "Giô-suê và Ca-lép"
+        },
+        {
+         "t": "A-rôn và Mi-ri-am"
+        },
+        {
+         "t": "Đa-vít và Giô-na-than"
+        },
+        {
+         "t": "Nô-ê và Sem"
+        }
+       ],
+       "a": 0,
+       "why": "Giô-suê và Ca-lép nói: Nếu Đức Giê-hô-va đẹp lòng chúng ta, ắt sẽ đem chúng ta vào xứ.",
+       "ref": "Dân số ký 14:6-8"
+      },
+      {
+       "q": "Vì không tin, dân Y-sơ-ra-ên phải lưu lạc trong đồng vắng bao lâu?",
+       "options": [
+        {
+         "t": "4 năm"
+        },
+        {
+         "t": "14 năm"
+        },
+        {
+         "t": "40 năm"
+        },
+        {
+         "t": "70 năm"
+        }
+       ],
+       "a": 2,
+       "why": "Con cái các ngươi sẽ chăn chiên nơi đồng vắng trong bốn mươi năm.",
+       "ref": "Dân số ký 14:33"
+      }
+     ]
+    },
+    {
+     "id": "vao-xu-hua",
+     "emoji": "🎺",
+     "era": "Cựu Ước",
+     "title": "Vào xứ hứa và thời các quan xét",
+     "intro": "Giô-suê dẫn dân vào xứ Ca-na-an; tường thành Giê-ri-cô sụp đổ. Thời các quan xét, Đức Chúa Trời dấy lên những người giải cứu như Ghê-đê-ôn, và câu chuyện Ru-tơ cho thấy lòng trung tín.",
+     "readings": [
+      {
+       "book": "JOS",
+       "from": 1,
+       "to": 1,
+       "label": "Giô-suê 1"
+      },
+      {
+       "book": "JOS",
+       "from": 6,
+       "to": 6,
+       "label": "Giô-suê 6"
+      },
+      {
+       "book": "JDG",
+       "from": 7,
+       "to": 7,
+       "label": "Các quan xét 7"
+      },
+      {
+       "book": "RUT",
+       "from": 1,
+       "to": 1,
+       "label": "Ru-tơ 1"
+      }
+     ],
+     "verse": {
+      "ref": "Giô-suê 1:9",
+      "book": "JOS",
+      "ch": 1,
+      "v": [
+       9,
+       9
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Dân Y-sơ-ra-ên đi vòng quanh thành Giê-ri-cô bao nhiêu lần vào ngày thứ bảy?",
+       "options": [
+        {
+         "t": "1 lần"
+        },
+        {
+         "t": "3 lần"
+        },
+        {
+         "t": "7 lần"
+        },
+        {
+         "t": "12 lần"
+        }
+       ],
+       "a": 2,
+       "why": "Ngày thứ bảy… đi vòng chung quanh thành bảy lần.",
+       "ref": "Giô-suê 6:15"
+      },
+      {
+       "q": "Điều gì xảy ra khi dân thổi kèn và la lớn?",
+       "options": [
+        {
+         "t": "Tường thành Giê-ri-cô sụp đổ",
+         "img": "🧱"
+        },
+        {
+         "t": "Trời mưa",
+         "img": "🌧️"
+        },
+        {
+         "t": "Sông cạn",
+         "img": "🏞️"
+        },
+        {
+         "t": "Kẻ thù bỏ chạy về nhà",
+         "img": "🏃"
+        }
+       ],
+       "a": 0,
+       "why": "Dân sự la lớn lên, và vách thành liền ngã sập.",
+       "ref": "Giô-suê 6:20"
+      },
+      {
+       "q": "Ghê-đê-ôn chiến thắng quân Ma-đi-an với bao nhiêu người?",
+       "options": [
+        {
+         "t": "300 người"
+        },
+        {
+         "t": "3.000 người"
+        },
+        {
+         "t": "10.000 người"
+        },
+        {
+         "t": "32.000 người"
+        }
+       ],
+       "a": 0,
+       "why": "Ta sẽ dùng ba trăm người… mà giải cứu các ngươi.",
+       "ref": "Các quan xét 7:7"
+      },
+      {
+       "q": "Ru-tơ là người xứ nào?",
+       "options": [
+        {
+         "t": "Ê-díp-tô"
+        },
+        {
+         "t": "Mô-áp"
+        },
+        {
+         "t": "Ba-by-lôn"
+        },
+        {
+         "t": "Y-sơ-ra-ên"
+        }
+       ],
+       "a": 1,
+       "why": "Ru-tơ là người Mô-áp, dâu của Na-ô-mi.",
+       "ref": "Ru-tơ 1:4, 22"
+      },
+      {
+       "q": "Ru-tơ là bà cố của vị vua nào?",
+       "options": [
+        {
+         "t": "Sau-lơ"
+        },
+        {
+         "t": "Đa-vít"
+        },
+        {
+         "t": "Sa-lô-môn"
+        },
+        {
+         "t": "Ê-xê-chia"
+        }
+       ],
+       "a": 1,
+       "why": "Ô-bết sanh Y-sai, Y-sai sanh Đa-vít.",
+       "ref": "Ru-tơ 4:17"
+      }
+     ]
+    },
+    {
+     "id": "cac-vua",
+     "emoji": "👑",
+     "era": "Cựu Ước",
+     "title": "Các vua: Sau-lơ, Đa-vít, Sa-lô-môn",
+     "intro": "Y-sơ-ra-ên xin có vua. Đức Chúa Trời chọn Đa-vít, chàng chăn chiên có lòng theo Chúa. Sa-lô-môn, con ông, xin sự khôn ngoan và xây đền thờ.",
+     "readings": [
+      {
+       "book": "1SA",
+       "from": 16,
+       "to": 16,
+       "label": "1 Sa-mu-ên 16"
+      },
+      {
+       "book": "1SA",
+       "from": 17,
+       "to": 17,
+       "label": "1 Sa-mu-ên 17"
+      },
+      {
+       "book": "2SA",
+       "from": 7,
+       "to": 7,
+       "label": "2 Sa-mu-ên 7"
+      },
+      {
+       "book": "1KI",
+       "from": 3,
+       "to": 3,
+       "label": "1 Các vua 3"
+      }
+     ],
+     "verse": {
+      "ref": "1 Sa-mu-ên 16:7",
+      "book": "1SA",
+      "ch": 16,
+      "v": [
+       7,
+       7
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Trước khi làm vua, Đa-vít làm nghề gì?",
+       "options": [
+        {
+         "t": "Chăn chiên",
+         "img": "🐑"
+        },
+        {
+         "t": "Đánh cá",
+         "img": "🎣"
+        },
+        {
+         "t": "Thợ mộc",
+         "img": "🪚"
+        },
+        {
+         "t": "Lính",
+         "img": "⚔️"
+        }
+       ],
+       "a": 0,
+       "why": "Đa-vít, con út, đang chăn chiên.",
+       "ref": "1 Sa-mu-ên 16:11"
+      },
+      {
+       "q": "Đa-vít đánh bại Gô-li-át bằng gì?",
+       "options": [
+        {
+         "t": "Gươm và giáo",
+         "img": "⚔️"
+        },
+        {
+         "t": "Cái trành và hòn đá",
+         "img": "🪨"
+        },
+        {
+         "t": "Cung tên",
+         "img": "🏹"
+        },
+        {
+         "t": "Đội quân lớn",
+         "img": "🛡️"
+        }
+       ],
+       "a": 1,
+       "why": "Đa-vít thắng người Phi-li-tin bằng cái trành và hòn đá.",
+       "ref": "1 Sa-mu-ên 17:50"
+      },
+      {
+       "q": "Ai là vị vua đầu tiên của Y-sơ-ra-ên?",
+       "options": [
+        {
+         "t": "Đa-vít"
+        },
+        {
+         "t": "Sau-lơ"
+        },
+        {
+         "t": "Sa-lô-môn"
+        },
+        {
+         "t": "Sa-mu-ên"
+        }
+       ],
+       "a": 1,
+       "why": "Sa-mu-ên xức dầu cho Sau-lơ làm vua.",
+       "ref": "1 Sa-mu-ên 10:1"
+      },
+      {
+       "q": "Sa-lô-môn đã xin Đức Chúa Trời điều gì?",
+       "options": [
+        {
+         "t": "Giàu có",
+         "img": "💰"
+        },
+        {
+         "t": "Sống lâu",
+         "img": "⏳"
+        },
+        {
+         "t": "Tấm lòng khôn sáng để xét đoán dân",
+         "img": "🧠"
+        },
+        {
+         "t": "Thắng kẻ thù",
+         "img": "⚔️"
+        }
+       ],
+       "a": 2,
+       "why": "Xin ban cho kẻ tôi tớ Chúa tấm lòng khôn sáng, để đoán xét dân sự Ngài.",
+       "ref": "1 Các vua 3:9"
+      },
+      {
+       "q": "Ai đã xây đền thờ cho Đức Giê-hô-va tại Giê-ru-sa-lem?",
+       "options": [
+        {
+         "t": "Đa-vít"
+        },
+        {
+         "t": "Sa-lô-môn"
+        },
+        {
+         "t": "Môi-se"
+        },
+        {
+         "t": "Sau-lơ"
+        }
+       ],
+       "a": 1,
+       "why": "Sa-lô-môn khởi xây đền của Đức Giê-hô-va.",
+       "ref": "1 Các vua 6:1"
+      }
+     ]
+    },
+    {
+     "id": "tien-tri",
+     "emoji": "🔥",
+     "era": "Cựu Ước",
+     "title": "Các tiên tri: tiếng nói của Đức Chúa Trời",
+     "intro": "Khi dân sự xa cách Chúa, Ngài sai các tiên tri như Ê-li, Ê-sai, Giê-rê-mi, Giô-na để kêu gọi ăn năn và báo trước về Đấng Mê-si sẽ đến.",
+     "readings": [
+      {
+       "book": "1KI",
+       "from": 18,
+       "to": 18,
+       "label": "1 Các vua 18"
+      },
+      {
+       "book": "ISA",
+       "from": 53,
+       "to": 53,
+       "label": "Ê-sai 53"
+      },
+      {
+       "book": "JER",
+       "from": 1,
+       "to": 1,
+       "label": "Giê-rê-mi 1"
+      },
+      {
+       "book": "JON",
+       "from": 1,
+       "to": 3,
+       "label": "Giô-na 1–3"
+      }
+     ],
+     "verse": {
+      "ref": "Ê-sai 53:5",
+      "book": "ISA",
+      "ch": 53,
+      "v": [
+       5,
+       5
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Trên núi Cạt-mên, Ê-li cầu nguyện và điều gì xảy ra?",
+       "options": [
+        {
+         "t": "Lửa từ trời giáng xuống",
+         "img": "🔥"
+        },
+        {
+         "t": "Mưa đá",
+         "img": "🧊"
+        },
+        {
+         "t": "Động đất",
+         "img": "🌋"
+        },
+        {
+         "t": "Mặt trời đứng lại",
+         "img": "☀️"
+        }
+       ],
+       "a": 0,
+       "why": "Lửa của Đức Giê-hô-va bèn giáng xuống, thiêu đốt của lễ thiêu.",
+       "ref": "1 Các vua 18:38"
+      },
+      {
+       "q": "Ai nói với Đức Chúa Trời: 'Có tôi đây; xin hãy sai tôi'?",
+       "options": [
+        {
+         "t": "Giô-na"
+        },
+        {
+         "t": "Ê-sai"
+        },
+        {
+         "t": "Đa-ni-ên"
+        },
+        {
+         "t": "Ê-li"
+        }
+       ],
+       "a": 1,
+       "why": "Ê-sai thưa: Có tôi đây; xin hãy sai tôi.",
+       "ref": "Ê-sai 6:8"
+      },
+      {
+       "q": "Ê-sai 53 nói về Đấng chịu khổ vì tội lỗi chúng ta. Đấng ấy là ai?",
+       "options": [
+        {
+         "t": "Vua Đa-vít"
+        },
+        {
+         "t": "Chúa Jêsus Christ"
+        },
+        {
+         "t": "Tiên tri Ê-sai"
+        },
+        {
+         "t": "Môi-se"
+        }
+       ],
+       "a": 1,
+       "why": "Phi-líp giảng Ê-sai 53 cho hoạn quan và rao truyền Jêsus cho người.",
+       "ref": "Công vụ 8:32-35"
+      },
+      {
+       "q": "Giô-na ở trong bụng cá lớn bao lâu?",
+       "options": [
+        {
+         "t": "1 ngày"
+        },
+        {
+         "t": "3 ngày 3 đêm"
+        },
+        {
+         "t": "7 ngày"
+        },
+        {
+         "t": "40 ngày"
+        }
+       ],
+       "a": 1,
+       "why": "Giô-na ở trong bụng cá ba ngày ba đêm.",
+       "ref": "Giô-na 1:17"
+      },
+      {
+       "q": "Đức Chúa Trời sai Giô-na đến thành nào?",
+       "options": [
+        {
+         "t": "Giê-ru-sa-lem"
+        },
+        {
+         "t": "Ni-ni-ve"
+        },
+        {
+         "t": "Ba-by-lôn"
+        },
+        {
+         "t": "Giê-ri-cô"
+        }
+       ],
+       "a": 1,
+       "why": "Ngươi khá chờ dậy, đi đến thành lớn Ni-ni-ve.",
+       "ref": "Giô-na 1:2"
+      }
+     ]
+    },
+    {
+     "id": "luu-day",
+     "emoji": "🦁",
+     "era": "Cựu Ước",
+     "title": "Lưu đày và trở về",
+     "intro": "Dân sự bị bắt sang Ba-by-lôn, nhưng những người như Đa-ni-ên vẫn trung tín. Đức Chúa Trời đem dân trở về, xây lại đền thờ và vách thành Giê-ru-sa-lem.",
+     "readings": [
+      {
+       "book": "DAN",
+       "from": 3,
+       "to": 3,
+       "label": "Đa-ni-ên 3"
+      },
+      {
+       "book": "DAN",
+       "from": 6,
+       "to": 6,
+       "label": "Đa-ni-ên 6"
+      },
+      {
+       "book": "EZR",
+       "from": 1,
+       "to": 1,
+       "label": "E-xơ-ra 1"
+      },
+      {
+       "book": "NEH",
+       "from": 2,
+       "to": 2,
+       "label": "Nê-hê-mi 2"
+      },
+      {
+       "book": "EST",
+       "from": 4,
+       "to": 4,
+       "label": "Ê-xơ-tê 4"
+      }
+     ],
+     "verse": {
+      "ref": "Nê-hê-mi 8:10",
+      "book": "NEH",
+      "ch": 8,
+      "v": [
+       10,
+       10
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Ba người bạn của Đa-ni-ên bị ném vào đâu vì không quỳ lạy pho tượng vàng?",
+       "options": [
+        {
+         "t": "Lò lửa hực",
+         "img": "🔥"
+        },
+        {
+         "t": "Hang sư tử",
+         "img": "🦁"
+        },
+        {
+         "t": "Biển",
+         "img": "🌊"
+        },
+        {
+         "t": "Ngục tối",
+         "img": "⛓️"
+        }
+       ],
+       "a": 0,
+       "why": "Sa-đơ-rắc, Mê-sác và A-bết-Nê-gô bị quăng vào giữa lò lửa hực.",
+       "ref": "Đa-ni-ên 3:20-23"
+      },
+      {
+       "q": "Đa-ni-ên bị quăng vào hang sư tử vì đã làm gì?",
+       "options": [
+        {
+         "t": "Ăn cắp"
+        },
+        {
+         "t": "Tiếp tục cầu nguyện cùng Đức Chúa Trời"
+        },
+        {
+         "t": "Chống lại vua"
+        },
+        {
+         "t": "Bỏ trốn"
+        }
+       ],
+       "a": 1,
+       "why": "Đa-ni-ên quì gối, cầu nguyện, mỗi ngày ba lần, như vẫn làm trước.",
+       "ref": "Đa-ni-ên 6:10"
+      },
+      {
+       "q": "Ai đã sai thiên sứ bịt miệng sư tử để cứu Đa-ni-ên?",
+       "options": [
+        {
+         "t": "Vua Đa-ri-út"
+        },
+        {
+         "t": "Đức Chúa Trời"
+        },
+        {
+         "t": "Các bạn của Đa-ni-ên"
+        },
+        {
+         "t": "Người giữ hang"
+        }
+       ],
+       "a": 1,
+       "why": "Đức Chúa Trời tôi đã sai thiên sứ Ngài, và bịt miệng các sư tử.",
+       "ref": "Đa-ni-ên 6:22"
+      },
+      {
+       "q": "Vua nào ra chiếu cho dân Giu-đa trở về xây lại đền thờ?",
+       "options": [
+        {
+         "t": "Nê-bu-cát-nết-sa"
+        },
+        {
+         "t": "Si-ru, vua Phe-rơ-sơ"
+        },
+        {
+         "t": "Pha-ra-ôn"
+        },
+        {
+         "t": "Hê-rốt"
+        }
+       ],
+       "a": 1,
+       "why": "Si-ru, vua Phe-rơ-sơ… truyền xây cất cho Ngài một đền thờ tại Giê-ru-sa-lem.",
+       "ref": "E-xơ-ra 1:1-3"
+      },
+      {
+       "q": "Vách thành Giê-ru-sa-lem được xây xong trong bao nhiêu ngày dưới sự lãnh đạo của Nê-hê-mi?",
+       "options": [
+        {
+         "t": "7 ngày"
+        },
+        {
+         "t": "40 ngày"
+        },
+        {
+         "t": "52 ngày"
+        },
+        {
+         "t": "1 năm"
+        }
+       ],
+       "a": 2,
+       "why": "Vách thành xây xong… trong năm mươi hai ngày.",
+       "ref": "Nê-hê-mi 6:15"
+      }
+     ]
+    },
+    {
+     "id": "giang-sinh",
+     "emoji": "⭐",
+     "era": "Tân Ước",
+     "title": "Chúa Jêsus giáng sinh",
+     "intro": "Đúng như lời các tiên tri, Con Đức Chúa Trời đã đến thế gian. Ngài sinh ra tại Bết-lê-hem, nằm trong máng cỏ, được các thiên sứ báo tin cho những người chăn chiên.",
+     "readings": [
+      {
+       "book": "LUK",
+       "from": 1,
+       "to": 1,
+       "label": "Lu-ca 1"
+      },
+      {
+       "book": "LUK",
+       "from": 2,
+       "to": 2,
+       "label": "Lu-ca 2"
+      },
+      {
+       "book": "MAT",
+       "from": 2,
+       "to": 2,
+       "label": "Ma-thi-ơ 2"
+      }
+     ],
+     "verse": {
+      "ref": "Lu-ca 2:11",
+      "book": "LUK",
+      "ch": 2,
+      "v": [
+       11,
+       11
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Thiên sứ nào báo tin cho Ma-ri rằng cô sẽ sinh Con Đức Chúa Trời?",
+       "options": [
+        {
+         "t": "Mi-ca-ên"
+        },
+        {
+         "t": "Gáp-ri-ên"
+        },
+        {
+         "t": "Ra-pha-ên"
+        },
+        {
+         "t": "Không có tên"
+        }
+       ],
+       "a": 1,
+       "why": "Thiên sứ Gáp-ri-ên được Đức Chúa Trời sai đến một thầy đồng nữ… tên là Ma-ri.",
+       "ref": "Lu-ca 1:26-27"
+      },
+      {
+       "q": "Chúa Jêsus được sinh ra tại thành nào?",
+       "options": [
+        {
+         "t": "Na-xa-rét"
+        },
+        {
+         "t": "Giê-ru-sa-lem"
+        },
+        {
+         "t": "Bết-lê-hem"
+        },
+        {
+         "t": "Ca-bê-na-um"
+        }
+       ],
+       "a": 2,
+       "why": "Giô-sép… lên thành Đa-vít, gọi là Bết-lê-hem… Ma-ri sanh con trai đầu lòng.",
+       "ref": "Lu-ca 2:4-7"
+      },
+      {
+       "q": "Hài nhi Jêsus được đặt nằm ở đâu?",
+       "options": [
+        {
+         "t": "Trong máng cỏ",
+         "img": "🌾"
+        },
+        {
+         "t": "Trong cung điện",
+         "img": "🏰"
+        },
+        {
+         "t": "Trong đền thờ",
+         "img": "🏛️"
+        },
+        {
+         "t": "Trong nhà trọ",
+         "img": "🏨"
+        }
+       ],
+       "a": 0,
+       "why": "Lấy khăn bọc con mình, đặt nằm trong máng cỏ, vì nhà quán không có đủ chỗ ở.",
+       "ref": "Lu-ca 2:7"
+      },
+      {
+       "q": "Ai được thiên sứ báo tin vui trong đêm Chúa giáng sinh?",
+       "options": [
+        {
+         "t": "Các thầy tế lễ"
+        },
+        {
+         "t": "Những người chăn chiên",
+         "img": "🐑"
+        },
+        {
+         "t": "Vua Hê-rốt"
+        },
+        {
+         "t": "Các ngư phủ"
+        }
+       ],
+       "a": 1,
+       "why": "Ở gần đó có mấy kẻ chăn chiên trú ngoài đồng… một thiên sứ của Chúa đến gần họ.",
+       "ref": "Lu-ca 2:8-11"
+      },
+      {
+       "q": "Các bác sĩ từ phương đông dâng cho Chúa Jêsus những lễ vật gì?",
+       "options": [
+        {
+         "t": "Vàng, nhũ hương và một dược",
+         "img": "🎁"
+        },
+        {
+         "t": "Bánh và cá",
+         "img": "🐟"
+        },
+        {
+         "t": "Chiên con",
+         "img": "🐑"
+        },
+        {
+         "t": "Vải và lúa mì",
+         "img": "🌾"
+        }
+       ],
+       "a": 0,
+       "why": "Họ dâng cho Ngài những lễ vật, là vàng, nhũ hương, và một dược.",
+       "ref": "Ma-thi-ơ 2:11"
+      }
+     ]
+    },
+    {
+     "id": "loi-day",
+     "emoji": "⛰️",
+     "era": "Tân Ước",
+     "title": "Chúa Jêsus dạy dỗ và gọi môn đồ",
+     "intro": "Chúa Jêsus chịu phép báp-têm, kêu gọi các môn đồ và dạy họ về nước Đức Chúa Trời, nổi bật là Bài Giảng Trên Núi và lời cầu nguyện mẫu.",
+     "readings": [
+      {
+       "book": "MAT",
+       "from": 3,
+       "to": 3,
+       "label": "Ma-thi-ơ 3"
+      },
+      {
+       "book": "MAT",
+       "from": 4,
+       "to": 4,
+       "label": "Ma-thi-ơ 4"
+      },
+      {
+       "book": "MAT",
+       "from": 5,
+       "to": 5,
+       "label": "Ma-thi-ơ 5"
+      },
+      {
+       "book": "MAT",
+       "from": 6,
+       "to": 6,
+       "label": "Ma-thi-ơ 6"
+      },
+      {
+       "book": "JHN",
+       "from": 3,
+       "to": 3,
+       "label": "Giăng 3"
+      }
+     ],
+     "verse": {
+      "ref": "Giăng 3:16",
+      "book": "JHN",
+      "ch": 3,
+      "v": [
+       16,
+       16
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Ai làm phép báp-têm cho Chúa Jêsus tại sông Giô-đanh?",
+       "options": [
+        {
+         "t": "Phi-e-rơ"
+        },
+        {
+         "t": "Giăng Báp-tít"
+        },
+        {
+         "t": "Môi-se"
+        },
+        {
+         "t": "Giăng, môn đồ yêu dấu"
+        }
+       ],
+       "a": 1,
+       "why": "Đức Chúa Jêsus từ xứ Ga-li-lê đến cùng Giăng tại sông Giô-đanh, đặng chịu người làm phép báp-têm.",
+       "ref": "Ma-thi-ơ 3:13"
+      },
+      {
+       "q": "Trước khi bắt đầu chức vụ, Chúa Jêsus kiêng ăn trong đồng vắng bao lâu?",
+       "options": [
+        {
+         "t": "3 ngày"
+        },
+        {
+         "t": "7 ngày"
+        },
+        {
+         "t": "40 ngày 40 đêm"
+        },
+        {
+         "t": "1 năm"
+        }
+       ],
+       "a": 2,
+       "why": "Ngài đã kiêng ăn bốn mươi ngày bốn mươi đêm rồi, thì đói.",
+       "ref": "Ma-thi-ơ 4:2"
+      },
+      {
+       "q": "Những môn đồ đầu tiên như Phi-e-rơ và Anh-rê làm nghề gì?",
+       "options": [
+        {
+         "t": "Đánh cá",
+         "img": "🎣"
+        },
+        {
+         "t": "Thâu thuế",
+         "img": "💰"
+        },
+        {
+         "t": "Thợ mộc",
+         "img": "🪚"
+        },
+        {
+         "t": "Chăn chiên",
+         "img": "🐑"
+        }
+       ],
+       "a": 0,
+       "why": "Ngài thấy hai anh em kia… đang thả lưới dưới biển, vì hai anh em vốn là người đánh cá. Ngài phán: Hãy theo ta, ta sẽ cho các ngươi nên tay đánh lưới người.",
+       "ref": "Ma-thi-ơ 4:18-19"
+      },
+      {
+       "q": "Chúa Jêsus có bao nhiêu sứ đồ?",
+       "options": [
+        {
+         "t": "7"
+        },
+        {
+         "t": "10"
+        },
+        {
+         "t": "12"
+        },
+        {
+         "t": "70"
+        }
+       ],
+       "a": 2,
+       "why": "Tên mười hai sứ đồ như sau nầy…",
+       "ref": "Ma-thi-ơ 10:2"
+      },
+      {
+       "q": "Lời cầu nguyện Chúa dạy bắt đầu bằng câu nào?",
+       "options": [
+        {
+         "t": "Lạy Cha chúng tôi ở trên trời",
+         "img": "🙏"
+        },
+        {
+         "t": "Hỡi Đức Giê-hô-va"
+        },
+        {
+         "t": "Phước cho những kẻ"
+        },
+        {
+         "t": "Ban đầu có Ngôi Lời"
+        }
+       ],
+       "a": 0,
+       "why": "Vậy các ngươi hãy cầu như vầy: Lạy Cha chúng tôi ở trên trời…",
+       "ref": "Ma-thi-ơ 6:9"
+      }
+     ]
+    },
+    {
+     "id": "phep-la",
+     "emoji": "🍞",
+     "era": "Tân Ước",
+     "title": "Phép lạ và ví dụ của Chúa Jêsus",
+     "intro": "Chúa Jêsus chữa lành, làm yên sóng gió, hóa bánh ra nhiều và dạy những ví dụ đơn sơ mà sâu sắc về tình yêu của Cha.",
+     "readings": [
+      {
+       "book": "JHN",
+       "from": 2,
+       "to": 2,
+       "label": "Giăng 2"
+      },
+      {
+       "book": "MRK",
+       "from": 4,
+       "to": 4,
+       "label": "Mác 4"
+      },
+      {
+       "book": "JHN",
+       "from": 6,
+       "to": 6,
+       "label": "Giăng 6"
+      },
+      {
+       "book": "LUK",
+       "from": 15,
+       "to": 15,
+       "label": "Lu-ca 15"
+      }
+     ],
+     "verse": {
+      "ref": "Giăng 6:35",
+      "book": "JHN",
+      "ch": 6,
+      "v": [
+       35,
+       35
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Phép lạ đầu tiên của Chúa Jêsus là gì?",
+       "options": [
+        {
+         "t": "Hóa nước thành rượu",
+         "img": "🍷"
+        },
+        {
+         "t": "Đi trên mặt nước",
+         "img": "🌊"
+        },
+        {
+         "t": "Chữa người mù",
+         "img": "👁️"
+        },
+        {
+         "t": "Hóa bánh ra nhiều",
+         "img": "🍞"
+        }
+       ],
+       "a": 0,
+       "why": "Ấy là phép lạ thứ nhứt mà Đức Chúa Jêsus đã làm, tại thành Ca-na, xứ Ga-li-lê.",
+       "ref": "Giăng 2:11"
+      },
+      {
+       "q": "Chúa Jêsus đã nuôi năm ngàn người bằng gì?",
+       "options": [
+        {
+         "t": "5 cái bánh và 2 con cá",
+         "img": "🍞"
+        },
+        {
+         "t": "7 cái bánh",
+         "img": "🥖"
+        },
+        {
+         "t": "12 giỏ trái cây",
+         "img": "🧺"
+        },
+        {
+         "t": "Ma-na từ trời",
+         "img": "✨"
+        }
+       ],
+       "a": 0,
+       "why": "Một đứa con trai có năm cái bánh mạch nha và hai con cá.",
+       "ref": "Giăng 6:9-10"
+      },
+      {
+       "q": "Khi bão nổi trên biển, Chúa Jêsus phán gì?",
+       "options": [
+        {
+         "t": "Hãy chèo nhanh lên!"
+        },
+        {
+         "t": "Hãy im đi, lặng đi!"
+        },
+        {
+         "t": "Hãy nhảy xuống nước!"
+        },
+        {
+         "t": "Hãy quay về!"
+        }
+       ],
+       "a": 1,
+       "why": "Ngài quở gió và phán cùng biển rằng: Hãy im đi, lặng đi! Gió liền dứt và đều yên lặng như tờ.",
+       "ref": "Mác 4:39"
+      },
+      {
+       "q": "Trong ví dụ, người chăn có 100 con chiên và mất 1 con. Người ấy làm gì?",
+       "options": [
+        {
+         "t": "Bỏ con chiên lạc"
+        },
+        {
+         "t": "Để 99 con lại, đi tìm con chiên lạc",
+         "img": "🐑"
+        },
+        {
+         "t": "Mua con chiên khác"
+        },
+        {
+         "t": "Đợi nó tự về"
+        }
+       ],
+       "a": 1,
+       "why": "Để chín mươi chín con nơi đồng vắng, đặng đi tìm con đã mất cho kỳ được.",
+       "ref": "Lu-ca 15:4"
+      },
+      {
+       "q": "Khi người con hoang đàng trở về, người cha đã làm gì?",
+       "options": [
+        {
+         "t": "Đuổi đi"
+        },
+        {
+         "t": "Bắt làm đầy tớ"
+        },
+        {
+         "t": "Chạy ra ôm và làm tiệc mừng",
+         "img": "🤗"
+        },
+        {
+         "t": "Không nói gì"
+        }
+       ],
+       "a": 2,
+       "why": "Cha thấy thì động lòng thương xót, chạy ra ôm lấy cổ mà hôn… Hãy ăn mừng.",
+       "ref": "Lu-ca 15:20-24"
+      }
+     ]
+    },
+    {
+     "id": "thap-tu",
+     "emoji": "✝️",
+     "era": "Tân Ước",
+     "title": "Thập tự giá và sự phục sinh",
+     "intro": "Chúa Jêsus chịu chết trên thập tự giá để chuộc tội cho chúng ta, và ngày thứ ba Ngài đã sống lại, chiến thắng sự chết.",
+     "readings": [
+      {
+       "book": "LUK",
+       "from": 22,
+       "to": 22,
+       "label": "Lu-ca 22"
+      },
+      {
+       "book": "JHN",
+       "from": 19,
+       "to": 19,
+       "label": "Giăng 19"
+      },
+      {
+       "book": "JHN",
+       "from": 20,
+       "to": 20,
+       "label": "Giăng 20"
+      },
+      {
+       "book": "ACT",
+       "from": 1,
+       "to": 1,
+       "label": "Công vụ các Sứ đồ 1"
+      }
+     ],
+     "verse": {
+      "ref": "Giăng 11:25",
+      "book": "JHN",
+      "ch": 11,
+      "v": [
+       25,
+       25
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Giu-đa Ích-ca-ri-ốt đã phản Chúa Jêsus với giá bao nhiêu?",
+       "options": [
+        {
+         "t": "Hai mươi miếng bạc"
+        },
+        {
+         "t": "Ba mươi miếng bạc"
+        },
+        {
+         "t": "Một trăm miếng bạc"
+        },
+        {
+         "t": "Một nén vàng"
+        }
+       ],
+       "a": 1,
+       "why": "Họ trả cho nó ba mươi miếng bạc.",
+       "ref": "Ma-thi-ơ 26:15"
+      },
+      {
+       "q": "Phi-e-rơ chối Chúa mấy lần trước khi gà gáy?",
+       "options": [
+        {
+         "t": "Một lần"
+        },
+        {
+         "t": "Hai lần"
+        },
+        {
+         "t": "Ba lần"
+        },
+        {
+         "t": "Bảy lần"
+        }
+       ],
+       "a": 2,
+       "why": "Hôm nay trước khi gà gáy, ngươi sẽ chối ta ba lần.",
+       "ref": "Lu-ca 22:61"
+      },
+      {
+       "q": "Chúa Jêsus bị đóng đinh tại nơi gọi là gì?",
+       "options": [
+        {
+         "t": "Ghết-sê-ma-nê"
+        },
+        {
+         "t": "Gô-gô-tha (Cái sọ)"
+        },
+        {
+         "t": "Núi Ô-li-ve"
+        },
+        {
+         "t": "Bết-lê-hem"
+        }
+       ],
+       "a": 1,
+       "why": "Ngài vác thập tự giá mình, đi đến ngoài thành, tại chỗ gọi là cái Sọ, tiếng Hê-bơ-rơ gọi là Gô-gô-tha.",
+       "ref": "Giăng 19:17"
+      },
+      {
+       "q": "Chúa Jêsus sống lại vào ngày thứ mấy?",
+       "options": [
+        {
+         "t": "Ngày thứ nhất"
+        },
+        {
+         "t": "Ngày thứ ba"
+        },
+        {
+         "t": "Ngày thứ bảy"
+        },
+        {
+         "t": "Ngày thứ bốn mươi"
+        }
+       ],
+       "a": 1,
+       "why": "Con người phải… bị giết, ngày thứ ba phải sống lại.",
+       "ref": "Lu-ca 24:7"
+      },
+      {
+       "q": "Ai là người đầu tiên thấy Chúa sống lại theo Phúc Âm Giăng?",
+       "options": [
+        {
+         "t": "Phi-e-rơ"
+        },
+        {
+         "t": "Ma-ri Ma-đơ-len"
+        },
+        {
+         "t": "Thô-ma"
+        },
+        {
+         "t": "Phi-lát"
+        }
+       ],
+       "a": 1,
+       "why": "Đức Chúa Jêsus phán: Hỡi Ma-ri! Ma-ri bèn xây lại.",
+       "ref": "Giăng 20:16"
+      }
+     ]
+    },
+    {
+     "id": "hoi-thanh",
+     "emoji": "🕊️",
+     "era": "Tân Ước",
+     "title": "Đức Thánh Linh và Hội thánh đầu tiên",
+     "intro": "Chúa thăng thiên và hứa ban Đức Thánh Linh. Ngày Lễ Ngũ Tuần, Thánh Linh giáng xuống, Hội thánh ra đời và Tin Lành lan ra khắp nơi.",
+     "readings": [
+      {
+       "book": "ACT",
+       "from": 1,
+       "to": 1,
+       "label": "Công vụ các Sứ đồ 1"
+      },
+      {
+       "book": "ACT",
+       "from": 2,
+       "to": 2,
+       "label": "Công vụ các Sứ đồ 2"
+      },
+      {
+       "book": "ACT",
+       "from": 9,
+       "to": 9,
+       "label": "Công vụ các Sứ đồ 9"
+      }
+     ],
+     "verse": {
+      "ref": "Công vụ các Sứ đồ 1:8",
+      "book": "ACT",
+      "ch": 1,
+      "v": [
+       8,
+       8
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Vào Lễ Ngũ Tuần, có gì hiện ra trên các môn đồ?",
+       "options": [
+        {
+         "t": "Những lưỡi rời rạc như lưỡi bằng lửa",
+         "img": "🔥"
+        },
+        {
+         "t": "Một chim bồ câu",
+         "img": "🕊️"
+        },
+        {
+         "t": "Một cầu vồng",
+         "img": "🌈"
+        },
+        {
+         "t": "Một ngôi sao",
+         "img": "⭐"
+        }
+       ],
+       "a": 0,
+       "why": "Các môn đồ thấy lưỡi rời rạc từng cái một, như lưỡi bằng lửa hiện ra, đậu trên mỗi người.",
+       "ref": "Công vụ 2:3"
+      },
+      {
+       "q": "Sau bài giảng của Phi-e-rơ, khoảng bao nhiêu người chịu phép báp-têm?",
+       "options": [
+        {
+         "t": "120"
+        },
+        {
+         "t": "500"
+        },
+        {
+         "t": "3.000"
+        },
+        {
+         "t": "5.000"
+        }
+       ],
+       "a": 2,
+       "why": "Trong ngày ấy, có độ ba ngàn người thêm vào Hội thánh.",
+       "ref": "Công vụ 2:41"
+      },
+      {
+       "q": "Chúa hứa các môn đồ sẽ làm chứng về Ngài đến đâu?",
+       "options": [
+        {
+         "t": "Chỉ tại Giê-ru-sa-lem"
+        },
+        {
+         "t": "Cho đến cùng trái đất",
+         "img": "🌏"
+        },
+        {
+         "t": "Chỉ trong đền thờ"
+        },
+        {
+         "t": "Chỉ cho người Do Thái"
+        }
+       ],
+       "a": 1,
+       "why": "…làm chứng về ta tại thành Giê-ru-sa-lem, cả xứ Giu-đê, xứ Sa-ma-ri, cho đến cùng trái đất.",
+       "ref": "Công vụ 1:8"
+      },
+      {
+       "q": "Sau-lơ (về sau là Phao-lô) gặp Chúa trên đường đi đến thành nào?",
+       "options": [
+        {
+         "t": "Rô-ma"
+        },
+        {
+         "t": "Đa-mách"
+        },
+        {
+         "t": "Ê-phê-sô"
+        },
+        {
+         "t": "Giê-ri-cô"
+        }
+       ],
+       "a": 1,
+       "why": "Sau-lơ đi đường gần đến thành Đa-mách, thình lình có ánh sáng từ trên trời chiếu bủa chung quanh người.",
+       "ref": "Công vụ 9:3"
+      },
+      {
+       "q": "Chúa Jêsus được cất lên trời trước mắt các môn đồ. Ngài được che khuất bởi gì?",
+       "options": [
+        {
+         "t": "Một đám mây",
+         "img": "☁️"
+        },
+        {
+         "t": "Một xe lửa",
+         "img": "🔥"
+        },
+        {
+         "t": "Một cơn gió",
+         "img": "🌪️"
+        },
+        {
+         "t": "Một ánh sáng",
+         "img": "✨"
+        }
+       ],
+       "a": 0,
+       "why": "Ngài được cất lên trong lúc các người đó nhìn xem Ngài, có một đám mây tiếp Ngài khuất đi.",
+       "ref": "Công vụ 1:9"
+      }
+     ]
+    },
+    {
+     "id": "truyen-giao",
+     "emoji": "🗺️",
+     "era": "Tân Ước",
+     "title": "Hành trình truyền giáo và các thư tín",
+     "intro": "Phao-lô cùng các bạn đồng lao đi khắp vùng Địa Trung Hải rao giảng Tin Lành, lập Hội thánh và viết thư dạy dỗ các tín hữu.",
+     "readings": [
+      {
+       "book": "ACT",
+       "from": 13,
+       "to": 13,
+       "label": "Công vụ các Sứ đồ 13"
+      },
+      {
+       "book": "ACT",
+       "from": 16,
+       "to": 16,
+       "label": "Công vụ các Sứ đồ 16"
+      },
+      {
+       "book": "ROM",
+       "from": 8,
+       "to": 8,
+       "label": "Rô-ma 8"
+      },
+      {
+       "book": "1CO",
+       "from": 13,
+       "to": 13,
+       "label": "1 Cô-rinh-tô 13"
+      }
+     ],
+     "verse": {
+      "ref": "Rô-ma 8:28",
+      "book": "ROM",
+      "ch": 8,
+      "v": [
+       28,
+       28
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Đức Thánh Linh biệt riêng ai cùng Sau-lơ (Phao-lô) cho chuyến truyền giáo đầu tiên?",
+       "options": [
+        {
+         "t": "Ba-na-ba"
+        },
+        {
+         "t": "Phi-e-rơ"
+        },
+        {
+         "t": "Giăng"
+        },
+        {
+         "t": "Lu-ca"
+        }
+       ],
+       "a": 0,
+       "why": "Hãy để riêng Ba-na-ba và Sau-lơ đặng làm công việc ta đã gọi làm.",
+       "ref": "Công vụ 13:2"
+      },
+      {
+       "q": "Ở thành Phi-líp, khi bị tù, Phao-lô và Si-la đã làm gì lúc nửa đêm?",
+       "options": [
+        {
+         "t": "Khóc than"
+        },
+        {
+         "t": "Cầu nguyện và hát ngợi khen Đức Chúa Trời",
+         "img": "🎶"
+        },
+        {
+         "t": "Tìm cách trốn"
+        },
+        {
+         "t": "Ngủ yên"
+        }
+       ],
+       "a": 1,
+       "why": "Ước chừng nửa đêm, Phao-lô và Si-la đương cầu nguyện, hát ngợi khen Đức Chúa Trời.",
+       "ref": "Công vụ 16:25"
+      },
+      {
+       "q": "Theo 1 Cô-rinh-tô 13, điều gì lớn hơn hết?",
+       "options": [
+        {
+         "t": "Đức tin"
+        },
+        {
+         "t": "Sự trông cậy"
+        },
+        {
+         "t": "Tình yêu thương",
+         "img": "❤️"
+        },
+        {
+         "t": "Sự khôn ngoan"
+        }
+       ],
+       "a": 2,
+       "why": "Nên bây giờ còn có ba điều nầy: đức tin, sự trông cậy, tình yêu thương; nhưng điều trọng hơn trong ba điều đó là tình yêu thương.",
+       "ref": "1 Cô-rinh-tô 13:13"
+      },
+      {
+       "q": "Theo Rô-ma 8, điều gì có thể phân rẽ chúng ta khỏi tình yêu của Đức Chúa Trời?",
+       "options": [
+        {
+         "t": "Sự chết"
+        },
+        {
+         "t": "Hoạn nạn"
+        },
+        {
+         "t": "Không có điều gì"
+        },
+        {
+         "t": "Tội lỗi"
+        }
+       ],
+       "a": 2,
+       "why": "Chẳng có… vật nào có thể phân rẽ chúng ta khỏi sự yêu thương mà Đức Chúa Trời đã chứng cho chúng ta trong Đức Chúa Jêsus Christ.",
+       "ref": "Rô-ma 8:38-39"
+      },
+      {
+       "q": "Ai đã viết nhiều thư tín nhất trong Tân Ước?",
+       "options": [
+        {
+         "t": "Phi-e-rơ"
+        },
+        {
+         "t": "Phao-lô"
+        },
+        {
+         "t": "Gia-cơ"
+        },
+        {
+         "t": "Giu-đe"
+        }
+       ],
+       "a": 1,
+       "why": "Các thư từ Rô-ma đến Phi-lê-môn đều do Phao-lô viết.",
+       "ref": "Rô-ma 1:1; Phi-lê-môn 1:1"
+      }
+     ]
+    },
+    {
+     "id": "khai-huyen",
+     "emoji": "🌅",
+     "era": "Tân Ước",
+     "title": "Trời mới đất mới",
+     "intro": "Kinh Thánh kết thúc bằng niềm hy vọng: Chúa Jêsus sẽ trở lại, Đức Chúa Trời ở cùng dân Ngài trong trời mới đất mới, nơi không còn nước mắt và sự chết.",
+     "readings": [
+      {
+       "book": "REV",
+       "from": 1,
+       "to": 1,
+       "label": "Khải huyền 1"
+      },
+      {
+       "book": "REV",
+       "from": 21,
+       "to": 21,
+       "label": "Khải huyền 21"
+      },
+      {
+       "book": "REV",
+       "from": 22,
+       "to": 22,
+       "label": "Khải huyền 22"
+      }
+     ],
+     "verse": {
+      "ref": "Khải huyền 21:4",
+      "book": "REV",
+      "ch": 21,
+      "v": [
+       4,
+       4
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Sứ đồ Giăng nhận sự mặc khải khi đang ở đâu?",
+       "options": [
+        {
+         "t": "Đảo Bát-mô",
+         "img": "🏝️"
+        },
+        {
+         "t": "Thành Rô-ma",
+         "img": "🏛️"
+        },
+        {
+         "t": "Núi Si-na-i",
+         "img": "⛰️"
+        },
+        {
+         "t": "Thành Giê-ru-sa-lem",
+         "img": "🏙️"
+        }
+       ],
+       "a": 0,
+       "why": "Tôi là Giăng… ở trong đảo gọi là Bát-mô.",
+       "ref": "Khải huyền 1:9"
+      },
+      {
+       "q": "Trong trời mới đất mới, điều gì sẽ không còn nữa?",
+       "options": [
+        {
+         "t": "Ánh sáng"
+        },
+        {
+         "t": "Sự chết và nước mắt"
+        },
+        {
+         "t": "Bài ca ngợi khen"
+        },
+        {
+         "t": "Sự sống"
+        }
+       ],
+       "a": 1,
+       "why": "Ngài sẽ lau ráo hết nước mắt… sẽ không có sự chết.",
+       "ref": "Khải huyền 21:4"
+      },
+      {
+       "q": "Chúa Jêsus phán: 'Ta là An-pha và Ô-mê-ga'. Điều đó có nghĩa là gì?",
+       "options": [
+        {
+         "t": "Ngài là đầu tiên và cuối cùng"
+        },
+        {
+         "t": "Ngài là vua của Hy Lạp"
+        },
+        {
+         "t": "Ngài có hai tên"
+        },
+        {
+         "t": "Ngài là thiên sứ"
+        }
+       ],
+       "a": 0,
+       "why": "Ta là An-pha và Ô-mê-ga, là thứ nhứt và là sau chót, là đầu và là rốt.",
+       "ref": "Khải huyền 22:13"
+      },
+      {
+       "q": "Gần cuối sách Khải huyền, Hội thánh dâng lời cầu nguyện nào?",
+       "options": [
+        {
+         "t": "A-men, lạy Đức Chúa Jêsus, xin hãy đến!"
+        },
+        {
+         "t": "Lạy Cha chúng tôi ở trên trời"
+        },
+        {
+         "t": "Ha-lê-lu-gia"
+        },
+        {
+         "t": "Hãy ăn năn"
+        }
+       ],
+       "a": 0,
+       "why": "A-men, lạy Đức Chúa Jêsus, xin hãy đến!",
+       "ref": "Khải huyền 22:20"
+      },
+      {
+       "q": "Trong thành thánh, ai là sự sáng?",
+       "options": [
+        {
+         "t": "Mặt trời",
+         "img": "☀️"
+        },
+        {
+         "t": "Vinh hiển Đức Chúa Trời và Chiên Con",
+         "img": "✨"
+        },
+        {
+         "t": "Các ngôi sao",
+         "img": "⭐"
+        },
+        {
+         "t": "Đèn của các thiên sứ",
+         "img": "🕯️"
+        }
+       ],
+       "a": 1,
+       "why": "Thành không cần mặt trời, mặt trăng để soi sáng; vì sự vinh hiển của Đức Chúa Trời chói lói cho, và Chiên Con là ngọn đèn của thành.",
+       "ref": "Khải huyền 21:23"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nhan-vat",
+   "title": "Theo nhân vật",
+   "emoji": "👥",
+   "desc": "Gặp gỡ những con người Đức Chúa Trời đã dùng, từ A-đam đến sứ đồ Phao-lô, theo từng thời kỳ.",
+   "stages": [
+    {
+     "id": "a-dam-e-va",
+     "emoji": "🍎",
+     "era": "Buổi ban đầu",
+     "title": "A-đam và Ê-va",
+     "intro": "Cặp vợ chồng đầu tiên, được dựng nên theo hình ảnh Đức Chúa Trời và sống trong vườn Ê-đen. Câu chuyện của họ cho thấy hậu quả của tội lỗi và lời hứa về Đấng Cứu Thế.",
+     "readings": [
+      {
+       "book": "GEN",
+       "from": 2,
+       "to": 2,
+       "label": "Sáng thế ký 2"
+      },
+      {
+       "book": "GEN",
+       "from": 3,
+       "to": 3,
+       "label": "Sáng thế ký 3"
+      }
+     ],
+     "verse": {
+      "ref": "Sáng thế ký 1:27",
+      "book": "GEN",
+      "ch": 1,
+      "v": [
+       27,
+       27
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Đức Chúa Trời dựng nên A-đam từ gì?",
+       "options": [
+        {
+         "t": "Bụi đất",
+         "img": "🟤"
+        },
+        {
+         "t": "Nước",
+         "img": "💧"
+        },
+        {
+         "t": "Lửa",
+         "img": "🔥"
+        },
+        {
+         "t": "Ánh sáng",
+         "img": "💡"
+        }
+       ],
+       "a": 0,
+       "why": "Giê-hô-va Đức Chúa Trời bèn lấy bụi đất nắn nên hình người.",
+       "ref": "Sáng thế ký 2:7"
+      },
+      {
+       "q": "Ê-va được dựng nên từ đâu?",
+       "options": [
+        {
+         "t": "Từ bụi đất"
+        },
+        {
+         "t": "Từ một xương sườn của A-đam"
+        },
+        {
+         "t": "Từ một cái cây"
+        },
+        {
+         "t": "Từ đất sét"
+        }
+       ],
+       "a": 1,
+       "why": "Giê-hô-va Đức Chúa Trời dùng xương sườn đã lấy nơi A-đam làm nên một người nữ.",
+       "ref": "Sáng thế ký 2:22"
+      },
+      {
+       "q": "Ai đã cám dỗ Ê-va ăn trái cấm?",
+       "options": [
+        {
+         "t": "Con rắn",
+         "img": "🐍"
+        },
+        {
+         "t": "Con sư tử",
+         "img": "🦁"
+        },
+        {
+         "t": "A-đam",
+         "img": "🧍"
+        },
+        {
+         "t": "Một thiên sứ",
+         "img": "😇"
+        }
+       ],
+       "a": 0,
+       "why": "Rắn là giống quỷ quyệt hơn hết… rắn nói cùng người nữ.",
+       "ref": "Sáng thế ký 3:1"
+      },
+      {
+       "q": "A-đam đặt tên cho các loài vật. Đúng hay sai?",
+       "options": [
+        {
+         "t": "Đúng",
+         "img": "✅"
+        },
+        {
+         "t": "Sai",
+         "img": "❌"
+        }
+       ],
+       "a": 0,
+       "why": "A-đam đặt tên các loài súc vật, các loài chim trời và các loài thú đồng.",
+       "ref": "Sáng thế ký 2:20"
+      },
+      {
+       "q": "Sau khi phạm tội, A-đam và Ê-va phải rời khỏi đâu?",
+       "options": [
+        {
+         "t": "Vườn Ê-đen",
+         "img": "🌳"
+        },
+        {
+         "t": "Thành Ba-bên",
+         "img": "🗼"
+        },
+        {
+         "t": "Xứ Ê-díp-tô",
+         "img": "🏜️"
+        },
+        {
+         "t": "Núi Si-na-i",
+         "img": "⛰️"
+        }
+       ],
+       "a": 0,
+       "why": "Giê-hô-va Đức Chúa Trời đuổi loài người ra khỏi vườn Ê-đen.",
+       "ref": "Sáng thế ký 3:23"
+      }
+     ]
+    },
+    {
+     "id": "no-e",
+     "emoji": "🚢",
+     "era": "Buổi ban đầu",
+     "title": "Nô-ê",
+     "intro": "Giữa một thế hệ gian ác, Nô-ê đồng đi cùng Đức Chúa Trời. Ông vâng lời đóng tàu dù chưa thấy cơn mưa, và gia đình ông được cứu.",
+     "readings": [
+      {
+       "book": "GEN",
+       "from": 6,
+       "to": 6,
+       "label": "Sáng thế ký 6"
+      },
+      {
+       "book": "GEN",
+       "from": 7,
+       "to": 7,
+       "label": "Sáng thế ký 7"
+      },
+      {
+       "book": "GEN",
+       "from": 8,
+       "to": 9,
+       "label": "Sáng thế ký 8–9"
+      }
+     ],
+     "verse": {
+      "ref": "Hê-bơ-rơ 11:7",
+      "book": "HEB",
+      "ch": 11,
+      "v": [
+       7,
+       7
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Nô-ê có mấy người con trai?",
+       "options": [
+        {
+         "t": "Hai"
+        },
+        {
+         "t": "Ba"
+        },
+        {
+         "t": "Bốn"
+        },
+        {
+         "t": "Bảy"
+        }
+       ],
+       "a": 1,
+       "why": "Nô-ê sanh ba con trai là Sem, Cham và Gia-phết.",
+       "ref": "Sáng thế ký 6:10"
+      },
+      {
+       "q": "Ai được vào tàu cùng Nô-ê?",
+       "options": [
+        {
+         "t": "Vợ, ba con trai và ba con dâu",
+         "img": "👨‍👩‍👦"
+        },
+        {
+         "t": "Cả làng",
+         "img": "🏘️"
+        },
+        {
+         "t": "Chỉ mình Nô-ê",
+         "img": "🧍"
+        },
+        {
+         "t": "Các thầy tế lễ",
+         "img": "🙏"
+        }
+       ],
+       "a": 0,
+       "why": "Nô-ê vào tàu với vợ, các con trai và các dâu mình.",
+       "ref": "Sáng thế ký 7:7"
+      },
+      {
+       "q": "Nô-ê đưa các loài vật vào tàu như thế nào?",
+       "options": [
+        {
+         "t": "Mỗi loài một con"
+        },
+        {
+         "t": "Từng cặp, đực và cái",
+         "img": "🐘"
+        },
+        {
+         "t": "Chỉ loài chim"
+        },
+        {
+         "t": "Chỉ loài cá"
+        }
+       ],
+       "a": 1,
+       "why": "Hãy dẫn vào tàu mỗi loài một cặp, có đực có cái.",
+       "ref": "Sáng thế ký 6:19"
+      },
+      {
+       "q": "Con chim đầu tiên Nô-ê thả ra khỏi tàu là con gì?",
+       "options": [
+        {
+         "t": "Chim bồ câu",
+         "img": "🕊️"
+        },
+        {
+         "t": "Con quạ",
+         "img": "🐦‍⬛"
+        },
+        {
+         "t": "Chim đại bàng",
+         "img": "🦅"
+        },
+        {
+         "t": "Con sẻ",
+         "img": "🐦"
+        }
+       ],
+       "a": 1,
+       "why": "Nô-ê thả một con quạ ra; quạ bay đi bay lại cho đến khi nước giảm.",
+       "ref": "Sáng thế ký 8:7"
+      },
+      {
+       "q": "Việc đầu tiên Nô-ê làm khi ra khỏi tàu là gì?",
+       "options": [
+        {
+         "t": "Xây nhà"
+        },
+        {
+         "t": "Lập bàn thờ dâng của lễ cho Đức Giê-hô-va",
+         "img": "🪨"
+        },
+        {
+         "t": "Trồng nho"
+        },
+        {
+         "t": "Đi tìm người khác"
+        }
+       ],
+       "a": 1,
+       "why": "Nô-ê lập một bàn thờ cho Đức Giê-hô-va… dâng của lễ thiêu.",
+       "ref": "Sáng thế ký 8:20"
+      }
+     ]
+    },
+    {
+     "id": "ap-ra-ham",
+     "emoji": "✨",
+     "era": "Các tổ phụ",
+     "title": "Áp-ra-ham, cha của những người tin",
+     "intro": "Áp-ra-ham vâng lời rời quê hương mà không biết mình đi đâu. Ông tin lời hứa của Đức Chúa Trời, và điều đó được kể là công bình cho ông.",
+     "readings": [
+      {
+       "book": "GEN",
+       "from": 12,
+       "to": 12,
+       "label": "Sáng thế ký 12"
+      },
+      {
+       "book": "GEN",
+       "from": 15,
+       "to": 15,
+       "label": "Sáng thế ký 15"
+      },
+      {
+       "book": "GEN",
+       "from": 18,
+       "to": 18,
+       "label": "Sáng thế ký 18"
+      },
+      {
+       "book": "GEN",
+       "from": 22,
+       "to": 22,
+       "label": "Sáng thế ký 22"
+      }
+     ],
+     "verse": {
+      "ref": "Sáng thế ký 15:6",
+      "book": "GEN",
+      "ch": 15,
+      "v": [
+       6,
+       6
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Tên ban đầu của Áp-ra-ham là gì?",
+       "options": [
+        {
+         "t": "Áp-ram"
+        },
+        {
+         "t": "Ích-ma-ên"
+        },
+        {
+         "t": "Lót"
+        },
+        {
+         "t": "Tha-rê"
+        }
+       ],
+       "a": 0,
+       "why": "Tên ngươi chẳng còn gọi là Áp-ram nữa, nhưng phải gọi là Áp-ra-ham.",
+       "ref": "Sáng thế ký 17:5"
+      },
+      {
+       "q": "Vợ của Áp-ra-ham tên là gì?",
+       "options": [
+        {
+         "t": "Rê-bê-ca"
+        },
+        {
+         "t": "Sa-ra"
+        },
+        {
+         "t": "Ra-chên"
+        },
+        {
+         "t": "Lê-a"
+        }
+       ],
+       "a": 1,
+       "why": "Sa-rai, vợ ngươi, chẳng còn gọi là Sa-rai nữa; nhưng tên người là Sa-ra.",
+       "ref": "Sáng thế ký 17:15"
+      },
+      {
+       "q": "Áp-ra-ham được kể là công bình vì điều gì?",
+       "options": [
+        {
+         "t": "Ông giàu có"
+        },
+        {
+         "t": "Ông tin Đức Giê-hô-va",
+         "img": "🙏"
+        },
+        {
+         "t": "Ông có nhiều đầy tớ"
+        },
+        {
+         "t": "Ông xây nhiều bàn thờ"
+        }
+       ],
+       "a": 1,
+       "why": "Áp-ram tin Đức Giê-hô-va, thì Ngài kể sự đó là công bình cho người.",
+       "ref": "Sáng thế ký 15:6"
+      },
+      {
+       "q": "Khi nghe tin sẽ có con lúc tuổi già, Sa-ra đã làm gì?",
+       "options": [
+        {
+         "t": "Khóc"
+        },
+        {
+         "t": "Cười thầm",
+         "img": "😄"
+        },
+        {
+         "t": "Bỏ đi"
+        },
+        {
+         "t": "Hát"
+        }
+       ],
+       "a": 1,
+       "why": "Sa-ra cười thầm mà rằng: Già như tôi thế nầy, dễ còn được điều vui đó sao?",
+       "ref": "Sáng thế ký 18:12"
+      },
+      {
+       "q": "Con trai được hứa của Áp-ra-ham và Sa-ra tên là gì?",
+       "options": [
+        {
+         "t": "Y-sác"
+        },
+        {
+         "t": "Gia-cốp"
+        },
+        {
+         "t": "Ích-ma-ên"
+        },
+        {
+         "t": "Giô-sép"
+        }
+       ],
+       "a": 0,
+       "why": "Sa-ra, vợ ngươi, sẽ sanh một con trai, rồi ngươi đặt tên là Y-sác.",
+       "ref": "Sáng thế ký 17:19"
+      }
+     ]
+    },
+    {
+     "id": "gio-sep-nv",
+     "emoji": "🌾",
+     "era": "Các tổ phụ",
+     "title": "Giô-sép, người tha thứ",
+     "intro": "Bị anh em ghen ghét, bị bán, bị vu oan, nhưng Giô-sép vẫn trung tín. Đức Chúa Trời nâng ông lên làm tể tướng Ê-díp-tô, và ông đã tha thứ cho các anh mình.",
+     "readings": [
+      {
+       "book": "GEN",
+       "from": 37,
+       "to": 37,
+       "label": "Sáng thế ký 37"
+      },
+      {
+       "book": "GEN",
+       "from": 39,
+       "to": 39,
+       "label": "Sáng thế ký 39"
+      },
+      {
+       "book": "GEN",
+       "from": 41,
+       "to": 41,
+       "label": "Sáng thế ký 41"
+      },
+      {
+       "book": "GEN",
+       "from": 45,
+       "to": 45,
+       "label": "Sáng thế ký 45"
+      },
+      {
+       "book": "GEN",
+       "from": 50,
+       "to": 50,
+       "label": "Sáng thế ký 50"
+      }
+     ],
+     "verse": {
+      "ref": "Sáng thế ký 50:20",
+      "book": "GEN",
+      "ch": 50,
+      "v": [
+       20,
+       20
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Vì sao các anh ghét Giô-sép?",
+       "options": [
+        {
+         "t": "Vì cha thương Giô-sép hơn và vì các giấc chiêm bao của ông"
+        },
+        {
+         "t": "Vì Giô-sép lấy trộm đồ"
+        },
+        {
+         "t": "Vì Giô-sép là anh cả"
+        },
+        {
+         "t": "Vì Giô-sép bỏ nhà đi"
+        }
+       ],
+       "a": 0,
+       "why": "Các anh thấy cha thương Giô-sép hơn… thì sanh lòng ganh ghét; lại càng ghét thêm vì mấy giấc chiêm bao.",
+       "ref": "Sáng thế ký 37:4-8"
+      },
+      {
+       "q": "Ở Ê-díp-tô, Giô-sép làm việc trong nhà ai?",
+       "options": [
+        {
+         "t": "Pha-ra-ôn"
+        },
+        {
+         "t": "Phô-ti-pha, quan thị vệ"
+        },
+        {
+         "t": "Một thầy tế lễ"
+        },
+        {
+         "t": "Một nông dân"
+        }
+       ],
+       "a": 1,
+       "why": "Phô-ti-pha, quan thị vệ của Pha-ra-ôn, mua Giô-sép.",
+       "ref": "Sáng thế ký 39:1"
+      },
+      {
+       "q": "Trong tù, Giô-sép giải chiêm bao cho ai?",
+       "options": [
+        {
+         "t": "Quan tửu chánh và quan thượng thiện",
+         "img": "🍷"
+        },
+        {
+         "t": "Hai người lính",
+         "img": "⚔️"
+        },
+        {
+         "t": "Các anh của ông",
+         "img": "👥"
+        },
+        {
+         "t": "Vợ Phô-ti-pha",
+         "img": "👩"
+        }
+       ],
+       "a": 0,
+       "why": "Quan tửu chánh và quan thượng thiện của vua Ê-díp-tô… mỗi người đều có một điềm chiêm bao.",
+       "ref": "Sáng thế ký 40:5"
+      },
+      {
+       "q": "Giô-sép bao nhiêu tuổi khi ra mắt Pha-ra-ôn?",
+       "options": [
+        {
+         "t": "17 tuổi"
+        },
+        {
+         "t": "30 tuổi"
+        },
+        {
+         "t": "40 tuổi"
+        },
+        {
+         "t": "70 tuổi"
+        }
+       ],
+       "a": 1,
+       "why": "Giô-sép được ba mươi tuổi khi ra mắt Pha-ra-ôn.",
+       "ref": "Sáng thế ký 41:46"
+      },
+      {
+       "q": "Khi các anh nhận ra Giô-sép, ông nói gì để an ủi họ?",
+       "options": [
+        {
+         "t": "Đức Chúa Trời đã sai tôi đến đây trước để giữ sự sống"
+        },
+        {
+         "t": "Các anh phải trả giá"
+        },
+        {
+         "t": "Tôi không biết các anh"
+        },
+        {
+         "t": "Hãy về nhà đi"
+        }
+       ],
+       "a": 0,
+       "why": "Ấy là để giữ gìn sự sống, nên Đức Chúa Trời đã sai tôi đến đây trước các anh.",
+       "ref": "Sáng thế ký 45:5"
+      }
+     ]
+    },
+    {
+     "id": "moi-se",
+     "emoji": "🪄",
+     "era": "Xuất hành",
+     "title": "Môi-se, người dẫn dắt dân sự",
+     "intro": "Từ đứa trẻ trong rương mây đến người lãnh đạo dân Y-sơ-ra-ên ra khỏi ách nô lệ, Môi-se là người Đức Chúa Trời biết mặt đối mặt.",
+     "readings": [
+      {
+       "book": "EXO",
+       "from": 2,
+       "to": 2,
+       "label": "Xuất Ê-díp-tô ký 2"
+      },
+      {
+       "book": "EXO",
+       "from": 3,
+       "to": 3,
+       "label": "Xuất Ê-díp-tô ký 3"
+      },
+      {
+       "book": "EXO",
+       "from": 4,
+       "to": 4,
+       "label": "Xuất Ê-díp-tô ký 4"
+      },
+      {
+       "book": "DEU",
+       "from": 34,
+       "to": 34,
+       "label": "Phục truyền luật lệ ký 34"
+      }
+     ],
+     "verse": {
+      "ref": "Phục truyền luật lệ ký 34:10",
+      "book": "DEU",
+      "ch": 34,
+      "v": [
+       10,
+       10
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Ai tìm thấy em bé Môi-se trên sông Ni-lơ?",
+       "options": [
+        {
+         "t": "Con gái Pha-ra-ôn",
+         "img": "👸"
+        },
+        {
+         "t": "Một người chăn chiên",
+         "img": "🐑"
+        },
+        {
+         "t": "Một ngư phủ",
+         "img": "🎣"
+        },
+        {
+         "t": "Mẹ của Môi-se",
+         "img": "👩"
+        }
+       ],
+       "a": 0,
+       "why": "Con gái Pha-ra-ôn xuống sông tắm… thấy cái rương… mở ra thấy đứa trẻ.",
+       "ref": "Xuất Ê-díp-tô ký 2:5-6"
+      },
+      {
+       "q": "Ai được Đức Chúa Trời cho làm người nói thay cho Môi-se?",
+       "options": [
+        {
+         "t": "A-rôn, anh của Môi-se"
+        },
+        {
+         "t": "Giô-suê"
+        },
+        {
+         "t": "Giê-trô"
+        },
+        {
+         "t": "Ca-lép"
+        }
+       ],
+       "a": 0,
+       "why": "A-rôn, anh ngươi… sẽ nói cùng dân sự thế cho ngươi.",
+       "ref": "Xuất Ê-díp-tô ký 4:14-16"
+      },
+      {
+       "q": "Khi Môi-se ném cây gậy xuống đất, gậy hóa ra gì?",
+       "options": [
+        {
+         "t": "Một con rắn",
+         "img": "🐍"
+        },
+        {
+         "t": "Một cái cây",
+         "img": "🌳"
+        },
+        {
+         "t": "Ngọn lửa",
+         "img": "🔥"
+        },
+        {
+         "t": "Nước",
+         "img": "💧"
+        }
+       ],
+       "a": 0,
+       "why": "Môi-se ném xuống đất, gậy hóa ra một con rắn.",
+       "ref": "Xuất Ê-díp-tô ký 4:3"
+      },
+      {
+       "q": "Môi-se nhận hai bảng đá Mười Điều Răn ở đâu?",
+       "options": [
+        {
+         "t": "Núi Si-na-i",
+         "img": "⛰️"
+        },
+        {
+         "t": "Bờ sông Giô-đanh",
+         "img": "🏞️"
+        },
+        {
+         "t": "Trong đền thờ",
+         "img": "🏛️"
+        },
+        {
+         "t": "Thành Giê-ri-cô",
+         "img": "🧱"
+        }
+       ],
+       "a": 0,
+       "why": "Đức Giê-hô-va ban cho Môi-se hai bảng chứng bằng đá trên núi Si-na-i.",
+       "ref": "Xuất Ê-díp-tô ký 31:18"
+      },
+      {
+       "q": "Ai lãnh đạo dân Y-sơ-ra-ên sau khi Môi-se qua đời?",
+       "options": [
+        {
+         "t": "A-rôn"
+        },
+        {
+         "t": "Giô-suê"
+        },
+        {
+         "t": "Đa-vít"
+        },
+        {
+         "t": "Sa-mu-ên"
+        }
+       ],
+       "a": 1,
+       "why": "Giô-suê, con trai Nun, được đầy dẫy thần khôn ngoan, vì Môi-se đã đặt tay trên người.",
+       "ref": "Phục truyền luật lệ ký 34:9"
+      }
+     ]
+    },
+    {
+     "id": "ru-to",
+     "emoji": "🌾",
+     "era": "Các quan xét",
+     "title": "Ru-tơ, người con dâu trung tín",
+     "intro": "Ru-tơ, một phụ nữ Mô-áp, chọn ở lại với mẹ chồng Na-ô-mi và theo Đức Chúa Trời của Y-sơ-ra-ên. Ngài đã ban phước và đưa bà vào dòng dõi của vua Đa-vít.",
+     "readings": [
+      {
+       "book": "RUT",
+       "from": 1,
+       "to": 1,
+       "label": "Ru-tơ 1"
+      },
+      {
+       "book": "RUT",
+       "from": 2,
+       "to": 2,
+       "label": "Ru-tơ 2"
+      },
+      {
+       "book": "RUT",
+       "from": 3,
+       "to": 3,
+       "label": "Ru-tơ 3"
+      },
+      {
+       "book": "RUT",
+       "from": 4,
+       "to": 4,
+       "label": "Ru-tơ 4"
+      }
+     ],
+     "verse": {
+      "ref": "Ru-tơ 1:16",
+      "book": "RUT",
+      "ch": 1,
+      "v": [
+       16,
+       16
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Mẹ chồng của Ru-tơ tên là gì?",
+       "options": [
+        {
+         "t": "Na-ô-mi"
+        },
+        {
+         "t": "Sa-ra"
+        },
+        {
+         "t": "An-ne"
+        },
+        {
+         "t": "Ê-xơ-tê"
+        }
+       ],
+       "a": 0,
+       "why": "Na-ô-mi nói cùng hai dâu mình rằng: Mỗi con hãy trở về nhà mẹ mình.",
+       "ref": "Ru-tơ 1:8"
+      },
+      {
+       "q": "Ru-tơ đến ruộng của Bô-ô để làm gì?",
+       "options": [
+        {
+         "t": "Mót lúa",
+         "img": "🌾"
+        },
+        {
+         "t": "Mua đất",
+         "img": "💰"
+        },
+        {
+         "t": "Chăn chiên",
+         "img": "🐑"
+        },
+        {
+         "t": "Hái nho",
+         "img": "🍇"
+        }
+       ],
+       "a": 0,
+       "why": "Ru-tơ đi mót lúa trong ruộng sau lưng các con gặt.",
+       "ref": "Ru-tơ 2:2-3"
+      },
+      {
+       "q": "Ai trở thành chồng của Ru-tơ?",
+       "options": [
+        {
+         "t": "Bô-ô"
+        },
+        {
+         "t": "Ô-bết"
+        },
+        {
+         "t": "Y-sai"
+        },
+        {
+         "t": "Đa-vít"
+        }
+       ],
+       "a": 0,
+       "why": "Bô-ô lấy Ru-tơ làm vợ.",
+       "ref": "Ru-tơ 4:13"
+      },
+      {
+       "q": "Con trai của Ru-tơ tên là gì?",
+       "options": [
+        {
+         "t": "Ô-bết"
+        },
+        {
+         "t": "Y-sai"
+        },
+        {
+         "t": "Sa-mu-ên"
+        },
+        {
+         "t": "Giô-sép"
+        }
+       ],
+       "a": 0,
+       "why": "Các người nữ lân cận đặt tên đứa trẻ là Ô-bết.",
+       "ref": "Ru-tơ 4:17"
+      },
+      {
+       "q": "Ru-tơ nói với Na-ô-mi: 'Đức Chúa Trời của mẹ, tức là…'?",
+       "options": [
+        {
+         "t": "Đức Chúa Trời của tôi"
+        },
+        {
+         "t": "Đức Chúa Trời của người Mô-áp"
+        },
+        {
+         "t": "Một thần lạ"
+        },
+        {
+         "t": "Đức Chúa Trời của Bô-ô"
+        }
+       ],
+       "a": 0,
+       "why": "Dân sự của mẹ, tức là dân sự của tôi; Đức Chúa Trời của mẹ, tức là Đức Chúa Trời của tôi.",
+       "ref": "Ru-tơ 1:16"
+      }
+     ]
+    },
+    {
+     "id": "sa-mu-en",
+     "emoji": "👂",
+     "era": "Các quan xét",
+     "title": "Sa-mu-ên, cậu bé biết lắng nghe",
+     "intro": "Sa-mu-ên là câu trả lời cho lời cầu nguyện của mẹ ông là An-ne. Từ nhỏ ông học lắng nghe tiếng Chúa, và trở thành tiên tri, quan xét, người xức dầu cho các vua.",
+     "readings": [
+      {
+       "book": "1SA",
+       "from": 1,
+       "to": 1,
+       "label": "1 Sa-mu-ên 1"
+      },
+      {
+       "book": "1SA",
+       "from": 3,
+       "to": 3,
+       "label": "1 Sa-mu-ên 3"
+      },
+      {
+       "book": "1SA",
+       "from": 16,
+       "to": 16,
+       "label": "1 Sa-mu-ên 16"
+      }
+     ],
+     "verse": {
+      "ref": "1 Sa-mu-ên 3:10",
+      "book": "1SA",
+      "ch": 3,
+      "v": [
+       10,
+       10
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Mẹ của Sa-mu-ên là ai?",
+       "options": [
+        {
+         "t": "An-ne"
+        },
+        {
+         "t": "Ma-ri"
+        },
+        {
+         "t": "Na-ô-mi"
+        },
+        {
+         "t": "Ra-chên"
+        }
+       ],
+       "a": 0,
+       "why": "An-ne thọ thai, sanh một con trai, đặt tên là Sa-mu-ên.",
+       "ref": "1 Sa-mu-ên 1:20"
+      },
+      {
+       "q": "Sa-mu-ên lớn lên và phục vụ bên cạnh thầy tế lễ nào?",
+       "options": [
+        {
+         "t": "Hê-li"
+        },
+        {
+         "t": "A-rôn"
+        },
+        {
+         "t": "Xa-cha-ri"
+        },
+        {
+         "t": "E-xơ-ra"
+        }
+       ],
+       "a": 0,
+       "why": "Sa-mu-ên phục sự Đức Giê-hô-va trước mặt Hê-li.",
+       "ref": "1 Sa-mu-ên 3:1"
+      },
+      {
+       "q": "Đức Chúa Trời gọi Sa-mu-ên mấy lần trước khi ông nhận ra tiếng Ngài?",
+       "options": [
+        {
+         "t": "Một lần"
+        },
+        {
+         "t": "Hai lần"
+        },
+        {
+         "t": "Ba lần"
+        },
+        {
+         "t": "Bốn lần"
+        }
+       ],
+       "a": 3,
+       "why": "Sau ba lần Sa-mu-ên chạy đến Hê-li; lần thứ tư, Sa-mu-ên thưa: Xin hãy phán, kẻ tôi tớ Ngài đương nghe.",
+       "ref": "1 Sa-mu-ên 3:8-10"
+      },
+      {
+       "q": "Sa-mu-ên xức dầu cho ai làm vua đầu tiên của Y-sơ-ra-ên?",
+       "options": [
+        {
+         "t": "Sau-lơ",
+         "img": "👑"
+        },
+        {
+         "t": "Đa-vít",
+         "img": "🎵"
+        },
+        {
+         "t": "Sa-lô-môn",
+         "img": "🏛️"
+        },
+        {
+         "t": "Giô-na-than",
+         "img": "🏹"
+        }
+       ],
+       "a": 0,
+       "why": "Sa-mu-ên lấy một ve nhỏ đựng dầu, đổ trên đầu Sau-lơ.",
+       "ref": "1 Sa-mu-ên 10:1"
+      },
+      {
+       "q": "Khi chọn Đa-vít, Đức Chúa Trời nhắc Sa-mu-ên điều gì?",
+       "options": [
+        {
+         "t": "Hãy chọn người cao lớn nhất"
+        },
+        {
+         "t": "Loài người xem bề ngoài, nhưng Đức Giê-hô-va nhìn thấy trong lòng"
+        },
+        {
+         "t": "Hãy chọn con trưởng"
+        },
+        {
+         "t": "Hãy hỏi ý dân sự"
+        }
+       ],
+       "a": 1,
+       "why": "Loài người xem bề ngoài, nhưng Đức Giê-hô-va nhìn thấy trong lòng.",
+       "ref": "1 Sa-mu-ên 16:7"
+      }
+     ]
+    },
+    {
+     "id": "da-vit",
+     "emoji": "🎵",
+     "era": "Các vua",
+     "title": "Đa-vít, người theo lòng Đức Chúa Trời",
+     "intro": "Từ chàng chăn chiên đánh bại Gô-li-át đến vị vua viết nhiều Thi Thiên, Đa-vít có lúc vấp ngã nhưng luôn ăn năn và quay về với Chúa.",
+     "readings": [
+      {
+       "book": "1SA",
+       "from": 17,
+       "to": 17,
+       "label": "1 Sa-mu-ên 17"
+      },
+      {
+       "book": "PSA",
+       "from": 23,
+       "to": 23,
+       "label": "Thi thiên 23"
+      },
+      {
+       "book": "PSA",
+       "from": 51,
+       "to": 51,
+       "label": "Thi thiên 51"
+      },
+      {
+       "book": "2SA",
+       "from": 7,
+       "to": 7,
+       "label": "2 Sa-mu-ên 7"
+      }
+     ],
+     "verse": {
+      "ref": "Thi thiên 23:1",
+      "book": "PSA",
+      "ch": 23,
+      "v": [
+       1,
+       1
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Đa-vít chọn bao nhiêu hòn đá láng dưới khe để đi đánh Gô-li-át?",
+       "options": [
+        {
+         "t": "1"
+        },
+        {
+         "t": "3"
+        },
+        {
+         "t": "5"
+        },
+        {
+         "t": "7"
+        }
+       ],
+       "a": 2,
+       "why": "Người chọn dưới khe năm cục đá bóng láng.",
+       "ref": "1 Sa-mu-ên 17:40"
+      },
+      {
+       "q": "Đa-vít chơi nhạc cụ gì cho vua Sau-lơ nghe?",
+       "options": [
+        {
+         "t": "Đàn cầm",
+         "img": "🎶"
+        },
+        {
+         "t": "Kèn",
+         "img": "🎺"
+        },
+        {
+         "t": "Trống",
+         "img": "🥁"
+        },
+        {
+         "t": "Sáo",
+         "img": "🪈"
+        }
+       ],
+       "a": 0,
+       "why": "Đa-vít lấy đàn cầm và gảy, Sau-lơ được an ủi.",
+       "ref": "1 Sa-mu-ên 16:23"
+      },
+      {
+       "q": "Bạn thân của Đa-vít, con trai vua Sau-lơ, là ai?",
+       "options": [
+        {
+         "t": "Giô-na-than"
+        },
+        {
+         "t": "Áp-sa-lôm"
+        },
+        {
+         "t": "Na-than"
+        },
+        {
+         "t": "Sa-lô-môn"
+        }
+       ],
+       "a": 0,
+       "why": "Lòng Giô-na-than khế hiệp cùng lòng Đa-vít, và Giô-na-than yêu mến Đa-vít như mạng sống mình.",
+       "ref": "1 Sa-mu-ên 18:1"
+      },
+      {
+       "q": "Thi thiên 23 ví Đức Giê-hô-va như ai?",
+       "options": [
+        {
+         "t": "Một vị vua",
+         "img": "👑"
+        },
+        {
+         "t": "Đấng chăn giữ",
+         "img": "🧑‍🌾"
+        },
+        {
+         "t": "Một chiến sĩ",
+         "img": "⚔️"
+        },
+        {
+         "t": "Một người cha",
+         "img": "👨"
+        }
+       ],
+       "a": 1,
+       "why": "Đức Giê-hô-va là Đấng chăn giữ tôi; tôi sẽ chẳng thiếu thốn gì.",
+       "ref": "Thi thiên 23:1"
+      },
+      {
+       "q": "Khi phạm tội, Đa-vít đã làm gì?",
+       "options": [
+        {
+         "t": "Che giấu mãi mãi"
+        },
+        {
+         "t": "Ăn năn và cầu xin Chúa tạo lòng trong sạch"
+        },
+        {
+         "t": "Đổ lỗi cho người khác"
+        },
+        {
+         "t": "Bỏ ngôi vua"
+        }
+       ],
+       "a": 1,
+       "why": "Đức Chúa Trời ôi! xin hãy dựng nên trong tôi một lòng trong sạch.",
+       "ref": "Thi thiên 51:10"
+      }
+     ]
+    },
+    {
+     "id": "e-li",
+     "emoji": "🔥",
+     "era": "Các vua",
+     "title": "Ê-li và Ê-li-sê",
+     "intro": "Trong thời dân sự thờ thần Ba-anh, tiên tri Ê-li can đảm đứng về phía Đức Chúa Trời. Ê-li-sê, môn đồ của ông, tiếp nối chức vụ với nhiều phép lạ.",
+     "readings": [
+      {
+       "book": "1KI",
+       "from": 17,
+       "to": 17,
+       "label": "1 Các vua 17"
+      },
+      {
+       "book": "1KI",
+       "from": 18,
+       "to": 18,
+       "label": "1 Các vua 18"
+      },
+      {
+       "book": "1KI",
+       "from": 19,
+       "to": 19,
+       "label": "1 Các vua 19"
+      },
+      {
+       "book": "2KI",
+       "from": 2,
+       "to": 2,
+       "label": "2 Các vua 2"
+      }
+     ],
+     "verse": {
+      "ref": "1 Các vua 18:39",
+      "book": "1KI",
+      "ch": 18,
+      "v": [
+       39,
+       39
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Khi Ê-li ẩn bên khe Kê-rít, ai đem bánh và thịt cho ông?",
+       "options": [
+        {
+         "t": "Chim quạ",
+         "img": "🐦‍⬛"
+        },
+        {
+         "t": "Một thiên sứ",
+         "img": "😇"
+        },
+        {
+         "t": "Người góa phụ",
+         "img": "👩"
+        },
+        {
+         "t": "Vua A-háp",
+         "img": "👑"
+        }
+       ],
+       "a": 0,
+       "why": "Buổi mai và buổi chiều, chim quạ đem bánh và thịt cho người.",
+       "ref": "1 Các vua 17:6"
+      },
+      {
+       "q": "Trên núi Cạt-mên, Ê-li thách thức các tiên tri của thần nào?",
+       "options": [
+        {
+         "t": "Ba-anh"
+        },
+        {
+         "t": "Đa-gôn"
+        },
+        {
+         "t": "Mô-lóc"
+        },
+        {
+         "t": "Kê-mốt"
+        }
+       ],
+       "a": 0,
+       "why": "Hãy sai nhóm cả Y-sơ-ra-ên… với bốn trăm năm mươi tiên tri của Ba-anh.",
+       "ref": "1 Các vua 18:19"
+      },
+      {
+       "q": "Khi Ê-li chán nản trong đồng vắng, Đức Chúa Trời đã làm gì?",
+       "options": [
+        {
+         "t": "Quở trách ông"
+        },
+        {
+         "t": "Cho thiên sứ đem bánh nước, cho ông nghỉ và phán cùng ông bằng tiếng êm dịu nhỏ nhẹ",
+         "img": "🍞"
+        },
+        {
+         "t": "Bỏ mặc ông"
+        },
+        {
+         "t": "Cất ông về trời ngay"
+        }
+       ],
+       "a": 1,
+       "why": "Thiên sứ đụng đến người… có một cái bánh nướng và một bình nước. Sau lửa, có một tiếng êm dịu nhỏ nhẹ.",
+       "ref": "1 Các vua 19:5-12"
+      },
+      {
+       "q": "Ê-li được cất lên trời như thế nào?",
+       "options": [
+        {
+         "t": "Trong một cơn gió lốc, có xe lửa và ngựa lửa",
+         "img": "🔥"
+        },
+        {
+         "t": "Bằng một cái thang",
+         "img": "🪜"
+        },
+        {
+         "t": "Trên một đám mây",
+         "img": "☁️"
+        },
+        {
+         "t": "Ông qua đời bình thường",
+         "img": "🕯️"
+        }
+       ],
+       "a": 0,
+       "why": "Có một cái xe lửa và ngựa lửa… Ê-li lên trời trong một cơn gió lốc.",
+       "ref": "2 Các vua 2:11"
+      },
+      {
+       "q": "Ê-li-sê xin Ê-li điều gì trước khi thầy được cất lên?",
+       "options": [
+        {
+         "t": "Được gấp đôi thần cảm động ông"
+        },
+        {
+         "t": "Được giàu có"
+        },
+        {
+         "t": "Được làm vua"
+        },
+        {
+         "t": "Được đi theo lên trời"
+        }
+       ],
+       "a": 0,
+       "why": "Nguyền xin thần cảm động ông được gấp hai trên tôi.",
+       "ref": "2 Các vua 2:9"
+      }
+     ]
+    },
+    {
+     "id": "e-sai-gie-re-mi",
+     "emoji": "📯",
+     "era": "Các tiên tri",
+     "title": "Ê-sai và Giê-rê-mi",
+     "intro": "Ê-sai báo trước về Đấng Em-ma-nu-ên và Người Đầy Tớ chịu khổ. Giê-rê-mi, \"tiên tri hay khóc\", kêu gọi dân ăn năn và mang đến lời hứa về giao ước mới.",
+     "readings": [
+      {
+       "book": "ISA",
+       "from": 6,
+       "to": 6,
+       "label": "Ê-sai 6"
+      },
+      {
+       "book": "ISA",
+       "from": 9,
+       "to": 9,
+       "label": "Ê-sai 9"
+      },
+      {
+       "book": "ISA",
+       "from": 53,
+       "to": 53,
+       "label": "Ê-sai 53"
+      },
+      {
+       "book": "JER",
+       "from": 1,
+       "to": 1,
+       "label": "Giê-rê-mi 1"
+      },
+      {
+       "book": "JER",
+       "from": 31,
+       "to": 31,
+       "label": "Giê-rê-mi 31"
+      }
+     ],
+     "verse": {
+      "ref": "Ê-sai 9:6",
+      "book": "ISA",
+      "ch": 9,
+      "v": [
+       6,
+       6
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Ê-sai báo trước một trinh nữ sẽ sinh con trai và đặt tên là gì?",
+       "options": [
+        {
+         "t": "Em-ma-nu-ên"
+        },
+        {
+         "t": "Ê-li"
+        },
+        {
+         "t": "Sa-mu-ên"
+        },
+        {
+         "t": "Đa-vít"
+        }
+       ],
+       "a": 0,
+       "why": "Nầy, một gái đồng trinh sẽ chịu thai, sanh ra một trai, và đặt tên là Em-ma-nu-ên.",
+       "ref": "Ê-sai 7:14"
+      },
+      {
+       "q": "Trong khải tượng, vật gì chạm vào môi Ê-sai để làm sạch tội ông?",
+       "options": [
+        {
+         "t": "Than lửa đỏ từ bàn thờ",
+         "img": "🔥"
+        },
+        {
+         "t": "Nước thánh",
+         "img": "💧"
+        },
+        {
+         "t": "Dầu",
+         "img": "🫒"
+        },
+        {
+         "t": "Một lá sách",
+         "img": "📜"
+        }
+       ],
+       "a": 0,
+       "why": "Một sê-ra-phim… tay cầm than lửa đỏ… để trên miệng ta.",
+       "ref": "Ê-sai 6:6-7"
+      },
+      {
+       "q": "Khi được gọi, Giê-rê-mi nói gì?",
+       "options": [
+        {
+         "t": "Tôi đã sẵn sàng"
+        },
+        {
+         "t": "Tôi là con trẻ, chẳng biết nói chi"
+        },
+        {
+         "t": "Hãy chọn người khác"
+        },
+        {
+         "t": "Tôi sẽ đi ngay"
+        }
+       ],
+       "a": 1,
+       "why": "Ôi! hỡi Chúa Giê-hô-va, nầy, tôi chẳng biết nói chi, vì tôi là con trẻ.",
+       "ref": "Giê-rê-mi 1:6"
+      },
+      {
+       "q": "Giê-rê-mi đến nhà ai để học bài học về đất sét?",
+       "options": [
+        {
+         "t": "Thợ gốm",
+         "img": "🏺"
+        },
+        {
+         "t": "Thợ rèn",
+         "img": "⚒️"
+        },
+        {
+         "t": "Thợ mộc",
+         "img": "🪚"
+        },
+        {
+         "t": "Người làm vườn",
+         "img": "🌱"
+        }
+       ],
+       "a": 0,
+       "why": "Hãy chờ dậy, xuống nhà thợ gốm… Đất sét ở trong tay thợ gốm thể nào, thì các ngươi cũng ở trong tay ta thể ấy.",
+       "ref": "Giê-rê-mi 18:2-6"
+      },
+      {
+       "q": "Ê-sai 9:6 gọi Đấng sẽ đến bằng những danh nào?",
+       "options": [
+        {
+         "t": "Đấng Lạ lùng, Đấng Mưu luận, Đức Chúa Trời Quyền năng, Cha Đời đời, Chúa Bình an"
+        },
+        {
+         "t": "Vua Giu-đa"
+        },
+        {
+         "t": "Tiên tri vĩ đại"
+        },
+        {
+         "t": "Thầy tế lễ thượng phẩm"
+        }
+       ],
+       "a": 0,
+       "why": "Ngài sẽ được xưng là Đấng Lạ lùng, là Đấng Mưu luận, là Đức Chúa Trời Quyền năng, là Cha Đời đời, là Chúa Bình an.",
+       "ref": "Ê-sai 9:6"
+      }
+     ]
+    },
+    {
+     "id": "da-ni-en",
+     "emoji": "🦁",
+     "era": "Lưu đày",
+     "title": "Đa-ni-ên, trung tín nơi đất khách",
+     "intro": "Bị bắt sang Ba-by-lôn khi còn trẻ, Đa-ni-ên vẫn giữ lòng trung tín với Đức Chúa Trời: từ chối đồ ăn của vua, giải nghĩa chiêm bao và cầu nguyện bất chấp hang sư tử.",
+     "readings": [
+      {
+       "book": "DAN",
+       "from": 1,
+       "to": 1,
+       "label": "Đa-ni-ên 1"
+      },
+      {
+       "book": "DAN",
+       "from": 2,
+       "to": 2,
+       "label": "Đa-ni-ên 2"
+      },
+      {
+       "book": "DAN",
+       "from": 3,
+       "to": 3,
+       "label": "Đa-ni-ên 3"
+      },
+      {
+       "book": "DAN",
+       "from": 6,
+       "to": 6,
+       "label": "Đa-ni-ên 6"
+      }
+     ],
+     "verse": {
+      "ref": "Đa-ni-ên 6:22",
+      "book": "DAN",
+      "ch": 6,
+      "v": [
+       22,
+       22
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Đa-ni-ên và các bạn xin ăn gì thay cho đồ ăn của vua?",
+       "options": [
+        {
+         "t": "Rau và nước",
+         "img": "🥗"
+        },
+        {
+         "t": "Thịt và rượu",
+         "img": "🍖"
+        },
+        {
+         "t": "Bánh và mật",
+         "img": "🍯"
+        },
+        {
+         "t": "Cá",
+         "img": "🐟"
+        }
+       ],
+       "a": 0,
+       "why": "Xin cho chúng tôi chỉ ăn rau, uống nước.",
+       "ref": "Đa-ni-ên 1:12"
+      },
+      {
+       "q": "Vua Nê-bu-cát-nết-sa chiêm bao thấy gì?",
+       "options": [
+        {
+         "t": "Một pho tượng lớn",
+         "img": "🗿"
+        },
+        {
+         "t": "Bảy con bò",
+         "img": "🐄"
+        },
+        {
+         "t": "Một cái thang",
+         "img": "🪜"
+        },
+        {
+         "t": "Một con rồng",
+         "img": "🐉"
+        }
+       ],
+       "a": 0,
+       "why": "Hỡi vua, vua nhìn xem, và nầy, có một pho tượng lớn.",
+       "ref": "Đa-ni-ên 2:31"
+      },
+      {
+       "q": "Trong lò lửa, vua thấy bao nhiêu người đi giữa lửa?",
+       "options": [
+        {
+         "t": "Ba"
+        },
+        {
+         "t": "Bốn"
+        },
+        {
+         "t": "Hai"
+        },
+        {
+         "t": "Bảy"
+        }
+       ],
+       "a": 1,
+       "why": "Ta thấy bốn người… bước đi giữa lửa mà chẳng bị thương.",
+       "ref": "Đa-ni-ên 3:25"
+      },
+      {
+       "q": "Đa-ni-ên cầu nguyện mỗi ngày mấy lần?",
+       "options": [
+        {
+         "t": "Một lần"
+        },
+        {
+         "t": "Hai lần"
+        },
+        {
+         "t": "Ba lần",
+         "img": "🙏"
+        },
+        {
+         "t": "Bảy lần"
+        }
+       ],
+       "a": 2,
+       "why": "Mỗi ngày ba lần, người quì gối xuống, cầu nguyện.",
+       "ref": "Đa-ni-ên 6:10"
+      },
+      {
+       "q": "Vua nào đã quăng Đa-ni-ên vào hang sư tử?",
+       "options": [
+        {
+         "t": "Nê-bu-cát-nết-sa"
+        },
+        {
+         "t": "Bên-xát-sa"
+        },
+        {
+         "t": "Đa-ri-út"
+        },
+        {
+         "t": "Si-ru"
+        }
+       ],
+       "a": 2,
+       "why": "Vua Đa-ri-út truyền đem Đa-ni-ên đi và quăng vào hang sư tử.",
+       "ref": "Đa-ni-ên 6:16"
+      }
+     ]
+    },
+    {
+     "id": "gio-na",
+     "emoji": "🐋",
+     "era": "Các tiên tri",
+     "title": "Giô-na và lòng thương xót của Chúa",
+     "intro": "Giô-na chạy trốn khỏi lời kêu gọi của Chúa, nhưng Đức Chúa Trời không bỏ ông, cũng không bỏ thành Ni-ni-ve. Câu chuyện cho thấy lòng thương xót của Ngài dành cho mọi dân tộc.",
+     "readings": [
+      {
+       "book": "JON",
+       "from": 1,
+       "to": 1,
+       "label": "Giô-na 1"
+      },
+      {
+       "book": "JON",
+       "from": 2,
+       "to": 2,
+       "label": "Giô-na 2"
+      },
+      {
+       "book": "JON",
+       "from": 3,
+       "to": 3,
+       "label": "Giô-na 3"
+      },
+      {
+       "book": "JON",
+       "from": 4,
+       "to": 4,
+       "label": "Giô-na 4"
+      }
+     ],
+     "verse": {
+      "ref": "Giô-na 2:9",
+      "book": "JON",
+      "ch": 2,
+      "v": [
+       9,
+       9
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Thay vì đi Ni-ni-ve, Giô-na lên tàu đi đâu?",
+       "options": [
+        {
+         "t": "Ta-rê-si"
+        },
+        {
+         "t": "Ê-díp-tô"
+        },
+        {
+         "t": "Ba-by-lôn"
+        },
+        {
+         "t": "Rô-ma"
+        }
+       ],
+       "a": 0,
+       "why": "Giô-na chờ dậy đặng trốn qua Ta-rê-si.",
+       "ref": "Giô-na 1:3"
+      },
+      {
+       "q": "Vì sao các thủy thủ quăng Giô-na xuống biển?",
+       "options": [
+        {
+         "t": "Vì có bão lớn do Giô-na trốn Chúa",
+         "img": "🌊"
+        },
+        {
+         "t": "Vì ông ăn cắp"
+        },
+        {
+         "t": "Vì ông muốn bơi"
+        },
+        {
+         "t": "Vì tàu quá nặng"
+        }
+       ],
+       "a": 0,
+       "why": "Hãy bắt lấy ta, quăng xuống biển, thì biển sẽ yên lặng… vì cớ ta mà các ngươi gặp phải trận bão lớn nầy.",
+       "ref": "Giô-na 1:12"
+      },
+      {
+       "q": "Trong bụng cá, Giô-na đã làm gì?",
+       "options": [
+        {
+         "t": "Cầu nguyện cùng Đức Giê-hô-va",
+         "img": "🙏"
+        },
+        {
+         "t": "Ngủ",
+         "img": "😴"
+        },
+        {
+         "t": "Than trách",
+         "img": "😠"
+        },
+        {
+         "t": "Hát vui",
+         "img": "🎶"
+        }
+       ],
+       "a": 0,
+       "why": "Giô-na từ trong bụng cá cầu nguyện Giê-hô-va Đức Chúa Trời mình.",
+       "ref": "Giô-na 2:1"
+      },
+      {
+       "q": "Khi nghe Giô-na giảng, dân Ni-ni-ve đã làm gì?",
+       "options": [
+        {
+         "t": "Chế nhạo ông"
+        },
+        {
+         "t": "Tin Đức Chúa Trời, kiêng ăn và ăn năn"
+        },
+        {
+         "t": "Đuổi ông đi"
+        },
+        {
+         "t": "Bỏ trốn"
+        }
+       ],
+       "a": 1,
+       "why": "Dân thành Ni-ni-ve tin Đức Chúa Trời; rao ra sự kiêng ăn và mặc bao gai.",
+       "ref": "Giô-na 3:5"
+      },
+      {
+       "q": "Đức Chúa Trời dùng vật gì để dạy Giô-na về lòng thương xót?",
+       "options": [
+        {
+         "t": "Một dây giưa (cây che bóng)",
+         "img": "🌿"
+        },
+        {
+         "t": "Một con chiên",
+         "img": "🐑"
+        },
+        {
+         "t": "Một ngôi sao",
+         "img": "⭐"
+        },
+        {
+         "t": "Một cơn mưa",
+         "img": "🌧️"
+        }
+       ],
+       "a": 0,
+       "why": "Giê-hô-va Đức Chúa Trời sắm sẵn một dây giưa, cho mọc lên trên Giô-na, đặng làm bóng.",
+       "ref": "Giô-na 4:6-11"
+      }
+     ]
+    },
+    {
+     "id": "e-xo-te",
+     "emoji": "👸",
+     "era": "Lưu đày",
+     "title": "Ê-xơ-tê và Nê-hê-mi",
+     "intro": "Hoàng hậu Ê-xơ-tê liều mạng để cứu dân tộc mình. Nê-hê-mi cầu nguyện rồi hành động, dẫn dân xây lại vách thành Giê-ru-sa-lem.",
+     "readings": [
+      {
+       "book": "EST",
+       "from": 2,
+       "to": 2,
+       "label": "Ê-xơ-tê 2"
+      },
+      {
+       "book": "EST",
+       "from": 4,
+       "to": 4,
+       "label": "Ê-xơ-tê 4"
+      },
+      {
+       "book": "EST",
+       "from": 7,
+       "to": 7,
+       "label": "Ê-xơ-tê 7"
+      },
+      {
+       "book": "NEH",
+       "from": 1,
+       "to": 1,
+       "label": "Nê-hê-mi 1"
+      },
+      {
+       "book": "NEH",
+       "from": 2,
+       "to": 2,
+       "label": "Nê-hê-mi 2"
+      }
+     ],
+     "verse": {
+      "ref": "Ê-xơ-tê 4:14",
+      "book": "EST",
+      "ch": 4,
+      "v": [
+       14,
+       14
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Ai đã nuôi dưỡng Ê-xơ-tê?",
+       "options": [
+        {
+         "t": "Mạc-đô-chê, anh họ của bà"
+        },
+        {
+         "t": "Ha-man"
+        },
+        {
+         "t": "Vua A-suê-ru"
+        },
+        {
+         "t": "Nê-hê-mi"
+        }
+       ],
+       "a": 0,
+       "why": "Mạc-đô-chê nuôi Ha-đa-xa, tức là Ê-xơ-tê, con gái của chú mình.",
+       "ref": "Ê-xơ-tê 2:7"
+      },
+      {
+       "q": "Ai âm mưu tiêu diệt dân Giu-đa?",
+       "options": [
+        {
+         "t": "Ha-man",
+         "img": "😠"
+        },
+        {
+         "t": "Mạc-đô-chê",
+         "img": "🙂"
+        },
+        {
+         "t": "Vua Si-ru",
+         "img": "👑"
+        },
+        {
+         "t": "Nê-hê-mi",
+         "img": "🧱"
+        }
+       ],
+       "a": 0,
+       "why": "Ha-man tìm cách tiêu diệt hết thảy dân Giu-đa.",
+       "ref": "Ê-xơ-tê 3:6"
+      },
+      {
+       "q": "Trước khi vào gặp vua, Ê-xơ-tê xin dân Giu-đa làm gì?",
+       "options": [
+        {
+         "t": "Kiêng ăn ba ngày"
+        },
+        {
+         "t": "Chuẩn bị vũ khí"
+        },
+        {
+         "t": "Rời khỏi thành"
+        },
+        {
+         "t": "Dâng lễ vật cho vua"
+        }
+       ],
+       "a": 0,
+       "why": "Hãy kiêng ăn vì tôi… trong ba ngày đêm; tôi và các nàng hầu tôi cũng sẽ kiêng ăn.",
+       "ref": "Ê-xơ-tê 4:16"
+      },
+      {
+       "q": "Nê-hê-mi giữ chức vụ gì cho vua Ạt-ta-xét-xe?",
+       "options": [
+        {
+         "t": "Quan tửu chánh (dâng rượu cho vua)",
+         "img": "🍷"
+        },
+        {
+         "t": "Tướng quân",
+         "img": "⚔️"
+        },
+        {
+         "t": "Thầy tế lễ",
+         "img": "🙏"
+        },
+        {
+         "t": "Thợ xây",
+         "img": "🧱"
+        }
+       ],
+       "a": 0,
+       "why": "Bấy giờ tôi làm quan tửu chánh.",
+       "ref": "Nê-hê-mi 1:11"
+      },
+      {
+       "q": "Khi nghe tin vách thành Giê-ru-sa-lem bị phá, Nê-hê-mi làm gì trước tiên?",
+       "options": [
+        {
+         "t": "Ngồi khóc, kiêng ăn và cầu nguyện",
+         "img": "🙏"
+        },
+        {
+         "t": "Đi ngay về Giê-ru-sa-lem",
+         "img": "🏃"
+        },
+        {
+         "t": "Viết thư",
+         "img": "✉️"
+        },
+        {
+         "t": "Không làm gì",
+         "img": "😶"
+        }
+       ],
+       "a": 0,
+       "why": "Tôi ngồi khóc và cư tang mấy ngày; tôi cữ ăn và cầu nguyện.",
+       "ref": "Nê-hê-mi 1:4"
+      }
+     ]
+    },
+    {
+     "id": "ma-ri-giang",
+     "emoji": "🕯️",
+     "era": "Tân Ước",
+     "title": "Ma-ri và Giăng Báp-tít",
+     "intro": "Ma-ri khiêm nhường vâng phục chương trình của Đức Chúa Trời. Giăng Báp-tít dọn đường cho Chúa và chỉ cho mọi người thấy Chiên Con của Đức Chúa Trời.",
+     "readings": [
+      {
+       "book": "LUK",
+       "from": 1,
+       "to": 1,
+       "label": "Lu-ca 1"
+      },
+      {
+       "book": "MAT",
+       "from": 3,
+       "to": 3,
+       "label": "Ma-thi-ơ 3"
+      },
+      {
+       "book": "JHN",
+       "from": 1,
+       "to": 1,
+       "label": "Giăng 1"
+      }
+     ],
+     "verse": {
+      "ref": "Giăng 1:29",
+      "book": "JHN",
+      "ch": 1,
+      "v": [
+       29,
+       29
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Ma-ri trả lời thiên sứ thế nào?",
+       "options": [
+        {
+         "t": "Tôi đây là tôi tớ Chúa; xin sự ấy xảy ra cho tôi như lời thiên sứ truyền"
+        },
+        {
+         "t": "Điều đó không thể được"
+        },
+        {
+         "t": "Hãy để tôi suy nghĩ"
+        },
+        {
+         "t": "Tôi sợ lắm"
+        }
+       ],
+       "a": 0,
+       "why": "Tôi đây là tôi tớ Chúa; xin sự ấy xảy ra cho tôi như lời thiên sứ truyền!",
+       "ref": "Lu-ca 1:38"
+      },
+      {
+       "q": "Cha mẹ của Giăng Báp-tít là ai?",
+       "options": [
+        {
+         "t": "Xa-cha-ri và Ê-li-sa-bét"
+        },
+        {
+         "t": "Giô-sép và Ma-ri"
+        },
+        {
+         "t": "Áp-ra-ham và Sa-ra"
+        },
+        {
+         "t": "Bô-ô và Ru-tơ"
+        }
+       ],
+       "a": 0,
+       "why": "Xa-cha-ri… vợ người là Ê-li-sa-bét… sẽ sanh một con trai, ngươi khá đặt tên là Giăng.",
+       "ref": "Lu-ca 1:13"
+      },
+      {
+       "q": "Giăng Báp-tít ăn gì trong đồng vắng?",
+       "options": [
+        {
+         "t": "Châu chấu và mật ong rừng",
+         "img": "🦗"
+        },
+        {
+         "t": "Bánh và cá",
+         "img": "🐟"
+        },
+        {
+         "t": "Ma-na",
+         "img": "🍞"
+        },
+        {
+         "t": "Trái vả",
+         "img": "🍈"
+        }
+       ],
+       "a": 0,
+       "why": "Giăng ăn châu chấu và mật ong rừng.",
+       "ref": "Ma-thi-ơ 3:4"
+      },
+      {
+       "q": "Giăng Báp-tít giới thiệu Chúa Jêsus là ai?",
+       "options": [
+        {
+         "t": "Chiên Con của Đức Chúa Trời",
+         "img": "🐑"
+        },
+        {
+         "t": "Một tiên tri"
+        },
+        {
+         "t": "Vua Hê-rốt"
+        },
+        {
+         "t": "Ê-li"
+        }
+       ],
+       "a": 0,
+       "why": "Kìa, Chiên Con của Đức Chúa Trời, là Đấng cất tội lỗi thế gian đi.",
+       "ref": "Giăng 1:29"
+      },
+      {
+       "q": "Khi Chúa Jêsus chịu báp-têm, Đức Thánh Linh ngự xuống dưới hình dạng gì?",
+       "options": [
+        {
+         "t": "Chim bồ câu",
+         "img": "🕊️"
+        },
+        {
+         "t": "Ngọn lửa",
+         "img": "🔥"
+        },
+        {
+         "t": "Đám mây",
+         "img": "☁️"
+        },
+        {
+         "t": "Cơn gió",
+         "img": "🌬️"
+        }
+       ],
+       "a": 0,
+       "why": "Ngài thấy Thánh Linh của Đức Chúa Trời ngự xuống như chim bồ câu.",
+       "ref": "Ma-thi-ơ 3:16"
+      }
+     ]
+    },
+    {
+     "id": "phi-e-ro",
+     "emoji": "🎣",
+     "era": "Tân Ước",
+     "title": "Phi-e-rơ, từ ngư phủ đến sứ đồ",
+     "intro": "Phi-e-rơ nhiệt thành nhưng cũng từng vấp ngã khi chối Chúa ba lần. Chúa phục hồi ông, và ông trở thành người giảng Tin Lành mạnh mẽ trong ngày Lễ Ngũ Tuần.",
+     "readings": [
+      {
+       "book": "MAT",
+       "from": 14,
+       "to": 14,
+       "label": "Ma-thi-ơ 14"
+      },
+      {
+       "book": "MAT",
+       "from": 16,
+       "to": 16,
+       "label": "Ma-thi-ơ 16"
+      },
+      {
+       "book": "JHN",
+       "from": 21,
+       "to": 21,
+       "label": "Giăng 21"
+      },
+      {
+       "book": "ACT",
+       "from": 2,
+       "to": 2,
+       "label": "Công vụ các Sứ đồ 2"
+      }
+     ],
+     "verse": {
+      "ref": "Ma-thi-ơ 16:16",
+      "book": "MAT",
+      "ch": 16,
+      "v": [
+       16,
+       16
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Tên ban đầu của Phi-e-rơ là gì?",
+       "options": [
+        {
+         "t": "Si-môn"
+        },
+        {
+         "t": "Anh-rê"
+        },
+        {
+         "t": "Sau-lơ"
+        },
+        {
+         "t": "Lê-vi"
+        }
+       ],
+       "a": 0,
+       "why": "Ngươi là Si-môn, con Giô-na; ngươi sẽ được gọi là Sê-pha (nghĩa là Phi-e-rơ).",
+       "ref": "Giăng 1:42"
+      },
+      {
+       "q": "Phi-e-rơ bắt đầu chìm khi đi trên mặt nước vì sao?",
+       "options": [
+        {
+         "t": "Vì thấy gió thổi thì sợ hãi",
+         "img": "🌬️"
+        },
+        {
+         "t": "Vì mệt",
+         "img": "😮‍💨"
+        },
+        {
+         "t": "Vì Chúa bỏ đi",
+         "img": "🚶"
+        },
+        {
+         "t": "Vì nước quá lạnh",
+         "img": "🧊"
+        }
+       ],
+       "a": 0,
+       "why": "Song khi thấy gió thổi, thì Phi-e-rơ sợ hãi, hòng sụp xuống nước.",
+       "ref": "Ma-thi-ơ 14:30"
+      },
+      {
+       "q": "Phi-e-rơ xưng nhận Chúa Jêsus là ai?",
+       "options": [
+        {
+         "t": "Đấng Christ, Con Đức Chúa Trời hằng sống"
+        },
+        {
+         "t": "Một tiên tri lớn"
+        },
+        {
+         "t": "Giăng Báp-tít sống lại"
+        },
+        {
+         "t": "Ê-li"
+        }
+       ],
+       "a": 0,
+       "why": "Chúa là Đấng Christ, Con Đức Chúa Trời hằng sống.",
+       "ref": "Ma-thi-ơ 16:16"
+      },
+      {
+       "q": "Sau khi sống lại, Chúa Jêsus hỏi Phi-e-rơ câu gì ba lần?",
+       "options": [
+        {
+         "t": "Ngươi yêu ta chăng?",
+         "img": "❤️"
+        },
+        {
+         "t": "Ngươi có đói không?",
+         "img": "🍞"
+        },
+        {
+         "t": "Ngươi đi đâu?",
+         "img": "🧭"
+        },
+        {
+         "t": "Ngươi có tin không?",
+         "img": "🙏"
+        }
+       ],
+       "a": 0,
+       "why": "Hỡi Si-môn, con Giô-na, ngươi yêu ta chăng?… Hãy chăn chiên ta.",
+       "ref": "Giăng 21:15-17"
+      },
+      {
+       "q": "Phi-e-rơ được sai đến nhà viên đội trưởng người ngoại nào?",
+       "options": [
+        {
+         "t": "Cọt-nây"
+        },
+        {
+         "t": "Phi-lát"
+        },
+        {
+         "t": "Hê-rốt"
+        },
+        {
+         "t": "Xa-chê"
+        }
+       ],
+       "a": 0,
+       "why": "Tại thành Sê-sa-rê, có một người tên là Cọt-nây, làm đội trưởng.",
+       "ref": "Công vụ 10:1"
+      }
+     ]
+    },
+    {
+     "id": "phao-lo",
+     "emoji": "✉️",
+     "era": "Tân Ước",
+     "title": "Phao-lô, sứ đồ cho dân ngoại",
+     "intro": "Từ người bắt bớ Hội thánh, Sau-lơ được biến đổi trên đường Đa-mách và trở thành sứ đồ Phao-lô, người mang Tin Lành đến nhiều dân tộc và viết nhiều thư trong Tân Ước.",
+     "readings": [
+      {
+       "book": "ACT",
+       "from": 9,
+       "to": 9,
+       "label": "Công vụ các Sứ đồ 9"
+      },
+      {
+       "book": "ACT",
+       "from": 16,
+       "to": 16,
+       "label": "Công vụ các Sứ đồ 16"
+      },
+      {
+       "book": "ACT",
+       "from": 27,
+       "to": 27,
+       "label": "Công vụ các Sứ đồ 27"
+      },
+      {
+       "book": "PHP",
+       "from": 4,
+       "to": 4,
+       "label": "Phi-líp 4"
+      },
+      {
+       "book": "2TI",
+       "from": 4,
+       "to": 4,
+       "label": "2 Ti-mô-thê 4"
+      }
+     ],
+     "verse": {
+      "ref": "2 Ti-mô-thê 4:7",
+      "book": "2TI",
+      "ch": 4,
+      "v": [
+       7,
+       7
+      ]
+     },
+     "quiz": [
+      {
+       "q": "Sau khi gặp Chúa trên đường Đa-mách, Sau-lơ bị mù mấy ngày?",
+       "options": [
+        {
+         "t": "Một ngày"
+        },
+        {
+         "t": "Ba ngày"
+        },
+        {
+         "t": "Bảy ngày"
+        },
+        {
+         "t": "Bốn mươi ngày"
+        }
+       ],
+       "a": 1,
+       "why": "Người ở ba ngày không thấy, và không ăn không uống chi hết.",
+       "ref": "Công vụ 9:9"
+      },
+      {
+       "q": "Ai được Chúa sai đến đặt tay cho Sau-lơ được sáng mắt lại?",
+       "options": [
+        {
+         "t": "A-na-nia"
+        },
+        {
+         "t": "Phi-e-rơ"
+        },
+        {
+         "t": "Ba-na-ba"
+        },
+        {
+         "t": "Si-la"
+        }
+       ],
+       "a": 0,
+       "why": "A-na-nia đi đến, vào nhà, đặt tay trên Sau-lơ… tức thì có cái chi như cái vảy từ mắt người rớt xuống.",
+       "ref": "Công vụ 9:17-18"
+      },
+      {
+       "q": "Trong các chuyến truyền giáo, Phao-lô làm nghề gì để tự nuôi mình?",
+       "options": [
+        {
+         "t": "May trại",
+         "img": "⛺"
+        },
+        {
+         "t": "Đánh cá",
+         "img": "🎣"
+        },
+        {
+         "t": "Thâu thuế",
+         "img": "💰"
+        },
+        {
+         "t": "Làm vườn",
+         "img": "🌱"
+        }
+       ],
+       "a": 0,
+       "why": "Phao-lô ở nhà A-qui-la và Bê-rít-sin, vì cùng nghề… nghề các người đó là may trại.",
+       "ref": "Công vụ 18:3"
+      },
+      {
+       "q": "Trên đường đến Rô-ma, tàu chở Phao-lô gặp chuyện gì?",
+       "options": [
+        {
+         "t": "Bị bão và đắm",
+         "img": "🌊"
+        },
+        {
+         "t": "Bị cướp biển",
+         "img": "🏴‍☠️"
+        },
+        {
+         "t": "Lạc đường",
+         "img": "🧭"
+        },
+        {
+         "t": "Hết lương thực",
+         "img": "🍞"
+        }
+       ],
+       "a": 0,
+       "why": "Gặp nơi hai ngọn nước biển xáp nhau, thì họ làm cho tàu bị cạn; mũi tàu mắc lại… còn lái bị sóng đánh dữ dội nên nát hết.",
+       "ref": "Công vụ 27:41"
+      },
+      {
+       "q": "Phao-lô viết: 'Tôi làm được mọi sự nhờ…'",
+       "options": [
+        {
+         "t": "Đấng ban thêm sức cho tôi",
+         "img": "💪"
+        },
+        {
+         "t": "Sức riêng của tôi"
+        },
+        {
+         "t": "Các bạn đồng lao"
+        },
+        {
+         "t": "Sự khôn ngoan của tôi"
+        }
+       ],
+       "a": 0,
+       "why": "Tôi làm được mọi sự nhờ Đấng ban thêm sức cho tôi.",
+       "ref": "Phi-líp 4:13"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

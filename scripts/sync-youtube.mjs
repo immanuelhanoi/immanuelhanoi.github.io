@@ -355,20 +355,29 @@ async function fetchOneVideo(id) {
 
 /* ---------------- hymns (data/hymn-videos.json) ---------------- */
 
-/** "Thánh Ca 123 - Nương Cậy Chúa | Oneway" → { so: 'Thánh ca 123', ten: 'Nương Cậy Chúa' } */
+/**
+ * "Thánh Ca 123 - Nương Cậy Chúa | Oneway"            → { so: 'Thánh ca 123', ten: 'Nương Cậy Chúa' }
+ * "Bởi Ân Điển - Rôsa Ênuôl | Oneway Worship | …"     → { so: '', ten: 'Bởi Ân Điển', singer: 'Rôsa Ênuôl' }
+ * "[Karaoke] Thánh ca 001: Hỡi Thánh Vương, Kíp Ngự Lai" → { so: 'Thánh ca 1', ten: 'Hỡi Thánh Vương, Kíp Ngự Lai' }
+ */
 export function parseHymnTitle(title = '') {
-  let t = String(title).replace(/\s*[|｜]\s*[^|｜]*$/, '').trim()          // drop "| channel name" tails
-    .replace(/[(\[]?\s*\b(karaoke|lyrics?|official|mv|beat|audio|video|hd|4k|có lời|lời bài hát)\b\s*[)\]]?/gi, ' ');
+  let t = String(title).split(/\s+[|｜]\s+/)[0].trim()                         // "Song - Singer | Channel | …"
+    .replace(/[(\[]?\s*\b(karaoke|beat|lyrics?|official|mv|audio|video|hd|4k|có lời|lời bài hát|acoustic cover)\b\s*[)\]]?/gi, ' ')
+    .replace(/\s{2,}/g, ' ').trim();
   const m = t.match(/(?:th[aá]nh\s*ca|\bTC)\s*(?:s[oố]\s*)?(\d{1,4})\b/i);
   const so = m ? `Thánh ca ${+m[1]}` : '';
   if (m) t = (t.slice(0, m.index) + ' ' + t.slice(m.index + m[0].length)).trim();
   t = t.replace(/^[\s\-–:.,#()[\]]+|[\s\-–:.,#()[\]]+$/g, '').replace(/\s{2,}/g, ' ');
-  return { so, ten: t || String(title).trim() };
+  let singer = '';
+  const dash = t.match(/^(.+?)\s+[-–]\s+([^-–]+)$/);
+  // "Song - Singer": a short tail of capitalised words is a singer's name
+  if (dash && dash[2].split(/\s+/).length <= 4 && /^\p{Lu}/u.test(dash[2])) { t = dash[1].trim(); singer = dash[2].trim(); }
+  return { so, ten: t || String(title).trim(), ...(singer ? { singer } : {}) };
 }
 
 // Hymn channels also post sermons, news and programmes: keep only videos whose title says it is a hymn.
 const HYMN_YES = /thanh ca|\btc\s*\d|\bhymn|karaoke|ton vinh|thanh khuc|nhac thanh|worship|ngoi khen|\bso\s*\d{1,4}\b/;
-const HYMN_NO = /bai giang|giang luan|su diep|chuong trinh|podcast|tin tuc|phong su|chia se|lam chung|doc kinh thanh|tinh nguyen|tho phuong chua nhat|le thanh|hoi dong|phat song|livestream|truc tiep|tam tinh|giai dap|hoc kinh thanh|on tap|\bbai \d+\b/;
+const HYMN_NO = /klei |\bede\b|jrai|bahnar|m'nong|k'ho|\bcil\b|bai giang|giang luan|su diep|chuong trinh|podcast|tin tuc|phong su|chia se|lam chung|doc kinh thanh|tinh nguyen|tho phuong chua nhat|le thanh|hoi dong|phat song|livestream|truc tiep|tam tinh|giai dap|hoc kinh thanh|on tap|\bbai \d+\b/;
 export function isHymnTitle(title, src = {}) {
   const t = norm(title);
   if (HYMN_NO.test(t)) return false;
@@ -380,7 +389,8 @@ async function syncHymns(cfg, ytdlp) {
   let prev = { videos: [] };
   try { prev = JSON.parse(await fs.readFile(file, 'utf8')); } catch { /* first run */ }
   const sources = cfg.church?.hymnSources || [];
-  if (!sources.length || !ytdlp || offline || fixture) return;
+  if (!sources.length || fixture) return;
+  const canFetch = ytdlp && !offline;
   const byId = new Map((prev.videos || []).map(v => [v.id, v]));
   const state = { ...(prev.sources || {}) };
   for (const src of sources) {
@@ -388,7 +398,7 @@ async function syncHymns(cfg, ytdlp) {
     if (!p) { console.log(`Thánh ca: không hiểu nguồn ${JSON.stringify(src)}`); continue; }
     const key = p.id;
     // a big hymn list is listed in full once a week; it rarely changes
-    if (!forceBackfill && state[key]?.at && Date.now() - Date.parse(state[key].at) < 7 * 864e5) continue;
+    if (!canFetch || (!forceBackfill && state[key]?.at && Date.now() - Date.parse(state[key].at) < 7 * 864e5)) continue;
     try {
       const entries = await ytDlpFlat(p.url);
       let kept = 0;
@@ -406,6 +416,12 @@ async function syncHymns(cfg, ytdlp) {
     } catch (e) {
       console.log(`Thánh ca ${src.name || key}: lỗi – ${String(e.message).split('\n')[0].slice(0, 120)}`);
     }
+  }
+  // re-derive names from the original titles so better parsing rules also fix stored entries
+  for (const [k, v] of byId) {
+    if (!isHymnTitle(v.title, (sources.find(x => (x.name || '') === v.source) || {}))) { byId.delete(k); continue; }
+    const h = parseHymnTitle(v.title);
+    byId.set(k, { ...v, so: h.so, ten: h.ten, singer: h.singer || undefined });
   }
   const videos = [...byId.values()].sort((a, b) => (parseInt(a.so.replace(/\D/g, '')) || 1e9) - (parseInt(b.so.replace(/\D/g, '')) || 1e9) || a.ten.localeCompare(b.ten, 'vi'));
   await fs.writeFile(file, JSON.stringify({ sources: state, updatedAt: new Date().toISOString(), videos }) + '\n');
@@ -584,7 +600,7 @@ async function main() {
     .sort((a, b) => (b.date || '').localeCompare(a.date || '') || (a.service || '').localeCompare(b.service || '', 'vi', { numeric: true }) ||
       (b.publishedAt || '').localeCompare(a.publishedAt || ''));
 
-  if (!fixture) await syncHymns(cfg, !offline && await hasYtDlp());
+  if (!fixture) await syncHymns(cfg, await hasYtDlp());
   const out = { channels: state, videos };
   const prevJson = JSON.stringify({ channels: existing.channels, videos: existing.videos });
   if (JSON.stringify(out) === prevJson) {
