@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
-import { parseRss, toSermon, findScripture, findSpeaker, topicsFor, classify, parseTitle, fromYtDlpEntry, channelsFromConfig } from '../sync-youtube.mjs';
+import { parseRss, toSermon, findScripture, findSpeaker, topicsFor, classify, parseTitle, fromYtDlpEntry, channelsFromConfig, isHymnTitle, parseHymnTitle, parseSource, videoIdOf } from '../sync-youtube.mjs';
 
 test('parse RSS feed fixture', async () => {
   const xml = await fs.readFile(new URL('./sample-feed.xml', import.meta.url), 'utf8');
@@ -135,4 +135,29 @@ test('real channel quirks', () => {
   assert.equal(findScripture('(I Phi 1;3-9)'), '1 Phi-e-rơ 1:3-9');
   assert.equal(findScripture('(Giô-na 1;3)'), 'Giô-na 1:3');
   assert.equal(findScripture('(Giăng 3;16)'), 'Giăng 3:16');
+});
+
+test('youth group and hand-added videos', () => {
+  assert.equal(classify({ title: '20250927 [TTN] Ân điển đặc biệt của Phao lô (Phil 2;9-11)' }), 'thanh-thieu-nien');
+  assert.equal(classify({ title: 'Bất kỳ tiêu đề nào', forceType: 'camp' }), 'camp');
+  assert.equal(videoIdOf('https://m.youtube.com/watch?v=ztWHi656unc&pp=4gcGEgR6YWxv'), 'ztWHi656unc');
+  assert.equal(videoIdOf('https://youtu.be/ztWHi656unc'), 'ztWHi656unc');
+});
+
+test('hymn sources and titles', () => {
+  assert.deepEqual(parseSource({ handle: 'https://youtube.com/@onewayradioonline?si=F4uq' }),
+    { kind: 'channel', id: '@onewayradioonline', url: 'https://www.youtube.com/@onewayradioonline/videos' });
+  assert.equal(parseSource({ playlist: 'https://www.youtube.com/playlist?list=PLabcdefghijkl' }).id, 'PLabcdefghijkl');
+  // keep hymns, drop everything else a hymn channel posts
+  assert.equal(isHymnTitle('Thánh Ca 123 - Nương Cậy Chúa | Oneway'), true);
+  assert.equal(isHymnTitle('TC 45 Ân Điển Lạ Lùng'), true);
+  assert.equal(isHymnTitle('Karaoke Thánh ca - Chúa Chăn Giữ Tôi'), true);
+  assert.equal(isHymnTitle('Bài giảng: Sống đắc thắng | Mục sư A'), false);
+  assert.equal(isHymnTitle('Chương trình Tâm tình mỗi tối 12/11'), false);
+  assert.equal(isHymnTitle('Lễ thờ phượng Chúa Nhật 10/11/2024'), false);
+  assert.equal(isHymnTitle('Podcast: Đức tin và công việc'), false);
+  assert.equal(isHymnTitle('Linh hồn tôi bình an', { filter: 'all' }), true);   // karaoke channel: everything except excluded words
+  assert.deepEqual(parseHymnTitle('Thánh Ca 123 - Nương Cậy Chúa (Karaoke) | Oneway'), { so: 'Thánh ca 123', ten: 'Nương Cậy Chúa' });
+  assert.deepEqual(parseHymnTitle('TC 045: Ân Điển Lạ Lùng [Lyrics]'), { so: 'Thánh ca 45', ten: 'Ân Điển Lạ Lùng' });
+  assert.deepEqual(parseHymnTitle('Chúa Chăn Giữ Tôi'), { so: '', ten: 'Chúa Chăn Giữ Tôi' });
 });
