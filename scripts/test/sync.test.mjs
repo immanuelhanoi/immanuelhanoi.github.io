@@ -160,4 +160,10 @@ test('hymn sources and titles', () => {
   assert.deepEqual(parseHymnTitle('Thánh Ca 123 - Nương Cậy Chúa (Karaoke) | Oneway'), { so: 'Thánh ca 123', ten: 'Nương Cậy Chúa' });
   assert.deepEqual(parseHymnTitle('TC 045: Ân Điển Lạ Lùng [Lyrics]'), { so: 'Thánh ca 45', ten: 'Ân Điển Lạ Lùng' });
   assert.deepEqual(parseHymnTitle('Chúa Chăn Giữ Tôi'), { so: '', ten: 'Chúa Chăn Giữ Tôi' });
+  // real titles from the three channels
+  assert.deepEqual(parseHymnTitle('Bởi Ân Điển - Rôsa Ênuôl | Oneway Worship | Thánh Ca Tin Lành'), { so: '', ten: 'Bởi Ân Điển', singer: 'Rôsa Ênuôl' });
+  assert.deepEqual(parseHymnTitle('[Beat] Thánh ca 001: Hỡi Thánh Vương, Kíp Ngự Lai'), { so: 'Thánh ca 1', ten: 'Hỡi Thánh Vương, Kíp Ngự Lai' });
+  assert.deepEqual(parseHymnTitle('Thánh Ca 01 Cúi xin Vua Thánh ngự lai'), { so: 'Thánh ca 1', ten: 'Cúi xin Vua Thánh ngự lai' });
+  assert.deepEqual(parseHymnTitle('Nguyện Cầu Thánh Linh Ngài Đến | Nguyên Thủy | Thánh Ca Acoustic Cover'), { so: '', ten: 'Nguyện Cầu Thánh Linh Ngài Đến' });
+  assert.equal(isHymnTitle('Aba Cha Yêu Ơi - Rôsa Ênuôl | Aba Ama Khăp Ơi | Oneway Worship Klei Êđê'), false);
 });

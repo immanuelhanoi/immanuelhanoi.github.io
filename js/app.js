@@ -326,16 +326,21 @@
    * so a hymn has a "listen" version and, where available, a karaoke one.
    */
   function buildHymns(manual, videos) {
+    // Group by song name, not number: each hymnal (HTTLVN, Báp-tít…) numbers its songs differently.
     const groups = new Map();
-    const keyOf = h => (h.so ? norm(h.so) : norm(h.ten).replace(/[^a-z0-9]/g, ''));
+    const keyOf = h => norm(h.ten).replace(/[^a-z0-9]/g, '');
+    const add = (g, x) => { if (x.so && !g.numbers.includes(x.so)) g.numbers.push(x.so); if (!g.so) g.so = x.so || ''; };
     for (const h of manual) {
-      groups.set(keyOf(h), { so: h.so || '', ten: h.ten, moods: h.moods || [], topics: h.topics || [], listen: h.video ? [h.video] : [], karaoke: [] });
+      const g = { so: '', numbers: [], ten: h.ten, moods: h.moods || [], topics: h.topics || [], listen: h.video ? [h.video] : [], karaoke: [], sources: [] };
+      add(g, h);
+      groups.set(keyOf(h), g);
     }
     for (const v of videos) {
       const k = keyOf(v);
-      const g = groups.get(k) || { so: v.so, ten: v.ten, moods: [], topics: [], listen: [], karaoke: [] };
+      const g = groups.get(k) || { so: '', numbers: [], ten: v.ten, moods: [], topics: [], listen: [], karaoke: [], sources: [] };
+      add(g, v);
       (v.karaoke ? g.karaoke : g.listen).push(v.video);
-      g.sources = [...new Set([...(g.sources || []), v.source])];
+      if (!g.sources.includes(v.source)) g.sources.push(v.source);
       groups.set(k, g);
     }
     const num = h => parseInt((h.so || '').replace(/\D/g, ''), 10) || 1e9;
@@ -399,6 +404,16 @@
         <strong>🔔 Nhận câu Kinh Thánh mỗi sáng</strong>
         <span class="meta">Bật thông báo nhắc nhở hằng ngày →</span>
       </a>` : ''}
+
+      ${(DATA.journeys.tracks || []).length ? (() => {
+        const t = DATA.journeys.tracks.map(tr => ({ tr, i: tr.stages.findIndex((s, k) => unlocked(tr, k) && !stageProgress(tr.id, s.id).passed) }))
+          .find(x => x.i >= 0) || {};
+        const s = t.tr && t.tr.stages[t.i];
+        return `<a class="box journey-cta" href="${s ? `#/hanh-trinh/${t.tr.id}/${s.id}` : '#/hanh-trinh'}">
+          <span class="float">${s ? s.emoji : '🗺️'}</span>
+          <span><strong>Hành trình Kinh Thánh</strong><br><span class="meta">${s ? `Tiếp tục: ${esc(s.title)}` : 'Bắt đầu đọc Kinh Thánh theo từng chặng'} →</span></span>
+        </a>`;
+      })() : ''}
 
       ${DATA.moods.length ? `
       <section class="section">
@@ -531,7 +546,7 @@
     if (karaoke) hymns = hymns.filter(h => h.karaoke.length);
     if (q) {
       const n = norm(q).trim();
-      hymns = hymns.filter(h => (/^\d+$/.test(n) ? norm(h.so).replace(/\D/g, '') === n : (h.words + ' ' + norm(h.so)).includes(n)));
+      hymns = hymns.filter(h => (/^\d+$/.test(n) ? h.numbers.some(x => x.replace(/\D/g, '') === n) : h.words.includes(n)));
     }
     const shown = hymns.slice(0, page * 40);
     const url = extra => {
@@ -934,6 +949,232 @@
     `;
   }
 
+  /* ---------- Bible journey (data/journeys.json) ---------- */
+
+  const JOURNEY_KEY = 'immanuel.journey';
+  const getProgress = () => { try { return JSON.parse(localStorage.getItem(JOURNEY_KEY)) || {}; } catch { return {}; } };
+  const saveProgress = p => { try { localStorage.setItem(JOURNEY_KEY, JSON.stringify(p)); } catch { /* private mode */ } };
+  const stageProgress = (t, s) => ((getProgress()[t] || {})[s]) || { read: [], best: 0, passed: false };
+  function updateStage(t, s, fn) {
+    const p = getProgress();
+    p[t] = p[t] || {};
+    p[t][s] = fn({ read: [], best: 0, passed: false, ...(p[t][s] || {}) });
+    saveProgress(p);
+  }
+  const trackById = id => ((DATA.journeys || {}).tracks || []).find(t => t.id === id);
+  const bookName = code => (((DATA.journeys || {}).books || []).find(b => b.code === code) || {}).name || code;
+  const unlocked = (track, i) => i === 0 || stageProgress(track.id, track.stages[i - 1].id).passed;
+  const doneCount = track => track.stages.filter(s => stageProgress(track.id, s.id).passed).length;
+  const stars = score => (score >= 1 ? 3 : score >= 0.8 ? 2 : score >= 0.6 ? 1 : 0);
+  const starStr = n => '★'.repeat(n) + '☆'.repeat(3 - n);
+
+  // Bible text: data/bible/<BOOK>.json, fetched once per book
+  const bibleCache = {};
+  async function loadBook(code) {
+    if (!(code in bibleCache)) bibleCache[code] = loadFile(`bible/${code}.json`, true).catch(() => null);
+    return bibleCache[code];
+  }
+  const bibleLink = (code, ch) => `https://www.bible.com/bible/193/${code}.${ch}`;
+  const readUrl = (code, ch, back = '') => `#/doc/${code}/${ch}${back ? '?ht=' + encodeURIComponent(back) : ''}`;
+
+  // Sermons from the church whose main scripture is in one of the stage's books
+  function sermonsForBooks(codes, limit = 4) {
+    const names = codes.map(c => norm(bookName(c)));
+    const alias = { ACT: ['cong vu'], PSA: ['thi thien'] };
+    return DATA.sermons.filter(s => {
+      if (!s.scripture || !isSermon(s)) return false;
+      const ref = norm(s.scripture);
+      return codes.some((c, i) => ref.startsWith(names[i] + ' ') || (alias[c] || []).some(a => ref.startsWith(a + ' ')));
+    }).sort(byDateDesc).slice(0, limit);
+  }
+
+  function pageJourneys() {
+    const tracks = (DATA.journeys || {}).tracks || [];
+    return `
+      <h1>Hành trình Kinh Thánh</h1>
+      <p class="lead">Đọc Kinh Thánh theo từng chặng. Mỗi chặng có bài đọc, câu gốc, bài giảng liên quan và một bài kiểm tra nhỏ — đúng từ 4/5 câu để mở chặng tiếp theo.</p>
+      <div class="track-list">
+        ${tracks.map(t => {
+          const done = doneCount(t), total = t.stages.length;
+          const next = t.stages.find((s, i) => unlocked(t, i) && !stageProgress(t.id, s.id).passed);
+          return `<a class="track-card" href="#/hanh-trinh/${t.id}">
+            <span class="track-emoji">${t.emoji}</span>
+            <span class="track-body">
+              <strong>${esc(t.title)}</strong>
+              <span class="meta">${esc(t.desc)}</span>
+              <span class="bar"><span style="width:${Math.round(done / total * 100)}%"></span></span>
+              <span class="meta">${done}/${total} chặng${next ? ` · Tiếp theo: ${esc(next.title)}` : ' · Đã hoàn thành 🎉'}</span>
+            </span>
+          </a>`;
+        }).join('')}
+      </div>`;
+  }
+
+  function pageTrack(trackId) {
+    const t = trackById(trackId);
+    if (!t) return notFound();
+    let era = '';
+    setTimeout(() => { const cur = document.querySelector('.node.current'); cur && cur.scrollIntoView({ block: 'center' }); });
+    return `
+      <p class="crumb"><a href="#/hanh-trinh">← Hành trình</a></p>
+      <h1>${t.emoji} ${esc(t.title)}</h1>
+      <p class="lead">${doneCount(t)}/${t.stages.length} chặng đã hoàn thành</p>
+      <div class="path">
+        ${t.stages.map((s, i) => {
+          const p = stageProgress(t.id, s.id);
+          const open = unlocked(t, i);
+          const state = p.passed ? 'done' : open ? 'current' : 'locked';
+          const head = s.era !== era ? `<div class="era">${esc(era = s.era)}</div>` : '';
+          return `${head}<a class="node ${state} ${i % 2 ? 'right' : 'left'}" href="${open ? `#/hanh-trinh/${t.id}/${s.id}` : '#/hanh-trinh/' + t.id}" ${open ? '' : 'aria-disabled="true"'}>
+            <span class="node-dot">${state === 'locked' ? '🔒' : s.emoji}</span>
+            <span class="node-label"><small>Chặng ${i + 1}</small>${esc(s.title)}${p.passed ? `<span class="stars">${starStr(stars(p.best))}</span>` : ''}</span>
+          </a>`;
+        }).join('')}
+      </div>`;
+  }
+
+  function pageStage(trackId, stageId) {
+    const t = trackById(trackId);
+    const i = t ? t.stages.findIndex(s => s.id === stageId) : -1;
+    if (i < 0) return notFound();
+    const s = t.stages[i];
+    if (!unlocked(t, i)) return `<p class="empty">🔒 Hãy hoàn thành chặng trước để mở chặng này. <a href="#/hanh-trinh/${t.id}">Về bản đồ</a></p>`;
+    const p = stageProgress(t.id, s.id);
+    const books = [...new Set(s.readings.map(r => r.book))];
+    const sermons = sermonsForBooks(books);
+    const back = `${t.id}/${s.id}`;
+    const v = s.verse;
+    setTimeout(async () => {      // fill the key verse from the Bible text when it is available
+      const el = document.getElementById('key-verse');
+      if (!el || (v.text && !v.v)) return;
+      const book = await loadBook(v.book);
+      const text = book && (book.chapters[v.ch - 1] || []).slice(v.v[0] - 1, v.v[1]).join(' ');
+      if (text) el.textContent = text;
+      else if (!v.text) el.closest('blockquote').classList.add('ref-only');
+    });
+    return `
+      <p class="crumb"><a href="#/hanh-trinh/${t.id}">← ${esc(t.title)}</a></p>
+      <div class="stage-hero"><span class="float">${s.emoji}</span></div>
+      <p class="meta">Chặng ${i + 1}/${t.stages.length} · ${esc(s.era)}</p>
+      <h1>${esc(s.title)}</h1>
+      <p>${esc(s.intro)}</p>
+      <blockquote class="scripture"><span id="key-verse">${esc(v.text || '')}</span><cite>${esc(v.ref)}</cite></blockquote>
+      <section class="section">
+        <h2>📖 Bài đọc</h2>
+        <div class="list">
+          ${s.readings.map((r, k) => {
+            const read = p.read.includes(k);
+            return `<a class="reading${read ? ' read' : ''}" href="${readUrl(r.book, r.from, back + '/' + k)}">
+              <span class="check">${read ? '✓' : k + 1}</span><span>${esc(r.label)}</span><span class="hymn-go">›</span></a>`;
+          }).join('')}
+        </div>
+        <p class="hint">${p.read.length}/${s.readings.length} bài đã đọc</p>
+      </section>
+      ${sermons.length ? `<section class="section"><div class="section-head"><h2>🎧 Bài giảng liên quan</h2></div>${list(sermons, { grid: true })}</section>` : ''}
+      <section class="section quiz-cta">
+        ${p.passed ? `<p>✅ Bạn đã qua chặng này <span class="stars">${starStr(stars(p.best))}</span></p>` : ''}
+        <a class="btn primary big" href="#/hanh-trinh/${t.id}/${s.id}/kiem-tra">${p.passed ? 'Làm lại bài kiểm tra' : '🎯 Làm bài kiểm tra'}</a>
+        ${p.passed && t.stages[i + 1] ? `<a class="btn" href="#/hanh-trinh/${t.id}/${t.stages[i + 1].id}">Chặng tiếp theo →</a>` : ''}
+      </section>`;
+  }
+
+  // Quiz state lives in memory while the quiz page is open
+  let quiz = null;
+  function pageQuiz(trackId, stageId) {
+    const t = trackById(trackId);
+    const i = t ? t.stages.findIndex(s => s.id === stageId) : -1;
+    if (i < 0 || !unlocked(t, i)) return notFound();
+    const s = t.stages[i];
+    if (!quiz || quiz.key !== `${t.id}/${s.id}`) quiz = { key: `${t.id}/${s.id}`, n: 0, picked: null, correct: 0 };
+    const pass = (DATA.journeys.passScore || 0.8);
+
+    if (quiz.n >= s.quiz.length) {               // result screen
+      const score = quiz.correct / s.quiz.length;
+      const passed = score >= pass;
+      const st = stars(score);
+      updateStage(t.id, s.id, p => ({ ...p, best: Math.max(p.best || 0, score), passed: p.passed || passed }));
+      const next = t.stages[i + 1];
+      quiz = null;
+      return `
+        <div class="result ${passed ? 'win' : ''}">
+          ${passed ? `<div class="confetti">${Array.from({ length: 24 }, (_, k) => `<i style="--x:${(k * 37) % 100}%;--d:${(k % 6) * 0.15}s">${['🎉', '⭐', '✨', '🕊️'][k % 4]}</i>`).join('')}</div>` : ''}
+          <div class="result-emoji">${passed ? '🏆' : '💪'}</div>
+          <h1>${passed ? 'Tuyệt vời!' : 'Cố lên nhé!'}</h1>
+          <p class="big-score">${Math.round(score * s.quiz.length)}/${s.quiz.length} câu đúng</p>
+          <p class="stars big">${starStr(st)}</p>
+          <p>${passed ? (next ? `Bạn đã mở khóa chặng “${esc(next.title)}”.` : 'Bạn đã hoàn thành cả hành trình! Ha-lê-lu-gia! 🙌')
+            : `Cần đúng ít nhất ${Math.ceil(pass * s.quiz.length)} câu để qua chặng. Đọc lại bài và thử lần nữa nhé.`}</p>
+          <div class="actions" style="justify-content:center">
+            ${passed && next ? `<a class="btn primary big" href="#/hanh-trinh/${t.id}/${next.id}">Chặng tiếp theo →</a>` : ''}
+            <a class="btn" href="#/hanh-trinh/${t.id}/${s.id}/kiem-tra" onclick="setTimeout(()=>dispatchEvent(new HashChangeEvent('hashchange')))">↺ Làm lại</a>
+            <a class="btn" href="#/hanh-trinh/${t.id}">Bản đồ</a>
+          </div>
+        </div>`;
+    }
+
+    const q = s.quiz[quiz.n];
+    const pics = q.options.every(o => o.img);
+    setTimeout(() => {
+      document.querySelectorAll('.opt').forEach(b => b.addEventListener('click', () => {
+        if (quiz.picked !== null) return;
+        quiz.picked = +b.dataset.i;
+        if (quiz.picked === q.a) quiz.correct++;
+        const y = scrollY; render(); scrollTo(0, y);
+        const fb = document.querySelector('.feedback');      // bring the explanation and "next" button into view
+        fb && fb.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }));
+      const nx = document.getElementById('next-q');
+      nx && nx.addEventListener('click', () => { quiz.n++; quiz.picked = null; render(); });
+    });
+    const answered = quiz.picked !== null;
+    return `
+      <p class="crumb"><a href="#/hanh-trinh/${t.id}/${s.id}">✕ Thoát</a></p>
+      <div class="qbar">${s.quiz.map((_, k) => `<span class="${k < quiz.n ? 'done' : k === quiz.n ? 'now' : ''}"></span>`).join('')}</div>
+      <p class="meta">Câu ${quiz.n + 1}/${s.quiz.length}</p>
+      <h2 class="question">${esc(q.q)}</h2>
+      <div class="${pics ? 'opts pics' : 'opts'}">
+        ${q.options.map((o, k) => {
+          const cls = !answered ? '' : k === q.a ? ' right' : k === quiz.picked ? ' wrong' : ' dim';
+          return `<button class="opt${cls}" data-i="${k}" ${answered ? 'disabled' : ''} style="--i:${k}">
+            ${o.img ? `<span class="opt-img">${o.img}</span>` : ''}<span>${esc(o.t)}</span></button>`;
+        }).join('')}
+      </div>
+      ${answered ? `<div class="feedback ${quiz.picked === q.a ? 'ok' : 'no'}">
+        <strong>${quiz.picked === q.a ? '🎉 Chính xác!' : '💡 Chưa đúng'}</strong>
+        <p>${esc(q.why)}</p><p class="ref">📖 ${esc(q.ref)}</p>
+        <button id="next-q" class="btn primary big">${quiz.n + 1 < s.quiz.length ? 'Câu tiếp theo →' : 'Xem kết quả'}</button>
+      </div>` : ''}`;
+  }
+
+  function pageRead(code, ch, params) {
+    ch = +ch;
+    const back = params.get('ht') || '';            // "track/stage/readingIndex" when opened from a journey
+    const [tId, sId, rIdx] = back.split('/');
+    const total = ((((DATA.journeys || {}).books || []).find(b => b.code === code)) || {}).chapters || ch;
+    setTimeout(async () => {
+      const box = document.getElementById('bible-text');
+      const book = await loadBook(code);
+      const verses = book && book.chapters[ch - 1];
+      box.innerHTML = verses && verses.length
+        ? verses.map((v, k) => v ? `<p class="verse"><sup>${k + 1}</sup>${esc(v)}</p>` : '').join('')
+        : `<div class="box"><p>Bản Kinh Thánh trong app đang được cập nhật. Bạn có thể đọc chương này trên bible.com (bản Truyền Thống 1925):</p>
+            <a class="btn primary" href="${bibleLink(code, ch)}" target="_blank" rel="noopener">📖 Đọc ${esc(bookName(code))} ${ch}</a></div>`;
+      const mark = document.getElementById('mark-read');
+      mark && mark.addEventListener('click', () => {
+        updateStage(tId, sId, p => ({ ...p, read: [...new Set([...(p.read || []), +rIdx])] }));
+        location.hash = `#/hanh-trinh/${tId}/${sId}`;
+      });
+    });
+    const nav = (n, label) => (n >= 1 && n <= total ? `<a class="btn" href="${readUrl(code, n, back)}">${label}</a>` : '<span></span>');
+    return `
+      ${back ? `<p class="crumb"><a href="#/hanh-trinh/${tId}/${sId}">← Về chặng</a></p>` : ''}
+      <h1>${esc(bookName(code))} ${ch}</h1>
+      <div id="bible-text" class="bible"><p class="loading">Đang tải…</p></div>
+      <div class="read-nav">${nav(ch - 1, '← Chương trước')}${nav(ch + 1, 'Chương sau →')}</div>
+      ${back ? `<button id="mark-read" class="btn primary big" style="width:100%;margin-top:14px">✓ Tôi đã đọc xong</button>` : ''}
+      <p class="hint">Kinh Thánh Tiếng Việt, Bản Truyền Thống 1926.</p>`;
+  }
+
   const notFound = () => `<p class="empty">Không tìm thấy trang này. <a href="#/">Về trang chủ</a></p>`;
 
   /* ---------- router ---------- */
@@ -951,7 +1192,12 @@
     [/^\/chu-de\/([^/]+)$/, (m, p) => pageTopic(m[1], p), 'library'],
     [/^\/tim-kiem$/, (m, p) => pageSearch(p), ''],
     [/^\/bai\/(.+)$/, m => pageDetail(decodeURIComponent(m[1])), ''],
-    [/^\/yeu-thich$/, () => pageFavorites(), 'favorites'],
+    [/^\/yeu-thich$/, () => pageFavorites(), ''],
+    [/^\/hanh-trinh$/, () => pageJourneys(), 'journey'],
+    [/^\/hanh-trinh\/([\w-]+)$/, m => pageTrack(m[1]), 'journey'],
+    [/^\/hanh-trinh\/([\w-]+)\/([\w-]+)$/, m => pageStage(m[1], m[2]), 'journey'],
+    [/^\/hanh-trinh\/([\w-]+)\/([\w-]+)\/kiem-tra$/, m => pageQuiz(m[1], m[2]), 'journey'],
+    [/^\/doc\/(\w{3})\/(\d+)$/, (m, p) => pageRead(m[1], m[2], p), 'journey'],
     [/^\/them$/, () => pageAdd(), ''],
     [/^\/cai-dat$/, () => pageSettings(), ''],
   ];
@@ -960,6 +1206,7 @@
     const raw = location.hash.slice(1) || '/';
     const [path, qs = ''] = raw.split('?');
     const params = new URLSearchParams(qs);
+    if (!path.endsWith('/kiem-tra')) quiz = null;   // leaving a quiz starts it over next time
     let html = notFound(), tab = '';
     for (const [re, fn, t] of routes) {
       const m = path.match(re);
@@ -1037,7 +1284,7 @@
 
   async function init() {
     try {
-      const [base, yt, verses, moods, hymns, hymnVids, ai] = await Promise.all([
+      const [base, yt, verses, moods, hymns, hymnVids, ai, journeys] = await Promise.all([
         loadFile('sermons.json'),
         loadFile('youtube.json', true),
         loadFile('verses.json', true),
@@ -1045,10 +1292,12 @@
         loadFile('hymns.json', true),
         loadFile('hymn-videos.json', true),
         loadFile('ai.json', true),
+        loadFile('journeys.json', true),
       ]);
       DATA = {
         ...base, topics: base.topics || [], sermons: applyAI(mergeData(base, yt), ai),
         verses: (verses && verses.verses) || [], moods: (moods && moods.moods) || [], hymns: buildHymns((hymns && hymns.hymns) || [], (hymnVids && hymnVids.videos) || []),
+        journeys: journeys || { tracks: [], books: [] },
       };
     } catch (e) {
       $app.innerHTML = `<p class="empty">Không tải được dữ liệu bài giảng (${esc(e.message)}).<br>

@@ -94,6 +94,12 @@ Tóm tắt do AI viết nên có thể chưa chính xác hoàn toàn; app ghi r�
 - **Tâm trạng & câu Kinh Thánh an ủi:** `data/moods.json`.
 - **Lấy lại toàn bộ video cũ:** *Actions → Cập nhật video & đăng web → Run workflow →* tick *Lấy lại TOÀN BỘ video*.
 
+## Hành trình Kinh Thánh
+
+- Nội dung trong `data/journeys.json`: 2 lộ trình (**Theo dòng Kinh Thánh**: 17 chặng; **Theo nhân vật**: 16 chặng), mỗi chặng có bài đọc, câu gốc và 5 câu hỏi (`a` = vị trí đáp án đúng, tính từ 0). Qua chặng khi đúng từ 4/5 câu; tiến độ lưu trên máy người dùng.
+- Chữ Kinh Thánh (Bản Truyền Thống 1926, phạm vi công cộng) do GitHub tự tải một lần vào `data/bible/` (`scripts/fetch-bible.mjs`); khi chưa có thì app mở bible.com.
+- Mỗi lần chạy, bài kiểm thử tự kiểm tra dữ liệu hành trình (sai vị trí đáp án, sai tên sách/chương…) trước khi đăng web.
+
 ## Dành cho người phát triển
 
 ```bash

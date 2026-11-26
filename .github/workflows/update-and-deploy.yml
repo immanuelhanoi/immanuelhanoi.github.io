@@ -69,11 +69,17 @@ jobs:
           AI_MAX_PER_RUN: ${{ inputs.ai_batch || vars.AI_MAX_PER_RUN || 8 }}
         run: node scripts/ai-enrich.mjs
 
+      - name: Tải Kinh Thánh Bản Truyền Thống 1926 (chỉ lần đầu)
+        continue-on-error: true
+        run: node scripts/fetch-bible.mjs
+
       - name: Lưu dữ liệu mới vào repository
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/youtube.json data/ai.json data/hymn-videos.json 2>/dev/null || git add data/youtube.json data/ai.json
+          git add data/youtube.json data/ai.json
+          [ -f data/hymn-videos.json ] && git add data/hymn-videos.json
+          [ -d data/bible ] && git add data/bible
           if git diff --cached --quiet; then
             echo "Không có gì mới."
           else
