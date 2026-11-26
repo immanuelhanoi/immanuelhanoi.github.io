@@ -89,6 +89,7 @@
         "Thánh Linh"
       ],
       "source": "youtube",
+      "channel": "@immanuelhanoi",
       "raw": {
         "title": "20261117 [Camp 5] Thanh thiếu niên- đỉnh cao thuộc linh (Thi 103;5)",
         "description": "",
@@ -96,7 +97,7 @@
         "atApprox": true,
         "isShort": false,
         "duration": "",
-        "channel": ""
+        "channel": "@immanuelhanoi"
       }
     },
     {
@@ -15159,5 +15160,5 @@
       }
     }
   ],
-  "updatedAt": "2026-11-26T17:33:57.948Z"
+  "updatedAt": "2026-11-26T17:55:15.767Z"
 }
