@@ -78,15 +78,18 @@ const CAMP = /\bcamp\b|\bretreat\b|trai he|trai dong|hoi trai|tinh tam|trai remn
  * chua-nhat  Sunday services ("Lễ 1", "Lễ 2", "Lễ tạ ơn")
  * giua-tuan  mid-week services ("Thứ 4")
  * camp       monthly camps / retreats
+ * thanh-thieu-nien  youth group ("[TTN]")
  * hang-ngay  daily devotions
  * su-diep    messages from another channel (that channel's `type` in data/sermons.json)
  * khac       hymns, shorts, announcements
  */
 export function classify(v) {
   const t = norm(v.title);
+  if (v.forceType) return v.forceType;          // added by hand in data/sermons.json (church.extraVideos)
   if (v.isShort) return 'khac';
   const service = norm(parseTitle(v.title).service);
   if (CAMP.test(t) || CAMP.test(service)) return 'camp';
+  if (service === 'ttn' || /thanh thieu nien/.test(t)) return 'thanh-thieu-nien';   // youth group
   if (OTHER.test(t)) return 'khac';
   if (v.channelType) return v.channelType;
   if (/^(cn |chua nhat |chu nhat )?le( ?\d| |$)/.test(service) || /chua nhat|chu nhat/.test(service)) return 'chua-nhat';  // "Lễ 1", "Lễ1", "CN Lễ 2", "Lễ tạ ơn"
@@ -313,6 +316,102 @@ async function fromRss(channelId) {
   return parseRss(await get(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`));
 }
 
+async function ytDlpFlat(url) {
+  const { stdout } = await run('yt-dlp', ['--flat-playlist', '--dump-single-json', '--ignore-errors', '--no-warnings',
+    '--extractor-args', 'youtubetab:approximate_date', url], { maxBuffer: 256 * 1024 * 1024, timeout: 15 * 60 * 1000 });
+  return (JSON.parse(stdout).entries || []).map(fromYtDlpEntry).filter(Boolean);
+}
+
+/** "https://www.youtube.com/playlist?list=PLxxx", "PLxxx", "@handle" or a channel URL → what to list. */
+export function parseSource(src = {}) {
+  const s = String(src.playlist || src.handle || src.url || '').trim();
+  const list = s.match(/[?&]list=([\w-]+)/) || s.match(/^((?:PL|UU|OL|FL)[\w-]{10,})$/);
+  if (list) return { kind: 'playlist', id: list[1], url: `https://www.youtube.com/playlist?list=${list[1]}` };
+  const handle = s.match(/@[\w.-]+/);
+  if (handle) return { kind: 'channel', id: handle[0], url: `https://www.youtube.com/${handle[0]}/videos` };
+  const ch = s.match(/channel\/(UC[\w-]{22})/);
+  if (ch) return { kind: 'channel', id: ch[1], url: `https://www.youtube.com/channel/${ch[1]}/videos` };
+  return null;
+}
+
+/** One video by link or id: full metadata through yt-dlp, or at least the title through oEmbed. */
+export function videoIdOf(s = '') {
+  const m = String(s).match(/(?:v=|youtu\.be\/|shorts\/|live\/|embed\/)([\w-]{11})/) || String(s).match(/^([\w-]{11})$/);
+  return m ? m[1] : '';
+}
+async function fetchOneVideo(id) {
+  try {
+    const { stdout } = await run('yt-dlp', ['-J', '--skip-download', '--no-warnings', `https://www.youtube.com/watch?v=${id}`],
+      { maxBuffer: 64 * 1024 * 1024, timeout: 3 * 60 * 1000 });
+    const j = JSON.parse(stdout);
+    const at = j.release_timestamp || j.timestamp;
+    return { videoId: id, title: j.title || '', description: j.description || '', at: at ? new Date(at * 1000) : null,
+      atApprox: !at, duration: fmtSeconds(j.duration), isShort: false };
+  } catch {
+    const j = await get(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`, 'json');
+    return { videoId: id, title: j.title || '', description: '', at: null, atApprox: true, duration: '', isShort: false };
+  }
+}
+
+/* ---------------- hymns (data/hymn-videos.json) ---------------- */
+
+/** "Thánh Ca 123 - Nương Cậy Chúa | Oneway" → { so: 'Thánh ca 123', ten: 'Nương Cậy Chúa' } */
+export function parseHymnTitle(title = '') {
+  let t = String(title).replace(/\s*[|｜]\s*[^|｜]*$/, '').trim()          // drop "| channel name" tails
+    .replace(/[(\[]?\s*\b(karaoke|lyrics?|official|mv|beat|audio|video|hd|4k|có lời|lời bài hát)\b\s*[)\]]?/gi, ' ');
+  const m = t.match(/(?:th[aá]nh\s*ca|\bTC)\s*(?:s[oố]\s*)?(\d{1,4})\b/i);
+  const so = m ? `Thánh ca ${+m[1]}` : '';
+  if (m) t = (t.slice(0, m.index) + ' ' + t.slice(m.index + m[0].length)).trim();
+  t = t.replace(/^[\s\-–:.,#()[\]]+|[\s\-–:.,#()[\]]+$/g, '').replace(/\s{2,}/g, ' ');
+  return { so, ten: t || String(title).trim() };
+}
+
+// Hymn channels also post sermons, news and programmes: keep only videos whose title says it is a hymn.
+const HYMN_YES = /thanh ca|\btc\s*\d|\bhymn|karaoke|ton vinh|thanh khuc|nhac thanh|worship|ngoi khen|\bso\s*\d{1,4}\b/;
+const HYMN_NO = /bai giang|giang luan|su diep|chuong trinh|podcast|tin tuc|phong su|chia se|lam chung|doc kinh thanh|tinh nguyen|tho phuong chua nhat|le thanh|hoi dong|phat song|livestream|truc tiep|tam tinh|giai dap|hoc kinh thanh|on tap|\bbai \d+\b/;
+export function isHymnTitle(title, src = {}) {
+  const t = norm(title);
+  if (HYMN_NO.test(t)) return false;
+  return src.filter === 'all' || HYMN_YES.test(t);
+}
+
+async function syncHymns(cfg, ytdlp) {
+  const file = path.join(ROOT, 'data/hymn-videos.json');
+  let prev = { videos: [] };
+  try { prev = JSON.parse(await fs.readFile(file, 'utf8')); } catch { /* first run */ }
+  const sources = cfg.church?.hymnSources || [];
+  if (!sources.length || !ytdlp || offline || fixture) return;
+  const byId = new Map((prev.videos || []).map(v => [v.id, v]));
+  const state = { ...(prev.sources || {}) };
+  for (const src of sources) {
+    const p = parseSource(src);
+    if (!p) { console.log(`Thánh ca: không hiểu nguồn ${JSON.stringify(src)}`); continue; }
+    const key = p.id;
+    // a big hymn list is listed in full once a week; it rarely changes
+    if (!forceBackfill && state[key]?.at && Date.now() - Date.parse(state[key].at) < 7 * 864e5) continue;
+    try {
+      const entries = await ytDlpFlat(p.url);
+      let kept = 0;
+      const skipped = [];
+      for (const e of entries) {
+        if (e.isShort || !isHymnTitle(e.title, src)) { skipped.push(e.title); continue; }
+        const h = parseHymnTitle(e.title);
+        byId.set(`yt-${e.videoId}`, { id: `yt-${e.videoId}`, title: e.title, so: h.so, ten: h.ten,
+          video: `https://www.youtube.com/watch?v=${e.videoId}`, duration: e.duration || '', source: src.name || key,
+          karaoke: !!src.karaoke || /karaoke/i.test(e.title) });
+        kept++;
+      }
+      state[key] = { name: src.name || key, at: new Date().toISOString(), listed: entries.length, kept };
+      console.log(`Thánh ca ${src.name || key}: giữ ${kept}/${entries.length} video. Bỏ qua, ví dụ: ${skipped.slice(0, 5).map(t => JSON.stringify(t)).join(', ')}`);
+    } catch (e) {
+      console.log(`Thánh ca ${src.name || key}: lỗi – ${String(e.message).split('\n')[0].slice(0, 120)}`);
+    }
+  }
+  const videos = [...byId.values()].sort((a, b) => (parseInt(a.so.replace(/\D/g, '')) || 1e9) - (parseInt(b.so.replace(/\D/g, '')) || 1e9) || a.ten.localeCompare(b.ten, 'vi'));
+  await fs.writeFile(file, JSON.stringify({ sources: state, updatedAt: new Date().toISOString(), videos }) + '\n');
+  console.log(`Thánh ca: ${videos.length} bài trong data/hymn-videos.json`);
+}
+
 const run = promisify(execFile);
 const fmtSeconds = sec => {
   if (!sec) return '';
@@ -350,11 +449,7 @@ async function fromYtDlp(handle) {
   const out = [];
   for (const tab of ['videos', 'streams']) {
     try {
-      const { stdout } = await run('yt-dlp', ['--flat-playlist', '--dump-single-json', '--ignore-errors', '--no-warnings',
-        '--extractor-args', 'youtubetab:approximate_date', `https://www.youtube.com/${h}/${tab}`],
-      { maxBuffer: 256 * 1024 * 1024, timeout: 10 * 60 * 1000 });
-      const j = JSON.parse(stdout);
-      const entries = (j.entries || []).map(fromYtDlpEntry).filter(Boolean);
+      const entries = await ytDlpFlat(`https://www.youtube.com/${h}/${tab}`);
       console.log(`  yt-dlp ${h}/${tab}: ${entries.length} video`);
       out.push(...entries);
     } catch (e) {
@@ -447,6 +542,19 @@ async function main() {
     }
   }
 
+  // Videos added one by one (e.g. a camp message on another channel), with their type set by hand
+  const extra = (cfg.church?.extraVideos || []).map(x => ({ ...x, id: videoIdOf(x.video) })).filter(x => x.id);
+  const forced = Object.fromEntries(extra.map(x => [x.id, x.type || '']));
+  if (!offline && !fixture) {
+    const known = new Set((existing.videos || []).map(v => v.id.replace(/^yt-/, '')));
+    for (const x of extra.filter(x => !known.has(x.id))) {
+      try {
+        fresh.push({ ...(await fetchOneVideo(x.id)), channel: x.channel || '' });
+        console.log(`Video thêm tay ${x.id}: đã lấy`);
+      } catch (e) { console.log(`Video thêm tay ${x.id}: lỗi – ${e.message}`); }
+    }
+  }
+
   // Every stored video keeps its original YouTube data, so re-derive all of them: improved rules
   // then also fix older videos that RSS no longer returns. Older entries without `raw` are rebuilt
   // from what was stored.
@@ -469,13 +577,14 @@ async function main() {
       duration: v.duration || (prev && prev.duration) || '',
     });
   }
-  const raws = [...rawById.values()].map(v => ({ ...v, channelType: typeOf[v.channel] || '' }));
+  const raws = [...rawById.values()].map(v => ({ ...v, channelType: typeOf[v.channel] || '', forceType: forced[v.videoId] || '' }));
   const common = boilerplate(raws.map(v => v.description || ''));
   const videos = raws.map(v => toSermon(v, common))
     // newest day first; within a day "Lễ 1" before "Lễ 2"
     .sort((a, b) => (b.date || '').localeCompare(a.date || '') || (a.service || '').localeCompare(b.service || '', 'vi', { numeric: true }) ||
       (b.publishedAt || '').localeCompare(a.publishedAt || ''));
 
+  if (!fixture) await syncHymns(cfg, !offline && await hasYtDlp());
   const out = { channels: state, videos };
   const prevJson = JSON.stringify({ channels: existing.channels, videos: existing.videos });
   if (JSON.stringify(out) === prevJson) {

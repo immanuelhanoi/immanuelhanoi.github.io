@@ -1,5 +1,5 @@
 {
-  "_huongdan": "Danh sách 'sermons' dùng để: (1) thêm bài không có trên YouTube; (2) sửa/bổ sung thông tin cho một video YouTube (ghi đúng link 'video', các trường điền ở đây sẽ thay cho thông tin tự động); (3) ẩn video không phải bài giảng: {\"video\": \"link\", \"hidden\": true}. Video từ kênh YouTube được tự động thêm vào data/youtube.json mỗi ngày – không cần sửa file đó. Thêm kênh YouTube: thêm một mục vào church.channels ({\"handle\": \"@tenkenh\", \"name\": \"Tên hiển thị\", \"type\": \"su-diep\"}); bỏ \"type\" nếu kênh giảng theo lịch Chúa Nhật / Thứ 4 như kênh Hội thánh.",
+  "_huongdan": "Danh sách 'sermons' dùng để: (1) thêm bài không có trên YouTube; (2) sửa/bổ sung thông tin cho một video YouTube (ghi đúng link 'video', các trường điền ở đây sẽ thay cho thông tin tự động); (3) ẩn video không phải bài giảng: {\"video\": \"link\", \"hidden\": true}. Video từ kênh YouTube được tự động thêm vào data/youtube.json mỗi ngày – không cần sửa file đó. Thêm kênh YouTube: thêm một mục vào church.channels ({\"handle\": \"@tenkenh\", \"name\": \"Tên hiển thị\", \"type\": \"su-diep\"}); bỏ \"type\" nếu kênh giảng theo lịch Chúa Nhật / Thứ 4 như kênh Hội thánh. Thêm video lẻ (vd bài Camp ở kênh khác): church.extraVideos = [{\"video\": \"link\", \"type\": \"camp\"}]. Nguồn thánh ca: church.hymnSources = [{\"playlist\": \"link danh sách phát\", \"name\": \"Thánh ca 1000 bài\"}, {\"handle\": \"@kenh\", \"name\": \"Oneway\"}].",
   "church": {
     "name": "Hội thánh Immanuel Hà Nội",
     "schedule": [
@@ -19,8 +19,30 @@
       },
       {
         "handle": "@minhphuongnguyen6368",
-        "name": "Sứ điệp Mục sư Hàn Quốc",
+        "name": "Sứ điệp Mục sư Ru",
         "type": "su-diep"
+      }
+    ],
+    "extraVideos": [
+      {
+        "video": "https://www.youtube.com/watch?v=ztWHi656unc",
+        "type": "camp"
+      }
+    ],
+    "hymnSources": [
+      {
+        "handle": "@onewayradioonline",
+        "name": "Oneway"
+      },
+      {
+        "handle": "@hoithanhbap-titdongsaigon",
+        "name": "HT Báp-tít Đông Sài Gòn"
+      },
+      {
+        "handle": "@thanhcahttlvntlh",
+        "name": "Thánh ca HTTLVN (karaoke)",
+        "karaoke": true,
+        "filter": "all"
       }
     ]
   },

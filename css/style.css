@@ -258,3 +258,12 @@ pre.code {
 .ai-box h4 { margin: 12px 0 4px; font-size: .9rem; color: var(--muted); }
 .ai-box ul { margin: 0; padding-left: 1.2rem; }
 .ai-box p { margin: 0 0 6px; }
+
+/* v4: youth, hymn player */
+.badge.youth { background: color-mix(in srgb, #c0702a 16%, transparent); color: #a85f20; }
+@media (prefers-color-scheme: dark) { .badge.youth { color: #f0b57a; } }
+.hymn { padding: 0; gap: 0; }
+.hymn-main { display: flex; align-items: center; gap: 12px; padding: 12px 14px; flex: 1; min-width: 0; text-decoration: none; color: var(--text); }
+.hymn-btn { display: grid; place-items: center; width: 46px; align-self: stretch; text-decoration: none; color: var(--brand); border-left: 1px solid var(--line); }
+.seg a { display: inline-block; padding: 6px 12px; border-radius: 8px; font-size: .88rem; color: var(--muted); text-decoration: none; }
+.seg a.on { background: var(--brand); color: #fff; }

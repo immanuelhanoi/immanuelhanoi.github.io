@@ -8,6 +8,7 @@
   const TYPES = {
     'chua-nhat': { label: 'Chúa Nhật', cls: '' },
     'giua-tuan': { label: 'Thứ 4', cls: 'mid' },
+    'thanh-thieu-nien': { label: 'Thanh Thiếu Niên', cls: 'youth' },
     'camp': { label: 'Camp', cls: 'camp' },
     'su-diep': { label: 'Sứ điệp', cls: 'guest' },
     'hang-ngay': { label: 'Tĩnh nguyện', cls: 'daily' },
@@ -320,28 +321,55 @@
       .slice(0, limit).map(r => r.s);
   }
 
-  function hymnsFor({ mood = '', topics = [] } = {}) {
-    return DATA.hymns.filter(h => (mood && (h.moods || []).includes(mood)) || (h.topics || []).some(t => topics.includes(t)));
+  /**
+   * One entry per hymn: versions from different channels with the same number (or name) are grouped,
+   * so a hymn has a "listen" version and, where available, a karaoke one.
+   */
+  function buildHymns(manual, videos) {
+    const groups = new Map();
+    const keyOf = h => (h.so ? norm(h.so) : norm(h.ten).replace(/[^a-z0-9]/g, ''));
+    for (const h of manual) {
+      groups.set(keyOf(h), { so: h.so || '', ten: h.ten, moods: h.moods || [], topics: h.topics || [], listen: h.video ? [h.video] : [], karaoke: [] });
+    }
+    for (const v of videos) {
+      const k = keyOf(v);
+      const g = groups.get(k) || { so: v.so, ten: v.ten, moods: [], topics: [], listen: [], karaoke: [] };
+      (v.karaoke ? g.karaoke : g.listen).push(v.video);
+      g.sources = [...new Set([...(g.sources || []), v.source])];
+      groups.set(k, g);
+    }
+    const num = h => parseInt((h.so || '').replace(/\D/g, ''), 10) || 1e9;
+    return [...groups.entries()].map(([key, g]) => ({ key, ...g, words: norm(g.ten) }))
+      .sort((a, b) => num(a) - num(b) || a.ten.localeCompare(b.ten, 'vi'));
   }
-  const hymnVideos = () => DATA.sermons.filter(s => s.type === 'khac' && /thanh ca|ton vinh|ngoi khen|hymn|worship/.test(norm(s.title)));
+
+  function hymnsFor({ mood = '', topics = [] } = {}) {
+    const m = moodById(mood);
+    const words = (m && m.hymnWords) || [];
+    return DATA.hymns.filter(h => (mood && h.moods.includes(mood)) || h.topics.some(t => topics.includes(t)) ||
+      words.some(w => (' ' + h.words + ' ').includes(' ' + w + ' ')));
+  }
   const ytSearch = q => `https://www.youtube.com/results?search_query=${encodeURIComponent(q)}`;
+  const hymnUrl = (h, karaoke = false) => `#/thanh-ca/bai/${encodeURIComponent(h.key)}${karaoke ? '?karaoke=1' : ''}`;
 
   function hymnCard(h) {
-    const link = h.video || ytSearch(`${h.so || 'Thánh ca'} ${h.ten}`);
-    return `<a class="hymn" href="${esc(link)}" target="_blank" rel="noopener">
-      <span class="hymn-icon">🎵</span>
-      <span><strong>${esc(h.ten)}</strong>${h.so ? `<br><small class="meta">${esc(h.so)}</small>` : ''}</span>
-      <span class="hymn-go">▶</span>
-    </a>`;
+    return `<div class="hymn">
+      <a class="hymn-main" href="${hymnUrl(h)}">
+        <span class="hymn-icon">🎵</span>
+        <span><strong>${esc(h.ten)}</strong>${h.so ? `<br><small class="meta">${esc(h.so)}</small>` : ''}</span>
+      </a>
+      ${h.listen.length ? `<a class="hymn-btn" href="${hymnUrl(h)}" aria-label="Nghe">▶</a>` : ''}
+      ${h.karaoke.length ? `<a class="hymn-btn" href="${hymnUrl(h, true)}" aria-label="Karaoke">🎤</a>` : ''}
+    </div>`;
   }
 
   function hymnSection(m) {
-    const hymns = hymnsFor({ mood: m.id, topics: m.topics || [] }).slice(0, 5);
-    const term = (m.hymnSearch || (m.topics || [])[0] || m.name).toLowerCase();
+    const hymns = hymnsFor({ mood: m.id, topics: m.topics || [] }).slice(0, 6);
+    const term = ((m.topics || [])[0] || m.name).toLowerCase();
     return `<section class="section">
-      <div class="section-head"><h2>🎵 Thánh ca gợi ý</h2><a href="#/thanh-ca">Tất cả →</a></div>
-      ${hymns.length ? `<div class="list">${hymns.map(hymnCard).join('')}</div>` : ''}
-      <a class="btn" href="${ytSearch('Thánh ca Tin Lành ' + term)}" target="_blank" rel="noopener">▶ Nghe thánh ca về ${esc(term)} trên YouTube</a>
+      <div class="section-head"><h2>🎵 Thánh ca gợi ý</h2><a href="#/thanh-ca?tam-trang=${m.id}">Thêm →</a></div>
+      ${hymns.length ? `<div class="list">${hymns.map(hymnCard).join('')}</div>`
+        : `<a class="btn" href="${ytSearch('Thánh ca Tin Lành ' + term)}" target="_blank" rel="noopener">▶ Nghe thánh ca về ${esc(term)} trên YouTube</a>`}
     </section>`;
   }
 
@@ -400,7 +428,7 @@
         ${sunday[0] ? card(sunday[0], { hero: true }) : '<p class="empty">Chưa có bài giảng.</p>'}
       </section>
 
-      ${['camp', 'su-diep', 'giua-tuan'].map(type => {
+      ${['camp', 'su-diep', 'giua-tuan', 'thanh-thieu-nien'].map(type => {
         const items = ofType(type).slice(0, 2);
         return items.length ? `<section class="section">
           <div class="section-head"><h2>${esc(type === 'su-diep' ? typeLabel(items[0]) : TYPES[type].label + ' gần đây')}</h2>
@@ -496,21 +524,74 @@
 
   function pageHymns(params) {
     const mood = params.get('tam-trang') || '';
-    const hymns = mood ? hymnsFor({ mood, topics: (moodById(mood) || {}).topics || [] }) : DATA.hymns;
-    const videos = hymnVideos().sort(byDateDesc).slice(0, 12);
+    const karaoke = params.get('karaoke') === '1';
+    const q = params.get('q') || '';
+    const page = Math.max(1, +params.get('trang') || 1);
+    let hymns = mood ? hymnsFor({ mood, topics: (moodById(mood) || {}).topics || [] }) : DATA.hymns;
+    if (karaoke) hymns = hymns.filter(h => h.karaoke.length);
+    if (q) {
+      const n = norm(q).trim();
+      hymns = hymns.filter(h => (/^\d+$/.test(n) ? norm(h.so).replace(/\D/g, '') === n : (h.words + ' ' + norm(h.so)).includes(n)));
+    }
+    const shown = hymns.slice(0, page * 40);
+    const url = extra => {
+      const p = { ...(mood ? { 'tam-trang': mood } : {}), ...(karaoke ? { karaoke: 1 } : {}), ...(q ? { q } : {}), ...extra };
+      Object.keys(p).forEach(k => p[k] === '' && delete p[k]);
+      return '#/thanh-ca' + (Object.keys(p).length ? '?' + new URLSearchParams(p) : '');
+    };
+    setTimeout(() => {
+      const f = document.getElementById('hymn-search');
+      f && f.addEventListener('submit', e => { e.preventDefault(); location.hash = url({ q: f.q.value }); });
+      const more = document.getElementById('more');
+      more && more.addEventListener('click', e => { e.preventDefault(); const y = scrollY; history.replaceState(null, '', url({ trang: page + 1 })); render(); scrollTo(0, y); });
+    });
     return `
       <h1>Thánh ca</h1>
+      <form id="hymn-search" class="feel">
+        <input name="q" value="${esc(q)}" placeholder="Số bài hoặc tên bài…" inputmode="search" autocomplete="off">
+        <button class="btn primary">Tìm</button>
+      </form>
+      <div class="seg" style="margin-bottom:10px">
+        <a class="${!karaoke ? 'on' : ''}" href="${url({ karaoke: '' })}">🎧 Nghe</a>
+        <a class="${karaoke ? 'on' : ''}" href="${url({ karaoke: 1 })}">🎤 Karaoke</a>
+      </div>
       <div class="chips scroll" style="margin-bottom:12px">
-        <a class="chip${!mood ? ' on' : ''}" href="#/thanh-ca">Tất cả</a>
-        ${DATA.moods.map(m => `<a class="chip${m.id === mood ? ' on' : ''}" href="#/thanh-ca?tam-trang=${m.id}">${m.emoji} ${esc(m.name)}</a>`).join('')}
+        <a class="chip${!mood ? ' on' : ''}" href="#/thanh-ca${karaoke ? '?karaoke=1' : ''}">Tất cả</a>
+        ${DATA.moods.map(m => `<a class="chip${m.id === mood ? ' on' : ''}" href="#/thanh-ca?tam-trang=${m.id}${karaoke ? '&karaoke=1' : ''}">${m.emoji} ${esc(m.name)}</a>`).join('')}
       </div>
       ${DATA.hymns.length
-        ? (hymns.length ? `<div class="list">${hymns.map(hymnCard).join('')}</div>` : '<p class="empty">Chưa có thánh ca cho cảm xúc này.</p>')
-        : `<div class="box"><p>Danh sách thánh ca của Hội thánh đang được cập nhật. Trong lúc chờ, bạn có thể nghe thánh ca theo chủ đề trên YouTube:</p>
+        ? `<p class="result-count">${hymns.length} bài</p>
+           ${shown.length ? `<div class="list">${shown.map(hymnCard).join('')}</div>` : '<p class="empty">Không có bài phù hợp.</p>'}
+           ${shown.length < hymns.length ? `<p style="text-align:center"><a id="more" class="btn" href="${url({ trang: page + 1 })}">Xem thêm (${hymns.length - shown.length})</a></p>` : ''}`
+        : `<div class="box"><p>Danh sách thánh ca đang được cập nhật từ YouTube. Trong lúc chờ, bạn có thể nghe theo chủ đề:</p>
             <div class="chips">${DATA.moods.map(m => `<a class="chip" target="_blank" rel="noopener" href="${ytSearch('Thánh ca Tin Lành ' + ((m.topics || [])[0] || m.name).toLowerCase())}">${m.emoji} ${esc(((m.topics || [])[0] || m.name))}</a>`).join('')}</div></div>`}
-      ${videos.length ? `<section class="section" style="margin-top:20px"><div class="section-head"><h2>Từ kênh của Hội thánh</h2></div>${list(videos, { grid: true })}</section>` : ''}
     `;
   }
+
+  /** One hymn: plays inside the app; switch between the listening and karaoke versions. */
+  function pageHymn(key, params) {
+    const h = DATA.hymns.find(x => x.key === key);
+    if (!h) return notFound();
+    const wantKaraoke = params.get('karaoke') === '1' && h.karaoke.length;
+    const versions = wantKaraoke ? h.karaoke : (h.listen.length ? h.listen : h.karaoke);
+    const i = Math.min(+params.get('ban') || 0, versions.length - 1);
+    const vid = youtubeId(versions[i] || '');
+    const moods = DATA.moods.filter(m => hymnsFor({ mood: m.id, topics: m.topics || [] }).includes(h));
+    return `
+      <p class="crumb"><a href="#/thanh-ca">← Thánh ca</a></p>
+      <div class="player">${vid ? `<iframe src="https://www.youtube-nocookie.com/embed/${vid}?rel=0" title="${esc(h.ten)}" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>` : ''}</div>
+      <h1>${esc(h.ten)}</h1>
+      ${h.so ? `<p class="meta">${esc(h.so)}</p>` : ''}
+      <div class="seg" style="margin:8px 0 12px">
+        ${h.listen.length ? `<a class="${!wantKaraoke ? 'on' : ''}" href="${hymnUrl(h)}">🎧 Nghe</a>` : ''}
+        ${h.karaoke.length ? `<a class="${wantKaraoke ? 'on' : ''}" href="${hymnUrl(h, true)}">🎤 Karaoke</a>` : ''}
+      </div>
+      ${versions.length > 1 ? `<div class="chips">${versions.map((v, n) => `<a class="chip${n === i ? ' on' : ''}" href="${hymnUrl(h, wantKaraoke)}${wantKaraoke ? '&' : '?'}ban=${n}">Bản ${n + 1}</a>`).join('')}</div>` : ''}
+      ${moods.length ? `<p class="meta" style="margin-top:14px">💛 Dành cho khi bạn: ${moods.map(m => `<a href="#/tam-trang/${m.id}">${m.emoji} ${esc(m.name.toLowerCase())}</a>`).join(', ')}</p>` : ''}
+      ${vid ? `<p><a class="btn" href="https://www.youtube.com/watch?v=${vid}" target="_blank" rel="noopener">▶ Mở trên YouTube</a></p>` : ''}
+    `;
+  }
+
 
   function pageDaily(params) {
     const all = ofType('hang-ngay');
@@ -864,6 +945,7 @@
     [/^\/tam-trang$/, (m, p) => pageMoods(p), 'moods'],
     [/^\/tam-trang\/([\w-]+)$/, m => pageMood(m[1]), 'moods'],
     [/^\/thanh-ca$/, (m, p) => pageHymns(p), 'hymns'],
+    [/^\/thanh-ca\/bai\/([^/]+)$/, (m, p) => pageHymn(decodeURIComponent(m[1]), p), 'hymns'],
     [/^\/hang-ngay$/, (m, p) => pageDaily(p), 'library'],
     [/^\/chu-de$/, () => pageTopics(), 'library'],
     [/^\/chu-de\/([^/]+)$/, (m, p) => pageTopic(m[1], p), 'library'],
@@ -955,17 +1037,18 @@
 
   async function init() {
     try {
-      const [base, yt, verses, moods, hymns, ai] = await Promise.all([
+      const [base, yt, verses, moods, hymns, hymnVids, ai] = await Promise.all([
         loadFile('sermons.json'),
         loadFile('youtube.json', true),
         loadFile('verses.json', true),
         loadFile('moods.json', true),
         loadFile('hymns.json', true),
+        loadFile('hymn-videos.json', true),
         loadFile('ai.json', true),
       ]);
       DATA = {
         ...base, topics: base.topics || [], sermons: applyAI(mergeData(base, yt), ai),
-        verses: (verses && verses.verses) || [], moods: (moods && moods.moods) || [], hymns: (hymns && hymns.hymns) || [],
+        verses: (verses && verses.verses) || [], moods: (moods && moods.moods) || [], hymns: buildHymns((hymns && hymns.hymns) || [], (hymnVids && hymnVids.videos) || []),
       };
     } catch (e) {
       $app.innerHTML = `<p class="empty">Không tải được dữ liệu bài giảng (${esc(e.message)}).<br>
