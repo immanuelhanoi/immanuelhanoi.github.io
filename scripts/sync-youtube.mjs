@@ -72,7 +72,7 @@ const DAILY = /tinh nguyen|hang ngay|moi ngay|linh luong|daily|devotion|suy gam|
 const SUNDAY = /chua nhat|chu nhat|tho phuong|le thanh chua nhat|sunday|bai giang|giang luan/;
 const OTHER = /thanh ca|biet thanh ca|ton vinh|hop xuong|lyric|\bmv\b|music|thong bao|trailer|teaser|highlight|hau truong|livestream test/;
 // Monthly camps / retreats (Remnant camp, trại hè, tĩnh tâm…)
-const CAMP = /\bcamp\b|\bretreat\b|trai he|trai dong|hoi trai|tinh tam|trai remnant|trai thanh nien|trai thieu nhi/;
+const CAMP = /\bcamp\b|\bretreat\b|trai he|trai dong|hoi trai|tinh tam|trai remnant|trai thanh nien|trai thieu nhi|kinh thanh he/;
 
 /**
  * chua-nhat  Sunday services ("Lễ 1", "Lễ 2", "Lễ tạ ơn")
@@ -89,7 +89,7 @@ export function classify(v) {
   if (CAMP.test(t) || CAMP.test(service)) return 'camp';
   if (OTHER.test(t)) return 'khac';
   if (v.channelType) return v.channelType;
-  if (/^le( |$)/.test(service) || /chua nhat|chu nhat/.test(service)) return 'chua-nhat';  // "Lễ 1", "Lễ tạ ơn"
+  if (/^(cn |chua nhat |chu nhat )?le( ?\d| |$)/.test(service) || /chua nhat|chu nhat/.test(service)) return 'chua-nhat';  // "Lễ 1", "Lễ1", "CN Lễ 2", "Lễ tạ ơn"
   if (/^thu [2-7]/.test(service)) return 'giua-tuan';                                       // "Thứ 4"
   if (DAILY.test(t)) return 'hang-ngay';
   if (SUNDAY.test(t)) return 'chua-nhat';
@@ -137,10 +137,14 @@ const BOOKS = [
 ];
 // Short forms this church (and Vietnamese Bibles generally) use in titles, e.g. "Mat 22;1-14", "Công 2;32".
 const ALIASES = {
-  'Ma-thi-ơ': ['Mat', 'Mt'], 'Công vụ': ['Công', 'Cv'], 'Rô-ma': ['Rô'], 'Hê-bơ-rơ': ['Hê'], 'Khải huyền': ['Khải'],
-  'Lu-ca': ['Lu'], 'Thi thiên': ['Thi'], 'Châm ngôn': ['Châm'], 'Sáng thế ký': ['Sáng'], 'Xuất Ê-díp-tô ký': ['Xuất'],
-  '1 Cô-rinh-tô': ['1 Cô'], '2 Cô-rinh-tô': ['2 Cô'], 'Ga-la-ti': ['Ga'], 'Ê-phê-sô': ['Êph'], 'Phi-líp': ['Phil'],
+  'Ma-thi-ơ': ['Mat', 'Math', 'Mt'], 'Công vụ': ['Công', 'Cv'], 'Rô-ma': ['Rô', 'Rôm'], 'Hê-bơ-rơ': ['Hê', 'Hê b', 'Hêb'], 'Khải huyền': ['Khải'],
+  'Lu-ca': ['Lu', 'Luc'], 'Thi thiên': ['Thi'], 'Châm ngôn': ['Châm'], 'Sáng thế ký': ['Sáng'], 'Xuất Ê-díp-tô ký': ['Xuất'],
+  '1 Cô-rinh-tô': ['1 Cô'], '2 Cô-rinh-tô': ['2 Cô'], 'Ga-la-ti': ['Ga'], 'Ê-phê-sô': ['Êph', 'Ê ph'], 'Phi-líp': ['Phil'],
   'Gia-cơ': ['Gia'], 'Ê-sai': ['Ês'],
+  'Ê-xê-chi-ên': ['Êx', 'Êxê'], 'Giô-suê': ['Giô'], 'Phục truyền luật lệ ký': ['Phục', 'Phục truyền'], 'Dân số ký': ['Dân'],
+  '1 Sa-mu-ên': ['1 Sam'], '2 Sa-mu-ên': ['2 Sam'], '1 Các vua': ['1 Vua'], '2 Các vua': ['2 Vua'],
+  '1 Phi-e-rơ': ['1 Phi'], '2 Phi-e-rơ': ['2 Phi'], '1 Ti-mô-thê': ['1 Ti', '1 Tim'], '2 Ti-mô-thê': ['2 Ti', '2 Tim'],
+  'Giê-rê-mi': ['Giê r', 'Giêr'], 'Mác': ['Mac'], 'Giăng': ['Gi'], 'Cô-lô-se': ['Côl'], '1 Cô-rinh-tô': ['1 Cô'], 'Ga-la-ti': ['Ga', 'Gal'],
 };
 const VERSES = String.raw`\d{1,3}(?:\s*[-–]\s*\d{1,3})?(?:\s*,\s*\d{1,3}(?:\s*[-–]\s*\d{1,3})?)*`;
 const BOOK_RES = BOOKS.map(name => {
@@ -181,6 +185,8 @@ export function parseTitle(raw = '') {
   if (d && +d[2] >= 1 && +d[2] <= 12 && +d[3] >= 1 && +d[3] <= 31) {
     date = `${d[1]}-${d[2]}-${d[3]}`;
     t = t.slice(d[0].length);
+  } else {
+    t = t.replace(/^20\d{6,7}\s+/, '');   // a mistyped date like "202261115": drop it, keep the title
   }
   const b = t.match(/^\[([^\]]{1,40})\]\s*[-–:|]?\s*/);
   const w = !b && t.match(/^(Lễ\s*\d+|Thứ\s*[2-7]|Chúa Nhật|Chủ Nhật)(?![\p{L}])\s*[-–:|]?\s*/iu);
@@ -233,7 +239,10 @@ export function toSermon(v, common = new Set()) {
   const desc = cleanDescription(v.description || '', common);
   const text = `${v.title}\n${desc}`;
   const parts = parseTitle(v.title);
-  const date = parts.date || dateFromTitle(v.title) || (v.at ? localDate(v.at) : '');
+  const uploaded = v.at ? localDate(v.at) : '';
+  let date = parts.date || dateFromTitle(v.title) || uploaded;
+  // a typo like "20270927" would put a video a year in the future: trust the upload date then
+  if (date > localDate(new Date(Date.now() + 2 * 864e5)) && uploaded) date = uploaded;
   let summary = desc.split('\n').slice(0, 4).join(' ').slice(0, 420);
   if (norm(summary).replace(/[^a-z0-9]/g, '').startsWith(norm(parts.title).replace(/[^a-z0-9]/g, '')) &&
       summary.length < parts.title.length + 40) summary = '';

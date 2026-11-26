@@ -115,3 +115,24 @@ test('channel config', () => {
   assert.deepEqual(channelsFromConfig({ church: { youtubeChannel: 'immanuelhanoi' } }), [{ handle: '@immanuelhanoi' }]);
   assert.equal(channelsFromConfig({ church: { channels: [{ handle: '@a', type: 'su-diep' }] } })[0].type, 'su-diep');
 });
+
+// Cases seen in the real channel data
+test('real channel quirks', () => {
+  assert.equal(classify({ title: '20240107 Lễ1 Năm mới (Giăng 1;1)' }), 'chua-nhat');
+  assert.equal(classify({ title: '20240107 [CN Lễ 2] Bài giảng (Mat 5;1)' }), 'chua-nhat');
+  assert.equal(classify({ title: '20250813 [Tĩnh nguyện] Lý do nhận chúc phúc (Phục 15;1-6)' }), 'hang-ngay');
+  assert.equal(classify({ title: '20250701 [Kinh thánh hè] Ngày 1' }), 'camp');
+  assert.equal(parseTitle('202261115 Với những người bỏ lỡ lễ thu hoạch (Ê sai 6;1-13)').title, 'Với những người bỏ lỡ lễ thu hoạch');
+  // "20270927" is a typo for 2026: use the upload date instead of a date a year ahead
+  const typo = toSermon({ videoId: 't', title: '20270927 Lập tháp canh (Giô 10;12-14)', at: new Date('2026-09-27T03:00:00Z') });
+  assert.equal(typo.date, '2026-09-27');
+  // the guest channel's short book names
+  assert.equal(findScripture('(Êx 37;1-10)'), 'Ê-xê-chi-ên 37:1-10');
+  assert.equal(findScripture('(Giô 10;12-14)'), 'Giô-suê 10:12-14');
+  assert.equal(findScripture('(Phục 15;1-6)'), 'Phục truyền luật lệ ký 15:1-6');
+  assert.equal(findScripture('(I Sam 7;1-15)'), '1 Sa-mu-ên 7:1-15');
+  assert.equal(findScripture('(II Vua 2;9-11)'), '2 Các vua 2:9-11');
+  assert.equal(findScripture('(I Phi 1;3-9)'), '1 Phi-e-rơ 1:3-9');
+  assert.equal(findScripture('(Giô-na 1;3)'), 'Giô-na 1:3');
+  assert.equal(findScripture('(Giăng 3;16)'), 'Giăng 3:16');
+});

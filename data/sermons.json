@@ -94,5 +94,9 @@
       "emoji": "🤝"
     }
   ],
-  "sermons": []
+  "sermons": [],
+  "ai": {
+    "_huongdan": "Tóm tắt AI chỉ làm cho video có ngày từ 'since' trở đi (để trống = tóm tắt cả bài cũ, tốn phí hơn).",
+    "since": "2026-11-22"
+  }
 }
