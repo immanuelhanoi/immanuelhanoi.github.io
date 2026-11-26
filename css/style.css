@@ -217,3 +217,16 @@ pre.code {
 }
 .hint { color: var(--muted); font-size: .85rem; }
 .footer-note { color: var(--muted); font-size: .8rem; text-align: center; margin-top: 30px; }
+
+/* v2: reminders, other videos */
+.top-actions { display: flex; gap: 4px; }
+.badge.other { background: var(--line); color: var(--muted); }
+.remind-cta { display: flex; flex-direction: column; gap: 2px; text-decoration: none; color: var(--text); border-color: var(--brand); }
+.setting { display: grid; gap: 10px; }
+.switch-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; }
+.switch-row input { appearance: none; width: 48px; height: 28px; flex: none; border-radius: 999px; background: var(--line); position: relative; cursor: pointer; transition: background .15s; }
+.switch-row input::after { content: ""; position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.3); transition: transform .15s; }
+.switch-row input:checked { background: var(--brand); }
+.switch-row input:checked::after { transform: translateX(20px); }
+.time-row { display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: .9rem; }
+.time-row input { font: inherit; padding: 6px 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--text); }

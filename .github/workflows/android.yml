@@ -1,0 +1,84 @@
+# Đóng gói app Android (.apk) và đăng lên trang Releases để tải về điện thoại.
+# Chỉ cần chạy lại khi đổi giao diện/tính năng; bài giảng mới thì app tự tải, không cần cài lại.
+name: Đóng gói app Android
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'css/**'
+      - 'js/**'
+      - 'icons/**'
+      - 'assets/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'capacitor.config.json'
+      - '.github/workflows/android.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - uses: android-actions/setup-android@v3
+
+      - name: Cài thư viện
+        run: npm ci
+
+      - name: Tạo dự án Android
+        run: npm run android:prepare
+
+      - name: Build APK
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+        run: |
+          if [ -n "$KEYSTORE_BASE64" ]; then
+            echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/release.keystore"
+            npx cap build android \
+              --keystorepath "$RUNNER_TEMP/release.keystore" \
+              --keystorepass "$KEYSTORE_PASSWORD" \
+              --keystorealias "$KEY_ALIAS" \
+              --keystorealiaspass "$KEYSTORE_PASSWORD" \
+              --androidreleasetype APK \
+              --signing-type apksigner
+            APK=$(find android/app/build/outputs/apk/release -name '*.apk' | grep -v unsigned | head -1)
+          else
+            echo "::warning::Chưa có khoá ký (ANDROID_KEYSTORE_BASE64) – tạo bản debug. Xem README."
+            (cd android && ./gradlew --no-daemon assembleDebug)
+            APK=android/app/build/outputs/apk/debug/app-debug.apk
+          fi
+          cp "$APK" imanuel-hanoi.apk
+          ls -la imanuel-hanoi.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: imanuel-hanoi-apk
+          path: imanuel-hanoi.apk
+
+      - name: Đăng lên Releases (link tải cố định)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete app-android --yes --cleanup-tag || true
+          gh release create app-android imanuel-hanoi.apk \
+            --title "App Android – Imanuel Hà Nội" \
+            --notes "Bản mới nhất, build lúc $(TZ=Asia/Ho_Chi_Minh date +'%H:%M %d/%m/%Y'). Tải file imanuel-hanoi.apk về điện thoại Android và mở để cài đặt." \
+            --target "${{ github.sha }}"

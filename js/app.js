@@ -7,12 +7,21 @@
   const TYPES = {
     'chua-nhat': { label: 'Chúa Nhật', cls: '' },
     'hang-ngay': { label: 'Hằng ngày', cls: 'daily' },
+    'khac': { label: 'Video khác', cls: 'other' },
   };
   const WEEKDAYS = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'];
   const FAV_KEY = 'imanuel.favorites';
+  const SETTINGS_KEY = 'imanuel.settings';
+  const CACHE_KEY = 'imanuel.dataCache';
+  const CONFIG = window.APP_CONFIG || {};
 
   const $app = document.getElementById('app');
-  let DATA = { church: {}, topics: [], sermons: [] };
+  let DATA = { church: {}, topics: [], sermons: [], verses: [] };
+
+  /* ---------- native (Android/iOS app via Capacitor) ---------- */
+
+  const isNative = !!(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform());
+  const plugin = name => (isNative && window.Capacitor.Plugins && window.Capacitor.Plugins[name]) || null;
 
   /* ---------- helpers ---------- */
 
@@ -28,10 +37,8 @@
 
   const slug = s => norm(s).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-  const todayISO = () => {
-    const d = new Date();
-    return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
-  };
+  const toISO = d => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  const todayISO = () => toISO(new Date());
 
   const parseDate = iso => {
     const [y, m, d] = iso.split('-').map(Number);
@@ -82,6 +89,98 @@
     i >= 0 ? favs.splice(i, 1) : favs.unshift(id);
     try { localStorage.setItem(FAV_KEY, JSON.stringify(favs)); } catch { /* private mode */ }
     return i < 0;
+  }
+
+  /* ---------- verse of the day & reminders ---------- */
+
+  // The day's devotion verse if there is one, otherwise rotate through data/verses.json.
+  function verseForDate(iso) {
+    const dev = DATA.sermons.find(s => s.type === 'hang-ngay' && s.date === iso && s.verse);
+    if (dev) return { text: dev.verse, ref: dev.scripture, route: '#/bai/' + encodeURIComponent(dev.id) };
+    const list = DATA.verses || [];
+    if (!list.length) return null;
+    const d = parseDate(iso);
+    const day = Math.floor((d - new Date(d.getFullYear(), 0, 0)) / 864e5);
+    const v = list[(d.getFullYear() * 366 + day) % list.length];
+    return { text: v.text, ref: v.ref, route: '#/' };
+  }
+
+  const DEFAULT_SETTINGS = {
+    verse: { on: false, time: '06:00' },
+    sunday: { on: false, time: '07:30' },
+  };
+  function getSettings() {
+    try {
+      const s = JSON.parse(localStorage.getItem(SETTINGS_KEY)) || {};
+      return { verse: { ...DEFAULT_SETTINGS.verse, ...s.verse }, sunday: { ...DEFAULT_SETTINGS.sunday, ...s.sunday } };
+    } catch { return JSON.parse(JSON.stringify(DEFAULT_SETTINGS)); }
+  }
+  function saveSettings(s) {
+    try { localStorage.setItem(SETTINGS_KEY, JSON.stringify(s)); } catch { /* ignore */ }
+  }
+
+  const VERSE_DAYS = 60;      // notifications are scheduled this many days ahead, refreshed on every app open
+  const VERSE_ID_BASE = 1000;
+  const SUNDAY_ID = 2000;
+
+  async function ensurePermission() {
+    const LN = plugin('LocalNotifications');
+    if (!LN) return false;
+    let p = await LN.checkPermissions();
+    if (p.display !== 'granted') p = await LN.requestPermissions();
+    return p.display === 'granted';
+  }
+
+  async function scheduleReminders() {
+    const LN = plugin('LocalNotifications');
+    if (!LN) return;
+    const st = getSettings();
+    const pending = await LN.getPending();
+    if (pending.notifications.length) {
+      await LN.cancel({ notifications: pending.notifications.map(n => ({ id: n.id })) });
+    }
+    const list = [];
+    if (st.verse.on) {
+      const [h, m] = st.verse.time.split(':').map(Number);
+      const now = new Date();
+      for (let i = 0; i < VERSE_DAYS; i++) {
+        const at = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i, h, m);
+        if (at <= now) continue;
+        const v = verseForDate(toISO(at));
+        if (!v) continue;
+        list.push({
+          id: VERSE_ID_BASE + i,
+          title: `📖 ${v.ref}`,
+          body: v.text,
+          largeBody: v.text,
+          summaryText: 'Câu Kinh Thánh hôm nay',
+          schedule: { at, allowWhileIdle: true },
+          extra: { route: v.route },
+        });
+      }
+    }
+    if (st.sunday.on) {
+      const [h, m] = st.sunday.time.split(':').map(Number);
+      list.push({
+        id: SUNDAY_ID,
+        title: '⛪ Hôm nay là Chúa Nhật',
+        body: 'Mời anh chị em cùng đến nhà Chúa thờ phượng. Bấm để xem bài giảng.',
+        schedule: { on: { weekday: 1, hour: h, minute: m }, allowWhileIdle: true },
+        extra: { route: '#/chua-nhat' },
+      });
+    }
+    if (list.length) await LN.schedule({ notifications: list });
+  }
+
+  async function sendTestNotification() {
+    const LN = plugin('LocalNotifications');
+    if (!LN || !(await ensurePermission())) return false;
+    const v = verseForDate(todayISO()) || { ref: 'Thi thiên 118:24', text: 'Nầy là ngày Đức Giê-hô-va làm nên.', route: '#/' };
+    await LN.schedule({ notifications: [{
+      id: 999, title: `📖 ${v.ref}`, body: v.text, largeBody: v.text,
+      schedule: { at: new Date(Date.now() + 3000), allowWhileIdle: true }, extra: { route: v.route },
+    }] });
+    return true;
   }
 
   /* ---------- search ---------- */
@@ -146,7 +245,7 @@
   function thumb(s) {
     const src = thumbUrl(s);
     return `<div class="thumb">
-      ${src ? `<img src="${src}" alt="" loading="lazy">` : ''}
+      ${src ? `<img src="${src}" alt="" loading="lazy" onerror="this.remove()">` : ''}
       <span class="play"></span>
       ${s.duration ? `<span class="dur">${esc(s.duration)}</span>` : ''}
     </div>`;
@@ -180,7 +279,25 @@
     const daily = ofType('hang-ngay').filter(s => s.date <= today);
     const sunday = ofType('chua-nhat');
     const todays = daily[0];
+    const verse = verseForDate(today);
+    const latestYT = DATA.sermons.filter(s => s.source === 'youtube')
+      .sort((a, b) => (b.publishedAt || b.date || '').localeCompare(a.publishedAt || a.date || '')).slice(0, 4);
+    const st = getSettings();
     return `
+      ${verse && !(todays && todays.date === today) ? `
+      <section class="section">
+        <div class="box verse-card">
+          <span class="meta">📖 Câu Kinh Thánh hôm nay · ${fmtDate(today)}</span>
+          <blockquote class="scripture" style="margin:8px 0 0">${esc(verse.text)}<cite>${esc(verse.ref)}</cite></blockquote>
+        </div>
+      </section>` : ''}
+
+      ${isNative && !st.verse.on ? `
+      <a class="box remind-cta" href="#/cai-dat">
+        <strong>🔔 Nhận câu Kinh Thánh mỗi sáng</strong>
+        <span class="meta">Bật thông báo nhắc nhở hằng ngày →</span>
+      </a>` : ''}
+
       <section class="section">
         <div class="section-head">
           <h2>Tĩnh nguyện hôm nay</h2>
@@ -207,6 +324,13 @@
         <div class="section-head"><h2>Tìm theo chủ đề</h2><a href="#/chu-de">Tất cả →</a></div>
         ${topicChips()}
       </section>
+
+      ${latestYT.length ? `
+      <section class="section">
+        <div class="section-head"><h2>Mới trên kênh YouTube</h2>
+          <a href="${esc(CONFIG.YOUTUBE_CHANNEL_URL || '#')}" target="_blank" rel="noopener">Mở kênh →</a></div>
+        ${list(latestYT, { grid: true })}
+      </section>` : ''}
 
       ${sunday.length > 1 ? `
       <section class="section">
@@ -358,7 +482,7 @@
         <input id="q" type="search" value="${esc(state.q)}" placeholder="Tên bài, câu Kinh Thánh, chủ đề…" autocomplete="off" enterkeyhint="search">
       </div>
       <div class="filters" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">
-        <select id="f-type" aria-label="Loại">${opt('', 'Mọi loại', state.type)}${opt('chua-nhat', 'Chúa Nhật', state.type)}${opt('hang-ngay', 'Hằng ngày', state.type)}</select>
+        <select id="f-type" aria-label="Loại">${opt('', 'Mọi loại', state.type)}${opt('chua-nhat', 'Chúa Nhật', state.type)}${opt('hang-ngay', 'Hằng ngày', state.type)}${opt('khac', 'Video khác', state.type)}</select>
         <select id="f-topic" aria-label="Chủ đề">${opt('', 'Mọi chủ đề', state.topic)}${allTopicNames().map(n => opt(n, n, state.topic)).join('')}</select>
         <select id="f-speaker" aria-label="Diễn giả">${opt('', 'Mọi diễn giả', state.speaker)}${speakers.map(n => opt(n, n, state.speaker)).join('')}</select>
       </div>
@@ -496,6 +620,68 @@
     `;
   }
 
+  function pageSettings() {
+    const st = getSettings();
+    if (!isNative) {
+      const apk = CONFIG.APK_URL || '';
+      return `
+        <h1>Nhắc nhở</h1>
+        <div class="box">
+          <h3>🔔 Thông báo câu Kinh Thánh mỗi ngày</h3>
+          <p>Thông báo nhắc nhở hằng ngày và nhắc giờ thờ phượng Chúa Nhật có trong <strong>app cài trên điện thoại Android</strong>.
+          Trình duyệt web không hẹn giờ thông báo được.</p>
+          ${apk ? `<a class="btn primary" href="${esc(apk)}">⬇ Tải app Android (APK)</a>` : ''}
+        </div>
+        <div class="box">
+          <h3>📖 Câu Kinh Thánh hôm nay</h3>
+          ${(() => { const v = verseForDate(todayISO()); return v ? `<blockquote class="scripture">${esc(v.text)}<cite>${esc(v.ref)}</cite></blockquote>` : ''; })()}
+        </div>`;
+    }
+
+    setTimeout(() => {
+      const $ = id => document.getElementById(id);
+      const status = $('notif-status');
+      const save = async () => {
+        const next = {
+          verse: { on: $('verse-on').checked, time: $('verse-time').value || '06:00' },
+          sunday: { on: $('sunday-on').checked, time: $('sunday-time').value || '07:30' },
+        };
+        if ((next.verse.on || next.sunday.on) && !(await ensurePermission())) {
+          next.verse.on = next.sunday.on = false;
+          $('verse-on').checked = $('sunday-on').checked = false;
+          status.textContent = '⚠️ Chưa được cấp quyền thông báo. Hãy bật trong Cài đặt điện thoại → Ứng dụng → Imanuel HN → Thông báo.';
+        } else {
+          status.textContent = next.verse.on || next.sunday.on ? '✓ Đã lưu nhắc nhở.' : 'Đã tắt nhắc nhở.';
+        }
+        saveSettings(next);
+        await scheduleReminders();
+      };
+      ['verse-on', 'verse-time', 'sunday-on', 'sunday-time'].forEach(id => $(id).addEventListener('change', save));
+      $('test').addEventListener('click', async () => {
+        status.textContent = (await sendTestNotification()) ? 'Sẽ có thông báo thử sau 3 giây…' : '⚠️ Chưa được cấp quyền thông báo.';
+      });
+    });
+
+    return `
+      <h1>Nhắc nhở</h1>
+      <p class="lead">Thông báo được hẹn sẵn trên máy, vẫn hiện khi không có mạng.</p>
+      <div class="box setting">
+        <label class="switch-row"><span><strong>📖 Câu Kinh Thánh mỗi ngày</strong><br>
+          <small class="meta">Câu gốc của bài tĩnh nguyện hôm đó, hoặc một câu Kinh Thánh khích lệ</small></span>
+          <input type="checkbox" id="verse-on" ${st.verse.on ? 'checked' : ''}></label>
+        <label class="time-row">Giờ nhắc <input type="time" id="verse-time" value="${esc(st.verse.time)}"></label>
+      </div>
+      <div class="box setting">
+        <label class="switch-row"><span><strong>⛪ Nhắc thờ phượng Chúa Nhật</strong><br>
+          <small class="meta">Mỗi sáng Chúa Nhật</small></span>
+          <input type="checkbox" id="sunday-on" ${st.sunday.on ? 'checked' : ''}></label>
+        <label class="time-row">Giờ nhắc <input type="time" id="sunday-time" value="${esc(st.sunday.time)}"></label>
+      </div>
+      <button class="btn" id="test">Gửi thông báo thử</button>
+      <p class="hint" id="notif-status" role="status"></p>
+    `;
+  }
+
   const notFound = () => `<p class="empty">Không tìm thấy trang này. <a href="#/">Về trang chủ</a></p>`;
 
   /* ---------- router ---------- */
@@ -510,6 +696,7 @@
     [/^\/bai\/(.+)$/, m => pageDetail(decodeURIComponent(m[1])), ''],
     [/^\/yeu-thich$/, () => pageFavorites(), 'favorites'],
     [/^\/them$/, () => pageAdd(), ''],
+    [/^\/cai-dat$/, () => pageSettings(), ''],
   ];
 
   function render() {
@@ -526,13 +713,65 @@
     window.scrollTo(0, 0);
   }
 
+  /* ---------- data loading ---------- */
+
+  async function fetchJSON(url, timeoutMs = 8000) {
+    const ctl = new AbortController();
+    const t = setTimeout(() => ctl.abort(), timeoutMs);
+    try {
+      const res = await fetch(url, { cache: 'no-cache', signal: ctl.signal });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return await res.json();
+    } finally { clearTimeout(t); }
+  }
+
+  // In the installed app, fetch the latest data from the website (updated daily by GitHub Actions);
+  // fall back to the last good copy, then to the copy bundled inside the app.
+  async function loadFile(name, optional = false) {
+    const sources = [];
+    if (isNative && CONFIG.REMOTE_BASE) sources.push(CONFIG.REMOTE_BASE + 'data/' + name + '?t=' + Date.now());
+    sources.push('data/' + name);
+    for (const url of sources) {
+      try {
+        const j = await fetchJSON(url);
+        if (url.startsWith('http')) { try { localStorage.setItem(CACHE_KEY + ':' + name, JSON.stringify(j)); } catch { /* full */ } }
+        return j;
+      } catch {
+        if (url.startsWith('http')) {
+          try { const c = JSON.parse(localStorage.getItem(CACHE_KEY + ':' + name)); if (c) return c; } catch { /* none */ }
+        }
+      }
+    }
+    if (optional) return null;
+    throw new Error('không tải được ' + name);
+  }
+
+  // Manual entries (data/sermons.json) win over auto-imported YouTube entries for the same video,
+  // and can hide a YouTube video with "hidden": true.
+  function mergeData(base, yt) {
+    const manual = (base.sermons || []).filter(s => s && (s.id || s.video));
+    const byVideo = new Map();
+    manual.forEach(s => { const id = youtubeId(s.video); if (id) byVideo.set(id, s); });
+    const auto = ((yt && yt.videos) || []).flatMap(v => {
+      const m = byVideo.get(youtubeId(v.video));
+      if (!m) return [v];
+      Object.keys(m).forEach(k => { if (m[k] !== '' && m[k] != null) v[k] = m[k]; });
+      v.id = m.id || v.id;
+      byVideo.delete(youtubeId(v.video));
+      manual.splice(manual.indexOf(m), 1);
+      return [v];
+    });
+    return [...manual, ...auto].filter(s => s.id && !s.hidden);
+  }
+
   async function init() {
     try {
-      const res = await fetch('data/sermons.json', { cache: 'no-cache' });
-      if (!res.ok) throw new Error(res.status);
-      DATA = await res.json();
-      DATA.topics = DATA.topics || [];
-      DATA.sermons = (DATA.sermons || []).filter(s => s && s.id);
+      const [base, yt, verses] = await Promise.all([
+        loadFile('sermons.json'),
+        loadFile('youtube.json', true),
+        loadFile('verses.json', true),
+      ]);
+      DATA = { ...base, topics: base.topics || [], sermons: mergeData(base, yt), verses: (verses && verses.verses) || [] };
     } catch (e) {
       $app.innerHTML = `<p class="empty">Không tải được dữ liệu bài giảng (${esc(e.message)}).<br>
         Nếu mở file trực tiếp trên máy, hãy chạy: <code>python3 -m http.server</code></p>`;
@@ -540,9 +779,19 @@
     }
     window.addEventListener('hashchange', render);
     render();
+
+    const LN = plugin('LocalNotifications');
+    if (LN) {
+      LN.addListener('localNotificationActionPerformed', e => {
+        const route = e.notification && e.notification.extra && e.notification.extra.route;
+        if (route) location.hash = route;
+      });
+      // Roll the reminder window forward and pick up new devotion verses.
+      scheduleReminders().catch(() => {});
+    }
   }
 
-  if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  if ('serviceWorker' in navigator && location.protocol !== 'file:' && !isNative) {
     navigator.serviceWorker.register('sw.js').catch(() => {});
   }
   init();

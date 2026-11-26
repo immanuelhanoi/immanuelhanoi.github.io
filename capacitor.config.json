@@ -1,0 +1,13 @@
+{
+  "appId": "org.imanuelhanoi.baigiang",
+  "appName": "Imanuel Hà Nội",
+  "webDir": "www",
+  "android": {
+    "allowMixedContent": false
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "iconColor": "#7a2e1f"
+    }
+  }
+}

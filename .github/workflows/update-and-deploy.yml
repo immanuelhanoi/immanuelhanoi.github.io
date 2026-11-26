@@ -1,0 +1,65 @@
+# Tự động lấy video mới từ kênh YouTube và cập nhật trang web (GitHub Pages).
+# App Android tải dữ liệu từ trang web này nên cũng tự cập nhật theo.
+name: Cập nhật video & đăng web
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 23 * * *'     # 06:17 sáng (giờ Việt Nam) mỗi ngày
+    - cron: '47 10 * * *'     # 17:47 chiều mỗi ngày
+    - cron: '7 3,6,9 * * 0'   # Chúa Nhật: 10:07, 13:07, 16:07 – ngay sau giờ thờ phượng
+  workflow_dispatch:           # bấm "Run workflow" để cập nhật ngay
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: update-and-deploy
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Lấy video mới từ YouTube
+        id: sync
+        continue-on-error: true   # YouTube lỗi tạm thời thì vẫn đăng web với dữ liệu cũ
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: node scripts/sync-youtube.mjs
+
+      - name: Lưu dữ liệu mới vào repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/youtube.json
+          if git diff --cached --quiet; then
+            echo "Không có video mới."
+          else
+            git commit -m "Cập nhật video YouTube $(TZ=Asia/Ho_Chi_Minh date +'%d/%m/%Y %H:%M')"
+            git push
+          fi
+
+      - name: Kiểm tra & đóng gói trang web
+        run: |
+          node --test scripts/test/*.test.mjs
+          node scripts/build-www.mjs
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: www
+      - id: deploy
+        uses: actions/deploy-pages@v4
