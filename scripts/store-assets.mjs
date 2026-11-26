@@ -53,7 +53,7 @@ for (const [platform, device] of Object.entries(DEVICES)) {
   const ctx = await browser.newContext({ ...device, colorScheme: 'light', locale: 'vi-VN' });
   // Show the store screenshots as the installed app: reminders available and switched on.
   await ctx.addInitScript(() => {
-    localStorage.setItem('imanuel.settings', JSON.stringify({ verse: { on: true, time: '06:00' }, sunday: { on: true, time: '07:30' } }));
+    localStorage.setItem('immanuel.settings', JSON.stringify({ verse: { on: true, time: '06:00' }, sunday: { on: true, time: '07:30' } }));
     const ok = async () => ({ display: 'granted', notifications: [] });
     window.Capacitor = { isNativePlatform: () => true, Plugins: { LocalNotifications: {
       checkPermissions: ok, requestPermissions: ok, getPending: ok, cancel: ok, schedule: ok, addListener: () => {},
@@ -87,7 +87,7 @@ const icon = await fs.readFile(path.join(ROOT, 'icons/icon.svg'), 'utf8');
 await page.setContent(`<html><body style="margin:0;width:1024px;height:500px;display:flex;align-items:center;gap:48px;padding:0 72px;box-sizing:border-box;
   background:linear-gradient(135deg,#7a2e1f 0%,#5a1f14 60%,#3a140c 100%);font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:#f6e7c8">
   <div style="flex:none;width:200px;height:200px;filter:drop-shadow(0 10px 30px rgba(0,0,0,.35))">${icon.replace('<svg ', '<svg width="200" height="200" ')}</div>
-  <div><div style="font-size:64px;font-weight:800;line-height:1.05">Imanuel Hà Nội</div>
+  <div><div style="font-size:64px;font-weight:800;line-height:1.05">Immanuel Hà Nội</div>
   <div style="font-size:30px;margin-top:16px;opacity:.92">Bài giảng · Tĩnh nguyện<br>Câu Kinh Thánh mỗi ngày</div></div></body></html>`);
 await page.screenshot({ path: path.join(OUT, 'feature-graphic-1024x500.png') });
 await page.setViewportSize({ width: 512, height: 512 });

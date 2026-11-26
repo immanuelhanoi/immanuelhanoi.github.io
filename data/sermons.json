@@ -1,7 +1,7 @@
 {
   "_huongdan": "Danh sách 'sermons' dùng để: (1) thêm bài không có trên YouTube; (2) sửa/bổ sung thông tin cho một video YouTube (ghi đúng link 'video', các trường điền ở đây sẽ thay cho thông tin tự động); (3) ẩn video không phải bài giảng: {\"video\": \"link\", \"hidden\": true}. Video từ kênh YouTube được tự động thêm vào data/youtube.json mỗi ngày – không cần sửa file đó.",
   "church": {
-    "name": "Hội thánh Imanuel Hà Nội",
+    "name": "Hội thánh Immanuel Hà Nội",
     "youtubeChannel": "@immanuelhanoi",
     "schedule": [
       {

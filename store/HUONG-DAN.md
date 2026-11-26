@@ -13,7 +13,7 @@ App mang tên và nội dung của Hội thánh, nên:
 - **Xin phép Ban Chấp sự / Mục sư quản nhiệm** trước khi đăng. Cả Google và Apple đều có thể gỡ app
   hoặc khoá tài khoản nếu app dùng tên/nội dung của một tổ chức mà người đăng không được uỷ quyền.
 - **Nên đăng ký tài khoản dưới tên Hội thánh (tổ chức)** thay vì cá nhân:
-  - Trên cửa hàng hiện “Hội thánh Imanuel Hà Nội” là nhà phát triển, tạo uy tín.
+  - Trên cửa hàng hiện “Hội thánh Immanuel Hà Nội” là nhà phát triển, tạo uy tín.
   - Tài khoản thuộc Hội thánh, không phụ thuộc vào một người.
   - Google Play: tài khoản tổ chức **không phải** qua bước “12 người thử trong 14 ngày”.
   - Cần **số D-U-N-S** (miễn phí, đăng ký tại dnb.com, mất khoảng 1–4 tuần) và giấy tờ pháp lý của Hội thánh.
@@ -38,7 +38,7 @@ App mang tên và nội dung của Hội thánh, nên:
 ### A1. Tạo khoá ký app (làm 1 lần, giữ cẩn thận suốt đời app)
 Trên máy tính có cài Java (hoặc nhờ người biết kỹ thuật):
 ```bash
-keytool -genkey -v -keystore upload.keystore -alias imanuel -keyalg RSA -keysize 2048 -validity 10000
+keytool -genkey -v -keystore upload.keystore -alias immanuel -keyalg RSA -keysize 2048 -validity 10000
 base64 -w0 upload.keystore > upload.keystore.txt      # trên macOS: base64 -i upload.keystore
 ```
 **Cất file `upload.keystore` và mật khẩu ở nơi an toàn** (2 bản sao). Mất file này thì không cập nhật app được
@@ -50,14 +50,14 @@ Thêm vào GitHub: *Settings → Secrets and variables → Actions → New repos
 |---|---|
 | `ANDROID_KEYSTORE_BASE64` | nội dung file `upload.keystore.txt` |
 | `ANDROID_KEYSTORE_PASSWORD` | mật khẩu đã đặt |
-| `ANDROID_KEY_ALIAS` | `imanuel` |
+| `ANDROID_KEY_ALIAS` | `immanuel` |
 
 ### A2. Build bản đầu tiên
 *Actions → **App Android (APK + CH Play)** → Run workflow* (giữ “khong”).
-Xong thì tải file **`imanuel-hanoi.aab`** trong mục *Artifacts* ở cuối trang kết quả.
+Xong thì tải file **`immanuel-hanoi.aab`** trong mục *Artifacts* ở cuối trang kết quả.
 
 ### A3. Tạo app trên Play Console (play.google.com/console)
-1. **Create app**. Tên: `Imanuel Hà Nội`, ngôn ngữ mặc định: Tiếng Việt, App, Free.
+1. **Create app**. Tên: `Immanuel Hà Nội`, ngôn ngữ mặc định: Tiếng Việt, App, Free.
 2. Mục *App content*, điền theo [phần D](#d-trả-lời-các-biểu-mẫu) bên dưới.
 3. *Store listing*: chữ ở [phần C](#c-nội-dung-trang-cửa-hàng); ảnh lấy từ workflow **Ảnh cho cửa hàng ứng dụng**
    (thư mục `android/`, `feature-graphic-1024x500.png`, `icon-512.png`).
@@ -89,8 +89,8 @@ App Store Connect → *Users and Access → Integrations → App Store Connect A
 | `APP_STORE_CONNECT_KEY_P8` | mở file `.p8` bằng Notepad, dán **toàn bộ** nội dung |
 
 ### B3. Tạo app trên App Store Connect
-1. developer.apple.com → *Identifiers* → đăng ký Bundle ID **`org.imanuelhanoi.baigiang`** (bật *Push Notifications* không cần thiết; thông báo trong app là thông báo cục bộ).
-2. App Store Connect → *Apps → +  New App*: iOS, tên `Imanuel Hà Nội`, ngôn ngữ Vietnamese, Bundle ID ở trên, SKU `imanuel-hanoi`.
+1. developer.apple.com → *Identifiers* → đăng ký Bundle ID **`org.immanuelhanoi.baigiang`** (bật *Push Notifications* không cần thiết; thông báo trong app là thông báo cục bộ).
+2. App Store Connect → *Apps → +  New App*: iOS, tên `Immanuel Hà Nội`, ngôn ngữ Vietnamese, Bundle ID ở trên, SKU `immanuel-hanoi`.
 
 ### B4. Build & tải lên
 *Actions → **App iPhone (TestFlight / App Store)** → Run workflow*. Sau khoảng 15–30 phút, bản build xuất hiện
@@ -105,7 +105,7 @@ App chỉ hỗ trợ iPhone nên không cần ảnh iPad.
 
 ## C. Nội dung trang cửa hàng
 
-**Tên app** (≤ 30 ký tự): `Imanuel Hà Nội`
+**Tên app** (≤ 30 ký tự): `Immanuel Hà Nội`
 
 **Phụ đề – Apple** (≤ 30): `Bài giảng & Tĩnh nguyện`
 
@@ -115,7 +115,7 @@ App chỉ hỗ trợ iPhone nên không cần ảnh iPad.
 
 **Mô tả đầy đủ:**
 ```
-Ứng dụng của Hội thánh Imanuel Hà Nội giúp anh chị em gắn bó với Lời Chúa mỗi ngày.
+Ứng dụng của Hội thánh Immanuel Hà Nội giúp anh chị em gắn bó với Lời Chúa mỗi ngày.
 
 • BÀI GIẢNG CHÚA NHẬT – Xem lại video bài giảng trong giờ thờ phượng hằng tuần, được cập nhật tự động ngay sau buổi nhóm.
 • TĨNH NGUYỆN HẰNG NGÀY – Lịch tĩnh nguyện theo ngày với câu gốc, suy ngẫm và lời cầu nguyện.
@@ -154,7 +154,7 @@ Không cần đăng ký tài khoản. Không quảng cáo. Không thu thập d�
 
 **Ghi chú cho người duyệt – Apple (App Review Notes):**
 ```
-This is the official app of Imanuel Hanoi Church (Vietnam). No login is required.
+This is the official app of Immanuel Hanoi Church (Vietnam). No login is required.
 - Sermons are published on the church's own YouTube channel (@immanuelhanoi) and synced into the app daily.
 - Native features: local daily Bible-verse notifications and Sunday worship reminders (tap the bell icon,
   top right), offline access to the sermon list, favorites, topic browsing and accent-insensitive Vietnamese search.

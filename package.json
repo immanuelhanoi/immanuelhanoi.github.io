@@ -1,8 +1,8 @@
 {
-  "name": "imanuel-hanoi-app",
+  "name": "immanuel-hanoi-app",
   "version": "1.0.0",
   "private": true,
-  "description": "Bài giảng & tĩnh nguyện – Hội thánh Imanuel Hà Nội",
+  "description": "Bài giảng & tĩnh nguyện – Hội thánh Immanuel Hà Nội",
   "type": "module",
   "scripts": {
     "build": "node scripts/build-www.mjs",

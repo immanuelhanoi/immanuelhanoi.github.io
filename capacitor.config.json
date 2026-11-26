@@ -1,6 +1,6 @@
 {
-  "appId": "org.imanuelhanoi.baigiang",
-  "appName": "Imanuel Hà Nội",
+  "appId": "org.immanuelhanoi.baigiang",
+  "appName": "Immanuel Hà Nội",
   "webDir": "www",
   "android": {
     "allowMixedContent": false
@@ -13,6 +13,6 @@
   },
   "ios": {
     "contentInset": "never",
-    "scheme": "Imanuel"
+    "scheme": "Immanuel"
   }
 }

@@ -1,4 +1,4 @@
-package org.imanuelhanoi.baigiang;
+package org.immanuelhanoi.baigiang;
 
 import com.getcapacitor.BridgeActivity;
 

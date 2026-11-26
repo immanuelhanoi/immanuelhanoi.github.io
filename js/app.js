@@ -1,4 +1,4 @@
-/* Imanuel Hà Nội – Bài giảng & Tĩnh nguyện
+/* Immanuel Hà Nội – Bài giảng & Tĩnh nguyện
  * Single-page app, no build step. Data lives in data/sermons.json.
  */
 (() => {
@@ -10,9 +10,9 @@
     'khac': { label: 'Video khác', cls: 'other' },
   };
   const WEEKDAYS = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'];
-  const FAV_KEY = 'imanuel.favorites';
-  const SETTINGS_KEY = 'imanuel.settings';
-  const CACHE_KEY = 'imanuel.dataCache';
+  const FAV_KEY = 'immanuel.favorites';
+  const SETTINGS_KEY = 'immanuel.settings';
+  const CACHE_KEY = 'immanuel.dataCache';
   const CONFIG = window.APP_CONFIG || {};
 
   const $app = document.getElementById('app');
@@ -649,7 +649,7 @@
         if ((next.verse.on || next.sunday.on) && !(await ensurePermission())) {
           next.verse.on = next.sunday.on = false;
           $('verse-on').checked = $('sunday-on').checked = false;
-          status.textContent = '⚠️ Chưa được cấp quyền thông báo. Hãy bật trong Cài đặt điện thoại → Ứng dụng → Imanuel HN → Thông báo.';
+          status.textContent = '⚠️ Chưa được cấp quyền thông báo. Hãy bật trong Cài đặt điện thoại → Ứng dụng → Immanuel HN → Thông báo.';
         } else {
           status.textContent = next.verse.on || next.sunday.on ? '✓ Đã lưu nhắc nhở.' : 'Đã tắt nhắc nhở.';
         }

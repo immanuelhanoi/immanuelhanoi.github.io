@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace = "org.imanuelhanoi.baigiang"
+    namespace = "org.immanuelhanoi.baigiang"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "org.imanuelhanoi.baigiang"
+        applicationId "org.immanuelhanoi.baigiang"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         // Store builds pass -PversionCode=<n> -PversionName=<x.y.z> (CI uses the run number).

@@ -1,5 +1,5 @@
 // Offline support: app shell is cached; sermon data is fetched fresh when online.
-const CACHE = 'imanuel-v2';
+const CACHE = 'immanuel-v2';
 const SHELL = ['./', 'index.html', 'css/style.css', 'js/config.js', 'js/app.js', 'icons/icon.svg', 'icons/icon-192.png', 'manifest.webmanifest', 'data/sermons.json', 'data/youtube.json', 'data/verses.json'];
 
 self.addEventListener('install', e => {

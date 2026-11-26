@@ -81,27 +81,27 @@ jobs:
           PROPS="-PversionCode=$VERSION_CODE -PversionName=$VERSION_NAME"
           if [ -n "$ANDROID_KEYSTORE_FILE" ]; then
             ./gradlew --no-daemon $PROPS assembleRelease bundleRelease
-            cp app/build/outputs/apk/release/app-release.apk ../imanuel-hanoi.apk
-            cp app/build/outputs/bundle/release/app-release.aab ../imanuel-hanoi.aab
+            cp app/build/outputs/apk/release/app-release.apk ../immanuel-hanoi.apk
+            cp app/build/outputs/bundle/release/app-release.aab ../immanuel-hanoi.aab
           else
             ./gradlew --no-daemon $PROPS assembleDebug
-            cp app/build/outputs/apk/debug/app-debug.apk ../imanuel-hanoi.apk
+            cp app/build/outputs/apk/debug/app-debug.apk ../immanuel-hanoi.apk
           fi
-          ls -la ../imanuel-hanoi.*
+          ls -la ../immanuel-hanoi.*
 
       - uses: actions/upload-artifact@v4
         with:
           name: android-${{ env.VERSION_NAME }}-${{ env.VERSION_CODE }}
-          path: imanuel-hanoi.*
+          path: immanuel-hanoi.*
 
       - name: Link tải APK cố định (Releases)
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release delete app-android --yes --cleanup-tag || true
-          gh release create app-android imanuel-hanoi.apk \
-            --title "App Android – Imanuel Hà Nội" \
-            --notes "Phiên bản $VERSION_NAME ($VERSION_CODE), build lúc $(TZ=Asia/Ho_Chi_Minh date +'%H:%M %d/%m/%Y'). Tải imanuel-hanoi.apk về điện thoại Android để cài thử." \
+          gh release create app-android immanuel-hanoi.apk \
+            --title "App Android – Immanuel Hà Nội" \
+            --notes "Phiên bản $VERSION_NAME ($VERSION_CODE), build lúc $(TZ=Asia/Ho_Chi_Minh date +'%H:%M %d/%m/%Y'). Tải immanuel-hanoi.apk về điện thoại Android để cài thử." \
             --target "${{ github.sha }}"
 
       - name: Đưa lên Google Play
@@ -109,7 +109,7 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
-          packageName: org.imanuelhanoi.baigiang
-          releaseFiles: imanuel-hanoi.aab
+          packageName: org.immanuelhanoi.baigiang
+          releaseFiles: immanuel-hanoi.aab
           track: ${{ inputs.play_track }}
           status: completed

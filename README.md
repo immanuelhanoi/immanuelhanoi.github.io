@@ -1,4 +1,4 @@
-# App Bài giảng – Hội thánh Imanuel Hà Nội
+# App Bài giảng – Hội thánh Immanuel Hà Nội
 
 Ứng dụng xem **bài giảng video** của Mục sư, **tìm theo chủ đề**, theo dõi **thờ phượng Chúa Nhật**
 và **tĩnh nguyện hằng ngày**, kèm **thông báo câu Kinh Thánh mỗi sáng**.
@@ -35,7 +35,7 @@ dùng câu gốc của bài đó; ngày khác lấy lần lượt từ `data/ver
    **https://github.com/immanuelhanoi/immanuelhanoi.github.io/releases/tag/app-android**
 
 ### Cài app lên điện thoại Android
-Mở link Releases ở trên bằng điện thoại → tải `imanuel-hanoi.apk` → mở file → cho phép
+Mở link Releases ở trên bằng điện thoại → tải `immanuel-hanoi.apk` → mở file → cho phép
 “Cài ứng dụng không rõ nguồn” → Cài đặt. Mở app, bấm 🔔 để bật nhắc nhở.
 
 ### iPhone
