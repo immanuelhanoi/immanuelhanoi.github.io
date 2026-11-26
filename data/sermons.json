@@ -1,0 +1,80 @@
+{
+  "_huongdan": "Danh sách 'sermons' dùng để: (1) thêm bài không có trên YouTube; (2) sửa/bổ sung thông tin cho một video YouTube (ghi đúng link 'video', các trường điền ở đây sẽ thay cho thông tin tự động); (3) ẩn video không phải bài giảng: {\"video\": \"link\", \"hidden\": true}. Video từ kênh YouTube được tự động thêm vào data/youtube.json mỗi ngày – không cần sửa file đó.",
+  "church": {
+    "name": "Hội thánh Immanuel Hà Nội",
+    "youtubeChannel": "@immanuelhanoi",
+    "schedule": [
+      {
+        "label": "Thờ phượng Chúa Nhật",
+        "time": "Chúa Nhật hằng tuần"
+      },
+      {
+        "label": "Tĩnh nguyện hằng ngày",
+        "time": "Mỗi sáng"
+      }
+    ]
+  },
+  "topics": [
+    {
+      "name": "Đức tin",
+      "emoji": "🛡️"
+    },
+    {
+      "name": "Cầu nguyện",
+      "emoji": "🙏"
+    },
+    {
+      "name": "Ân điển",
+      "emoji": "✝️"
+    },
+    {
+      "name": "Tình yêu thương",
+      "emoji": "❤️"
+    },
+    {
+      "name": "Gia đình",
+      "emoji": "🏠"
+    },
+    {
+      "name": "Tạ ơn",
+      "emoji": "🌾"
+    },
+    {
+      "name": "Hy vọng",
+      "emoji": "🌅"
+    },
+    {
+      "name": "Lời Chúa",
+      "emoji": "📖"
+    },
+    {
+      "name": "Sự bình an",
+      "emoji": "🕊️"
+    },
+    {
+      "name": "Ăn năn & tha thứ",
+      "emoji": "💧"
+    },
+    {
+      "name": "Truyền giáo",
+      "emoji": "🌏"
+    },
+    {
+      "name": "Môn đồ",
+      "emoji": "👣"
+    },
+    {
+      "name": "Thánh Linh",
+      "emoji": "🔥"
+    },
+    {
+      "name": "Giáng sinh",
+      "emoji": "⭐"
+    },
+    {
+      "name": "Phục sinh",
+      "emoji": "🌿"
+    }
+  ],
+  "sermons": []
+}

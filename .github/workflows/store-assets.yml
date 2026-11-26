@@ -1,0 +1,26 @@
+# Tạo ảnh chụp màn hình & ảnh nổi bật cho CH Play / App Store từ dữ liệu thật.
+# Bấm "Run workflow", chờ xong, tải file "anh-cua-hang" ở cuối trang kết quả.
+name: Ảnh cho cửa hàng ứng dụng
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build && node scripts/store-assets.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: anh-cua-hang
+          path: store/generated

@@ -1,0 +1,26 @@
+{
+  "name": "immanuel-hanoi-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bài giảng & tĩnh nguyện – Hội thánh Immanuel Hà Nội",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-www.mjs",
+    "sync-youtube": "node scripts/sync-youtube.mjs",
+    "test": "node --test scripts/test/*.test.mjs",
+    "serve": "python3 -m http.server 8000",
+    "native:prepare": "npm run build && npx capacitor-assets generate --android --ios --iconBackgroundColor '#7a2e1f' --iconBackgroundColorDark '#7a2e1f' --splashBackgroundColor '#faf6ef' --splashBackgroundColorDark '#17120f' && npx cap sync",
+    "android:prepare": "npm run native:prepare"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.6.3",
+    "@capacitor/core": "^8.6.3",
+    "@capacitor/ios": "^8.6.3",
+    "@capacitor/local-notifications": "^8.3.1"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^4.0.0",
+    "@capacitor/cli": "^8.6.3",
+    "playwright": "^1.63.0"
+  }
+}

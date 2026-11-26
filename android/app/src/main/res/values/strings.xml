@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Immanuel Hà Nội</string>
+    <string name="title_activity_main">Immanuel Hà Nội</string>
+    <string name="package_name">org.immanuelhanoi.baigiang</string>
+    <string name="custom_url_scheme">org.immanuelhanoi.baigiang</string>
+</resources>
