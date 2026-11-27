@@ -1165,19 +1165,234 @@
       </div>` : ''}`;
   }
 
+  /* ---------- Bible: browse, read, reflect (notes stay on this device) ---------- */
+
+  const NOTES_KEY = 'immanuel.notes';
+  const LASTREAD_KEY = 'immanuel.lastRead';
+  const getNotes = () => { try { return JSON.parse(localStorage.getItem(NOTES_KEY)) || []; } catch { return []; } };
+  const saveNotes = n => { try { localStorage.setItem(NOTES_KEY, JSON.stringify(n)); return true; } catch { return false; } };
+  const allBooks = () => (DATA.journeys || {}).books || [];
+  const fmtStamp = iso => { const d = new Date(iso); return `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`; };
+
+  /** [3,4,5,8] → "3-5, 8" */
+  function verseRange(vs) {
+    const out = [];
+    [...vs].sort((a, b) => a - b).forEach(v => {
+      const last = out[out.length - 1];
+      if (last && v === last[1] + 1) last[1] = v; else out.push([v, v]);
+    });
+    return out.map(([a, b]) => (a === b ? `${a}` : `${a}-${b}`)).join(', ');
+  }
+  const noteRef = n => `${bookName(n.book)} ${n.ch}:${verseRange(n.verses)}`;
+
+  /** "Giăng 3:16", "giang 3", "1 co 13", "Thi thiên 23" → { code, ch, v } */
+  function parseRefInput(text) {
+    const m = norm(text).replace(/[^a-z0-9: ]/g, ' ').replace(/\s+/g, ' ').trim().match(/^(.*?)\s*(\d+)(?:\s*:\s*(\d+))?$/);
+    if (!m || !m[1]) return null;
+    const q = m[1].trim();
+    const book = allBooks().find(b => norm(b.name).replace(/-/g, ' ') === q) ||
+      allBooks().find(b => norm(b.name).replace(/-/g, ' ').startsWith(q));
+    if (!book || +m[2] < 1 || +m[2] > book.chapters) return null;
+    return { code: book.code, ch: +m[2], v: m[3] ? +m[3] : 0 };
+  }
+
+  function pageBibleHub() {
+    const last = (() => { try { return JSON.parse(localStorage.getItem(LASTREAD_KEY)); } catch { return null; } })();
+    const notes = getNotes();
+    setTimeout(() => {
+      const f = document.getElementById('ref-search');
+      f && f.addEventListener('submit', e => {
+        e.preventDefault();
+        const r = parseRefInput(f.q.value);
+        if (r) location.hash = `#/doc/${r.code}/${r.ch}${r.v ? '?v=' + r.v : ''}`;
+        else document.getElementById('ref-hint').textContent = 'Chưa hiểu câu tham chiếu. Thử: “Giăng 3:16”, “Thi thiên 23”, “1 Cô-rinh-tô 13”.';
+      });
+    });
+    return `
+      <h1>Kinh Thánh</h1>
+      <form id="ref-search" class="feel">
+        <input name="q" placeholder="Đến câu… vd Giăng 3:16" autocomplete="off" enterkeyhint="go">
+        <button class="btn primary">Mở</button>
+      </form>
+      <p id="ref-hint" class="hint"></p>
+      ${last ? `<a class="box journey-cta" href="#/doc/${last.code}/${last.ch}"><span class="float">📖</span>
+        <span><strong>Đọc tiếp</strong><br><span class="meta">${esc(bookName(last.code))} ${last.ch} →</span></span></a>` : ''}
+      <div class="hub">
+        <a class="hub-card" href="#/kinh-thanh/sach"><span>📖</span><strong>Đọc Kinh Thánh</strong><small>66 sách · Bản Truyền Thống 1926</small></a>
+        <a class="hub-card" href="#/hanh-trinh"><span>🗺️</span><strong>Hành trình</strong><small>Đọc theo chặng, có bài kiểm tra</small></a>
+        <a class="hub-card" href="#/so-tay"><span>✍️</span><strong>Sổ tay cảm nghĩ</strong><small>${notes.length ? `${notes.length} ghi chép` : 'Ghi lại điều Chúa dạy bạn'}</small></a>
+      </div>
+      ${notes.length ? `<section class="section"><div class="section-head"><h2>Cảm nghĩ gần đây</h2><a href="#/so-tay">Tất cả →</a></div>
+        <div class="list">${notes.slice(0, 3).map(noteCard).join('')}</div></section>` : ''}`;
+  }
+
+  function pageBooks() {
+    const books = allBooks();
+    const grid = list => `<div class="book-grid">${list.map(b => `<a class="book" href="#/kinh-thanh/sach/${b.code}">${esc(b.name)}</a>`).join('')}</div>`;
+    return `
+      <p class="crumb"><a href="#/kinh-thanh">← Kinh Thánh</a></p>
+      <h1>Các sách</h1>
+      <h2>Cựu Ước <span class="meta">39 sách</span></h2>${grid(books.slice(0, 39))}
+      <h2 style="margin-top:20px">Tân Ước <span class="meta">27 sách</span></h2>${grid(books.slice(39))}`;
+  }
+
+  function pageChapters(code) {
+    const b = allBooks().find(x => x.code === code);
+    if (!b) return notFound();
+    return `
+      <p class="crumb"><a href="#/kinh-thanh/sach">← Các sách</a></p>
+      <h1>${esc(b.name)}</h1>
+      <div class="chapter-grid">${Array.from({ length: b.chapters }, (_, i) => `<a href="#/doc/${code}/${i + 1}">${i + 1}</a>`).join('')}</div>`;
+  }
+
+  function noteCard(n) {
+    return `<a class="note-card" href="#/so-tay/${n.id}">
+      <span class="ref">📖 ${esc(noteRef(n))}</span>
+      <span class="note-excerpt">${esc(n.note.slice(0, 140))}${n.note.length > 140 ? '…' : ''}</span>
+      <span class="meta">${fmtStamp(n.updated || n.created)}</span>
+    </a>`;
+  }
+
+  function pageNotebook(params) {
+    const q = params.get('q') || '';
+    const notes = getNotes().filter(n => !q || norm(n.note + ' ' + noteRef(n) + ' ' + n.text).includes(norm(q)));
+    setTimeout(() => {
+      const f = document.getElementById('note-search');
+      f && f.addEventListener('submit', e => { e.preventDefault(); location.hash = '#/so-tay' + (f.q.value ? '?q=' + encodeURIComponent(f.q.value) : ''); });
+      const ex = document.getElementById('export');
+      ex && ex.addEventListener('click', () => {
+        const blob = new Blob([JSON.stringify({ app: 'immanuel-hanoi', notes: getNotes() }, null, 2)], { type: 'application/json' });
+        const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: `so-tay-cam-nghi-${todayISO()}.json` });
+        a.click(); URL.revokeObjectURL(a.href);
+      });
+      const im = document.getElementById('import');
+      im && im.addEventListener('change', async () => {
+        try {
+          const incoming = JSON.parse(await im.files[0].text()).notes || [];
+          const have = getNotes(); const ids = new Set(have.map(n => n.id));
+          const merged = [...incoming.filter(n => n && n.id && !ids.has(n.id)), ...have]
+            .sort((a, b) => (b.updated || b.created).localeCompare(a.updated || a.created));
+          saveNotes(merged);
+          alert(`Đã thêm ${merged.length - have.length} ghi chép.`);
+          render();
+        } catch { alert('File không đúng định dạng sổ tay.'); }
+      });
+    });
+    return `
+      <p class="crumb"><a href="#/kinh-thanh">← Kinh Thánh</a></p>
+      <h1>✍️ Sổ tay cảm nghĩ</h1>
+      <p class="lead">Chọn một câu hoặc một đoạn khi đọc Kinh Thánh rồi bấm “Viết cảm nghĩ”. Ghi chép được lưu trên máy này.</p>
+      <form id="note-search" class="feel"><input name="q" value="${esc(q)}" placeholder="Tìm trong sổ tay…" autocomplete="off"><button class="btn">Tìm</button></form>
+      ${notes.length ? `<div class="list">${notes.map(noteCard).join('')}</div>`
+        : `<div class="box"><p>${q ? 'Không có ghi chép phù hợp.' : 'Sổ tay đang trống.'}</p><a class="btn primary" href="#/kinh-thanh/sach">📖 Mở Kinh Thánh</a></div>`}
+      <div class="actions" style="margin-top:20px">
+        <button id="export" class="btn">⬇ Lưu bản sao sổ tay</button>
+        <label class="btn">⬆ Khôi phục từ bản sao<input id="import" type="file" accept="application/json,.json" hidden></label>
+      </div>
+      <p class="hint">Mẹo: thỉnh thoảng bấm “Lưu bản sao” để giữ ghi chép khi đổi điện thoại hoặc cài lại app.</p>`;
+  }
+
+  /** New note: #/so-tay/moi?b=JHN&c=3&v=16,17 ; existing note: #/so-tay/<id> (view, edit, share, delete) */
+  function pageNote(id, params) {
+    const isNew = id === 'moi';
+    const notes = getNotes();
+    let n = isNew
+      ? { id: 'n' + Date.now().toString(36), book: params.get('b'), ch: +params.get('c'), verses: (params.get('v') || '').split(',').map(Number).filter(Boolean), note: '' }
+      : notes.find(x => x.id === id);
+    if (!n || !allBooks().some(b => b.code === n.book) || !n.verses.length) return notFound();
+    const editing = isNew || params.get('sua') === '1';
+    setTimeout(async () => {
+      if (!n.text) {
+        const book = await loadBook(n.book);
+        const vs = (book && book.chapters[n.ch - 1]) || [];
+        n.text = n.verses.map(v => vs[v - 1]).filter(Boolean).join(' ');
+        const el = document.getElementById('note-passage'); if (el) el.textContent = n.text || '';
+      }
+      const form = document.getElementById('note-form');
+      form && form.addEventListener('submit', e => {
+        e.preventDefault();
+        const text = form.note.value.trim();
+        if (!text) return form.note.focus();
+        const now = new Date().toISOString();
+        const saved = { ...n, note: text, created: n.created || now, updated: now };
+        const rest = getNotes().filter(x => x.id !== n.id);
+        if (!saveNotes([saved, ...rest])) return alert('Không lưu được (bộ nhớ trình duyệt bị tắt?).');
+        location.replace('#/so-tay/' + n.id);
+      });
+      const del = document.getElementById('note-del');
+      del && del.addEventListener('click', () => {
+        if (!confirm('Xoá ghi chép này?')) return;
+        saveNotes(getNotes().filter(x => x.id !== n.id));
+        location.hash = '#/so-tay';
+      });
+      const share = document.getElementById('note-share');
+      share && share.addEventListener('click', async () => {
+        const body = `“${n.text}” (${noteRef(n)})\n\n${n.note}`;
+        try {
+          if (navigator.share) await navigator.share({ title: noteRef(n), text: body });
+          else { await navigator.clipboard.writeText(body); share.textContent = 'Đã sao chép'; }
+        } catch { /* cancelled */ }
+      });
+      if (editing) { const ta = document.querySelector('#note-form textarea'); ta && ta.focus(); }
+    });
+    return `
+      <p class="crumb"><a href="${isNew ? `#/doc/${n.book}/${n.ch}` : '#/so-tay'}">← ${isNew ? 'Về chương' : 'Sổ tay'}</a></p>
+      <blockquote class="scripture"><span id="note-passage">${esc(n.text || '')}</span><cite>${esc(noteRef(n))}</cite></blockquote>
+      ${editing ? `
+        <form id="note-form" class="form">
+          <label>✍️ Cảm nghĩ của bạn
+            <textarea name="note" rows="8" placeholder="Câu Kinh Thánh này nói gì với bạn hôm nay? Bạn muốn đáp lại Chúa thế nào?">${esc(n.note)}</textarea>
+          </label>
+          <button class="btn primary big">💾 Lưu vào sổ tay</button>
+        </form>` : `
+        <div class="box note-body"><p>${esc(n.note).replace(/\n/g, '<br>')}</p><span class="meta">Viết ngày ${fmtStamp(n.created)}${n.updated !== n.created ? ` · sửa ${fmtStamp(n.updated)}` : ''}</span></div>
+        <div class="actions">
+          <a class="btn" href="#/so-tay/${n.id}?sua=1">✏️ Sửa</a>
+          <button id="note-share" class="btn">↗ Chia sẻ</button>
+          <a class="btn" href="#/doc/${n.book}/${n.ch}?v=${n.verses[0]}">📖 Mở đoạn này</a>
+          <button id="note-del" class="btn">🗑 Xoá</button>
+        </div>`}`;
+  }
+
   function pageRead(code, ch, params) {
     ch = +ch;
     const back = params.get('ht') || '';            // "track/stage/readingIndex" when opened from a journey
     const [tId, sId, rIdx] = back.split('/');
-    const total = ((((DATA.journeys || {}).books || []).find(b => b.code === code)) || {}).chapters || ch;
+    const jump = +params.get('v') || 0;              // verse to scroll to
+    const total = ((allBooks().find(b => b.code === code)) || {}).chapters || ch;
+    const selected = new Set();
+    try { localStorage.setItem(LASTREAD_KEY, JSON.stringify({ code, ch })); } catch { /* ignore */ }
+    const chapterNotes = getNotes().filter(n => n.book === code && n.ch === ch);
+    const noted = new Set(chapterNotes.flatMap(n => n.verses));
+
+    const updateBar = () => {
+      const bar = document.getElementById('select-bar');
+      if (!bar) return;
+      bar.hidden = !selected.size;
+      if (selected.size) {
+        bar.querySelector('.sel-ref').textContent = `${bookName(code)} ${ch}:${verseRange(selected)}`;
+        bar.querySelector('#write-note').href = `#/so-tay/moi?b=${code}&c=${ch}&v=${[...selected].sort((a, b) => a - b).join(',')}`;
+      }
+    };
     setTimeout(async () => {
       const box = document.getElementById('bible-text');
       const book = await loadBook(code);
       const verses = book && book.chapters[ch - 1];
       box.innerHTML = verses && verses.length
-        ? verses.map((v, k) => v ? `<p class="verse"><sup>${k + 1}</sup>${esc(v)}</p>` : '').join('')
+        ? verses.map((v, k) => v ? `<p class="verse${noted.has(k + 1) ? ' noted' : ''}${jump === k + 1 ? ' jump' : ''}" data-v="${k + 1}"><sup>${k + 1}</sup>${esc(v)}${noted.has(k + 1) ? ' <span class="note-mark">📝</span>' : ''}</p>` : '').join('')
         : `<div class="box"><p>Bản Kinh Thánh trong app đang được cập nhật. Bạn có thể đọc chương này trên bible.com (bản Truyền Thống 1925):</p>
             <a class="btn primary" href="${bibleLink(code, ch)}" target="_blank" rel="noopener">📖 Đọc ${esc(bookName(code))} ${ch}</a></div>`;
+      // tap verses to select them, then write a reflection on the selection
+      box.querySelectorAll('.verse').forEach(p => p.addEventListener('click', () => {
+        const v = +p.dataset.v;
+        selected.has(v) ? selected.delete(v) : selected.add(v);
+        p.classList.toggle('sel', selected.has(v));
+        updateBar();
+      }));
+      const target = jump && box.querySelector(`[data-v="${jump}"]`);
+      target && target.scrollIntoView({ block: 'center' });
+      const clear = document.getElementById('clear-sel');
+      clear && clear.addEventListener('click', () => { selected.clear(); box.querySelectorAll('.sel').forEach(x => x.classList.remove('sel')); updateBar(); });
       const mark = document.getElementById('mark-read');
       mark && mark.addEventListener('click', () => {
         updateStage(tId, sId, p => ({ ...p, read: [...new Set([...(p.read || []), +rIdx])] }));
@@ -1186,12 +1401,19 @@
     });
     const nav = (n, label) => (n >= 1 && n <= total ? `<a class="btn" href="${readUrl(code, n, back)}">${label}</a>` : '<span></span>');
     return `
-      ${back ? `<p class="crumb"><a href="#/hanh-trinh/${tId}/${sId}">← Về chặng</a></p>` : ''}
+      <p class="crumb">${back ? `<a href="#/hanh-trinh/${tId}/${sId}">← Về chặng</a>` : `<a href="#/kinh-thanh/sach/${code}">← ${esc(bookName(code))}</a>`}</p>
       <h1>${esc(bookName(code))} ${ch}</h1>
+      <p class="hint">Chạm vào câu để chọn, rồi bấm “Viết cảm nghĩ”.</p>
       <div id="bible-text" class="bible"><p class="loading">Đang tải…</p></div>
       <div class="read-nav">${nav(ch - 1, '← Chương trước')}${nav(ch + 1, 'Chương sau →')}</div>
       ${back ? `<button id="mark-read" class="btn primary big" style="width:100%;margin-top:14px">✓ Tôi đã đọc xong</button>` : ''}
-      <p class="hint">Kinh Thánh Tiếng Việt, Bản Truyền Thống 1926.</p>`;
+      ${chapterNotes.length ? `<section class="section" style="margin-top:20px"><h2>✍️ Cảm nghĩ của bạn trong chương này</h2><div class="list">${chapterNotes.map(noteCard).join('')}</div></section>` : ''}
+      <p class="hint">Kinh Thánh Tiếng Việt, Bản Truyền Thống 1926.</p>
+      <div id="select-bar" class="select-bar" hidden>
+        <span class="sel-ref"></span>
+        <a id="write-note" class="btn primary" href="#">✍️ Viết cảm nghĩ</a>
+        <button id="clear-sel" class="icon-btn" aria-label="Bỏ chọn">✕</button>
+      </div>`;
   }
 
   const notFound = () => `<p class="empty">Không tìm thấy trang này. <a href="#/">Về trang chủ</a></p>`;
@@ -1212,11 +1434,16 @@
     [/^\/tim-kiem$/, (m, p) => pageSearch(p), ''],
     [/^\/bai\/(.+)$/, m => pageDetail(decodeURIComponent(m[1])), ''],
     [/^\/yeu-thich$/, () => pageFavorites(), ''],
-    [/^\/hanh-trinh$/, () => pageJourneys(), 'journey'],
-    [/^\/hanh-trinh\/([\w-]+)$/, m => pageTrack(m[1]), 'journey'],
-    [/^\/hanh-trinh\/([\w-]+)\/([\w-]+)$/, m => pageStage(m[1], m[2]), 'journey'],
-    [/^\/hanh-trinh\/([\w-]+)\/([\w-]+)\/kiem-tra$/, m => pageQuiz(m[1], m[2]), 'journey'],
-    [/^\/doc\/(\w{3})\/(\d+)$/, (m, p) => pageRead(m[1], m[2], p), 'journey'],
+    [/^\/hanh-trinh$/, () => pageJourneys(), 'bible'],
+    [/^\/hanh-trinh\/([\w-]+)$/, m => pageTrack(m[1]), 'bible'],
+    [/^\/hanh-trinh\/([\w-]+)\/([\w-]+)$/, m => pageStage(m[1], m[2]), 'bible'],
+    [/^\/hanh-trinh\/([\w-]+)\/([\w-]+)\/kiem-tra$/, m => pageQuiz(m[1], m[2]), 'bible'],
+    [/^\/doc\/(\w{3})\/(\d+)$/, (m, p) => pageRead(m[1], m[2], p), 'bible'],
+    [/^\/kinh-thanh$/, () => pageBibleHub(), 'bible'],
+    [/^\/kinh-thanh\/sach$/, () => pageBooks(), 'bible'],
+    [/^\/kinh-thanh\/sach\/(\w{3})$/, m => pageChapters(m[1]), 'bible'],
+    [/^\/so-tay$/, (m, p) => pageNotebook(p), 'bible'],
+    [/^\/so-tay\/([\w-]+)$/, (m, p) => pageNote(m[1], p), 'bible'],
     [/^\/them$/, () => pageAdd(), ''],
     [/^\/cai-dat$/, () => pageSettings(), ''],
   ];
@@ -1301,6 +1528,24 @@
     return sermons;
   }
 
+  // The installed app carries its own copy of the interface; only the data is fetched fresh. When the website
+  // has newer app code, tell the user and offer the new version.
+  async function checkForNewVersion() {
+    if (!isNative || !window.APP_BUILD || !CONFIG.REMOTE_BASE) return;
+    try {
+      const v = await fetchJSON(CONFIG.REMOTE_BASE + 'version.json?t=' + Date.now(), 6000);
+      if (!v.build || v.build === window.APP_BUILD) return;
+      const android = window.Capacitor.getPlatform && window.Capacitor.getPlatform() === 'android';
+      const bar = document.createElement('div');
+      bar.className = 'update-banner';
+      bar.innerHTML = `<span>✨ Đã có phiên bản mới của app.</span>
+        ${android && CONFIG.APK_URL ? `<a class="btn primary" href="${esc(CONFIG.APK_URL)}">Tải bản mới</a>` : '<span class="meta">Hãy cập nhật trong App Store.</span>'}
+        <button class="icon-btn" aria-label="Đóng">✕</button>`;
+      bar.querySelector('button').addEventListener('click', () => bar.remove());
+      document.body.insertBefore(bar, document.getElementById('app'));
+    } catch { /* offline: try again next launch */ }
+  }
+
   async function init() {
     try {
       const [base, yt, verses, moods, hymns, hymnVids, ai, journeys] = await Promise.all([
@@ -1325,6 +1570,8 @@
     }
     window.addEventListener('hashchange', render);
     render();
+
+    checkForNewVersion();
 
     const LN = plugin('LocalNotifications');
     if (LN) {

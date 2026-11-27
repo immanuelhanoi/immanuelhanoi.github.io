@@ -16,8 +16,12 @@ self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
   if (e.request.method !== 'GET' || url.origin !== location.origin) return;
   // Network first (so new sermons and code show up), fall back to cache when offline.
+  // Pages and data are always revalidated with the server (a cheap 304 when unchanged),
+  // so a new deploy shows up on the next open instead of after the browser cache expires.
+  const fresh = e.request.mode === 'navigate' || url.pathname.endsWith('.json') || url.pathname.endsWith('/');
   e.respondWith(
-    fetch(e.request)
+    // (a navigation Request cannot be copied with new options, so refetch it by URL)
+    fetch(fresh ? e.request.url : e.request, fresh ? { cache: 'no-cache', credentials: 'same-origin' } : undefined)
       .then(res => {
         const copy = res.clone();
         caches.open(CACHE).then(c => c.put(e.request, copy));
