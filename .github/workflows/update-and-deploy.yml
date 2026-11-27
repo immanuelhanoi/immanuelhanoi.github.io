@@ -103,7 +103,8 @@ jobs:
         with:
           path: www
       # GitHub sometimes needs a few seconds before a freshly uploaded site package can be found
-      # ("No artifacts named github-pages"), so wait and try again instead of failing the update.
+      # ("No artifacts named github-pages" although the artifact exists), so give it time, then retry.
+      - run: sleep 20
       - id: deploy
         continue-on-error: true
         uses: actions/deploy-pages@v5
