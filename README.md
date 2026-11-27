@@ -120,6 +120,10 @@ Tóm tắt do AI viết nên có thể chưa chính xác hoàn toàn; app ghi r�
 - Tab **Kinh Thánh**: tìm nhanh theo tham chiếu ("Giăng 3:16"), đọc theo sách/chương, đọc tiếp chỗ đang đọc, Hành trình, Sổ tay.
 - Khi đọc: chạm vào câu để chọn (một câu hoặc cả đoạn) → **Viết cảm nghĩ**. Ghi chép lưu trên máy người dùng (không gửi đi đâu); có tìm kiếm, sửa, xoá, chia sẻ, và **lưu/khôi phục bản sao** (file .json) khi đổi điện thoại.
 
+## Nghe đọc tiếng Việt
+- Nút **🔊 Nghe** ở trang đọc Kinh Thánh (đọc cả chương hoặc từ câu đang chọn, tô sáng câu đang đọc), trang cảm nghĩ, và câu ngẫu nhiên. Có tạm dừng, dừng, chỉnh tốc độ.
+- Dùng giọng đọc có sẵn trong điện thoại/trình duyệt (miễn phí). Nếu máy chưa có giọng tiếng Việt, app hướng dẫn cách cài.
+
 ## Cập nhật giao diện
 - Mỗi lần đăng web có một mã phiên bản (`version.json`); trình duyệt luôn tải giao diện mới sau khi cập nhật.
 - App Android đã cài mang sẵn giao diện bên trong; khi web có phiên bản mới, app hiện thông báo **“Đã có phiên bản mới”** kèm nút tải APK. (Bài giảng, thánh ca, câu Kinh Thánh… thì app luôn tự cập nhật, không cần cài lại.)

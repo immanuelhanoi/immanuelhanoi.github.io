@@ -496,3 +496,10 @@ blockquote.ref-only #key-verse { display: none; }
 .credit-story ol { margin: 8px 0 0; padding-left: 22px; font-size: .9rem; overflow-wrap: anywhere; }
 .credit-story li { margin-bottom: 4px; }
 @media (prefers-reduced-motion: reduce) { .kpage.turn, .kpage.on figure img, .kend-emoji, .kid-card, .kbtn.speak.on { animation: none !important; } }
+
+/* v11: read aloud */
+.tts { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 6px 0 14px; }
+.tts .btn[hidden], .tts [hidden] { display: none; }
+.tts-rate { padding: 8px 10px; }
+.tts-novoice { flex-basis: 100%; margin: 4px 0 0; }
+.bible .verse.speaking { background: color-mix(in srgb, var(--brand) 16%, transparent); box-shadow: inset 3px 0 0 var(--brand); }
