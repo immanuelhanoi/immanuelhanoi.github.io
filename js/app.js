@@ -1196,10 +1196,54 @@
     return { code: book.code, ch: +m[2], v: m[3] ? +m[3] : 0 };
   }
 
+  // Random verse: drawn from the app's meaningful verses (moods + daily verses), not the whole Bible,
+  // which would often land on genealogies or census lists.
+  function versePool() {
+    const seen = new Set();
+    return [...(DATA.verses || []), ...DATA.moods.flatMap(m => m.verses || [])]
+      .filter(v => v && v.text && !seen.has(v.ref) && seen.add(v.ref));
+  }
+  const randomVerse = (avoid = '') => {
+    const pool = versePool().filter(v => v.ref !== avoid);
+    return pool[Math.floor(Math.random() * pool.length)];
+  };
+  // "2 Cô-rinh-tô 4:16-17" → open chapter 4 at verse 16 (cut only the verse range, not the hyphens in the book name)
+  const verseLink = v => {
+    const r = parseRefInput(v.ref.replace(/(\d+:\d+)\s*[-–,].*$/, '$1'));
+    return r ? `#/doc/${r.code}/${r.ch}${r.v ? '?v=' + r.v : ''}` : '#/kinh-thanh/sach';
+  };
+
+  // Next unfinished stage of each journey track
+  function journeyContinueCards() {
+    const tracks = (DATA.journeys || {}).tracks || [];
+    return tracks.map(t => {
+      const i = t.stages.findIndex((s, k) => unlocked(t, k) && !stageProgress(t.id, s.id).passed);
+      const done = doneCount(t);
+      const s = t.stages[i];
+      return `<a class="cont-card" href="${s ? `#/hanh-trinh/${t.id}/${s.id}` : `#/hanh-trinh/${t.id}`}">
+        <span class="cont-emoji">${s ? s.emoji : '🏆'}</span>
+        <span><small>${esc(t.title)} · ${done}/${t.stages.length} chặng</small>
+          <strong>${s ? `${done ? 'Tiếp tục' : 'Bắt đầu'}: ${esc(s.title)}` : 'Đã hoàn thành!'}</strong>
+          <span class="bar"><span style="width:${Math.round(done / t.stages.length * 100)}%"></span></span></span>
+      </a>`;
+    }).join('');
+  }
+
   function pageBibleHub() {
     const last = (() => { try { return JSON.parse(localStorage.getItem(LASTREAD_KEY)); } catch { return null; } })();
     const notes = getNotes();
     setTimeout(() => {
+      const next = document.getElementById('rv-next');
+      next && next.addEventListener('click', () => {
+        const v = randomVerse(next.dataset.ref);
+        if (!v) return;
+        next.dataset.ref = v.ref;
+        document.getElementById('rv-text').textContent = v.text;
+        document.getElementById('rv-ref').textContent = v.ref;
+        document.getElementById('rv-open').href = verseLink(v);
+        const q = next.closest('.random-verse').querySelector('blockquote');
+        q.classList.remove('fade-in'); void q.offsetWidth; q.classList.add('fade-in');   // replay the animation
+      });
       const f = document.getElementById('ref-search');
       f && f.addEventListener('submit', e => {
         e.preventDefault();
@@ -1215,11 +1259,27 @@
         <button class="btn primary">Mở</button>
       </form>
       <p id="ref-hint" class="hint"></p>
-      ${last ? `<a class="box journey-cta" href="#/doc/${last.code}/${last.ch}"><span class="float">📖</span>
-        <span><strong>Đọc tiếp</strong><br><span class="meta">${esc(bookName(last.code))} ${last.ch} →</span></span></a>` : ''}
+      <h2 class="hub-title">📖 Kinh Thánh</h2>
+      <div class="continue">
+        <a class="cont-card" href="${last ? `#/doc/${last.code}/${last.ch}` : '#/kinh-thanh/sach'}">
+          <span class="cont-emoji">📖</span>
+          <span><small>${last ? 'Đọc tiếp' : 'Bắt đầu đọc'}</small><strong>${last ? `${esc(bookName(last.code))} ${last.ch}` : 'Chọn sách'}</strong></span>
+        </a>
+      </div>
+      ${(() => {
+        const v = randomVerse();
+        return v ? `<div class="box random-verse">
+          <span class="meta">🎲 Câu Kinh Thánh ngẫu nhiên</span>
+          <blockquote class="scripture fade-in"><span id="rv-text">${esc(v.text)}</span><cite id="rv-ref">${esc(v.ref)}</cite></blockquote>
+          <div class="actions"><button id="rv-next" class="btn" data-ref="${esc(v.ref)}">🔄 Câu khác</button>
+            <a id="rv-open" class="btn" href="${verseLink(v)}">📖 Đọc cả đoạn</a></div>
+        </div>` : '';
+      })()}
+      <h2 class="hub-title">🗺️ Hành trình <span class="meta">riêng của bạn</span></h2>
+      <div class="continue">${journeyContinueCards()}</div>
+      <h2 class="hub-title">Khác</h2>
       <div class="hub">
         <a class="hub-card" href="#/kinh-thanh/sach"><span>📖</span><strong>Đọc Kinh Thánh</strong><small>66 sách · Bản Truyền Thống 1926</small></a>
-        <a class="hub-card" href="#/hanh-trinh"><span>🗺️</span><strong>Hành trình</strong><small>Đọc theo chặng, có bài kiểm tra</small></a>
         <a class="hub-card" href="#/so-tay"><span>✍️</span><strong>Sổ tay cảm nghĩ</strong><small>${notes.length ? `${notes.length} ghi chép` : 'Ghi lại điều Chúa dạy bạn'}</small></a>
       </div>
       ${notes.length ? `<section class="section"><div class="section-head"><h2>Cảm nghĩ gần đây</h2><a href="#/so-tay">Tất cả →</a></div>
@@ -1361,7 +1421,8 @@
     const jump = +params.get('v') || 0;              // verse to scroll to
     const total = ((allBooks().find(b => b.code === code)) || {}).chapters || ch;
     const selected = new Set();
-    try { localStorage.setItem(LASTREAD_KEY, JSON.stringify({ code, ch })); } catch { /* ignore */ }
+    // only free reading moves the "Đọc tiếp" bookmark; journey readings keep their own progress
+    if (!back) { try { localStorage.setItem(LASTREAD_KEY, JSON.stringify({ code, ch })); } catch { /* ignore */ } }
     const chapterNotes = getNotes().filter(n => n.book === code && n.ch === ch);
     const noted = new Set(chapterNotes.flatMap(n => n.verses));
 
