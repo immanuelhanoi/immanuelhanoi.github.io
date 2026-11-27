@@ -512,10 +512,28 @@
     `;
   }
 
+  // Three verses at random from the mood's list; "Câu khác" draws three that were not just shown.
+  function pickVerses(list, avoid = [], n = 3) {
+    const fresh = list.filter(v => !avoid.includes(v));
+    const pool = (fresh.length >= n ? fresh : list).slice();
+    for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
+    return pool.slice(0, n);
+  }
+  const verseHtml = vs => vs.map((v, k) => `<blockquote class="scripture fade-in" style="--i:${k}">${esc(v.text)}<cite>${esc(v.ref)}</cite></blockquote>`).join('');
+
   function pageMood(id) {
     const m = moodById(id);
     if (!m) return notFound();
     const sermons = sermonsForMood(m);
+    const all = m.verses || [];
+    let shown = pickVerses(all);
+    setTimeout(() => {
+      const btn = document.getElementById('more-verses');
+      btn && btn.addEventListener('click', () => {
+        shown = pickVerses(all, shown);
+        document.getElementById('mood-verses').innerHTML = verseHtml(shown);
+      });
+    });
     return `
       <p class="crumb"><a href="#/tam-trang">← Cảm xúc khác</a></p>
       <h1>${m.emoji} ${esc(m.name)}</h1>
@@ -526,8 +544,9 @@
         Nếu bạn có ý nghĩ làm hại bản thân, hãy gọi <a href="tel:115"><strong>115</strong></a> hoặc đến cơ sở y tế gần nhất ngay.</p>
       </div>` : ''}
       <section class="section">
-        <h2>📖 Lời Chúa cho bạn</h2>
-        ${(m.verses || []).map(v => `<blockquote class="scripture">${esc(v.text)}<cite>${esc(v.ref)}</cite></blockquote>`).join('')}
+        <div class="section-head"><h2>📖 Lời Chúa cho bạn</h2><span class="meta">${all.length} câu</span></div>
+        <div id="mood-verses">${verseHtml(shown)}</div>
+        ${all.length > 3 ? '<button id="more-verses" class="btn">🔄 Câu khác</button>' : ''}
       </section>
       <section class="section">
         <div class="section-head"><h2>🎧 Sứ điệp dành cho bạn</h2></div>

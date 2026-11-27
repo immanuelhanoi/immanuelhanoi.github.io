@@ -358,3 +358,6 @@ blockquote.ref-only #key-verse { display: none; }
 .bible .verse { margin: 0 0 6px; }
 .bible sup { color: var(--accent); font-weight: 700; font-size: .7em; margin-right: 4px; }
 .read-nav { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; }
+
+/* v6: random mood verses */
+.fade-in { animation: slideup .4s ease-out both; animation-delay: calc(var(--i, 0) * 90ms); }

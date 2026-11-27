@@ -21,6 +21,23 @@ const OUT = path.join(ROOT, 'data/bible');
 const SOURCE = 'https://ebible.org/Scriptures/vie1934_usfm.zip';
 const run = promisify(execFile);
 
+// eBible's vie1934 text came from a legacy VNI file: a capital vowel with tone marks was split into the bare
+// letter plus a VNI mark character ("Aáy" for "Ấy", "Oâng" for "Ông"), and "ỳ" became "”" ("k”" for "kỳ").
+const VNI_TONE = { 'ù': '\u0301', 'ø': '\u0300', 'û': '\u0309', 'õ': '\u0303', 'ï': '\u0323' };
+const VNI_HAT = { 'â': '', 'á': '\u0301', 'à': '\u0300', 'å': '\u0309', 'ã': '\u0303', 'ä': '\u0323' };    // Â Ê Ô + tone
+const VNI_BREVE = { 'ê': '', 'é': '\u0301', 'è': '\u0300', 'ú': '\u0309', 'ü': '\u0303', 'ë': '\u0323' };  // Ă + tone
+export function fixLegacyVni(text) {
+  return String(text)
+    .replace(/(?<![\p{L}\p{N}])([AEOU])([ùøûõïâáàåãäêéèúüë])/gu, (m, base, mark) => {
+      if (mark in VNI_TONE) return (base + VNI_TONE[mark]).normalize('NFC');
+      if (mark in VNI_HAT && base !== 'U') return (base + '\u0302' + VNI_HAT[mark]).normalize('NFC');
+      if (mark in VNI_BREVE && base === 'A') return ('A\u0306' + VNI_BREVE[mark]).normalize('NFC');
+      return m;
+    })
+    .replace(/(?<=[kK])”(?=[\s,.;:!?)]|$)/g, 'ỳ')        // "k” ấy" → "kỳ ấy"
+    .replace(/(?<=[hHqQ]u)”(?=n)/g, 'ỳ');                // "hu”nh" → "huỳnh"
+}
+
 /** Strip USFM markup from one line of verse text. */
 export function cleanUsfm(text) {
   return text
@@ -30,7 +47,8 @@ export function cleanUsfm(text) {
     .replace(/\\\+?[a-z]+\d*\*/g, '')                       // closing markers  \nd*  \+wj*
     .replace(/\\\+?[a-z]+\d*\s?/g, '')                      // opening markers  \nd  \q1  \p
     .replace(/\s+/g, ' ')
-    .trim();
+    .trim()
+    .replace(/^.*$/s, fixLegacyVni);
 }
 
 /** One USFM book → { code, chapters } */
@@ -67,6 +85,20 @@ export function parseUsfm(src) {
 async function main() {
   const args = process.argv.slice(2);
   const force = args.includes('--force');
+  if (args.includes('--fix')) {                       // repair files converted before fixLegacyVni existed
+    let changed = 0;
+    for (const f of (await fs.readdir(OUT)).filter(f => /^\w{3}\.json$/.test(f))) {
+      const file = path.join(OUT, f);
+      const book = JSON.parse(await fs.readFile(file, 'utf8'));
+      const fixed = book.chapters.map(c => c.map(fixLegacyVni));
+      if (JSON.stringify(fixed) !== JSON.stringify(book.chapters)) {
+        changed++;
+        await fs.writeFile(file, JSON.stringify({ ...book, chapters: fixed }));
+      }
+    }
+    console.log(`Đã sửa lỗi bảng mã trong ${changed} sách.`);
+    return;
+  }
   const usfmArg = args.includes('--usfm') ? args[args.indexOf('--usfm') + 1] : null;
   const journeys = JSON.parse(await fs.readFile(path.join(ROOT, 'data/journeys.json'), 'utf8'));
   const names = Object.fromEntries(journeys.books.map(b => [b.code, b.name]));

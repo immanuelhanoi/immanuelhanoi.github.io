@@ -73,6 +73,10 @@ jobs:
         continue-on-error: true
         run: node scripts/fetch-bible.mjs
 
+      - name: Điền chữ Kinh Thánh cho các câu tham chiếu (tâm trạng, thông báo, hành trình)
+        continue-on-error: true
+        run: node scripts/fill-verses.mjs
+
       - name: Lưu dữ liệu mới vào repository
         run: |
           git config user.name "github-actions[bot]"
@@ -80,6 +84,7 @@ jobs:
           git add data/youtube.json data/ai.json
           [ -f data/hymn-videos.json ] && git add data/hymn-videos.json
           [ -d data/bible ] && git add data/bible
+          git add data/moods.json data/verses.json data/journeys.json
           if git diff --cached --quiet; then
             echo "Không có gì mới."
           else
