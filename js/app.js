@@ -1165,6 +1165,96 @@
       </div>` : ''}`;
   }
 
+  /* ---------- read aloud: Vietnamese text-to-speech built into the phone / browser (free, no server) ---------- */
+
+  const TTS_RATE_KEY = 'immanuel.ttsRate';
+  const tts = { queue: [], i: 0, playing: false, onItem: null, onEnd: null };
+  const ttsSupported = () => 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+  const ttsRate = () => { try { return +localStorage.getItem(TTS_RATE_KEY) || 1; } catch { return 1; } };
+  function viVoice() {
+    const vs = ttsSupported() ? speechSynthesis.getVoices() : [];
+    return vs.find(v => /^vi/i.test(v.lang) && /google|linh|natural|online/i.test(v.name)) || vs.find(v => /^vi/i.test(v.lang)) || null;
+  }
+  // voices load asynchronously on some browsers
+  const voicesReady = () => new Promise(res => {
+    if (!ttsSupported() || speechSynthesis.getVoices().length) return res();
+    speechSynthesis.addEventListener('voiceschanged', () => res(), { once: true });
+    setTimeout(res, 1200);
+  });
+  /** "Giê-hô-va" → "Giê hô va" (hyphens make some voices pause or spell), drop quote marks */
+  const speakable = t => String(t).replace(/(\p{L})-(?=\p{L})/gu, '$1 ').replace(/[“”"«»]/g, '');
+  /** "Giăng 3:16-17" → "Giăng chương 3, câu 16 đến 17" */
+  const refSpeech = ref => String(ref).replace(/(\d+):(\d+)\s*[-–]\s*(\d+)/, 'chương $1, câu $2 đến $3').replace(/(\d+):(\d+)/, 'chương $1, câu $2');
+
+  function ttsSpeakNext() {
+    if (!tts.playing) return;
+    if (tts.i >= tts.queue.length) {
+      const end = tts.onEnd; tts.playing = false; tts.onEnd = tts.onItem = null;
+      return end && end();
+    }
+    const item = tts.queue[tts.i];
+    const u = new SpeechSynthesisUtterance(speakable(item.text));
+    u.lang = 'vi-VN';
+    const v = viVoice(); if (v) u.voice = v;
+    u.rate = ttsRate();
+    u.onend = () => { if (tts.playing) { tts.i++; ttsSpeakNext(); } };
+    u.onerror = e => { if (tts.playing && !/interrupted|canceled/.test(e.error)) { tts.i++; ttsSpeakNext(); } };
+    tts.onItem && tts.onItem(item, tts.i);
+    speechSynthesis.speak(u);
+  }
+  async function ttsPlay(items, { from = 0, onItem = null, onEnd = null } = {}) {
+    ttsStop(true);
+    await voicesReady();
+    Object.assign(tts, { queue: items, i: from, playing: true, onItem, onEnd });
+    ttsSpeakNext();
+  }
+  // pause = stop speaking but remember the position (speechSynthesis.pause is unreliable on phones)
+  function ttsPause() { tts.playing = false; try { speechSynthesis.cancel(); } catch { /* ignore */ } }
+  function ttsResume() { if (tts.queue.length) { tts.playing = true; ttsSpeakNext(); } }
+  function ttsStop(silent = false) {
+    const end = tts.onEnd;
+    Object.assign(tts, { queue: [], i: 0, playing: false, onItem: null, onEnd: null });
+    try { if (ttsSupported()) speechSynthesis.cancel(); } catch { /* ignore */ }
+    if (!silent && end) end();
+  }
+
+  /** Player controls; `getItems()` returns [{ text, ... }], `opts` as for ttsPlay. */
+  function ttsControls(id, label = 'Nghe') {
+    if (!ttsSupported()) return `<p class="hint">🔇 Trình duyệt này chưa hỗ trợ đọc to.</p>`;
+    const rate = ttsRate();
+    return `<div class="tts" id="${id}">
+      <button class="btn tts-play">🔊 ${esc(label)}</button>
+      <button class="btn tts-pause" hidden>⏸ Tạm dừng</button>
+      <button class="btn tts-stop" hidden>⏹ Dừng</button>
+      <select class="tts-rate" aria-label="Tốc độ đọc">${[0.75, 1, 1.25, 1.5].map(r => `<option value="${r}"${r === rate ? ' selected' : ''}>${r === 1 ? 'Tốc độ thường' : '×' + r}</option>`).join('')}</select>
+      <p class="hint tts-novoice" hidden>Không nghe thấy tiếng Việt? Hãy cài giọng đọc tiếng Việt cho máy:
+        <b>iPhone</b>: Cài đặt → Trợ năng → Nội dung được đọc → Giọng nói → Tiếng Việt.
+        <b>Android</b>: Cài đặt → Hệ thống → Ngôn ngữ → Chuyển văn bản thành giọng nói → tải tiếng Việt.</p>
+    </div>`;
+  }
+  function wireTts(id, getItems, opts = {}) {
+    const box = document.getElementById(id);
+    if (!box) return;
+    const $ = s => box.querySelector(s);
+    const show = state => {                 // idle | playing | paused
+      $('.tts-play').hidden = state === 'playing';
+      $('.tts-play').textContent = state === 'paused' ? '▶ Đọc tiếp' : $('.tts-play').dataset.label;
+      $('.tts-pause').hidden = state !== 'playing';
+      $('.tts-stop').hidden = state === 'idle';
+    };
+    $('.tts-play').dataset.label = $('.tts-play').textContent;
+    $('.tts-play').addEventListener('click', async () => {
+      if (tts.queue.length && !tts.playing && box.dataset.active) { ttsResume(); return show('playing'); }
+      box.dataset.active = '1';
+      show('playing');
+      await ttsPlay(getItems(), { ...opts, from: opts.from ? opts.from() : 0, onEnd: () => { delete box.dataset.active; show('idle'); opts.onEnd && opts.onEnd(); } });
+      if (!viVoice()) $('.tts-novoice').hidden = false;
+    });
+    $('.tts-pause').addEventListener('click', () => { ttsPause(); show('paused'); });
+    $('.tts-stop').addEventListener('click', () => ttsStop());
+    $('.tts-rate').addEventListener('change', e => { try { localStorage.setItem(TTS_RATE_KEY, e.target.value); } catch { /* ignore */ } });
+  }
+
   /* ---------- Bible: browse, read, reflect (notes stay on this device) ---------- */
 
   const NOTES_KEY = 'immanuel.notes';
@@ -1233,6 +1323,10 @@
     const last = (() => { try { return JSON.parse(localStorage.getItem(LASTREAD_KEY)); } catch { return null; } })();
     const notes = getNotes();
     setTimeout(() => {
+      const listen = document.getElementById('rv-listen');
+      listen && (ttsSupported() ? listen.addEventListener('click', () => ttsPlay([
+        { text: document.getElementById('rv-text').textContent }, { text: refSpeech(document.getElementById('rv-ref').textContent) },
+      ])) : listen.remove());
       const next = document.getElementById('rv-next');
       next && next.addEventListener('click', () => {
         const v = randomVerse(next.dataset.ref);
@@ -1271,7 +1365,8 @@
         return v ? `<div class="box random-verse">
           <span class="meta">🎲 Câu Kinh Thánh ngẫu nhiên</span>
           <blockquote class="scripture fade-in"><span id="rv-text">${esc(v.text)}</span><cite id="rv-ref">${esc(v.ref)}</cite></blockquote>
-          <div class="actions"><button id="rv-next" class="btn" data-ref="${esc(v.ref)}">🔄 Câu khác</button>
+          <div class="actions"><button id="rv-listen" class="btn" aria-label="Nghe câu này">🔊 Nghe</button>
+            <button id="rv-next" class="btn" data-ref="${esc(v.ref)}">🔄 Câu khác</button>
             <a id="rv-open" class="btn" href="${verseLink(v)}">📖 Đọc cả đoạn</a></div>
         </div>` : '';
       })()}
@@ -1394,6 +1489,10 @@
         } catch { /* cancelled */ }
       });
       if (editing) { const ta = document.querySelector('#note-form textarea'); ta && ta.focus(); }
+      wireTts('tts-note', () => [
+        { text: refSpeech(noteRef(n)) + '.' }, { text: n.text || '' },
+        { text: 'Cảm nghĩ.' }, ...n.note.split(/\n+/).filter(Boolean).map(t => ({ text: t })),
+      ]);
     });
     return `
       <p class="crumb"><a href="${isNew ? `#/doc/${n.book}/${n.ch}` : '#/so-tay'}">← ${isNew ? 'Về chương' : 'Sổ tay'}</a></p>
@@ -1409,6 +1508,9 @@
         <div class="actions">
           <a class="btn" href="#/so-tay/${n.id}?sua=1">✏️ Sửa</a>
           <button id="note-share" class="btn">↗ Chia sẻ</button>
+          </div>
+          ${ttsControls('tts-note', 'Nghe Kinh Thánh & cảm nghĩ')}
+          <div class="actions">
           <a class="btn" href="#/doc/${n.book}/${n.ch}?v=${n.verses[0]}">📖 Mở đoạn này</a>
           <button id="note-del" class="btn">🗑 Xoá</button>
         </div>`}`;
@@ -1452,6 +1554,20 @@
       }));
       const target = jump && box.querySelector(`[data-v="${jump}"]`);
       target && target.scrollIntoView({ block: 'center' });
+      // read aloud verse by verse, highlighting and following the verse being read
+      const verseEls = [...box.querySelectorAll('.verse')];
+      wireTts('tts-chapter', () => [{ text: `${bookName(code)} chương ${ch}.`, v: 0 }, ...verseEls.map(p => ({ text: verses[+p.dataset.v - 1], v: +p.dataset.v }))], {
+        from: () => {                         // start at the first selected verse, if any
+          const first = selected.size ? Math.min(...selected) : 0;
+          return first ? 1 + verseEls.findIndex(p => +p.dataset.v === first) : 0;
+        },
+        onItem: item => {
+          verseEls.forEach(p => p.classList.toggle('speaking', +p.dataset.v === item.v));
+          const el = verseEls.find(p => +p.dataset.v === item.v);
+          el && el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        },
+        onEnd: () => verseEls.forEach(p => p.classList.remove('speaking')),
+      });
       const clear = document.getElementById('clear-sel');
       clear && clear.addEventListener('click', () => { selected.clear(); box.querySelectorAll('.sel').forEach(x => x.classList.remove('sel')); updateBar(); });
       const mark = document.getElementById('mark-read');
@@ -1465,6 +1581,7 @@
       <p class="crumb">${back ? `<a href="#/hanh-trinh/${tId}/${sId}">← Về chặng</a>` : `<a href="#/kinh-thanh/sach/${code}">← ${esc(bookName(code))}</a>`}</p>
       <h1>${esc(bookName(code))} ${ch}</h1>
       <p class="hint">Chạm vào câu để chọn, rồi bấm “Viết cảm nghĩ”.</p>
+      ${ttsControls('tts-chapter', 'Nghe chương này')}
       <div id="bible-text" class="bible"><p class="loading">Đang tải…</p></div>
       <div class="read-nav">${nav(ch - 1, '← Chương trước')}${nav(ch + 1, 'Chương sau →')}</div>
       ${back ? `<button id="mark-read" class="btn primary big" style="width:100%;margin-top:14px">✓ Tôi đã đọc xong</button>` : ''}
@@ -1514,6 +1631,7 @@
     const [path, qs = ''] = raw.split('?');
     const params = new URLSearchParams(qs);
     if (!path.endsWith('/kiem-tra')) quiz = null;   // leaving a quiz starts it over next time
+    if (tts.queue.length) ttsStop(true);             // stop reading aloud when changing page
     let html = notFound(), tab = '';
     for (const [re, fn, t] of routes) {
       const m = path.match(re);

@@ -410,3 +410,10 @@ blockquote.ref-only #key-verse { display: none; }
 .cont-emoji { font-size: 1.9rem; }
 .random-verse { margin-top: 10px; }
 .random-verse blockquote { margin: 8px 0 10px; }
+
+/* v10: read aloud */
+.tts { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 6px 0 14px; }
+.tts .btn[hidden], .tts [hidden] { display: none; }
+.tts-rate { padding: 8px 10px; }
+.tts-novoice { flex-basis: 100%; margin: 4px 0 0; }
+.bible .verse.speaking { background: color-mix(in srgb, var(--brand) 16%, transparent); box-shadow: inset 3px 0 0 var(--brand); }
