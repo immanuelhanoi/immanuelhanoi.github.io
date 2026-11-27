@@ -415,6 +415,14 @@
         </a>`;
       })() : ''}
 
+      ${kidsStories().length ? (() => {
+        const s = kidsStories().find(x => !kidsState(x.id).read) || kidsStories()[0];
+        return `<a class="box journey-cta kids-home" href="#/thieu-nhi">
+          <span class="kids-home-pic">${kidsImg(s, s.cover || 0)}</span>
+          <span><strong>Kinh Thánh thiếu nhi</strong><br><span class="meta">Truyện tranh cho các em${kidsDone() ? ` · đã đọc ${kidsDone()}/${kidsStories().length}` : ''} · ${s.emoji} ${esc(s.title)} →</span></span>
+        </a>`;
+      })() : ''}
+
       ${DATA.moods.length ? `
       <section class="section">
         <div class="section-head"><h2>Hôm nay bạn thấy thế nào?</h2><a href="#/tam-trang">Thêm →</a></div>
@@ -1275,6 +1283,12 @@
             <a id="rv-open" class="btn" href="${verseLink(v)}">📖 Đọc cả đoạn</a></div>
         </div>` : '';
       })()}
+      ${kidsStories().length ? `<a class="kids-cta" href="#/thieu-nhi">
+        <span class="kids-cta-pics">${kidsStories().slice(0, 3).map(s => kidsImg(s, s.cover || 0)).join('')}</span>
+        <span class="kids-cta-body"><strong>📚 Kinh Thánh thiếu nhi</strong>
+          <small>${kidsStories().length} câu chuyện bằng tranh · ${kidsDone() ? `đã đọc ${kidsDone()}/${kidsStories().length}` : 'cho các em 5–10 tuổi'}</small></span>
+        <span class="hymn-go">›</span>
+      </a>` : ''}
       <h2 class="hub-title">🗺️ Hành trình <span class="meta">riêng của bạn</span></h2>
       <div class="continue">${journeyContinueCards()}</div>
       <h2 class="hub-title">Khác</h2>
@@ -1419,6 +1433,7 @@
     const back = params.get('ht') || '';            // "track/stage/readingIndex" when opened from a journey
     const [tId, sId, rIdx] = back.split('/');
     const jump = +params.get('v') || 0;              // verse to scroll to
+    const kid = kidsStory(params.get('tn') || '');   // opened from a children's story
     const total = ((allBooks().find(b => b.code === code)) || {}).chapters || ch;
     const selected = new Set();
     // only free reading moves the "Đọc tiếp" bookmark; journey readings keep their own progress
@@ -1462,7 +1477,7 @@
     });
     const nav = (n, label) => (n >= 1 && n <= total ? `<a class="btn" href="${readUrl(code, n, back)}">${label}</a>` : '<span></span>');
     return `
-      <p class="crumb">${back ? `<a href="#/hanh-trinh/${tId}/${sId}">← Về chặng</a>` : `<a href="#/kinh-thanh/sach/${code}">← ${esc(bookName(code))}</a>`}</p>
+      <p class="crumb">${back ? `<a href="#/hanh-trinh/${tId}/${sId}">← Về chặng</a>` : kid ? `<a href="#/thieu-nhi/${kid.id}">← Về truyện “${esc(kid.title)}”</a>` : `<a href="#/kinh-thanh/sach/${code}">← ${esc(bookName(code))}</a>`}</p>
       <h1>${esc(bookName(code))} ${ch}</h1>
       <p class="hint">Chạm vào câu để chọn, rồi bấm “Viết cảm nghĩ”.</p>
       <div id="bible-text" class="bible"><p class="loading">Đang tải…</p></div>
@@ -1475,6 +1490,287 @@
         <a id="write-note" class="btn primary" href="#">✍️ Viết cảm nghĩ</a>
         <button id="clear-sel" class="icon-btn" aria-label="Bỏ chọn">✕</button>
       </div>`;
+  }
+
+  /* ---------- Kinh Thánh thiếu nhi: picture-book Bible stories (data/kids.json) ---------- */
+
+  const KIDS_KEY = 'immanuel.kids';
+  const kidsStories = () => ((DATA.kids || {}).stories || []);
+  const kidsStory = id => kidsStories().find(s => s.id === id);
+  const getKids = () => { try { return JSON.parse(localStorage.getItem(KIDS_KEY)) || {}; } catch { return {}; } };
+  const kidsState = id => getKids()[id] || { read: false, best: -1 };
+  function updateKids(id, fn) {
+    const p = getKids();
+    p[id] = fn({ read: false, best: -1, ...(p[id] || {}) });
+    try { localStorage.setItem(KIDS_KEY, JSON.stringify(p)); } catch { /* private mode */ }
+  }
+  const kidsDone = () => kidsStories().filter(s => kidsState(s.id).read).length;
+  // same file naming as scripts/fetch-kids-images.mjs
+  const kidsImgPath = (s, i) => `data/kids/img/${s.id}-${i + 1}.webp`;
+  const kidsImg = (s, i, cls = '', lazy = true) =>
+    `<img class="kids-img ${cls}" src="${kidsImgPath(s, i)}" data-path="${kidsImgPath(s, i)}" alt="" ${lazy ? 'loading="lazy"' : ''} decoding="async">`;
+  // A story added after this app version was installed has no bundled pictures: load them from the website,
+  // and when even that fails show a soft coloured panel instead of a broken image.
+  document.addEventListener('error', e => {
+    const img = e.target;
+    if (!(img instanceof HTMLImageElement) || !img.classList.contains('kids-img')) return;
+    if (isNative && CONFIG.REMOTE_BASE && !img.dataset.remote) { img.dataset.remote = '1'; img.src = CONFIG.REMOTE_BASE + img.dataset.path; }
+    else img.classList.add('broken');
+  }, true);
+  const kidsReadUrl = s => `#/doc/${s.read.book}/${s.read.ch}?${s.read.v ? `v=${s.read.v}&` : ''}tn=${s.id}`;
+  const kidsMemoryUrl = s => `#/doc/${s.memory.book}/${s.memory.ch}?v=${s.memory.v[0]}&tn=${s.id}`;
+
+  function kidsCard(s) {
+    const st = kidsState(s.id);
+    return `<a class="kid-card" href="#/thieu-nhi/${s.id}" style="--kc:${esc(s.color)}">
+      <span class="kid-cover">${kidsImg(s, s.cover || 0)}<span class="kid-emoji">${s.emoji}</span>${st.read ? '<span class="kid-done" aria-label="Đã đọc">✓</span>' : ''}</span>
+      <span class="kid-body"><strong>${esc(s.title)}</strong><small>${esc(s.ref)}</small>
+        ${st.best >= 0 ? `<span class="stars">${starStr(kidsStars(st.best, s.quiz.length))}</span>` : ''}</span>
+    </a>`;
+  }
+  const kidsStars = (right, total) => (right >= total ? 3 : right >= total - 1 ? 2 : right > 0 ? 1 : 0);
+
+  function pageKids() {
+    const all = kidsStories();
+    if (!all.length) return `<p class="empty">Chưa có truyện. <a href="#/kinh-thanh">← Kinh Thánh</a></p>`;
+    const done = kidsDone();
+    const groups = [...new Set(all.map(s => s.testament))];
+    return `
+      <p class="crumb"><a href="#/kinh-thanh">← Kinh Thánh</a></p>
+      <div class="kids-hero"><span class="float">📚</span><div>
+        <h1>Kinh Thánh thiếu nhi</h1>
+        <p class="lead">Những câu chuyện Kinh Thánh bằng tranh cho các em. Đọc cùng ba mẹ, trả lời câu đố vui và học thuộc một câu Kinh Thánh nhé!</p>
+      </div></div>
+      <div class="box kids-progress">
+        <span><strong>${done}/${all.length}</strong> truyện đã đọc ${done === all.length ? '🎉' : ''}</span>
+        <span class="bar"><span style="width:${Math.round(done / all.length * 100)}%"></span></span>
+      </div>
+      ${groups.map(g => `<h2 class="hub-title">${g === 'Tân Ước' ? '✝️' : '📜'} ${esc(g)}</h2>
+        <div class="kid-grid">${all.filter(s => s.testament === g).map(kidsCard).join('')}</div>`).join('')}
+      <p class="hint" style="margin-top:20px">Tranh vẽ có giấy phép mở, được ghi nguồn đầy đủ. <a href="#/thieu-nhi/nguon-tranh">Nguồn tranh &amp; giấy phép →</a></p>`;
+  }
+
+  // Story reader state survives a trip to the Bible text and back
+  const kidsPos = {};
+  let kidsNav = null;           // the open book's page turner (for the keyboard)
+  document.addEventListener('keydown', e => {
+    if (!kidsNav || !document.getElementById('kbook') || e.target.closest('input, textarea')) return;
+    if (e.key === 'ArrowRight') kidsNav(1);
+    if (e.key === 'ArrowLeft') kidsNav(-1);
+  });
+  const canSpeak = 'speechSynthesis' in window && typeof SpeechSynthesisUtterance === 'function';
+  const stopSpeaking = () => { if (canSpeak) speechSynthesis.cancel(); };
+  window.addEventListener('hashchange', stopSpeaking);
+
+  function memoryVerse(s) {
+    return `<div class="box memory">
+      <span class="meta">💛 Câu Kinh Thánh học thuộc</span>
+      <blockquote class="scripture" id="mem-text">${esc(s.memory.text)}<cite>${esc(s.memory.ref)}</cite></blockquote>
+      <div class="actions">
+        <button class="btn" id="mem-hide" type="button">🙈 Che bớt chữ để tập</button>
+        <a class="btn" href="${kidsMemoryUrl(s)}">📖 Xem trong Kinh Thánh</a>
+      </div>
+    </div>`;
+  }
+  // Practise by hiding more and more words: 0 → ⅓ → ⅔ → all → back to the full verse
+  function wireMemory(s) {
+    const btn = document.getElementById('mem-hide');
+    const box = document.getElementById('mem-text');
+    if (!btn || !box) return;
+    let level = 0;
+    const words = s.memory.text.split(/\s+/);
+    btn.addEventListener('click', () => {
+      level = (level + 1) % 4;
+      const shown = level === 0 ? words.map(esc) : words.map((w, k) => ((k * 7) % 3 < level ? `<span class="blank">${'＿'.repeat(Math.min(4, Math.max(2, Math.ceil(w.length / 2))))}</span>` : esc(w)));
+      box.innerHTML = `${shown.join(' ')}<cite>${esc(s.memory.ref)}</cite>`;
+      btn.textContent = ['🙈 Che bớt chữ để tập', '🙈 Che thêm', '🙈 Che hết', '👀 Hiện lại cả câu'][level];
+    });
+  }
+
+  function pageKidsStory(id) {
+    const s = kidsStory(id);
+    if (!s) return notFound();
+    const all = kidsStories();
+    const next = all[all.indexOf(s) + 1];
+    const n = s.pages.length;                    // slides 0..n-1 = story pages, slide n = the end
+    let at = Math.min(kidsPos[id] || 0, n);
+    setTimeout(() => {
+      const stage = document.getElementById('kstage');
+      if (!stage) return;
+      const slides = [...stage.querySelectorAll('.kpage')];
+      const dots = [...document.querySelectorAll('.kdots i')];
+      const prev = document.getElementById('kprev'), nextBtn = document.getElementById('knext');
+      const speak = document.getElementById('kspeak');
+      const show = (k, dir = 0) => {
+        at = Math.max(0, Math.min(n, k));
+        kidsPos[id] = at;
+        stopSpeaking();
+        speak && speak.classList.remove('on');
+        slides.forEach((el, j) => {
+          el.classList.toggle('on', j === at);
+          if (j === at && dir) { el.style.setProperty('--dir', dir); el.classList.remove('turn'); void el.offsetWidth; el.classList.add('turn'); }
+        });
+        dots.forEach((d, j) => d.classList.toggle('on', j === at));
+        prev.disabled = at === 0;
+        nextBtn.hidden = at === n;
+        if (speak) speak.hidden = at === n;
+        document.getElementById('kcount').textContent = at < n ? `Trang ${at + 1}/${n}` : 'Hết truyện';
+        if (at === n && !kidsState(id).read) updateKids(id, p => ({ ...p, read: true }));
+        const nextImg = slides[at + 1] && slides[at + 1].querySelector('img');
+        if (nextImg) nextImg.loading = 'eager';     // the next picture is ready before the page turns
+      };
+      kidsNav = d => show(at + d, d);
+      prev.addEventListener('click', () => kidsNav(-1));
+      nextBtn.addEventListener('click', () => kidsNav(1));
+      dots.forEach((d, j) => d.addEventListener('click', () => show(j, j > at ? 1 : -1)));
+      // tap the right/left part of the picture to turn the page, or swipe
+      stage.addEventListener('click', e => {
+        if (!e.target.closest('figure')) return;
+        const r = stage.getBoundingClientRect();
+        kidsNav(e.clientX - r.left > r.width / 3 ? 1 : -1);
+      });
+      let x0 = null, y0 = 0;
+      stage.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+      stage.addEventListener('touchend', e => {
+        if (x0 === null) return;
+        const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+        x0 = null;
+        if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.3) kidsNav(dx < 0 ? 1 : -1);
+      }, { passive: true });
+      speak && speak.addEventListener('click', () => {
+        if (speak.classList.contains('on')) { stopSpeaking(); speak.classList.remove('on'); return; }
+        const u = new SpeechSynthesisUtterance(s.pages[at].text);
+        u.lang = 'vi-VN';
+        u.rate = 0.9;
+        const vi = speechSynthesis.getVoices().find(v => /^vi/i.test(v.lang));
+        if (vi) u.voice = vi;
+        u.onend = () => speak.classList.remove('on');
+        speak.classList.add('on');
+        speechSynthesis.speak(u);
+      });
+      wireMemory(s);
+      show(at);
+    });
+    return `
+      <p class="crumb"><a href="#/thieu-nhi">← Kinh Thánh thiếu nhi</a></p>
+      <div id="kbook" class="kbook" style="--kc:${esc(s.color)}">
+        <div class="kbook-head">
+          <span class="kbook-emoji float">${s.emoji}</span>
+          <div><h1>${esc(s.title)}</h1><a class="ref" href="${kidsReadUrl(s)}">📖 ${esc(s.ref)}</a></div>
+        </div>
+        <div id="kstage" class="kstage">
+          ${s.pages.map((p, k) => `<section class="kpage${k === at ? ' on' : ''}" aria-label="Trang ${k + 1}">
+            <figure>${kidsImg(s, k, '', k > at + 1)}</figure>
+            <p class="ktext">${esc(p.text)}</p>
+          </section>`).join('')}
+          <section class="kpage kend${at === n ? ' on' : ''}" aria-label="Hết truyện">
+            <div class="kend-top"><span class="kend-emoji">🎉</span><h2>Con đã đọc xong truyện!</h2></div>
+            ${memoryVerse(s)}
+            <div class="kend-actions">
+              <a class="btn primary big" href="#/thieu-nhi/${s.id}/do-vui">🎯 Đố vui 3 câu</a>
+              <a class="btn" href="${kidsReadUrl(s)}">📖 Đọc trong Kinh Thánh</a>
+              ${next ? `<a class="btn" href="#/thieu-nhi/${next.id}">Truyện tiếp: ${esc(next.title)} →</a>` : `<a class="btn" href="#/thieu-nhi">Các truyện khác</a>`}
+            </div>
+          </section>
+        </div>
+        <div class="kctl">
+          <button id="kprev" class="kbtn" type="button" aria-label="Trang trước">‹</button>
+          <div class="kmid">
+            <div class="kdots">${Array.from({ length: n + 1 }, (_, k) => `<i class="${k === at ? 'on' : ''}${k === n ? ' last' : ''}"></i>`).join('')}</div>
+            <small id="kcount" class="meta"></small>
+          </div>
+          ${canSpeak ? '<button id="kspeak" class="kbtn speak" type="button" aria-label="Đọc to">🔊</button>' : ''}
+          <button id="knext" class="kbtn primary" type="button" aria-label="Trang sau">›</button>
+        </div>
+      </div>
+      <p class="hint">Vuốt hoặc chạm vào tranh để lật trang. <a href="#/thieu-nhi/nguon-tranh">Nguồn tranh</a></p>`;
+  }
+
+  // Quiz state while the quiz page is open (same look as the journey quizzes)
+  let kquiz = null;
+  function pageKidsQuiz(id) {
+    const s = kidsStory(id);
+    if (!s) return notFound();
+    if (!kquiz || kquiz.id !== id) kquiz = { id, n: 0, picked: null, correct: 0 };
+    const total = s.quiz.length;
+    if (kquiz.n >= total) {
+      const right = kquiz.correct;
+      updateKids(id, p => ({ ...p, best: Math.max(p.best, right) }));
+      kquiz = null;
+      const st = kidsStars(right, total);
+      const all = kidsStories();
+      const next = all.find(x => !kidsState(x.id).read && x.id !== id) || all[all.indexOf(s) + 1];
+      return `
+        <div class="result win">
+          <div class="confetti">${Array.from({ length: 24 }, (_, k) => `<i style="--x:${(k * 37) % 100}%;--d:${(k % 6) * 0.15}s">${['🎉', '⭐', '✨', '🕊️'][k % 4]}</i>`).join('')}</div>
+          <div class="result-emoji">${right === total ? '🏆' : right ? '🌟' : '💪'}</div>
+          <h1>${right === total ? 'Giỏi quá!' : right ? 'Tốt lắm!' : 'Cố lên nhé!'}</h1>
+          <p class="big-score">${right}/${total} câu đúng</p>
+          <p class="stars big">${starStr(st)}</p>
+          ${memoryVerse(s)}
+          <div class="actions" style="justify-content:center">
+            ${next ? `<a class="btn primary big" href="#/thieu-nhi/${next.id}">Truyện tiếp: ${esc(next.title)} →</a>` : ''}
+            <a class="btn" href="#/thieu-nhi/${s.id}/do-vui" onclick="setTimeout(()=>dispatchEvent(new HashChangeEvent('hashchange')))">↺ Chơi lại</a>
+            <a class="btn" href="#/thieu-nhi">Các truyện</a>
+          </div>
+        </div>`;
+    }
+    const q = s.quiz[kquiz.n];
+    setTimeout(() => {
+      wireMemory(s);
+      document.querySelectorAll('.opt').forEach(b => b.addEventListener('click', () => {
+        if (kquiz.picked !== null) return;
+        kquiz.picked = +b.dataset.i;
+        if (kquiz.picked === q.a) kquiz.correct++;
+        const y = scrollY; render(); scrollTo(0, y);
+        const fb = document.querySelector('.feedback');
+        fb && fb.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }));
+      const nx = document.getElementById('next-q');
+      nx && nx.addEventListener('click', () => { kquiz.n++; kquiz.picked = null; render(); });
+    });
+    const answered = kquiz.picked !== null;
+    return `
+      <p class="crumb"><a href="#/thieu-nhi/${s.id}">✕ Về truyện</a></p>
+      <div class="qbar">${s.quiz.map((_, k) => `<span class="${k < kquiz.n ? 'done' : k === kquiz.n ? 'now' : ''}"></span>`).join('')}</div>
+      <p class="meta">${s.emoji} ${esc(s.title)} · Câu ${kquiz.n + 1}/${total}</p>
+      <h2 class="question">${esc(q.q)}</h2>
+      <div class="opts pics kids-opts">
+        ${q.options.map((o, k) => {
+          const cls = !answered ? '' : k === q.a ? ' right' : k === kquiz.picked ? ' wrong' : ' dim';
+          return `<button class="opt${cls}" data-i="${k}" ${answered ? 'disabled' : ''} style="--i:${k}">
+            ${o.pic !== undefined ? `<span class="opt-pic">${kidsImg(s, o.pic, '', false)}</span>` : `<span class="opt-img">${o.img}</span>`}<span>${esc(o.t)}</span></button>`;
+        }).join('')}
+      </div>
+      ${answered ? `<div class="feedback ${kquiz.picked === q.a ? 'ok' : 'no'}">
+        <strong>${kquiz.picked === q.a ? '🎉 Đúng rồi!' : '💡 Chưa đúng rồi'}</strong>
+        <p>${esc(q.why)}</p>
+        <button id="next-q" class="btn primary big">${kquiz.n + 1 < total ? 'Câu tiếp theo →' : 'Xem kết quả'}</button>
+      </div>` : ''}`;
+  }
+
+  const commonsPage = file => 'https://commons.wikimedia.org/wiki/File:' + encodeURIComponent(file.replace(/ /g, '_'));
+  function pageKidsCredits() {
+    const K = DATA.kids || {};
+    const sets = K.imageSets || {};
+    return `
+      <p class="crumb"><a href="#/thieu-nhi">← Kinh Thánh thiếu nhi</a></p>
+      <h1>Nguồn tranh &amp; giấy phép</h1>
+      <p class="lead">Hội thánh chỉ dùng tranh được phép sử dụng. Dưới đây là nguồn và giấy phép của từng bộ tranh, và của từng bức tranh trong mỗi truyện.</p>
+      ${Object.entries(sets).map(([key, set]) => `<div class="box credit-set">
+        <h2>${esc(set.name)}</h2>
+        <p><strong>Tác giả:</strong> ${esc(set.author)}</p>
+        <p><strong>Giấy phép:</strong> <a href="${esc(set.licenseUrl)}" target="_blank" rel="noopener">${esc(set.license)}</a></p>
+        <p><strong>Nguồn:</strong> <a href="${esc(set.source)}" target="_blank" rel="noopener">${esc(set.sourceName || set.source)}</a></p>
+        ${set.note ? `<p class="meta">${esc(set.note)}</p>` : ''}
+        <p class="meta">${kidsStories().reduce((c, s) => c + s.pages.filter(p => p.set === key).length, 0)} tranh trong app thuộc bộ này.</p>
+      </div>`).join('')}
+      ${K.textCredit ? `<p class="meta">${esc(K.textCredit)}</p>` : ''}
+      <h2 class="hub-title">Từng bức tranh</h2>
+      ${kidsStories().map(s => `<details class="credit-story"><summary>${s.emoji} ${esc(s.title)} <span class="meta">· ${s.pages.length} tranh</span></summary>
+        <ol>${s.pages.map(p => `<li><a href="${commonsPage(p.img)}" target="_blank" rel="noopener">${esc(p.img.replace(/\.(jpe?g|png)$/i, ''))}</a>
+          <span class="meta">— ${esc((sets[p.set] || {}).credit || '')}, ${esc((sets[p.set] || {}).license || '')}</span></li>`).join('')}</ol>
+      </details>`).join('')}`;
   }
 
   const notFound = () => `<p class="empty">Không tìm thấy trang này. <a href="#/">Về trang chủ</a></p>`;
@@ -1503,6 +1799,10 @@
     [/^\/kinh-thanh$/, () => pageBibleHub(), 'bible'],
     [/^\/kinh-thanh\/sach$/, () => pageBooks(), 'bible'],
     [/^\/kinh-thanh\/sach\/(\w{3})$/, m => pageChapters(m[1]), 'bible'],
+    [/^\/thieu-nhi$/, () => pageKids(), 'bible'],
+    [/^\/thieu-nhi\/nguon-tranh$/, () => pageKidsCredits(), 'bible'],
+    [/^\/thieu-nhi\/([\w-]+)$/, m => pageKidsStory(m[1]), 'bible'],
+    [/^\/thieu-nhi\/([\w-]+)\/do-vui$/, m => pageKidsQuiz(m[1]), 'bible'],
     [/^\/so-tay$/, (m, p) => pageNotebook(p), 'bible'],
     [/^\/so-tay\/([\w-]+)$/, (m, p) => pageNote(m[1], p), 'bible'],
     [/^\/them$/, () => pageAdd(), ''],
@@ -1514,6 +1814,8 @@
     const [path, qs = ''] = raw.split('?');
     const params = new URLSearchParams(qs);
     if (!path.endsWith('/kiem-tra')) quiz = null;   // leaving a quiz starts it over next time
+    if (!path.endsWith('/do-vui')) kquiz = null;
+    kidsNav = null;
     let html = notFound(), tab = '';
     for (const [re, fn, t] of routes) {
       const m = path.match(re);
@@ -1609,7 +1911,7 @@
 
   async function init() {
     try {
-      const [base, yt, verses, moods, hymns, hymnVids, ai, journeys] = await Promise.all([
+      const [base, yt, verses, moods, hymns, hymnVids, ai, journeys, kids] = await Promise.all([
         loadFile('sermons.json'),
         loadFile('youtube.json', true),
         loadFile('verses.json', true),
@@ -1618,11 +1920,13 @@
         loadFile('hymn-videos.json', true),
         loadFile('ai.json', true),
         loadFile('journeys.json', true),
+        loadFile('kids.json', true),
       ]);
       DATA = {
         ...base, topics: base.topics || [], sermons: applyAI(mergeData(base, yt), ai),
         verses: (verses && verses.verses) || [], moods: (moods && moods.moods) || [], hymns: buildHymns((hymns && hymns.hymns) || [], (hymnVids && hymnVids.videos) || []),
         journeys: journeys || { tracks: [], books: [] },
+        kids: kids || { stories: [], imageSets: {} },
       };
     } catch (e) {
       $app.innerHTML = `<p class="empty">Không tải được dữ liệu bài giảng (${esc(e.message)}).<br>

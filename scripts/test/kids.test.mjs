@@ -28,6 +28,7 @@ test('kids stories: structure, quiz and names', () => {
     assert.ok(s.title && s.emoji && s.ref && s.testament && /^#[0-9a-f]{6}$/i.test(s.color), `${where}: thiếu tiêu đề/emoji/tham chiếu/màu`);
     assert.ok(['Cựu Ước', 'Tân Ước'].includes(s.testament), `${where}: testament`);
     assert.ok(books[s.read.book] && s.read.ch >= 1 && s.read.ch <= books[s.read.book].chapters, `${where}: nút "Đọc trong Kinh Thánh"`);
+    assert.ok(s.cover === undefined || (Number.isInteger(s.cover) && s.cover >= 0 && s.cover < s.pages.length), `${where}: ảnh bìa (cover) không có`);
     assert.ok(s.pages.length >= 5 && s.pages.length <= 8, `${where}: cần 5–8 trang (đang có ${s.pages.length})`);
     for (const [i, p] of s.pages.entries()) {
       assert.ok(K.imageSets[p.set], `${where} trang ${i + 1}: bộ tranh "${p.set}" chưa khai báo giấy phép`);

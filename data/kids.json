@@ -1,5 +1,5 @@
 {
- "_huongdan": "Kinh Thánh thiếu nhi: mỗi truyện 5–8 trang (img = tên file tranh trên Wikimedia Commons, set = bộ tranh trong imageSets; text = 1–3 câu ngắn), 3 câu đố vui (a = vị trí đáp án đúng, tính từ 0; mỗi lựa chọn có img là emoji, hoặc pic là số thứ tự tranh của truyện, tính từ 0) và 1 câu học thuộc (chữ phải khớp Bản Truyền Thống 1926). Tên riêng theo Bản Truyền Thống 1926. Thêm/sửa truyện xong, GitHub tự tải tranh vào data/kids/img/ (workflow “Tải tranh Kinh Thánh thiếu nhi”). CHỈ dùng tranh có giấy phép cho phép, và khai báo bộ tranh trong imageSets.",
+ "_huongdan": "Kinh Thánh thiếu nhi: mỗi truyện 5–8 trang (img = tên file tranh trên Wikimedia Commons, set = bộ tranh trong imageSets; text = 1–3 câu ngắn), 3 câu đố vui (a = vị trí đáp án đúng, tính từ 0; mỗi lựa chọn có img là emoji, hoặc pic là số thứ tự tranh của truyện, tính từ 0) 1 câu học thuộc, và cover = số thứ tự tranh làm ảnh bìa (tính từ 0) (chữ phải khớp Bản Truyền Thống 1926). Tên riêng theo Bản Truyền Thống 1926. Thêm/sửa truyện xong, GitHub tự tải tranh vào data/kids/img/ (workflow “Tải tranh Kinh Thánh thiếu nhi”). CHỈ dùng tranh có giấy phép cho phép, và khai báo bộ tranh trong imageSets.",
  "textCredit": "Lời kể do Hội thánh Immanuel Hà Nội biên soạn dựa theo Kinh Thánh Bản Truyền Thống 1926; câu Kinh Thánh trích nguyên văn Bản Truyền Thống 1926 (phạm vi công cộng).",
  "imageSets": {
   "sweet": {
@@ -27,6 +27,7 @@
     "ch": 1,
     "v": 1
    },
+   "cover": 5,
    "pages": [
     {
      "img": "Book of Genesis Chapter 1-3 (Bible Illustrations by Sweet Media).jpg",
@@ -151,6 +152,7 @@
     "ch": 6,
     "v": 5
    },
+   "cover": 2,
    "pages": [
     {
      "img": "Book of Genesis Chapter 6-7 (Bible Illustrations by Sweet Media).jpg",
@@ -275,6 +277,7 @@
     "ch": 12,
     "v": 1
    },
+   "cover": 5,
    "pages": [
     {
      "img": "Book of Genesis Chapter 12-2 (Bible Illustrations by Sweet Media).jpg",
@@ -399,6 +402,7 @@
     "ch": 37,
     "v": 1
    },
+   "cover": 0,
    "pages": [
     {
      "img": "Book of Genesis Chapter 37-2 (Bible Illustrations by Sweet Media).jpg",
@@ -523,6 +527,7 @@
     "ch": 14,
     "v": 10
    },
+   "cover": 6,
    "pages": [
     {
      "img": "Book of Exodus Chapter 3-3 (Bible Illustrations by Sweet Media).jpg",
@@ -647,6 +652,7 @@
     "ch": 17,
     "v": 1
    },
+   "cover": 4,
    "pages": [
     {
      "img": "First Book of Samuel Chapter 16-14 (Bible Illustrations by Sweet Media).jpg",
@@ -771,6 +777,7 @@
     "ch": 6,
     "v": 1
    },
+   "cover": 5,
    "pages": [
     {
      "img": "Book of Daniel Chapter 6-1 (Bible Illustrations by Sweet Media).jpg",
@@ -895,6 +902,7 @@
     "ch": 1,
     "v": 1
    },
+   "cover": 2,
    "pages": [
     {
      "img": "Book of Jonah Chapter 1-1 (Bible Illustrations by Sweet Media).jpg",
@@ -1019,6 +1027,7 @@
     "ch": 2,
     "v": 1
    },
+   "cover": 2,
    "pages": [
     {
      "img": "Gospel of Luke Chapter 1-13 (Bible Illustrations by Sweet Media).jpg",
@@ -1143,6 +1152,7 @@
     "ch": 6,
     "v": 1
    },
+   "cover": 5,
    "pages": [
     {
      "img": "Gospel of John Chapter 6-1 (Bible Illustrations by Sweet Media).jpg",
@@ -1267,6 +1277,7 @@
     "ch": 19,
     "v": 1
    },
+   "cover": 2,
    "pages": [
     {
      "img": "Gospel of Luke Chapter 19-1 (Bible Illustrations by Sweet Media).jpg",
@@ -1381,6 +1392,7 @@
     "ch": 15,
     "v": 11
    },
+   "cover": 5,
    "pages": [
     {
      "img": "Gospel of Luke Chapter 15-2 (Bible Illustrations by Sweet Media).jpg",
@@ -1500,6 +1512,7 @@
     "ch": 28,
     "v": 1
    },
+   "cover": 5,
    "pages": [
     {
      "img": "Gospel of Luke Chapter 23-10 (Bible Illustrations by Sweet Media).jpg",
