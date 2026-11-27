@@ -35,7 +35,7 @@ jobs:
     timeout-minutes: 90
     environment:
       name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+      url: ${{ steps.deploy.outputs.page_url || steps.deploy2.outputs.page_url || steps.deploy3.outputs.page_url }}
     steps:
       - uses: actions/checkout@v7
 
@@ -102,5 +102,20 @@ jobs:
       - uses: actions/upload-pages-artifact@v5
         with:
           path: www
+      # GitHub sometimes needs a few seconds before a freshly uploaded site package can be found
+      # ("No artifacts named github-pages" although the artifact exists), so give it time, then retry.
+      - run: sleep 20
       - id: deploy
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+      - if: steps.deploy.outcome == 'failure'
+        run: sleep 30
+      - id: deploy2
+        if: steps.deploy.outcome == 'failure'
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+      - if: steps.deploy.outcome == 'failure' && steps.deploy2.outcome == 'failure'
+        run: sleep 60
+      - id: deploy3
+        if: steps.deploy.outcome == 'failure' && steps.deploy2.outcome == 'failure'
         uses: actions/deploy-pages@v5
