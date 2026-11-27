@@ -1,0 +1,50 @@
+# Tải tranh cho "Kinh Thánh thiếu nhi" khi data/kids.json có truyện/trang mới.
+# Tranh lấy từ Wikimedia Commons (chỉ nhận file đúng giấy phép khai báo trong data/kids.json),
+# nén WebP ~1000px rồi lưu thẳng vào repository (data/kids/img/), để app không phụ thuộc trang ngoài.
+name: Tải tranh Kinh Thánh thiếu nhi
+
+on:
+  push:
+    paths:
+      - data/kids.json
+      - scripts/fetch-kids-images.mjs
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Tải lại TẤT CẢ tranh'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kids-images-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Tải tranh còn thiếu
+        run: node scripts/fetch-kids-images.mjs ${{ inputs.force && '--force' || '' }}
+      - name: Lưu tranh vào repository
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/kids/img
+          if git diff --cached --quiet; then
+            echo "Không có tranh mới."
+          else
+            git commit -m "Tải tranh Kinh Thánh thiếu nhi"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi

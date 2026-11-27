@@ -1,0 +1,1616 @@
+{
+ "_huongdan": "Kinh Thánh thiếu nhi: mỗi truyện 5–8 trang (img = tên file tranh trên Wikimedia Commons, set = bộ tranh trong imageSets; text = 1–3 câu ngắn), 3 câu đố vui (a = vị trí đáp án đúng, tính từ 0; mỗi lựa chọn có img là emoji, hoặc pic là số thứ tự tranh của truyện, tính từ 0) và 1 câu học thuộc (chữ phải khớp Bản Truyền Thống 1926). Tên riêng theo Bản Truyền Thống 1926. Thêm/sửa truyện xong, GitHub tự tải tranh vào data/kids/img/ (workflow “Tải tranh Kinh Thánh thiếu nhi”). CHỈ dùng tranh có giấy phép cho phép, và khai báo bộ tranh trong imageSets.",
+ "textCredit": "Lời kể do Hội thánh Immanuel Hà Nội biên soạn dựa theo Kinh Thánh Bản Truyền Thống 1926; câu Kinh Thánh trích nguyên văn Bản Truyền Thống 1926 (phạm vi công cộng).",
+ "imageSets": {
+  "sweet": {
+   "name": "Tranh Kinh Thánh Sweet Publishing",
+   "author": "Jim Padgett — Sweet Publishing (Ft. Worth, Texas) và Gospel Light (Ventura, California), trích từ bộ “Read'n Grow Picture Bible” (1984)",
+   "credit": "Jim Padgett / Sweet Publishing / Distant Shores Media",
+   "license": "CC BY-SA 3.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/deed.vi",
+   "source": "https://commons.wikimedia.org/wiki/Category:Bible_illustrations_by_Sweet_Media",
+   "sourceName": "Wikimedia Commons — Bible illustrations by Sweet Media (do Distant Shores Media cung cấp)",
+   "licenseCheck": "Bible Illustrations(?: \\(Sweet Publishing\\))?-license",
+   "note": "Sweet Publishing phát hành lại bộ tranh này theo giấy phép Creative Commons Ghi công – Chia sẻ tương tự 3.0 (CC BY-SA 3.0): được dùng miễn phí, kể cả trong app, miễn là ghi nguồn và giữ cùng giấy phép. Trong app, tranh đã được thu nhỏ (rộng 1000px) và chuyển sang định dạng WebP; các bản thu nhỏ này cũng theo giấy phép CC BY-SA 3.0."
+  }
+ },
+ "stories": [
+  {
+   "id": "sang-tao",
+   "title": "Đức Chúa Trời dựng nên muôn vật",
+   "emoji": "🌍",
+   "color": "#3a9d5d",
+   "testament": "Cựu Ước",
+   "ref": "Sáng thế ký 1–2",
+   "read": {
+    "book": "GEN",
+    "ch": 1,
+    "v": 1
+   },
+   "pages": [
+    {
+     "img": "Book of Genesis Chapter 1-3 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Ban đầu, khắp nơi đều tối tăm và trống không. Đức Chúa Trời phán: “Phải có sự sáng”, thì có sự sáng! Đó là ngày thứ nhất."
+    },
+    {
+     "img": "Book of Genesis Chapter 1-4 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Ngày thứ hai, Đức Chúa Trời làm nên bầu trời ở trên và nước ở dưới."
+    },
+    {
+     "img": "Bible Illustrations 01 Genesis 01 01 Sweet Publishing.jpg",
+     "set": "sweet",
+     "text": "Ngày thứ ba, Ngài gom nước lại thành biển, và đất khô hiện ra."
+    },
+    {
+     "img": "Book of Genesis Chapter 1-6 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Ngài phán một lời, cây cỏ liền mọc lên xanh tươi, đầy hoa đẹp và trái ngọt."
+    },
+    {
+     "img": "Book of Genesis Chapter 1-7 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Ngày thứ tư, Ngài đặt mặt trời chiếu sáng ban ngày, mặt trăng và các ngôi sao lấp lánh ban đêm."
+    },
+    {
+     "img": "Book of Genesis Chapter 1-11 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Ngày thứ năm và thứ sáu, Ngài dựng nên cá dưới nước, chim trên trời và đủ mọi loài thú trên đất."
+    },
+    {
+     "img": "Book of Genesis Chapter 1-15 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Rồi Đức Chúa Trời dựng nên loài người giống như hình Ngài. A-đam đặt tên cho từng con vật."
+    },
+    {
+     "img": "Book of Genesis Chapter 2-12 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Chúa ban Ê-va làm bạn với A-đam. Ngài thấy mọi vật Ngài đã làm thật rất tốt lành, và ngày thứ bảy Ngài nghỉ."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Ngày thứ nhất, Đức Chúa Trời dựng nên gì?",
+     "options": [
+      {
+       "t": "Sự sáng",
+       "img": "💡"
+      },
+      {
+       "t": "Loài cá",
+       "img": "🐟"
+      },
+      {
+       "t": "Cây cối",
+       "img": "🌳"
+      }
+     ],
+     "a": 0,
+     "why": "Đức Chúa Trời phán: “Phải có sự sáng”, thì có sự sáng (Sáng thế ký 1:3)."
+    },
+    {
+     "q": "Ai được dựng nên giống như hình Đức Chúa Trời?",
+     "options": [
+      {
+       "t": "Sư tử",
+       "img": "🦁"
+      },
+      {
+       "t": "Con người",
+       "img": "🧑"
+      },
+      {
+       "t": "Chim chóc",
+       "img": "🐦"
+      }
+     ],
+     "a": 1,
+     "why": "Đức Chúa Trời dựng nên loài người như hình Ngài (Sáng thế ký 1:27). Con thật quý giá đối với Chúa!"
+    },
+    {
+     "q": "Ngày thứ bảy, Đức Chúa Trời làm gì?",
+     "options": [
+      {
+       "t": "Làm ra biển",
+       "img": "🌊"
+      },
+      {
+       "t": "Làm mặt trăng",
+       "img": "🌙"
+      },
+      {
+       "t": "Nghỉ ngơi",
+       "img": "😌"
+      }
+     ],
+     "a": 2,
+     "why": "Ngày thứ bảy Đức Chúa Trời nghỉ các công việc Ngài đã làm (Sáng thế ký 2:2)."
+    }
+   ],
+   "memory": {
+    "ref": "Sáng thế ký 1:1",
+    "book": "GEN",
+    "ch": 1,
+    "v": [
+     1,
+     1
+    ],
+    "text": "Ban đầu Đức Chúa Trời dựng nên trời đất."
+   }
+  },
+  {
+   "id": "no-e",
+   "title": "Nô-ê và chiếc tàu lớn",
+   "emoji": "🌈",
+   "color": "#2f80ed",
+   "testament": "Cựu Ước",
+   "ref": "Sáng thế ký 6–9",
+   "read": {
+    "book": "GEN",
+    "ch": 6,
+    "v": 5
+   },
+   "pages": [
+    {
+     "img": "Book of Genesis Chapter 6-7 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Ngày xưa, người ta trên đất làm điều ác rất nhiều. Nhưng Nô-ê là người công bình, đồng đi với Đức Chúa Trời."
+    },
+    {
+     "img": "Book of Genesis Chapter 6-9 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Đức Chúa Trời bảo Nô-ê đóng một chiếc tàu thật lớn. Nô-ê làm theo mọi điều Chúa dặn."
+    },
+    {
+     "img": "Book of Genesis Chapter 7-2 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Từng cặp thú vật và chim chóc kéo nhau vào tàu. Nô-ê và cả nhà cũng vào, rồi Đức Giê-hô-va đóng cửa tàu lại."
+    },
+    {
+     "img": "Book of Genesis Chapter 7-8 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Mưa đổ xuống suốt bốn mươi ngày bốn mươi đêm. Nước dâng lên phủ khắp đất, nhưng chiếc tàu vẫn nổi an toàn."
+    },
+    {
+     "img": "Book of Genesis Chapter 8-4 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Đức Chúa Trời nhớ đến Nô-ê. Nước rút dần, và chiếc tàu tấp trên núi A-ra-rát."
+    },
+    {
+     "img": "Book of Genesis Chapter 8-10 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Nô-ê thả một con bồ câu ra. Chiều tối nó bay về, trong mỏ tha một lá ô-li-ve tươi: nước đã giảm rồi!"
+    },
+    {
+     "img": "Book of Genesis Chapter 8-12 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Khi đất đã khô, Nô-ê, gia đình ông và mọi con vật vui mừng ra khỏi tàu."
+    },
+    {
+     "img": "Book of Genesis Chapter 9-4 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Đức Chúa Trời đặt cái mống (cầu vồng) trên mây. Đó là dấu Ngài hứa sẽ không bao giờ dùng nước lụt hủy diệt cả đất nữa."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Đức Chúa Trời bảo Nô-ê đóng cái gì?",
+     "options": [
+      {
+       "t": "Một ngôi nhà",
+       "img": "🏠"
+      },
+      {
+       "t": "Một chiếc tàu lớn",
+       "img": "🚢"
+      },
+      {
+       "t": "Một cái tháp",
+       "img": "🗼"
+      }
+     ],
+     "a": 1,
+     "why": "Nô-ê đóng chiếc tàu đúng như lời Đức Chúa Trời dặn (Sáng thế ký 6:22)."
+    },
+    {
+     "q": "Con chim nào tha lá ô-li-ve về cho Nô-ê?",
+     "options": [
+      {
+       "t": "Chim ưng",
+       "img": "🦅"
+      },
+      {
+       "t": "Con vẹt",
+       "img": "🦜"
+      },
+      {
+       "t": "Bồ câu",
+       "img": "🕊️"
+      }
+     ],
+     "a": 2,
+     "why": "Con bồ câu tha về một lá ô-li-ve tươi, nên Nô-ê biết nước đã giảm (Sáng thế ký 8:11)."
+    },
+    {
+     "q": "Cái mống (cầu vồng) là dấu của điều gì?",
+     "options": [
+      {
+       "t": "Lời hứa của Đức Chúa Trời",
+       "img": "🌈"
+      },
+      {
+       "t": "Trời sắp mưa to",
+       "img": "☔"
+      },
+      {
+       "t": "Có người vẽ lên trời",
+       "img": "🎨"
+      }
+     ],
+     "a": 0,
+     "why": "Cái mống là dấu giao ước: Đức Chúa Trời luôn giữ lời hứa của Ngài (Sáng thế ký 9:13)."
+    }
+   ],
+   "memory": {
+    "ref": "Sáng thế ký 9:13",
+    "book": "GEN",
+    "ch": 9,
+    "v": [
+     13,
+     13
+    ],
+    "text": "Ta đặt mống của ta trên từng mây, dùng làm dấu chỉ sự giao ước của ta với đất."
+   }
+  },
+  {
+   "id": "ap-ra-ham",
+   "title": "Áp-ra-ham tin cậy Chúa",
+   "emoji": "⭐",
+   "color": "#b8862b",
+   "testament": "Cựu Ước",
+   "ref": "Sáng thế ký 12; 15; 21",
+   "read": {
+    "book": "GEN",
+    "ch": 12,
+    "v": 1
+   },
+   "pages": [
+    {
+     "img": "Book of Genesis Chapter 12-2 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Ngày xưa có một người tên là Áp-ram (về sau Chúa đổi tên ông là Áp-ra-ham). Đức Chúa Trời phán: “Hãy rời quê hương, đi đến xứ ta sẽ chỉ cho, ta sẽ ban phước cho ngươi.”"
+    },
+    {
+     "img": "Book of Genesis Chapter 12-3 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Áp-ra-ham chưa biết xứ đó ở đâu, nhưng ông tin cậy Chúa. Ông cùng vợ là Sa-ra, người nhà và bầy súc vật lên đường."
+    },
+    {
+     "img": "Book of Genesis Chapter 12-1 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Họ đi rất xa, đến xứ Ca-na-an. Đức Chúa Trời phán: “Ta sẽ ban xứ nầy cho dòng dõi ngươi.”"
+    },
+    {
+     "img": "Book of Genesis Chapter 12-6 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Áp-ra-ham lập một bàn thờ để thờ phượng và cảm tạ Đức Chúa Trời."
+    },
+    {
+     "img": "Book of Genesis Chapter 15-2 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Áp-ra-ham và Sa-ra đã già mà vẫn chưa có con. Ông mong có một đứa con trai biết bao!"
+    },
+    {
+     "img": "Book of Genesis Chapter 15-3 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Một đêm, Chúa dẫn ông ra ngoài và phán: “Hãy ngó lên trời mà đếm các ngôi sao, dòng dõi ngươi cũng sẽ đông như vậy!” Áp-ra-ham tin lời Chúa."
+    },
+    {
+     "img": "Book of Genesis Chapter 21-1 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Đúng như lời Chúa hứa, Sa-ra sanh được một con trai, dù hai ông bà đã rất già."
+    },
+    {
+     "img": "Book of Genesis Chapter 21-2 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Áp-ra-ham đặt tên con là Y-sác. Cả nhà vui mừng, vì không có điều gì Đức Chúa Trời làm không được!"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Chúa bảo Áp-ra-ham ngó lên trời mà đếm gì?",
+     "options": [
+      {
+       "t": "Đám mây",
+       "img": "☁️"
+      },
+      {
+       "t": "Các ngôi sao",
+       "img": "⭐"
+      },
+      {
+       "t": "Bầy chim",
+       "img": "🐦"
+      }
+     ],
+     "a": 1,
+     "why": "Dòng dõi Áp-ra-ham sẽ đông như sao trên trời (Sáng thế ký 15:5)."
+    },
+    {
+     "q": "Con trai của Áp-ra-ham và Sa-ra tên là gì?",
+     "options": [
+      {
+       "t": "Y-sác",
+       "img": "👶"
+      },
+      {
+       "t": "Giô-sép",
+       "img": "🧥"
+      },
+      {
+       "t": "Đa-vít",
+       "img": "🪨"
+      }
+     ],
+     "a": 0,
+     "why": "Áp-ra-ham đặt tên con là Y-sác (Sáng thế ký 21:3)."
+    },
+    {
+     "q": "Khi Chúa bảo rời quê hương, Áp-ra-ham đã làm gì?",
+     "options": [
+      {
+       "t": "Không chịu đi",
+       "img": "🙅"
+      },
+      {
+       "t": "Ở nhà ngủ",
+       "img": "😴"
+      },
+      {
+       "t": "Tin Chúa và lên đường",
+       "img": "🚶"
+      }
+     ],
+     "a": 2,
+     "why": "Áp-ra-ham vâng lời và ra đi, dù chưa biết mình đi đâu (Sáng thế ký 12:4; Hê-bơ-rơ 11:8)."
+    }
+   ],
+   "memory": {
+    "ref": "Sáng thế ký 18:14",
+    "book": "GEN",
+    "ch": 18,
+    "v": [
+     14,
+     14
+    ],
+    "text": "Há có điều chi Đức Giê-hô-va làm không được chăng?"
+   }
+  },
+  {
+   "id": "gio-sep",
+   "title": "Giô-sép và chiếc áo nhiều sắc",
+   "emoji": "🧥",
+   "color": "#d35400",
+   "testament": "Cựu Ước",
+   "ref": "Sáng thế ký 37; 41; 45",
+   "read": {
+    "book": "GEN",
+    "ch": 37,
+    "v": 1
+   },
+   "pages": [
+    {
+     "img": "Book of Genesis Chapter 37-2 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Gia-cốp có mười hai con trai. Ông thương Giô-sép hơn hết, nên may cho chàng một cái áo dài có nhiều sắc."
+    },
+    {
+     "img": "Book of Genesis Chapter 37-5 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Giô-sép nằm chiêm bao thấy mặt trời, mặt trăng và các ngôi sao cúi lạy mình. Các anh nghe vậy thì càng ganh ghét chàng."
+    },
+    {
+     "img": "Book of Genesis Chapter 37-16 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Một ngày kia, các anh bắt Giô-sép, lột áo chàng và quăng xuống một cái hố cạn."
+    },
+    {
+     "img": "Book of Genesis Chapter 37-22 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Rồi họ bán Giô-sép cho những người lái buôn. Chàng bị đem qua xứ Ê-díp-tô làm đầy tớ."
+    },
+    {
+     "img": "Book of Genesis Chapter 41-6 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Ở Ê-díp-tô, Giô-sép gặp nhiều khó khăn, nhưng Đức Chúa Trời luôn ở cùng chàng. Một đêm, vua Pha-ra-ôn nằm chiêm bao lạ mà không ai giải được."
+    },
+    {
+     "img": "Book of Genesis Chapter 41-12 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Chúa giúp Giô-sép giải nghĩa: sẽ có bảy năm được mùa, rồi bảy năm đói kém. Vua liền lập Giô-sép cai trị cả xứ Ê-díp-tô."
+    },
+    {
+     "img": "Book of Genesis Chapter 41-23 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Giô-sép cho trữ thật nhiều lúa trong những năm được mùa. Khi đói kém đến, ai cũng có lương thực."
+    },
+    {
+     "img": "Book of Genesis Chapter 45-7 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Các anh của Giô-sép cũng đến mua lúa. Giô-sép tha thứ, ôm lấy các anh và nói: “Đức Chúa Trời đã sai tôi đến đây trước để giữ gìn sự sống.”"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Cha của Giô-sép may cho chàng cái gì?",
+     "options": [
+      {
+       "t": "Áo dài có nhiều sắc",
+       "img": "🧥"
+      },
+      {
+       "t": "Cái mão vàng",
+       "img": "👑"
+      },
+      {
+       "t": "Đôi giày mới",
+       "img": "👟"
+      }
+     ],
+     "a": 0,
+     "why": "Gia-cốp may cho Giô-sép một cái áo dài có nhiều sắc (Sáng thế ký 37:3)."
+    },
+    {
+     "q": "Các anh đã làm gì với Giô-sép?",
+     "options": [
+      {
+       "t": "Tặng quà cho chàng",
+       "img": "🎁"
+      },
+      {
+       "t": "Quăng xuống hố rồi bán đi",
+       "img": "🕳️"
+      },
+      {
+       "t": "Mở tiệc mừng chàng",
+       "img": "🎉"
+      }
+     ],
+     "a": 1,
+     "why": "Vì ganh ghét, các anh quăng Giô-sép xuống hố rồi bán chàng (Sáng thế ký 37:24, 28)."
+    },
+    {
+     "q": "Cuối cùng, Giô-sép đối xử với các anh thế nào?",
+     "options": [
+      {
+       "t": "Phạt thật nặng",
+       "img": "😠"
+      },
+      {
+       "t": "Không thèm gặp",
+       "img": "🙈"
+      },
+      {
+       "t": "Tha thứ và ôm các anh",
+       "img": "🤗"
+      }
+     ],
+     "a": 2,
+     "why": "Giô-sép tha thứ, vì biết Đức Chúa Trời đã biến điều ác thành điều lành (Sáng thế ký 45:4-5)."
+    }
+   ],
+   "memory": {
+    "ref": "Sáng thế ký 50:20",
+    "book": "GEN",
+    "ch": 50,
+    "v": [
+     20,
+     20
+    ],
+    "text": "Các anh toan hại tôi, nhưng Đức Chúa Trời lại toan làm điều ích cho tôi"
+   }
+  },
+  {
+   "id": "moi-se",
+   "title": "Môi-se và Biển đỏ",
+   "emoji": "🌊",
+   "color": "#0e7490",
+   "testament": "Cựu Ước",
+   "ref": "Xuất Ê-díp-tô ký 2; 3; 14",
+   "read": {
+    "book": "EXO",
+    "ch": 14,
+    "v": 10
+   },
+   "pages": [
+    {
+     "img": "Book of Exodus Chapter 3-3 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Vua Pha-ra-ôn ác độc ra lệnh giết các bé trai của dân Y-sơ-ra-ên. Một người mẹ giấu con mình vào cái rương mây."
+    },
+    {
+     "img": "Book of Exodus Chapter 3-4 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Bà đặt rương trong đám sậy bên bờ sông. Chị của em bé đứng xa xa canh chừng."
+    },
+    {
+     "img": "Book of Exodus Chapter 3-6 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Công chúa xuống sông tắm, thấy em bé thì thương. Nàng nhận làm con và đặt tên là Môi-se."
+    },
+    {
+     "img": "Book of Exodus Chapter 4-4 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Khi Môi-se lớn lên, Đức Chúa Trời gọi ông từ giữa bụi gai cháy mà không tàn. Chúa sai ông đi giải cứu dân Y-sơ-ra-ên."
+    },
+    {
+     "img": "Book of Exodus Chapter 15-13 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Dân Y-sơ-ra-ên ra khỏi xứ Ê-díp-tô. Nhưng vua Pha-ra-ôn đổi ý, đem ngựa xe đuổi theo họ đến tận bờ biển."
+    },
+    {
+     "img": "Book of Exodus Chapter 15-6 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Môi-se nói: “Đức Giê-hô-va sẽ chiến cự cho, các ngươi cứ yên lặng.” Ông giơ tay ra trên biển, và Chúa khiến nước rẽ ra làm hai."
+    },
+    {
+     "img": "Book of Exodus Chapter 15-7 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Dân Y-sơ-ra-ên đi giữa biển như trên đất khô, nước đứng như bức tường hai bên. Khi họ qua hết, nước lại trở về chỗ cũ."
+    },
+    {
+     "img": "Book of Exodus Chapter 16-2 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Mọi người được an toàn! Mi-ri-am cầm trống cơm, cùng các bà vui mừng nhảy múa ca ngợi Đức Giê-hô-va."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Em bé Môi-se được đặt nằm trong gì?",
+     "options": [
+      {
+       "t": "Cái rương mây",
+       "img": "🧺"
+      },
+      {
+       "t": "Chiếc thuyền lớn",
+       "img": "🛶"
+      },
+      {
+       "t": "Thùng gỗ",
+       "img": "📦"
+      }
+     ],
+     "a": 0,
+     "why": "Mẹ Môi-se đặt em trong một cái rương mây giữa đám sậy (Xuất Ê-díp-tô ký 2:3)."
+    },
+    {
+     "q": "Đức Chúa Trời gọi Môi-se từ đâu?",
+     "options": [
+      {
+       "t": "Đỉnh núi tuyết",
+       "img": "⛰️"
+      },
+      {
+       "t": "Bụi gai cháy mà không tàn",
+       "img": "🔥"
+      },
+      {
+       "t": "Giữa dòng sông",
+       "img": "🌊"
+      }
+     ],
+     "a": 1,
+     "why": "Chúa phán với Môi-se từ giữa bụi gai đang cháy (Xuất Ê-díp-tô ký 3:2-4)."
+    },
+    {
+     "q": "Dân Y-sơ-ra-ên qua biển bằng cách nào?",
+     "options": [
+      {
+       "t": "Bơi qua",
+       "img": "🏊"
+      },
+      {
+       "t": "Đi thuyền",
+       "img": "⛵"
+      },
+      {
+       "t": "Đi giữa biển trên đất khô",
+       "img": "🌊"
+      }
+     ],
+     "a": 2,
+     "why": "Chúa rẽ nước ra, dân sự đi giữa biển như trên đất cạn (Xuất Ê-díp-tô ký 14:22)."
+    }
+   ],
+   "memory": {
+    "ref": "Xuất Ê-díp-tô ký 14:14",
+    "book": "EXO",
+    "ch": 14,
+    "v": [
+     14,
+     14
+    ],
+    "text": "Đức Giê-hô-va sẽ chiến cự cho, còn các ngươi cứ yên lặng."
+   }
+  },
+  {
+   "id": "da-vit",
+   "title": "Đa-vít và Gô-li-át",
+   "emoji": "🪨",
+   "color": "#c0392b",
+   "testament": "Cựu Ước",
+   "ref": "1 Sa-mu-ên 17",
+   "read": {
+    "book": "1SA",
+    "ch": 17,
+    "v": 1
+   },
+   "pages": [
+    {
+     "img": "First Book of Samuel Chapter 16-14 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Đa-vít là một cậu bé chăn chiên. Cậu hay đánh đàn ngợi khen Chúa, và Chúa giúp cậu cứu bầy chiên khỏi sư tử và gấu."
+    },
+    {
+     "img": "First Book of Samuel Chapter 17-2 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Quân Phi-li-tin kéo đến đánh dân Y-sơ-ra-ên. Bên họ có một người khổng lồ tên là Gô-li-át, ngày nào cũng la lối thách thức."
+    },
+    {
+     "img": "First Book of Samuel Chapter 17-5 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Ai nấy đều sợ hãi. Nhưng Đa-vít tâu cùng vua Sau-lơ: “Đức Giê-hô-va đã giải cứu tôi khỏi sư tử và gấu, Ngài cũng sẽ giải cứu tôi khỏi người nầy.”"
+    },
+    {
+     "img": "First Book of Samuel Chapter 17-13 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Đa-vít không mặc áo giáp. Cậu đến bên dòng suối, chọn năm cục đá bóng láng bỏ vào túi."
+    },
+    {
+     "img": "First Book of Samuel Chapter 17-3 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Gô-li-át khinh dể cậu bé. Đa-vít đáp: “Ngươi cầm gươm giáo mà đến, còn ta nhân danh Đức Giê-hô-va vạn binh mà đến!”"
+    },
+    {
+     "img": "First Book of Samuel Chapter 17-8 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Đa-vít chạy tới, lấy một cục đá đặt vào trành và ném thật mạnh."
+    },
+    {
+     "img": "First Book of Samuel Chapter 17-9 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Cục đá trúng ngay trán Gô-li-át, và người khổng lồ té úp mặt xuống đất!"
+    },
+    {
+     "img": "First Book of Samuel Chapter 17-11 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Quân Phi-li-tin hoảng sợ bỏ chạy. Đa-vít thắng trận, vì cậu tin cậy Đức Chúa Trời."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Trước khi đánh Gô-li-át, Đa-vít làm gì?",
+     "options": [
+      {
+       "t": "Làm lính",
+       "img": "⚔️"
+      },
+      {
+       "t": "Chăn chiên",
+       "img": "🐑"
+      },
+      {
+       "t": "Làm vua",
+       "img": "👑"
+      }
+     ],
+     "a": 1,
+     "why": "Đa-vít chăn chiên cho cha mình (1 Sa-mu-ên 17:15, 34)."
+    },
+    {
+     "q": "Đa-vít chọn mấy cục đá?",
+     "options": [
+      {
+       "t": "Năm cục",
+       "img": "5️⃣"
+      },
+      {
+       "t": "Một cục",
+       "img": "1️⃣"
+      },
+      {
+       "t": "Mười cục",
+       "img": "🔟"
+      }
+     ],
+     "a": 0,
+     "why": "Đa-vít chọn năm cục đá bóng láng dưới suối (1 Sa-mu-ên 17:40)."
+    },
+    {
+     "q": "Vì sao Đa-vít không sợ Gô-li-át?",
+     "options": [
+      {
+       "t": "Vì cậu to lớn hơn",
+       "img": "💪"
+      },
+      {
+       "t": "Vì có áo giáp tốt",
+       "img": "🛡️"
+      },
+      {
+       "t": "Vì cậu tin cậy Đức Chúa Trời",
+       "img": "🙏"
+      }
+     ],
+     "a": 2,
+     "why": "Đa-vít nhân danh Đức Giê-hô-va mà đến, vì trận mạc thuộc về Đức Giê-hô-va (1 Sa-mu-ên 17:45-47)."
+    }
+   ],
+   "memory": {
+    "ref": "1 Sa-mu-ên 17:45",
+    "book": "1SA",
+    "ch": 17,
+    "v": [
+     45,
+     45
+    ],
+    "text": "còn ta, ta nhân danh Đức Giê-hô-va vạn binh mà đến"
+   }
+  },
+  {
+   "id": "da-ni-en",
+   "title": "Đa-ni-ên trong hang sư tử",
+   "emoji": "🦁",
+   "color": "#8e44ad",
+   "testament": "Cựu Ước",
+   "ref": "Đa-ni-ên 6",
+   "read": {
+    "book": "DAN",
+    "ch": 6,
+    "v": 1
+   },
+   "pages": [
+    {
+     "img": "Book of Daniel Chapter 6-1 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Đa-ni-ên là người khôn ngoan và trung tín. Vua Đa-ri-út rất quý ông và muốn lập ông cai trị cả nước."
+    },
+    {
+     "img": "Book of Daniel Chapter 6-3 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Mấy quan khác ganh ghét, bèn xin vua ra lệnh: trong ba mươi ngày, ai cầu xin thần nào hay người nào ngoài vua sẽ bị ném vào hang sư tử. Vua ký tên vào chỉ dụ."
+    },
+    {
+     "img": "Book of Daniel Chapter 6-4 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Đa-ni-ên biết vậy, nhưng vẫn về nhà, mở cửa sổ, quỳ gối cầu nguyện Đức Chúa Trời mỗi ngày ba lần như trước."
+    },
+    {
+     "img": "Book of Daniel Chapter 6-6 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Các quan tố cáo Đa-ni-ên. Vua rất buồn, nhưng không thể đổi lệnh đã ký."
+    },
+    {
+     "img": "Book of Daniel Chapter 6-7 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Đa-ni-ên bị ném vào hang sư tử. Vua nói: “Đức Chúa Trời ngươi là Đấng ngươi hằng hầu việc, sẽ giải cứu ngươi.”"
+    },
+    {
+     "img": "Book of Daniel Chapter 6-10 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Suốt đêm đó, Đức Chúa Trời sai thiên sứ bịt miệng các sư tử. Chúng không làm hại Đa-ni-ên chút nào!"
+    },
+    {
+     "img": "Book of Daniel Chapter 6-8 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Sáng sớm, vua vội chạy đến hang gọi lớn. Đa-ni-ên thưa: “Đức Chúa Trời tôi đã bịt miệng các sư tử!”"
+    },
+    {
+     "img": "Book of Daniel Chapter 6-11 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Vua mừng rỡ, cho kéo Đa-ni-ên lên. Rồi vua ra lệnh cho cả nước phải kính sợ Đức Chúa Trời của Đa-ni-ên."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Đa-ni-ên cầu nguyện mấy lần mỗi ngày?",
+     "options": [
+      {
+       "t": "Một lần",
+       "img": "1️⃣"
+      },
+      {
+       "t": "Ba lần",
+       "img": "3️⃣"
+      },
+      {
+       "t": "Bảy lần",
+       "img": "7️⃣"
+      }
+     ],
+     "a": 1,
+     "why": "Mỗi ngày ba lần, Đa-ni-ên quỳ gối cầu nguyện (Đa-ni-ên 6:10)."
+    },
+    {
+     "q": "Ai đã bịt miệng các sư tử?",
+     "options": [
+      {
+       "t": "Thiên sứ của Đức Chúa Trời",
+       "img": "👼"
+      },
+      {
+       "t": "Vua Đa-ri-út",
+       "img": "👑"
+      },
+      {
+       "t": "Các quan",
+       "img": "🧔"
+      }
+     ],
+     "a": 0,
+     "why": "Đức Chúa Trời sai thiên sứ bịt miệng các sư tử (Đa-ni-ên 6:22)."
+    },
+    {
+     "q": "Khi bị cấm cầu nguyện, Đa-ni-ên đã làm gì?",
+     "options": [
+      {
+       "t": "Trốn đi xa",
+       "img": "🙈"
+      },
+      {
+       "t": "Thôi cầu nguyện",
+       "img": "🛑"
+      },
+      {
+       "t": "Vẫn cầu nguyện như trước",
+       "img": "🙏"
+      }
+     ],
+     "a": 2,
+     "why": "Đa-ni-ên vẫn trung tín cầu nguyện như vẫn làm khi trước (Đa-ni-ên 6:10)."
+    }
+   ],
+   "memory": {
+    "ref": "Đa-ni-ên 6:22",
+    "book": "DAN",
+    "ch": 6,
+    "v": [
+     22,
+     22
+    ],
+    "text": "Đức Chúa Trời tôi đã sai thiên sứ Ngài, và bịt miệng các sư tử"
+   }
+  },
+  {
+   "id": "gio-na",
+   "title": "Giô-na và con cá lớn",
+   "emoji": "🐋",
+   "color": "#16a085",
+   "testament": "Cựu Ước",
+   "ref": "Giô-na 1–4",
+   "read": {
+    "book": "JON",
+    "ch": 1,
+    "v": 1
+   },
+   "pages": [
+    {
+     "img": "Book of Jonah Chapter 1-1 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Dân thành Ni-ni-ve rất gian ác. Đức Chúa Trời phán cùng Giô-na: “Hãy đi đến Ni-ni-ve và kêu gọi họ ăn năn.”"
+    },
+    {
+     "img": "Book of Jonah Chapter 1-2 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Nhưng Giô-na không muốn đi. Ông xuống một chiếc tàu đi Ta-rê-si, để trốn khỏi mặt Đức Giê-hô-va."
+    },
+    {
+     "img": "Book of Jonah Chapter 1-3 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Đức Chúa Trời khiến một trận bão lớn nổi lên. Sóng đánh mạnh đến nỗi chiếc tàu gần bị vỡ."
+    },
+    {
+     "img": "Book of Jonah Chapter 1-5 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Giô-na biết bão đến là vì mình. Các thủy thủ ném ông xuống biển, và biển liền yên lặng."
+    },
+    {
+     "img": "Book of Jonah Chapter 1-6 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Đức Giê-hô-va sắm sẵn một con cá lớn nuốt Giô-na. Ba ngày ba đêm trong bụng cá, Giô-na cầu nguyện, rồi Chúa khiến cá mửa ông ra trên đất khô."
+    },
+    {
+     "img": "Book of Jonah Chapter 3-2 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Lần nầy Giô-na vâng lời. Ông đi khắp thành Ni-ni-ve rao rằng: “Còn bốn mươi ngày nữa, Ni-ni-ve sẽ bị đổ xuống!”"
+    },
+    {
+     "img": "Book of Jonah Chapter 4-1 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Dân Ni-ni-ve tin Đức Chúa Trời, ăn năn và bỏ đường ác. Đức Chúa Trời thương xót và tha thứ cho họ."
+    },
+    {
+     "img": "Book of Jonah Chapter 4-2 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Giô-na ngồi dưới cái chòi ngoài thành, buồn bực vì Chúa tha cho Ni-ni-ve. Đức Chúa Trời dạy ông rằng Ngài thương xót hết thảy mọi người."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Đức Chúa Trời sai Giô-na đến thành nào?",
+     "options": [
+      {
+       "t": "Ta-rê-si",
+       "img": "⛵"
+      },
+      {
+       "t": "Giê-ru-sa-lem",
+       "img": "🏰"
+      },
+      {
+       "t": "Ni-ni-ve",
+       "img": "🏙️"
+      }
+     ],
+     "a": 2,
+     "why": "Chúa sai Giô-na đến thành lớn Ni-ni-ve (Giô-na 1:2)."
+    },
+    {
+     "q": "Con gì đã nuốt Giô-na?",
+     "options": [
+      {
+       "t": "Con cá sấu",
+       "img": "🐊"
+      },
+      {
+       "t": "Một con cá lớn",
+       "img": "🐋"
+      },
+      {
+       "t": "Con rùa",
+       "img": "🐢"
+      }
+     ],
+     "a": 1,
+     "why": "Đức Giê-hô-va sắm sửa một con cá lớn nuốt Giô-na (Giô-na 1:17)."
+    },
+    {
+     "q": "Khi nghe Giô-na rao giảng, dân Ni-ni-ve làm gì?",
+     "options": [
+      {
+       "t": "Tin Chúa và ăn năn",
+       "img": "🙏"
+      },
+      {
+       "t": "Đuổi ông đi",
+       "img": "😡"
+      },
+      {
+       "t": "Không thèm nghe",
+       "img": "😴"
+      }
+     ],
+     "a": 0,
+     "why": "Dân Ni-ni-ve tin Đức Chúa Trời và xây bỏ đường lối xấu (Giô-na 3:5, 10)."
+    }
+   ],
+   "memory": {
+    "ref": "Giô-na 4:2",
+    "book": "JON",
+    "ch": 4,
+    "v": [
+     2,
+     2
+    ],
+    "text": "Ngài là Đức Chúa Trời nhân từ, thương xót, chậm giận, giàu ơn"
+   }
+  },
+  {
+   "id": "giang-sinh",
+   "title": "Chúa Jêsus giáng sinh",
+   "emoji": "✨",
+   "color": "#d4a017",
+   "testament": "Tân Ước",
+   "ref": "Lu-ca 1–2; Ma-thi-ơ 2",
+   "read": {
+    "book": "LUK",
+    "ch": 2,
+    "v": 1
+   },
+   "pages": [
+    {
+     "img": "Gospel of Luke Chapter 1-13 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Thiên sứ Gáp-ri-ên hiện đến cùng một thiếu nữ tên là Ma-ri và nói: “Đừng sợ! Ngươi sẽ sanh một con trai và đặt tên là Jêsus.”"
+    },
+    {
+     "img": "Gospel of Luke Chapter 2-1 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Ma-ri và Giô-sép phải đi một chặng đường xa về thành Bết-lê-hem. Ma-ri sắp sanh em bé."
+    },
+    {
+     "img": "Gospel of Luke Chapter 2-2 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Nhà quán không còn chỗ. Ma-ri sanh con trai đầu lòng, lấy khăn bọc con và đặt nằm trong máng cỏ."
+    },
+    {
+     "img": "Gospel of Luke Chapter 2-3 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Đêm đó, mấy người chăn chiên đang canh bầy ngoài đồng. Bỗng thiên sứ hiện ra, ánh sáng chói lòa, họ rất sợ hãi."
+    },
+    {
+     "img": "Gospel of Luke Chapter 2-4 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Thiên sứ nói: “Đừng sợ chi! Hôm nay tại thành Đa-vít đã sanh cho các ngươi một Đấng Cứu thế, là Christ, là Chúa.”"
+    },
+    {
+     "img": "Gospel of Luke Chapter 2-5 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Các người chăn chiên vội vàng đi đến, thấy con trẻ nằm trong máng cỏ. Họ vui mừng ngợi khen Đức Chúa Trời."
+    },
+    {
+     "img": "Gospel of Matthew Chapter 2-1 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Ở phương đông, mấy thầy bác sĩ (những nhà thông thái) thấy một ngôi sao lạ. Họ theo ngôi sao đi tìm Vua mới sanh."
+    },
+    {
+     "img": "Gospel of Matthew Chapter 2-7 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Họ gặp con trẻ cùng Ma-ri, mẹ Ngài, liền sấp mình thờ lạy. Họ dâng vàng, nhũ hương và một dược."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Em bé Jêsus được đặt nằm ở đâu?",
+     "options": [
+      {
+       "t": "Chiếc giường đẹp",
+       "img": "🛏️"
+      },
+      {
+       "t": "Máng cỏ",
+       "img": "🌾"
+      },
+      {
+       "t": "Lâu đài",
+       "img": "🏰"
+      }
+     ],
+     "a": 1,
+     "why": "Ma-ri đặt con nằm trong máng cỏ, vì nhà quán không có chỗ (Lu-ca 2:7)."
+    },
+    {
+     "q": "Ai báo tin vui cho các người chăn chiên?",
+     "options": [
+      {
+       "t": "Thiên sứ",
+       "img": "👼"
+      },
+      {
+       "t": "Nhà vua",
+       "img": "👑"
+      },
+      {
+       "t": "Con chiên",
+       "img": "🐑"
+      }
+     ],
+     "a": 0,
+     "why": "Thiên sứ của Chúa báo tin: Đấng Cứu thế đã sanh ra (Lu-ca 2:9-11)."
+    },
+    {
+     "q": "Các thầy bác sĩ đi theo gì để tìm Chúa Jêsus?",
+     "options": [
+      {
+       "t": "Tấm bản đồ",
+       "img": "🗺️"
+      },
+      {
+       "t": "Con lạc đà",
+       "img": "🐫"
+      },
+      {
+       "t": "Ngôi sao",
+       "img": "⭐"
+      }
+     ],
+     "a": 2,
+     "why": "Ngôi sao đi trước họ cho đến chỗ con trẻ ở (Ma-thi-ơ 2:9)."
+    }
+   ],
+   "memory": {
+    "ref": "Lu-ca 2:11",
+    "book": "LUK",
+    "ch": 2,
+    "v": [
+     11,
+     11
+    ],
+    "text": "ấy là hôm nay tại thành Đa-vít đã sanh cho các ngươi một Đấng Cứu thế, là Christ, là Chúa."
+   }
+  },
+  {
+   "id": "nam-ngan-nguoi",
+   "title": "Chúa nuôi năm ngàn người",
+   "emoji": "🍞",
+   "color": "#e67e22",
+   "testament": "Tân Ước",
+   "ref": "Giăng 6:1–14",
+   "read": {
+    "book": "JHN",
+    "ch": 6,
+    "v": 1
+   },
+   "pages": [
+    {
+     "img": "Gospel of John Chapter 6-1 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Đoàn dân rất đông đi theo Chúa Jêsus, vì họ thấy Ngài chữa lành người bệnh."
+    },
+    {
+     "img": "Gospel of John Chapter 6-3 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Chúa Jêsus lên núi ngồi với các môn đồ. Ngài ngước mắt lên, thấy đoàn dân đông kéo đến cùng mình."
+    },
+    {
+     "img": "Gospel of John Chapter 6-4 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Chúa hỏi Phi-líp: “Chúng ta sẽ mua bánh ở đâu cho dân nầy ăn?” Phi-líp nói dù có nhiều tiền mua bánh cũng không đủ."
+    },
+    {
+     "img": "Gospel of John Chapter 6-6 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Anh-rê thưa: “Đây có một đứa con trai có năm cái bánh và hai con cá; nhưng đông người thế nầy thì thấm vào đâu?”"
+    },
+    {
+     "img": "Gospel of John Chapter 6-7 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Chúa Jêsus bảo mọi người ngồi xuống trên cỏ. Số đàn ông ước chừng năm ngàn người."
+    },
+    {
+     "img": "Gospel of John Chapter 6-8 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Ngài cầm lấy bánh, tạ ơn Đức Chúa Trời, rồi phân phát cho mọi người. Cá cũng vậy."
+    },
+    {
+     "img": "Gospel of John Chapter 6-9 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Ai nấy đều ăn no nê! Năm cái bánh và hai con cá đã đủ cho cả đoàn dân đông."
+    },
+    {
+     "img": "Gospel of John Chapter 6-10 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Các môn đồ lượm những miếng còn thừa, được đầy mười hai giỏ. Chúa Jêsus thật quyền năng biết bao!"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Cậu bé có bao nhiêu bánh và cá?",
+     "options": [
+      {
+       "t": "2 cái bánh, 5 con cá",
+       "img": "🐟"
+      },
+      {
+       "t": "5 cái bánh, 2 con cá",
+       "img": "🍞"
+      },
+      {
+       "t": "10 cái bánh, 10 con cá",
+       "img": "🧺"
+      }
+     ],
+     "a": 1,
+     "why": "Cậu bé có năm cái bánh mạch nha và hai con cá (Giăng 6:9)."
+    },
+    {
+     "q": "Trước khi chia bánh, Chúa Jêsus làm gì?",
+     "options": [
+      {
+       "t": "Tạ ơn Đức Chúa Trời",
+       "img": "🙏"
+      },
+      {
+       "t": "Đi mua thêm bánh",
+       "img": "🛒"
+      },
+      {
+       "t": "Đi nghỉ",
+       "img": "😴"
+      }
+     ],
+     "a": 0,
+     "why": "Đức Chúa Jêsus lấy bánh, tạ ơn rồi phân phát cho mọi người (Giăng 6:11)."
+    },
+    {
+     "q": "Sau khi mọi người ăn no, còn thừa bao nhiêu?",
+     "options": [
+      {
+       "t": "Không còn gì",
+       "img": "🚫"
+      },
+      {
+       "t": "Một miếng bánh",
+       "img": "🥖"
+      },
+      {
+       "t": "Mười hai giỏ đầy",
+       "img": "🧺"
+      }
+     ],
+     "a": 2,
+     "why": "Các môn đồ lượm được đầy mười hai giỏ bánh thừa (Giăng 6:13)."
+    }
+   ],
+   "memory": {
+    "ref": "Giăng 6:35",
+    "book": "JHN",
+    "ch": 6,
+    "v": [
+     35,
+     35
+    ],
+    "text": "Ta là bánh của sự sống; ai đến cùng ta chẳng hề đói"
+   }
+  },
+  {
+   "id": "xa-che",
+   "title": "Xa-chê trèo lên cây sung",
+   "emoji": "🌳",
+   "color": "#27ae60",
+   "testament": "Tân Ước",
+   "ref": "Lu-ca 19:1–10",
+   "read": {
+    "book": "LUK",
+    "ch": 19,
+    "v": 1
+   },
+   "pages": [
+    {
+     "img": "Gospel of Luke Chapter 19-1 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Ở thành Giê-ri-cô có một người tên là Xa-chê. Ông làm đầu những người thâu thuế và rất giàu, nhưng người ta không ưa ông."
+    },
+    {
+     "img": "Gospel of Luke Chapter 19-2 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Xa-chê muốn xem Chúa Jêsus là ai, nhưng ông thấp mà đoàn dân lại đông. Vậy ông chạy trước và trèo lên cây sung."
+    },
+    {
+     "img": "Gospel of Luke Chapter 19-3 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Đến chỗ ấy, Chúa Jêsus ngước lên và gọi: “Hỡi Xa-chê, hãy xuống cho mau, vì hôm nay ta phải ở nhà ngươi.”"
+    },
+    {
+     "img": "Gospel of Luke Chapter 19-4 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Xa-chê vội vàng xuống, vui mừng rước Chúa về nhà. Nhưng người ta lằm bằm: “Người nầy vào nhà kẻ có tội!”"
+    },
+    {
+     "img": "Gospel of Luke Chapter 19-5 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Xa-chê đứng trước mặt Chúa và thưa: “Tôi lấy nửa gia tài mà cho kẻ nghèo, và nếu đã làm thiệt hại ai, tôi sẽ đền gấp tư.”"
+    },
+    {
+     "img": "Gospel of Luke Chapter 19-6 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Chúa Jêsus phán: “Hôm nay sự cứu đã vào nhà nầy.” Vì Chúa đến để tìm và cứu kẻ bị mất."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Xa-chê trèo lên cây gì để xem Chúa Jêsus?",
+     "options": [
+      {
+       "t": "Cây dừa",
+       "img": "🌴"
+      },
+      {
+       "t": "Cây sung",
+       "img": "🌳"
+      },
+      {
+       "t": "Cây tre",
+       "img": "🎋"
+      }
+     ],
+     "a": 1,
+     "why": "Xa-chê chạy trước và trèo lên cây sung (Lu-ca 19:4)."
+    },
+    {
+     "q": "Vì sao Xa-chê phải trèo lên cây?",
+     "options": [
+      {
+       "t": "Vì ông thấp, mà đoàn dân lại đông",
+       "img": "📏"
+      },
+      {
+       "t": "Vì ông thích leo trèo",
+       "img": "🐒"
+      },
+      {
+       "t": "Để hái trái",
+       "img": "🍎"
+      }
+     ],
+     "a": 0,
+     "why": "Xa-chê không thấy được Chúa vì đoàn dân đông lắm, mà mình lại thấp (Lu-ca 19:3)."
+    },
+    {
+     "q": "Sau khi gặp Chúa, Xa-chê thay đổi thế nào?",
+     "options": [
+      {
+       "t": "Giữ hết tiền cho mình",
+       "img": "💰"
+      },
+      {
+       "t": "Giận dữ với mọi người",
+       "img": "😠"
+      },
+      {
+       "t": "Chia của cho người nghèo, đền gấp tư",
+       "img": "🎁"
+      }
+     ],
+     "a": 2,
+     "why": "Gặp Chúa Jêsus, lòng Xa-chê được đổi mới (Lu-ca 19:8-9)."
+    }
+   ],
+   "memory": {
+    "ref": "Lu-ca 19:10",
+    "book": "LUK",
+    "ch": 19,
+    "v": [
+     10,
+     10
+    ],
+    "text": "Bởi Con người đã đến tìm và cứu kẻ bị mất."
+   }
+  },
+  {
+   "id": "con-tro-ve",
+   "title": "Người cha nhân từ và đứa con trở về",
+   "emoji": "🤗",
+   "color": "#2563eb",
+   "testament": "Tân Ước",
+   "ref": "Lu-ca 15:11–24",
+   "read": {
+    "book": "LUK",
+    "ch": 15,
+    "v": 11
+   },
+   "pages": [
+    {
+     "img": "Gospel of Luke Chapter 15-2 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Chúa Jêsus kể chuyện: Một người kia có hai con trai. Người em xin cha chia phần gia tài cho mình."
+    },
+    {
+     "img": "Gospel of Luke Chapter 15-3 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Người em đi phương xa, ăn chơi hoang đàng, tiêu sạch hết tiền của."
+    },
+    {
+     "img": "Gospel of Luke Chapter 15-4 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Rồi xứ ấy bị đói lớn. Anh phải đi chăn heo, đói đến nỗi muốn ăn vỏ đậu của heo mà chẳng ai cho."
+    },
+    {
+     "img": "Gospel of Luke Chapter 15-5 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Anh tỉnh ngộ và nói: “Ta sẽ trở về cùng cha, thưa rằng: Tôi đã đặng tội với trời và với cha.”"
+    },
+    {
+     "img": "Gospel of Luke Chapter 15-6 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Khi anh còn ở đàng xa, người cha đã thấy, động lòng thương xót và chạy ra đón."
+    },
+    {
+     "img": "Gospel of Luke Chapter 15-7 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Cha ôm lấy cổ con mà hôn. Cha không trách mắng, nhưng tha thứ hết."
+    },
+    {
+     "img": "Gospel of Luke Chapter 15-8 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Cha cho con mặc áo tốt nhất, đeo nhẫn, mang giày và mở tiệc vui mừng. Đức Chúa Trời cũng yêu thương và đón nhận chúng ta như vậy!"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Người em đã tiêu tiền của mình thế nào?",
+     "options": [
+      {
+       "t": "Ăn chơi hoang đàng",
+       "img": "🎉"
+      },
+      {
+       "t": "Đi học",
+       "img": "🏫"
+      },
+      {
+       "t": "Cho người nghèo",
+       "img": "🎁"
+      }
+     ],
+     "a": 0,
+     "why": "Người em đi phương xa, ăn chơi hoang đàng, tiêu sạch gia tài (Lu-ca 15:13)."
+    },
+    {
+     "q": "Khi hết tiền, người em phải đi làm gì?",
+     "options": [
+      {
+       "t": "Chăn chiên",
+       "img": "🐑"
+      },
+      {
+       "t": "Chăn heo",
+       "img": "🐖"
+      },
+      {
+       "t": "Đánh cá",
+       "img": "🐟"
+      }
+     ],
+     "a": 1,
+     "why": "Anh bị sai ra đồng chăn heo (Lu-ca 15:15)."
+    },
+    {
+     "q": "Người cha làm gì khi thấy con trở về?",
+     "options": [
+      {
+       "t": "Đóng cửa lại",
+       "img": "🚪"
+      },
+      {
+       "t": "La mắng con",
+       "img": "😠"
+      },
+      {
+       "t": "Chạy ra ôm lấy con",
+       "img": "🏃"
+      }
+     ],
+     "a": 2,
+     "why": "Người cha động lòng thương xót, chạy ra ôm lấy cổ mà hôn (Lu-ca 15:20)."
+    }
+   ],
+   "memory": {
+    "ref": "Lu-ca 15:24",
+    "book": "LUK",
+    "ch": 15,
+    "v": [
+     24,
+     24
+    ],
+    "text": "con ta đây đã chết mà bây giờ lại sống, đã mất mà bây giờ lại thấy được."
+   }
+  },
+  {
+   "id": "song-lai",
+   "title": "Chúa Jêsus sống lại",
+   "emoji": "🌅",
+   "color": "#c2410c",
+   "testament": "Tân Ước",
+   "ref": "Lu-ca 23–24; Ma-thi-ơ 28",
+   "read": {
+    "book": "MAT",
+    "ch": 28,
+    "v": 1
+   },
+   "pages": [
+    {
+     "img": "Gospel of Luke Chapter 23-10 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Chúa Jêsus yêu thương chúng ta. Dù Ngài không hề phạm tội, người ta vẫn bắt Ngài vác thập tự giá."
+    },
+    {
+     "img": "Gospel of Luke Chapter 23-16 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Chúa Jêsus chịu chết trên thập tự giá để gánh tội lỗi của chúng ta. Trời tối tăm, ai nấy đều buồn bã."
+    },
+    {
+     "img": "Gospel of Mark Chapter 15-22 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Người ta chôn Chúa trong một cái mộ đá, lăn hòn đá lớn chận cửa mộ, và có lính canh giữ."
+    },
+    {
+     "img": "Gospel of John Chapter 20-1 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Sáng sớm ngày thứ nhất trong tuần, mấy người đàn bà mang thuốc thơm đến mộ."
+    },
+    {
+     "img": "Gospel of John Chapter 20-2 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Bỗng đất rúng động! Thiên sứ của Chúa từ trời xuống lăn hòn đá ra, lính canh sợ run rẩy."
+    },
+    {
+     "img": "Gospel of Mark Chapter 16-5 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Thiên sứ nói: “Đừng sợ! Ngài không ở đây đâu; Ngài sống lại rồi, như lời Ngài đã phán.”"
+    },
+    {
+     "img": "Gospel of Luke Chapter 24-7 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Các bà vừa vui vừa sợ, chạy đi báo tin. Kìa, chính Chúa Jêsus gặp họ và chào họ!"
+    },
+    {
+     "img": "Gospel of Luke Chapter 24-19 (Bible Illustrations by Sweet Media).jpg",
+     "set": "sweet",
+     "text": "Chúa Jêsus hiện ra cùng các môn đồ, ăn cá trước mặt họ. Ngài thật đã sống lại! Ha-lê-lu-gia!"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Ai lăn hòn đá ra khỏi cửa mộ?",
+     "options": [
+      {
+       "t": "Lính canh",
+       "img": "💂"
+      },
+      {
+       "t": "Thiên sứ của Chúa",
+       "img": "👼"
+      },
+      {
+       "t": "Mấy người đàn bà",
+       "img": "👩"
+      }
+     ],
+     "a": 1,
+     "why": "Thiên sứ của Chúa từ trời xuống lăn hòn đá ra (Ma-thi-ơ 28:2)."
+    },
+    {
+     "q": "Thiên sứ báo tin gì?",
+     "options": [
+      {
+       "t": "Ngài sống lại rồi!",
+       "img": "🌅"
+      },
+      {
+       "t": "Ngài đang ngủ",
+       "img": "😴"
+      },
+      {
+       "t": "Ngài đi xa rồi",
+       "img": "🚶"
+      }
+     ],
+     "a": 0,
+     "why": "“Ngài không ở đây đâu; Ngài sống lại rồi” (Ma-thi-ơ 28:6)."
+    },
+    {
+     "q": "Vì sao Chúa Jêsus chịu chết trên thập tự giá?",
+     "options": [
+      {
+       "t": "Vì Ngài yếu đuối",
+       "img": "😢"
+      },
+      {
+       "t": "Vì Ngài làm điều sai",
+       "img": "❓"
+      },
+      {
+       "t": "Vì Ngài yêu thương và gánh tội cho chúng ta",
+       "img": "❤️"
+      }
+     ],
+     "a": 2,
+     "why": "Đức Chúa Trời yêu thương thế gian đến nỗi ban Con một của Ngài (Giăng 3:16)."
+    }
+   ],
+   "memory": {
+    "ref": "Ma-thi-ơ 28:6",
+    "book": "MAT",
+    "ch": 28,
+    "v": [
+     6,
+     6
+    ],
+    "text": "Ngài không ở đây đâu; Ngài sống lại rồi, như lời Ngài đã phán."
+   }
+  }
+ ]
+}
