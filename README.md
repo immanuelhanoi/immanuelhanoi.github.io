@@ -100,6 +100,21 @@ Tóm tắt do AI viết nên có thể chưa chính xác hoàn toàn; app ghi r�
 - Chữ Kinh Thánh (Bản Truyền Thống 1926, phạm vi công cộng) do GitHub tự tải một lần vào `data/bible/` (`scripts/fetch-bible.mjs`); khi chưa có thì app mở bible.com.
 - Mỗi lần chạy, bài kiểm thử tự kiểm tra dữ liệu hành trình (sai vị trí đáp án, sai tên sách/chương…) trước khi đăng web.
 
+## Kinh Thánh thiếu nhi
+
+- Vào từ tab **Kinh Thánh** (thẻ “Kinh Thánh thiếu nhi”) hoặc Trang chủ. Mỗi truyện là một **sách tranh**: vuốt / chạm tranh / bấm ‹ › để lật trang, nút 🔊 đọc to (giọng tiếng Việt của điện thoại).
+  Cuối truyện có câu Kinh Thánh học thuộc (nút “Che bớt chữ để tập”), **3 câu đố vui chọn hình** và nút “Đọc trong Kinh Thánh”.
+  Truyện đã đọc và điểm đố vui lưu trên máy người dùng.
+- Nội dung trong `data/kids.json`: 13 truyện (Sáng tạo, Nô-ê, Áp-ra-ham, Giô-sép, Môi-se, Đa-vít, Đa-ni-ên, Giô-na, Giáng sinh,
+  Năm ngàn người, Xa-chê, Đứa con trở về, Chúa sống lại). Tên riêng theo Bản Truyền Thống 1926.
+- **Tranh**: bộ tranh Sweet Publishing (Jim Padgett) trên Wikimedia Commons, giấy phép **CC BY-SA 3.0** (dùng miễn phí, phải ghi nguồn).
+  Trang `#/thieu-nhi/nguon-tranh` trong app ghi nguồn và giấy phép của từng bộ tranh và từng bức tranh.
+- **Thêm truyện**: thêm vào `data/kids.json` (trường `img` = tên file trên Commons). Khi đẩy lên GitHub, workflow
+  **“Tải tranh Kinh Thánh thiếu nhi”** tự đọc giấy phép của từng file trên Commons (sai giấy phép thì từ chối), tải về, nén WebP rộng 1000px
+  và lưu vào `data/kids/img/`. Chạy tay: `node scripts/fetch-kids-images.mjs`.
+- Bài kiểm thử (`scripts/test/kids.test.mjs`) kiểm tra: 5–8 trang/truyện, 1–3 câu mỗi trang, vị trí đáp án, tên riêng không theo bản 1926,
+  câu học thuộc khớp nguyên văn Kinh Thánh, đủ tranh và tranh không quá nặng.
+
 ## Kinh Thánh & Sổ tay cảm nghĩ
 
 - Tab **Kinh Thánh**: tìm nhanh theo tham chiếu ("Giăng 3:16"), đọc theo sách/chương, đọc tiếp chỗ đang đọc, Hành trình, Sổ tay.
@@ -128,6 +143,7 @@ index.html, css/, js/       Giao diện web (js/config.js: địa chỉ web & li
 data/sermons.json           Chủ đề + bài thêm/sửa tay
 data/youtube.json           Video tự động từ kênh (do GitHub Actions ghi)
 data/verses.json            Câu Kinh Thánh cho thông báo
+data/kids.json, data/kids/  Kinh Thánh thiếu nhi (truyện + tranh)
 scripts/sync-youtube.mjs    Đồng bộ & phân loại video
 .github/workflows/          Tự động cập nhật, đăng web, build APK
 android/, ios/              Dự án app Android & iPhone (Capacitor)
