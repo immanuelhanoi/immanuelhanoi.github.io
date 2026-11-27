@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parseUsfm, cleanUsfm } from '../fetch-bible.mjs';
+import { parseUsfm, cleanUsfm, fixLegacyVni } from '../fetch-bible.mjs';
 
 // Markup seen in eBible USFM files: headings, paragraphs, poetry lines, footnotes, word markers, several verses per line
 const SAMPLE = String.raw`\id GEN Vietnamese Bible 1926
@@ -36,4 +36,18 @@ test('USFM to verses', () => {
 
 test('markup cleanup', () => {
   assert.equal(cleanUsfm(String.raw`\+w lời|x\+w* \x - \xo 1:1 \xt Giăng 1:1\x* Chúa`), 'lời Chúa');
+});
+
+// Real artifacts found in eBible vie1934
+test('legacy VNI capitals and kỳ', () => {
+  const cases = {
+    'Aáy vậy': 'Ấy vậy', 'Aân điển ta đủ': 'Ân điển ta đủ', 'Aùnh sáng': 'Ánh sáng', 'Oâng hãy đứng dậy': 'Ông hãy đứng dậy',
+    'Eân-na-than': 'Ên-na-than', 'Eùc-ba-tan': 'Éc-ba-tan', 'Oùc, vua Ba-san': 'Óc, vua Ba-san', 'Aït-ta-xét-xe': 'Ạt-ta-xét-xe',
+    'Oït-na': 'Ọt-na', 'Uûa?': 'Ủa?', 'Uùt-xơ': 'Út-xơ', 'Aên cắp': 'Ăn cắp', 'Aét tôi sẽ thuật': 'Ắt tôi sẽ thuật',
+    'Oáng bễ': 'Ống bễ', 'Eách-ra-hít': 'Ếch-ra-hít', 'Aâm phủ': 'Âm phủ',
+    'trong một k” ấy.': 'trong một kỳ ấy.', 'K” đã trọn': 'Kỳ đã trọn', 'ngọc hu”nh bích': 'ngọc huỳnh bích',
+  };
+  for (const [bad, good] of Object.entries(cases)) assert.equal(fixLegacyVni(bad), good, bad);
+  // real closing quotes and ordinary words stay as they are
+  for (const ok of ['“A-men” được?', 'của tôi”;', 'Đấng Yên ủi', 'Uống rượu', 'Đây là', 'Ai nấy', 'Em-ma-nu-ên', 'Ông']) assert.equal(fixLegacyVni(ok), ok);
 });

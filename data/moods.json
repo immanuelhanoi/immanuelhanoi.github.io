@@ -1,5 +1,5 @@
 {
-  "_huongdan": "Danh sách tâm trạng cho trang 'Tâm tình'. Câu Kinh Thánh: Bản Truyền Thống 1926 – nhờ ban biên tập dò lại. 'words': từ người dùng có thể gõ (không dấu, chữ thường). 'topics': chủ đề bài giảng liên quan. 'keywords': từ trong tiêu đề/tóm tắt bài giảng (không dấu). 'care': hiện lời nhắn chăm sóc sức khoẻ tinh thần. 'hymnWords': từ trong tên bài thánh ca (không dấu) để gợi ý thánh ca.",
+  "_huongdan": "Danh sách tâm trạng cho trang 'Tâm tình'. 'verseRefs': danh sách câu Kinh Thánh (chỉ ghi tham chiếu, vd \"Thi thiên 34:18\"); chữ được điền tự động từ Bản Truyền Thống 1926 bằng scripts/fill-verses.mjs. App chọn ngẫu nhiên 3 câu mỗi lần. 'words': từ người dùng có thể gõ (không dấu, chữ thường). 'topics': chủ đề bài giảng liên quan. 'keywords': từ trong tiêu đề/tóm tắt bài giảng (không dấu). 'care': hiện lời nhắn chăm sóc sức khoẻ tinh thần. 'hymnWords': từ trong tên bài thánh ca (không dấu) để gợi ý thánh ca.",
   "moods": [
     {
       "id": "chan-nan",
@@ -45,11 +45,11 @@
       "verses": [
         {
           "ref": "Thi thiên 34:18",
-          "text": "Đức Giê-hô-va ở gần những người có lòng đau thương, và cứu những kẻ có tâm hồn thống-hối."
+          "text": "Đức Giê-hô-va ở gần những người có lòng đau thương, Và cứu kẻ nào có tâm hồn thống-hối."
         },
         {
           "ref": "Thi thiên 42:11",
-          "text": "Hỡi linh hồn ta, cớ sao ngươi sờn ngã và bồn chồn trong mình ta? Hãy trông cậy nơi Đức Chúa Trời; ta sẽ còn ngợi khen Ngài nữa; Ngài là sự cứu rỗi của mặt ta, và là Đức Chúa Trời ta."
+          "text": "Hỡi linh hồn ta, cớ sao ngươi sờn ngã và bồn chồn trong mình ta? Hãy trông cậy nơi Đức Chúa Trời; ta sẽ còn khen ngợi Ngài nữa: Ngài là sự cứu rỗi của mặt ta, và là Đức Chúa Trời ta."
         },
         {
           "ref": "Ma-thi-ơ 11:28",
@@ -57,11 +57,63 @@
         },
         {
           "ref": "2 Cô-rinh-tô 4:8-9",
-          "text": "Chúng tôi bị ép đủ cách, nhưng không đến cùng; bị túng thế, nhưng không ngã lòng; bị bắt bớ, nhưng không đến bỏ; bị đánh đập, nhưng không đến chết mất."
+          "text": "Chúng tôi bị ép đủ cách, nhưng không đến cùng; bị túng thế nhưng không ngã lòng; bị bắt bớ, nhưng không đến bỏ; bị đánh đập, nhưng không đến chết mất."
         },
         {
           "ref": "Ca thương 3:22-23",
-          "text": "Ấy là nhờ sự nhân từ của Đức Giê-hô-va mà chúng ta chưa tuyệt. Vì sự thương xót của Ngài chẳng dứt. Mỗi buổi sáng thì lại mới luôn, sự thành tín Ngài là lớn lắm."
+          "text": "Ấy là nhờ sự nhân từ Đức Giê-hô-va mà chúng ta chưa tuyệt. Vì sự thương xót của Ngài chẳng dứt. Mỗi buổi sáng thì lại mới luôn, sự thành tín Ngài là lớn lắm."
+        },
+        {
+          "ref": "Thi thiên 147:3",
+          "text": "Chữa lành người có lòng đau thương, Và bó vít của họ."
+        },
+        {
+          "ref": "Ê-sai 41:10",
+          "text": "Đừng sợ, vì ta ở với ngươi; chớ kinh khiếp, vì ta là Đức Chúa Trời ngươi! Ta sẽ bổ sức cho ngươi; phải, ta sẽ giúp đỡ ngươi, lấy tay hữu công bình ta mà nâng đỡ ngươi."
+        },
+        {
+          "ref": "Ê-sai 43:2",
+          "text": "Khi ngươi vượt qua các dòng nước, ta sẽ ở cùng; khi ngươi lội qua sông, sẽ chẳng che lấp. Khi ngươi bước qua lửa, sẽ chẳng bị cháy, ngọn lửa chẳng đốt ngươi."
+        },
+        {
+          "ref": "Thi thiên 30:5",
+          "text": "Vì sự giận Ngài chỉ trong một lúc, Còn ơn của Ngài có trọn một đời: Sự khóc lóc đến trọ ban đêm, Nhưng buổi sáng bèn có sự vui mừng."
+        },
+        {
+          "ref": "Thi thiên 40:1-2",
+          "text": "Tôi nhịn nhục trông đợi Đức Giê-hô-va, Ngài nghiêng qua nghe tiếng kêu cầu của tôi. Ngài cũng đem tôi lên khỏi hầm gớm ghê, Khỏi vũng bùn lấm; Ngài đặt chân tôi trên hòn đá, Và làm cho bước tôi vững bền."
+        },
+        {
+          "ref": "Rô-ma 15:13",
+          "text": "Vậy xin Đức Chúa Trời của sự trông cậy, làm cho anh em đầy dẫy mọi điều vui vẻ và mọi điều bình an trong đức tin, hầu cho anh em nhờ quyền phép Đức Thánh Linh được dư dật sự trông cậy!"
+        },
+        {
+          "ref": "2 Cô-rinh-tô 4:16-17",
+          "text": "Vậy nên chúng ta chẳng ngã lòng, dầu người bề ngoài hư nát, nhưng người bề trong cứ đổi mới càng ngày càng hơn. Vì sự hoạn nạn nhẹ và tạm của chúng ta sanh cho chúng ta sự vinh hiển cao trọng đời đời, vô lượng, vô biên,"
+        },
+        {
+          "ref": "Thi thiên 73:26",
+          "text": "Thịt và lòng tôi bị tiêu hao; Nhưng Đức Chúa Trời là sức lực của lòng tôi, và là phần tôi đến đời đời."
+        },
+        {
+          "ref": "Giê-rê-mi 29:11",
+          "text": "Đức Giê-hô-va phán: Vì ta biết ý tưởng ta nghĩ đối cùng các ngươi, là ý tưởng bình an, không phải tai họa, để cho các ngươi được sự trông cậy trong lúc cuối cùng của mình."
+        },
+        {
+          "ref": "Thi thiên 121:1-2",
+          "text": "Tôi ngước mắt lên trên núi: Sự tiếp trợ tôi đến từ đâu? Sự tiếp trợ tôi đến từ Đức Giê-hô-va, Là Đấng đã dựng nên trời và đất."
+        },
+        {
+          "ref": "Ma-thi-ơ 5:4",
+          "text": "Phước cho những kẻ than khóc, vì sẽ được yên ủi!"
+        },
+        {
+          "ref": "Thi thiên 3:3",
+          "text": "Nhưng, hỡi Đức Giê-hô-va, Ngài là cái khiên chở che tôi; Ngài là sự vinh hiển tôi, và là Đấng làm cho tôi ngước đầu lên."
+        },
+        {
+          "ref": "Khải huyền 21:4",
+          "text": "Ngài sẽ lau ráo hết nước mắt khỏi mắt chúng, sẽ không có sự chết, cũng không có than khóc, kêu ca, hay là đau đớn nữa; vì những sự thứ nhất đã qua rồi."
         }
       ],
       "hymnWords": [
@@ -75,6 +127,26 @@
         "chua o gan",
         "chang lia",
         "loi hua"
+      ],
+      "verseRefs": [
+        "Thi thiên 34:18",
+        "Thi thiên 42:11",
+        "Ma-thi-ơ 11:28",
+        "2 Cô-rinh-tô 4:8-9",
+        "Ca thương 3:22-23",
+        "Thi thiên 147:3",
+        "Ê-sai 41:10",
+        "Ê-sai 43:2",
+        "Thi thiên 30:5",
+        "Thi thiên 40:1-2",
+        "Rô-ma 15:13",
+        "2 Cô-rinh-tô 4:16-17",
+        "Thi thiên 73:26",
+        "Giê-rê-mi 29:11",
+        "Thi thiên 121:1-2",
+        "Ma-thi-ơ 5:4",
+        "Thi thiên 3:3",
+        "Khải huyền 21:4"
       ]
     },
     {
@@ -116,15 +188,67 @@
         },
         {
           "ref": "1 Phi-e-rơ 5:7",
-          "text": "Lại hãy trao mọi điều lo lắng mình cho Ngài, vì Ngài hay săn sóc anh em."
+          "text": "lại hãy trao mọi điều lo lắng mình cho Ngài, vì Ngài hay săn sóc anh em."
         },
         {
           "ref": "Ma-thi-ơ 6:34",
-          "text": "Vậy, chớ lo lắng chi về ngày mai; vì ngày mai sẽ tự lo về việc ngày mai. Sự khó nhọc ngày nào đủ cho ngày ấy."
+          "text": "Vậy, chớ lo lắng chi về ngày mai; vì ngày mai sẽ lo về việc ngày mai. Sự khó nhọc ngày nào đủ cho ngày ấy."
         },
         {
           "ref": "Giăng 14:27",
           "text": "Ta để sự bình an lại cho các ngươi; ta ban sự bình an ta cho các ngươi; ta cho các ngươi sự bình an chẳng phải như thế gian cho. Lòng các ngươi chớ bối rối và đừng sợ hãi."
+        },
+        {
+          "ref": "Ma-thi-ơ 6:26",
+          "text": "Hãy xem loài chim trời: chẳng có gieo, gặt cũng chẳng có thâu trữ vào kho tàng, mà Cha các ngươi trên trời nuôi nó. Các ngươi há chẳng phải là quí trọng hơn loài chim sao?"
+        },
+        {
+          "ref": "Ê-sai 26:3",
+          "text": "Người nào để trí mình nương dựa nơi Ngài, thì Ngài sẽ gìn giữ người trong sự bình yên trọn vẹn, vì người nhờ cậy Ngài."
+        },
+        {
+          "ref": "Thi thiên 55:22",
+          "text": "Hãy trao gánh nặng ngươi cho Đức Giê-hô-va, Ngài sẽ nâng đỡ ngươi; Ngài sẽ chẳng hề cho người công bình bị rúng động."
+        },
+        {
+          "ref": "Thi thiên 94:19",
+          "text": "Khi tư tưởng bộn bề trong lòng tôi, Thì sự an ủi Ngài làm vui vẻ linh hồn tôi."
+        },
+        {
+          "ref": "Châm ngôn 12:25",
+          "text": "Sự buồn rầu ở nơi lòng người làm cho nao sờn; Nhưng một lời lành khiến lòng vui vẻ."
+        },
+        {
+          "ref": "Ma-thi-ơ 11:29",
+          "text": "Ta có lòng nhu mì, khiêm nhường; nên hãy gánh lấy ách của ta, và học theo ta; thì linh hồn các ngươi sẽ được yên nghỉ."
+        },
+        {
+          "ref": "Thi thiên 4:8",
+          "text": "Hỡi Đức Giê-hô-va, tôi sẽ nằm và ngủ bình an; Vì chỉ một mình Ngài làm cho tôi được ở yên ổn."
+        },
+        {
+          "ref": "Lu-ca 12:25",
+          "text": "Có ai trong các ngươi lo lắng mà làm cho đời mình dài thêm một khắc không?"
+        },
+        {
+          "ref": "Giăng 16:33",
+          "text": "Ta đã bảo các ngươi những điều đó, hầu cho các ngươi có lòng bình yên trong ta. Các ngươi sẽ có sự hoạn nạn trong thế gian, nhưng hãy cứ vững lòng, ta đã thắng thế gian rồi!"
+        },
+        {
+          "ref": "2 Tê-sa-lô-ni-ca 3:16",
+          "text": "Nguyền xin chính Chúa bình an ban sự bình an cho anh em trong mọi khi, đủ mọi cách! Lại xin Chúa ở cùng anh em hết thảy!"
+        },
+        {
+          "ref": "Thi thiên 46:10",
+          "text": "Hãy yên lặng và biết rằng ta là Đức Chúa Trời; Ta sẽ được tôn cao trong các nước, cũng sẽ được tôn cao trên đất."
+        },
+        {
+          "ref": "Ê-sai 40:29",
+          "text": "Ngài ban sức mạnh cho kẻ nhọc nhằn, thêm lực lượng cho kẻ chẳng có sức."
+        },
+        {
+          "ref": "Thi thiên 56:3",
+          "text": "Trong ngày sợ hãi, Tôi sẽ để lòng nhờ cậy nơi Chúa."
         }
       ],
       "hymnWords": [
@@ -136,6 +260,25 @@
         "em diu",
         "an nghi",
         "chang lo"
+      ],
+      "verseRefs": [
+        "Phi-líp 4:6-7",
+        "1 Phi-e-rơ 5:7",
+        "Ma-thi-ơ 6:34",
+        "Giăng 14:27",
+        "Ma-thi-ơ 6:26",
+        "Ê-sai 26:3",
+        "Thi thiên 55:22",
+        "Thi thiên 94:19",
+        "Châm ngôn 12:25",
+        "Ma-thi-ơ 11:29",
+        "Thi thiên 4:8",
+        "Lu-ca 12:25",
+        "Giăng 16:33",
+        "2 Tê-sa-lô-ni-ca 3:16",
+        "Thi thiên 46:10",
+        "Ê-sai 40:29",
+        "Thi thiên 56:3"
       ]
     },
     {
@@ -181,7 +324,59 @@
         },
         {
           "ref": "Thi thiên 27:1",
-          "text": "Đức Giê-hô-va là ánh sáng và là sự cứu rỗi tôi: tôi sẽ sợ ai? Đức Giê-hô-va là đồn lũy của mạng sống tôi: tôi sẽ hãi hùng ai?"
+          "text": "Đức Giê-hô-va là ánh sáng và là sự cứu rỗi tôi: Tôi sẽ sợ ai? Đức Giê-hô-va là đồn lũy của mạng sống tôi: Tôi sẽ hãi hùng ai?"
+        },
+        {
+          "ref": "Thi thiên 23:4",
+          "text": "Dầu khi tôi đi trong trũng bóng chết, Tôi sẽ chẳng sợ tai họa nào; vì Chúa ở cùng tôi; Cây trượng và cây gậy của Chúa an ủi tôi."
+        },
+        {
+          "ref": "Thi thiên 56:3",
+          "text": "Trong ngày sợ hãi, Tôi sẽ để lòng nhờ cậy nơi Chúa."
+        },
+        {
+          "ref": "Thi thiên 46:1-2",
+          "text": "Đức Chúa Trời là nơi nương náu và sức lực của chúng tôi, Ngài sẵn giúp đỡ trong cơn gian truân. Vì vậy, chúng tôi chẳng sợ dầu đất bị biến cải, Núi lay động và bị quăng vào lòng biển;"
+        },
+        {
+          "ref": "Ê-sai 43:1",
+          "text": "Bây giờ, hỡi Gia-cốp! Đức Giê-hô-va là Đấng đã dựng nên ngươi, hỡi Y-sơ-ra-ên! Ngài là Đấng đã tạo thành ngươi, phán như vầy: Đừng sợ, vì ta đã chuộc ngươi. Ta đã lấy tên ngươi gọi ngươi; ngươi thuộc về ta."
+        },
+        {
+          "ref": "Phục truyền luật lệ ký 31:6",
+          "text": "Hãy vững lòng bền chí; chớ sợ chi và chớ kinh khủng trước mặt các dân đó; vì Giê-hô-va Đức Chúa Trời ngươi đi cùng ngươi; Ngài chẳng lìa khỏi ngươi, chẳng từ bỏ ngươi đâu."
+        },
+        {
+          "ref": "Thi thiên 91:1-2",
+          "text": "Người nào ở nơi kín đáo của Đấng Chí cao, Sẽ được hằng ở dưới bóng của Đấng Toàn năng. Tôi nói về Đức Giê-hô-va rằng: Ngài là nơi nương náu tôi, và là đồn lũy tôi; Cũng là Đức Chúa Trời tôi, tôi tin cậy nơi Ngài."
+        },
+        {
+          "ref": "Thi thiên 118:6",
+          "text": "Đức Giê-hô-va binh vực tôi, tôi chẳng sợ; Loài người sẽ làm chi tôi?"
+        },
+        {
+          "ref": "Hê-bơ-rơ 13:6",
+          "text": "Như vậy, chúng ta được lấy lòng tin chắc mà nói rằng: Chúa giúp đỡ tôi, tôi không sợ chi hết. Người đời làm chi tôi được?"
+        },
+        {
+          "ref": "1 Giăng 4:18",
+          "text": "Quyết chẳng có điều sợ hãi trong sự yêu thương, nhưng sự yêu thương trọn vẹn thì cắt bỏ sự sợ hãi; vì sự sợ hãi có hình phạt, và kẻ đã sợ hãi thì không được trọn vẹn trong sự yêu thương."
+        },
+        {
+          "ref": "Thi thiên 34:4",
+          "text": "Tôi đã tìm cầu Đức Giê-hô-va, Ngài đáp lại tôi, Giải cứu tôi khỏi các đều sợ hãi."
+        },
+        {
+          "ref": "Ê-sai 35:4",
+          "text": "Hãy bảo những kẻ có lòng sợ hãi rằng: Khá vững lòng, đừng sợ nữa! Đây nầy, Đức Chúa Trời các ngươi sẽ lấy sự báo thù mà đến, tức là sự báo trả của Đức Chúa Trời. Chính Ngài sẽ đến và cứu các ngươi!"
+        },
+        {
+          "ref": "Mác 5:36",
+          "text": "Nhưng Đức Chúa Jêsus chẳng màng đến lời ấy, phán cùng cai nhà hội rằng: Đừng sợ, chỉ tin mà thôi."
+        },
+        {
+          "ref": "Giăng 14:1",
+          "text": "Lòng các ngươi chớ hề bối rối; hãy tin Đức Chúa Trời, cũng hãy tin ta nữa."
         }
       ],
       "hymnWords": [
@@ -194,6 +389,25 @@
         "dung so",
         "an toan",
         "tay chua"
+      ],
+      "verseRefs": [
+        "Ê-sai 41:10",
+        "Giô-suê 1:9",
+        "2 Ti-mô-thê 1:7",
+        "Thi thiên 27:1",
+        "Thi thiên 23:4",
+        "Thi thiên 56:3",
+        "Thi thiên 46:1-2",
+        "Ê-sai 43:1",
+        "Phục truyền luật lệ ký 31:6",
+        "Thi thiên 91:1-2",
+        "Thi thiên 118:6",
+        "Hê-bơ-rơ 13:6",
+        "1 Giăng 4:18",
+        "Thi thiên 34:4",
+        "Ê-sai 35:4",
+        "Mác 5:36",
+        "Giăng 14:1"
       ]
     },
     {
@@ -228,15 +442,67 @@
       "verses": [
         {
           "ref": "Hê-bơ-rơ 13:5",
-          "text": "…vì chính Đức Chúa Trời có phán rằng: Ta sẽ chẳng lìa ngươi đâu, chẳng bỏ ngươi đâu."
+          "text": "Chớ tham tiền; hãy lấy điều mình có làm đủ rồi, vì chính Đức Chúa Trời có phán rằng: Ta sẽ chẳng lìa ngươi đâu, chẳng bỏ ngươi đâu."
         },
         {
           "ref": "Thi thiên 23:4",
-          "text": "Dầu khi tôi đi trong trũng bóng chết, tôi sẽ chẳng sợ tai họa nào; vì Chúa ở cùng tôi: Cây trượng và cây gậy của Chúa an ủi tôi."
+          "text": "Dầu khi tôi đi trong trũng bóng chết, Tôi sẽ chẳng sợ tai họa nào; vì Chúa ở cùng tôi; Cây trượng và cây gậy của Chúa an ủi tôi."
         },
         {
           "ref": "Ma-thi-ơ 28:20",
-          "text": "…Và nầy, ta thường ở cùng các ngươi luôn cho đến tận thế."
+          "text": "và dạy họ giữ hết cả mọi điều mà ta đã truyền cho các ngươi. Và nầy, ta thường ở cùng các ngươi luôn cho đến tận thế."
+        },
+        {
+          "ref": "Phục truyền luật lệ ký 31:8",
+          "text": "Chính Đức Giê-hô-va sẽ đi trước ngươi, Ngài sẽ ở cùng ngươi, chẳng lìa khỏi ngươi, chẳng từ bỏ ngươi đâu. Chớ sợ, và chớ kinh khủng."
+        },
+        {
+          "ref": "Thi thiên 27:10",
+          "text": "Khi cha mẹ bỏ tôi đi, Thì Đức Giê-hô-va sẽ tiếp nhận tôi."
+        },
+        {
+          "ref": "Ê-sai 49:15-16",
+          "text": "Đàn bà há dễ quên con mình cho bú, không thương đến con trai ruột mình sao? Dầu đàn bà quên con mình, ta cũng chẳng quên ngươi. Nầy ta đã chạm ngươi trong lòng bàn tay ta; các tường thành ngươi thường ở trước mặt ta luôn."
+        },
+        {
+          "ref": "Thi thiên 68:6",
+          "text": "Đức Chúa Trời làm cho kẻ cô độc có nhà ở, Đem kẻ bị tù ra hưởng được may mắn; Song những kẻ phản nghịch phải ở đất khô khan."
+        },
+        {
+          "ref": "Giăng 14:18",
+          "text": "Ta không để cho các ngươi mồ côi đâu, ta sẽ đến cùng các ngươi."
+        },
+        {
+          "ref": "Thi thiên 139:7-10",
+          "text": "Tôi sẽ đi đâu xa Thần Chúa? Tôi sẽ trốn đâu khỏi mặt Chúa? Nếu tôi lên trời, Chúa ở tại đó, Ví tôi nằm dưới âm-phủ, kìa, Chúa cũng có ở đó. Nhược bằng tôi lấy cánh hừng đông, Bay qua ở tại cuối cùng biển, Tại đó tay Chúa cũng sẽ dẫn dắt tôi, Tay hữu Chúa sẽ nắm giữ tôi."
+        },
+        {
+          "ref": "Ê-sai 43:4",
+          "text": "Vì ta đã coi ngươi là quí báu, đáng chuộng, và ta đã yêu ngươi, nên ta sẽ ban những người thế ngươi, và các dân tộc thay mạng sống ngươi."
+        },
+        {
+          "ref": "Rô-ma 8:38-39",
+          "text": "Vì tôi chắc rằng bất kỳ sự chết, sự sống, các thiên sứ, các kẻ cầm quyền, việc bây giờ, việc hầu đến, quyền phép, bề cao, hay là bề sâu, hoặc một vật nào, chẳng có thể phân rẽ chúng ta khỏi sự yêu thương mà Đức Chúa Trời đã chứng cho chúng ta trong Đức Chúa Jêsus Christ, là Chúa chúng ta."
+        },
+        {
+          "ref": "Thi thiên 25:16",
+          "text": "Cầu xin Chúa hãy đoái xem tôi và thương xót tôi, Vì tôi một mình và khốn khổ."
+        },
+        {
+          "ref": "Gia-cơ 4:8",
+          "text": "Hãy đến gần Đức Chúa Trời, thì Ngài sẽ đến gần anh em. Hỡi kẻ có tội, hãy lau tay mình, có ai hai lòng, hãy làm sạch lòng đi;"
+        },
+        {
+          "ref": "Thi thiên 145:18",
+          "text": "Đức Giê-hô-va ở gần mọi người cầu khẩn Ngài. Tức ở gần mọi người có lòng thành thực cầu khẩn Ngài."
+        },
+        {
+          "ref": "Ê-sai 41:13",
+          "text": "Vì ta, là Giê-hô-va Đức Chúa Trời ngươi, sẽ nắm tay hữu ngươi, và phán cùng ngươi rằng: Đừng sợ, ta sẽ giúp đỡ ngươi;"
+        },
+        {
+          "ref": "Giăng 15:15",
+          "text": "Ta chẳng gọi các ngươi là đầy tớ nữa, vì đầy tớ chẳng biết điều chủ mình làm; nhưng ta đã gọi các ngươi là bạn hữu ta, vì ta từng tỏ cho các ngươi biết mọi điều ta đã nghe nơi Cha ta."
         }
       ],
       "hymnWords": [
@@ -248,6 +514,24 @@
         "ben toi",
         "ben chua",
         "gan chua"
+      ],
+      "verseRefs": [
+        "Hê-bơ-rơ 13:5",
+        "Thi thiên 23:4",
+        "Ma-thi-ơ 28:20",
+        "Phục truyền luật lệ ký 31:8",
+        "Thi thiên 27:10",
+        "Ê-sai 49:15-16",
+        "Thi thiên 68:6",
+        "Giăng 14:18",
+        "Thi thiên 139:7-10",
+        "Ê-sai 43:4",
+        "Rô-ma 8:38-39",
+        "Thi thiên 25:16",
+        "Gia-cơ 4:8",
+        "Thi thiên 145:18",
+        "Ê-sai 41:13",
+        "Giăng 15:15"
       ]
     },
     {
@@ -291,6 +575,54 @@
         {
           "ref": "Phi-líp 4:13",
           "text": "Tôi làm được mọi sự nhờ Đấng ban thêm sức cho tôi."
+        },
+        {
+          "ref": "Ê-sai 40:29",
+          "text": "Ngài ban sức mạnh cho kẻ nhọc nhằn, thêm lực lượng cho kẻ chẳng có sức."
+        },
+        {
+          "ref": "Ga-la-ti 6:9",
+          "text": "Chớ mệt nhọc về sự làm lành, vì nếu chúng ta không trễ nải, thì đến kỳ chúng ta sẽ gặt."
+        },
+        {
+          "ref": "Thi thiên 23:2-3",
+          "text": "Ngài khiến tôi an nghỉ nơi đồng cỏ xanh tươi, Dẫn tôi đến mé nước bình tịnh. Ngài bổ lại linh hồn tôi, Dẫn tôi vào các lối công bình, vì cớ danh Ngài."
+        },
+        {
+          "ref": "2 Cô-rinh-tô 12:9",
+          "text": "Nhưng Chúa phán rằng: Ân điển ta đủ cho ngươi rồi, vì sức mạnh của ta nên trọn vẹn trong sự yếu đuối. Vậy, tôi sẽ rất vui lòng khoe mình về sự yếu đuối tôi, hầu cho sức mạnh của Đấng Christ ở trong tôi."
+        },
+        {
+          "ref": "Thi thiên 73:26",
+          "text": "Thịt và lòng tôi bị tiêu hao; Nhưng Đức Chúa Trời là sức lực của lòng tôi, và là phần tôi đến đời đời."
+        },
+        {
+          "ref": "Giê-rê-mi 31:25",
+          "text": "Vì ta đã làm cho lòng mệt mỏi được no nê, và mỗi lòng buồn rầu lại được đầy dẫy."
+        },
+        {
+          "ref": "Thi thiên 55:22",
+          "text": "Hãy trao gánh nặng ngươi cho Đức Giê-hô-va, Ngài sẽ nâng đỡ ngươi; Ngài sẽ chẳng hề cho người công bình bị rúng động."
+        },
+        {
+          "ref": "Thi thiên 127:2",
+          "text": "Uổng công thay cho các ngươi thức dậy sớm, đi ngủ trễ, Và ăn bánh lao khổ; Chúa cũng ban giấc ngủ cho kẻ Ngài yêu mến bằng vậy."
+        },
+        {
+          "ref": "Ma-thi-ơ 11:29-30",
+          "text": "Ta có lòng nhu mì, khiêm nhường; nên hãy gánh lấy ách của ta, và học theo ta; thì linh hồn các ngươi sẽ được yên nghỉ. Vì ách ta dễ chịu và gánh ta nhẹ nhàng."
+        },
+        {
+          "ref": "Xuất Ê-díp-tô ký 33:14",
+          "text": "Đức Giê-hô-va đáp rằng: Chính mình ta sẽ đi cùng ngươi, và ta sẽ cho ngươi an nghỉ."
+        },
+        {
+          "ref": "Ê-sai 30:15",
+          "text": "Vả, Chúa Giê-hô-va, là Đấng Thánh của Y-sơ-ra-ên, có phán như vầy: Các ngươi sẽ được rỗi, là tại trở lại và yên nghỉ; các ngươi sẽ được sức mạnh, là tại yên lặng và trông cậy. Nhưng các ngươi đã không muốn thế!"
+        },
+        {
+          "ref": "Thi thiên 62:1",
+          "text": "Linh hồn tôi nghỉ an nơi một mình Đức Chúa Trời; Sự cứu rỗi tôi từ Ngài mà đến."
         }
       ],
       "hymnWords": [
@@ -300,6 +632,23 @@
         "ganh nang",
         "mat moi",
         "an nghi"
+      ],
+      "verseRefs": [
+        "Ê-sai 40:31",
+        "Ma-thi-ơ 11:28",
+        "Phi-líp 4:13",
+        "Ê-sai 40:29",
+        "Ga-la-ti 6:9",
+        "Thi thiên 23:2-3",
+        "2 Cô-rinh-tô 12:9",
+        "Thi thiên 73:26",
+        "Giê-rê-mi 31:25",
+        "Thi thiên 55:22",
+        "Thi thiên 127:2",
+        "Ma-thi-ơ 11:29-30",
+        "Xuất Ê-díp-tô ký 33:14",
+        "Ê-sai 30:15",
+        "Thi thiên 62:1"
       ]
     },
     {
@@ -339,11 +688,63 @@
         },
         {
           "ref": "Rô-ma 8:1",
-          "text": "Cho nên hiện nay chẳng còn có sự đoán phạt nào cho những kẻ ở trong Đức Chúa Jêsus Christ."
+          "text": "Cho nên hiện nay chẳng còn có sự đoán phạt nào cho những kẻ ở trong Đức Chúa Jêsus Christ;"
         },
         {
           "ref": "2 Cô-rinh-tô 5:17",
-          "text": "Vậy, nếu ai ở trong Đấng Christ, thì nấy là người dựng nên mới; những sự cũ đã qua đi, nầy, mọi sự đều trở nên mới."
+          "text": "Vậy, nếu ai ở trong Đấng Christ, thì nấy là người dựng nên mới; những sự cũ đã qua đi, nầy mọi sự đều trở nên mới."
+        },
+        {
+          "ref": "Thi thiên 103:12",
+          "text": "Phương đông xa cách phương tây bao nhiêu, Thì Ngài đã đem sự vi phạm chúng tôi khỏi xa chúng tôi bấy nhiêu."
+        },
+        {
+          "ref": "Ê-sai 1:18",
+          "text": "Đức Giê-hô-va phán: Bây giờ hãy đến, cho chúng ta biện luận cùng nhau. Dầu tội các ngươi như hồng điều, sẽ trở nên trắng như tuyết; dầu đỏ như son, sẽ trở nên trắng như lông chiên."
+        },
+        {
+          "ref": "Thi thiên 51:10",
+          "text": "Đức Chúa Trời ôi! xin hãy dựng nên trong tôi một lòng trong sạch, Và làm cho mới lại trong tôi một thần linh ngay thẳng."
+        },
+        {
+          "ref": "Ê-phê-sô 1:7",
+          "text": "Ấy là trong Đấng Christ, chúng ta được cứu chuộc bởi huyết Ngài, được tha tội, theo sự dư dật của ân điển Ngài,"
+        },
+        {
+          "ref": "Mi-chê 7:18-19",
+          "text": "Ai là Đức Chúa Trời giống như Ngài, tha thứ sự gian ác, và bỏ qua sự phạm pháp của dân sót của sản nghiệp Ngài? Ngài không cưu giận đời đời, vì Ngài lấy sự nhân từ làm vui thích. Ngài sẽ còn thương xót chúng tôi, giập sự gian ác chúng tôi dưới chân Ngài; và ném hết thảy tội lỗi chúng nó xuống đáy biển."
+        },
+        {
+          "ref": "Rô-ma 5:8",
+          "text": "Nhưng Đức Chúa Trời tỏ lòng yêu thương Ngài đối với chúng ta, khi chúng ta còn là người có tội, thì Đấng Christ vì chúng ta chịu chết."
+        },
+        {
+          "ref": "Ê-sai 43:25",
+          "text": "Ấy chính ta, là Đấng vì mình ta mà xóa sự phạm tội ngươi; ta sẽ không nhớ đến tội lỗi ngươi nữa."
+        },
+        {
+          "ref": "Lu-ca 15:7",
+          "text": "Ta nói cùng các ngươi, trên trời cũng như vậy, sẽ vui mừng cho một kẻ có tội ăn năn hơn là chín mươi chín kẻ công bình không cần phải ăn năn."
+        },
+        {
+          "ref": "Thi thiên 32:5",
+          "text": "Tôi đã thú tội cùng Chúa, không giấu gian ác tôi; Tôi nói: Tôi sẽ xưng các sự vi phạm tôi cùng Đức Giê-hô-va; Còn Chúa tha tội ác của tôi."
+        },
+        {
+          "ref": "Công vụ 3:19",
+          "text": "Vậy, các ngươi hãy ăn năn và trở lại, đặng cho tội lỗi mình được xóa đi,"
+        },
+        {
+          "ref": "Hê-bơ-rơ 8:12",
+          "text": "Nhân ta sẽ tha sự gian ác của họ, Và không nhớ đến tội lỗi họ nữa."
+        },
+        {
+          "ref": "Thi thiên 130:3-4",
+          "text": "Hỡi Đức Giê-hô-va, nếu Ngài cố chấp sự gian ác. Thì, Chúa ôi! ai sẽ còn sống? Nhưng Chúa có lòng tha thứ cho, Để người ta kính sợ Chúa."
+        },
+        {
+          "ref": "Rô-ma 3:23-24",
+          "text": "vì mọi người đều đã phạm tội, thiếu mất sự vinh hiển của Đức Chúa Trời, và họ nhờ ân điển Ngài mà được xưng công bình nhưng không, bởi sự chuộc tội đã làm trọn trong Đức Chúa Jêsus Christ,"
         }
       ],
       "hymnWords": [
@@ -356,6 +757,24 @@
         "ve nha",
         "tro ve",
         "an nan"
+      ],
+      "verseRefs": [
+        "1 Giăng 1:9",
+        "Rô-ma 8:1",
+        "2 Cô-rinh-tô 5:17",
+        "Thi thiên 103:12",
+        "Ê-sai 1:18",
+        "Thi thiên 51:10",
+        "Ê-phê-sô 1:7",
+        "Mi-chê 7:18-19",
+        "Rô-ma 5:8",
+        "Ê-sai 43:25",
+        "Lu-ca 15:7",
+        "Thi thiên 32:5",
+        "Công vụ 3:19",
+        "Hê-bơ-rơ 8:12",
+        "Thi thiên 130:3-4",
+        "Rô-ma 3:23-24"
       ]
     },
     {
@@ -391,19 +810,67 @@
       "verses": [
         {
           "ref": "Châm ngôn 3:5-6",
-          "text": "Hãy hết lòng tin cậy Đức Giê-hô-va, chớ nương cậy nơi sự thông sáng của con; phàm trong các việc làm của con, khá nhận biết Ngài, thì Ngài sẽ chỉ dẫn các nẻo của con."
+          "text": "Hãy hết lòng tin cậy Đức Giê-hô-va, Chớ nương cậy nơi sự thông sáng của con; Phàm trong các việc làm của con, khá nhận biết Ngài, Thì Ngài sẽ chỉ dẫn các nẻo của con."
         },
         {
           "ref": "Thi thiên 32:8",
-          "text": "Ta sẽ dạy dỗ ngươi, chỉ cho ngươi con đường phải đi; mắt ta sẽ chăm xem ngươi mà khuyên dạy ngươi."
+          "text": "Ta sẽ dạy dỗ ngươi, chỉ cho ngươi con đường phải đi; Mắt ta sẽ chăm chú ngươi mà khuyên dạy ngươi."
         },
         {
           "ref": "Thi thiên 119:105",
-          "text": "Lời Chúa là ngọn đèn cho chân tôi, ánh sáng cho đường lối tôi."
+          "text": "Lời Chúa là ngọn đèn cho chân tôi, Ánh sáng cho đường lối tôi."
         },
         {
           "ref": "Gia-cơ 1:5",
           "text": "Ví bằng trong anh em có kẻ kém khôn ngoan, hãy cầu xin Đức Chúa Trời, là Đấng ban cho mọi người cách rộng rãi, không trách móc ai, thì kẻ ấy sẽ được ban cho."
+        },
+        {
+          "ref": "Ê-sai 30:21",
+          "text": "Khi các ngươi xê qua bên hữu hoặc bên tả, tai các ngươi sẽ nghe có tiếng đằng sau mình rằng: Nầy là đường đây, hãy noi theo!"
+        },
+        {
+          "ref": "Giê-rê-mi 29:11",
+          "text": "Đức Giê-hô-va phán: Vì ta biết ý tưởng ta nghĩ đối cùng các ngươi, là ý tưởng bình an, không phải tai họa, để cho các ngươi được sự trông cậy trong lúc cuối cùng của mình."
+        },
+        {
+          "ref": "Thi thiên 37:23",
+          "text": "Đức Giê-hô-va định liệu các bước của người, Và Ngài thích đường lối người:"
+        },
+        {
+          "ref": "Châm ngôn 16:9",
+          "text": "Lòng người toan định đường lối mình; Song Đức Giê-hô-va chỉ dẫn các bước của người."
+        },
+        {
+          "ref": "Châm ngôn 16:3",
+          "text": "Hãy phó các việc mình cho Đức Giê-hô-va, Thì những mưu ý mình sẽ được thành công."
+        },
+        {
+          "ref": "Thi thiên 25:4-5",
+          "text": "Hỡi Đức Giê-hô-va, xin cho tôi biết các đường lối Ngài, Và dạy dỗ tôi các nẻo đàng Ngài. Xin hãy dẫn tôi trong lẽ thật của Ngài, và dạy dỗ tôi, Vì Ngài là Đức Chúa Trời về sự cứu rỗi tôi; Hằng ngày tôi trông đợi Ngài."
+        },
+        {
+          "ref": "Giăng 14:6",
+          "text": "Vậy Đức Chúa Jêsus đáp rằng: Ta là đường đi, lẽ thật, và sự sống; chẳng bởi ta thì không ai được đến cùng Cha."
+        },
+        {
+          "ref": "Ê-sai 42:16",
+          "text": "Ta sẽ khiến kẻ mù đi trên con đường mình không thuộc, dắt họ bởi các nẻo chẳng quen; ta sẽ đổi bóng tối trước mặt họ ra ánh sáng, nơi cong queo ra ngay thẳng. Thật, ta sẽ làm các sự đó, và không lìa bỏ chúng nó đâu."
+        },
+        {
+          "ref": "Thi thiên 143:8",
+          "text": "Vừa buổi sáng, xin cho tôi nghe sự nhân từ Chúa, Vì tôi để lòng trông cậy nơi Chúa; Xin chỉ cho tôi biết con đường phải đi, Vì linh hồn tôi ngưỡng vọng Chúa."
+        },
+        {
+          "ref": "Rô-ma 12:2",
+          "text": "Đừng làm theo đời nầy, nhưng hãy biến hóa bởi sự đổi mới của tâm thần mình, để thử cho biết ý muốn tốt lành, đẹp lòng và trọn vẹn của Đức Chúa Trời là thể nào."
+        },
+        {
+          "ref": "Giăng 8:12",
+          "text": "Đức Chúa Jêsus lại cất tiếng phán cùng chúng rằng: Ta là sự sáng của thế gian; người nào theo ta, chẳng đi trong nơi tối tăm, nhưng có ánh sáng của sự sống."
+        },
+        {
+          "ref": "Thi thiên 37:5",
+          "text": "Hãy phó thác đường lối mình cho Đức Giê-hô-va, Và nhờ cậy nơi Ngài, thì Ngài sẽ làm thành việc ấy."
         }
       ],
       "hymnWords": [
@@ -415,6 +882,24 @@
         "buoc theo",
         "theo chua",
         "anh sang"
+      ],
+      "verseRefs": [
+        "Châm ngôn 3:5-6",
+        "Thi thiên 32:8",
+        "Thi thiên 119:105",
+        "Gia-cơ 1:5",
+        "Ê-sai 30:21",
+        "Giê-rê-mi 29:11",
+        "Thi thiên 37:23",
+        "Châm ngôn 16:9",
+        "Châm ngôn 16:3",
+        "Thi thiên 25:4-5",
+        "Giăng 14:6",
+        "Ê-sai 42:16",
+        "Thi thiên 143:8",
+        "Rô-ma 12:2",
+        "Giăng 8:12",
+        "Thi thiên 37:5"
       ]
     },
     {
@@ -448,7 +933,7 @@
       "verses": [
         {
           "ref": "Mác 9:24",
-          "text": "…Tôi tin; xin Chúa giúp đỡ sự không tin của tôi!"
+          "text": "Tức thì cha đứa trẻ la lên rằng: Tôi tin; xin Chúa giúp đỡ trong sự không tin của tôi!"
         },
         {
           "ref": "Rô-ma 10:17",
@@ -456,7 +941,55 @@
         },
         {
           "ref": "Hê-bơ-rơ 11:1",
-          "text": "Vả, đức tin là sự biết chắc vững vàng của những điều mình đang trông mong, là bằng cớ của những điều mình chẳng xem thấy."
+          "text": "Vả, đức tin là sự biết chắc vững vàng của những điều mình đang trông mong là bằng cớ của những điều mình chẳng xem thấy."
+        },
+        {
+          "ref": "Hê-bơ-rơ 11:6",
+          "text": "Vả, không có đức tin, thì chẳng hề có thế nào ở cho đẹp ý Ngài; vì kẻ đến gần Đức Chúa Trời phải tin rằng có Đức Chúa Trời, và Ngài là Đấng hay thưởng cho kẻ tìm kiếm Ngài."
+        },
+        {
+          "ref": "Ma-thi-ơ 17:20",
+          "text": "Ngài đáp rằng: Ấy là tại các ngươi ít đức tin: vì ta nói thật cùng các ngươi, nếu các ngươi có đức tin bằng một hột cải, sẽ khiến núi nầy rằng: Hãy dời đây qua đó, thì nó liền dời qua, và không có sự gì mà các ngươi chẳng làm được."
+        },
+        {
+          "ref": "Hê-bơ-rơ 12:2",
+          "text": "nhìn xem Đức Chúa Jêsus, là cội rễ và cuối cùng của đức tin, tức là Đấng vì sự vui mừng đã đặt trước mặt mình, chịu lấy thập tự giá, khinh điều sỉ nhục, và hiện nay ngồi bên hữu ngai Đức Chúa Trời."
+        },
+        {
+          "ref": "Lu-ca 17:5",
+          "text": "Các sứ đồ thưa Chúa rằng: Xin thêm đức tin cho chúng tôi!"
+        },
+        {
+          "ref": "Giăng 20:29",
+          "text": "Đức Chúa Jêsus phán: Vì ngươi đã thấy ta, nên ngươi tin. Phước cho những kẻ chẳng từng thấy mà đã tin vậy!"
+        },
+        {
+          "ref": "2 Cô-rinh-tô 5:7",
+          "text": "vì chúng ta bước đi bởi đức tin, chớ chẳng phải bởi mắt thấy."
+        },
+        {
+          "ref": "Ê-phê-sô 2:8",
+          "text": "Vả, ấy là nhờ ân điển, bởi đức tin, mà anh em được cứu, điều đó không phải đến từ anh em, bèn là sự ban cho của Đức Chúa Trời."
+        },
+        {
+          "ref": "Rô-ma 4:20-21",
+          "text": "Người chẳng có lưỡng lự hoặc hồ nghi về lời hứa Đức Chúa Trời, nhưng càng mạnh mẽ trong đức tin, và ngợi khen Đức Chúa Trời, vì tin chắc rằng điều chi Đức Chúa Trời đã hứa, Ngài cũng có quyền làm trọn được."
+        },
+        {
+          "ref": "Mác 11:22",
+          "text": "Đức Chúa Jêsus cất tiếng phán rằng: Hãy có đức tin đến Đức Chúa Trời."
+        },
+        {
+          "ref": "Giăng 11:40",
+          "text": "Đức Chúa Jêsus lại phán: Ta há chẳng từng nói với ngươi rằng nếu ngươi tin thì sẽ thấy sự vinh hiển của Đức Chúa Trời sao?"
+        },
+        {
+          "ref": "Phi-líp 1:6",
+          "text": "tôi tin chắc rằng Đấng đã khởi làm việc lành trong anh em, sẽ làm trọn hết cho đến ngày của Đức Chúa Jêsus Christ."
+        },
+        {
+          "ref": "1 Phi-e-rơ 1:8",
+          "text": "Ngài là Đấng anh em không thấy mà yêu mến; dầu bây giờ anh em không thấy Ngài, nhưng tin Ngài, và vui mừng lắm một cách không xiết kể và vinh hiển:"
         }
       ],
       "hymnWords": [
@@ -465,6 +998,23 @@
         "nho cay",
         "tin chua",
         "loi chua"
+      ],
+      "verseRefs": [
+        "Mác 9:24",
+        "Rô-ma 10:17",
+        "Hê-bơ-rơ 11:1",
+        "Hê-bơ-rơ 11:6",
+        "Ma-thi-ơ 17:20",
+        "Hê-bơ-rơ 12:2",
+        "Lu-ca 17:5",
+        "Giăng 20:29",
+        "2 Cô-rinh-tô 5:7",
+        "Ê-phê-sô 2:8",
+        "Rô-ma 4:20-21",
+        "Mác 11:22",
+        "Giăng 11:40",
+        "Phi-líp 1:6",
+        "1 Phi-e-rơ 1:8"
       ]
     },
     {
@@ -506,11 +1056,63 @@
         },
         {
           "ref": "Gia-cơ 1:2-3",
-          "text": "Hỡi anh em, hãy coi sự thử thách trăm chiều xảy đến cho mình như là điều vui mừng trọn vẹn, vì biết rằng sự thử thách đức tin anh em sanh ra sự nhịn nhục."
+          "text": "Hỡi anh em, hãy coi sự thử thách trăm bề thoạt đến cho anh em như là điều vui mừng trọn vẹn, vì biết rằng sự thử thách đức tin anh em sanh ra sự nhịn nhục."
         },
         {
           "ref": "Giăng 16:33",
-          "text": "…Các ngươi sẽ có sự hoạn nạn trong thế gian, nhưng hãy cứ vững lòng, ta đã thắng thế gian rồi!"
+          "text": "Ta đã bảo các ngươi những điều đó, hầu cho các ngươi có lòng bình yên trong ta. Các ngươi sẽ có sự hoạn nạn trong thế gian, nhưng hãy cứ vững lòng, ta đã thắng thế gian rồi!"
+        },
+        {
+          "ref": "1 Cô-rinh-tô 10:13",
+          "text": "Những sự cám dỗ đến cho anh em, chẳng có sự nào quá sức loài người. Đức Chúa Trời là thành tín, Ngài chẳng hề cho anh em bị cám dỗ quá sức mình đâu; nhưng trong sự cám dỗ, Ngài cũng mở đàng cho ra khỏi, để anh em có thể chịu được."
+        },
+        {
+          "ref": "1 Phi-e-rơ 4:12-13",
+          "text": "Hỡi kẻ rất yêu dấu, khi anh em bị trong lò lửa thử thách, chớ lấy làm lạ như mình gặp một việc khác thường. Nhưng anh em có phần trong sự thương khó của Đấng Christ bao nhiêu, thì hãy vui mừng bấy nhiêu, hầu cho đến ngày vinh hiển của Ngài hiện ra, thì anh em cũng được vui mừng nhảy nhót."
+        },
+        {
+          "ref": "Rô-ma 5:3-4",
+          "text": "Nào những thế thôi, nhưng chúng ta cũng khoe mình trong hoạn nạn nữa, vì biết rằng hoạn nạn sanh sự nhịn nhục, sự nhịn nhục sanh sự rèn tập, sự rèn tập sanh sự trông cậy."
+        },
+        {
+          "ref": "Gia-cơ 1:12",
+          "text": "Phước cho người bị cám dỗ; vì lúc đã chịu nổi sự thử thách rồi, thì sẽ lãnh mão triều thiên của sự sống mà Đức Chúa Trời đã hứa cho kẻ kính mến Ngài."
+        },
+        {
+          "ref": "2 Cô-rinh-tô 4:17",
+          "text": "Vì sự hoạn nạn nhẹ và tạm của chúng ta sanh cho chúng ta sự vinh hiển cao trọng đời đời, vô lượng, vô biên,"
+        },
+        {
+          "ref": "Ê-sai 43:2",
+          "text": "Khi ngươi vượt qua các dòng nước, ta sẽ ở cùng; khi ngươi lội qua sông, sẽ chẳng che lấp. Khi ngươi bước qua lửa, sẽ chẳng bị cháy, ngọn lửa chẳng đốt ngươi."
+        },
+        {
+          "ref": "Thi thiên 34:19",
+          "text": "Người công bình bị nhiều tai họa, Nhưng Đức Giê-hô-va cứu người khỏi hết."
+        },
+        {
+          "ref": "Rô-ma 8:18",
+          "text": "Vả, tôi tưởng rằng những sự đau đớn bây giờ chẳng đáng so sánh với sự vinh hiển hầu đến, là sự sẽ được bày ra trong chúng ta."
+        },
+        {
+          "ref": "Rô-ma 8:37",
+          "text": "Trái lại, trong mọi sự đó, chúng ta nhờ Đấng yêu thương mình mà thắng hơn bội phần."
+        },
+        {
+          "ref": "1 Phi-e-rơ 5:10",
+          "text": "Đức Chúa Trời ban mọi ơn đã gọi anh em đến sự vinh hiển đời đời của Ngài trong Đấng Christ, thì sau khi anh em tạm chịu khổ, chính Ngài sẽ làm cho anh em trọn vẹn, vững vàng, và thêm sức cho."
+        },
+        {
+          "ref": "Thi thiên 46:1",
+          "text": "Đức Chúa Trời là nơi nương náu và sức lực của chúng tôi, Ngài sẵn giúp đỡ trong cơn gian truân."
+        },
+        {
+          "ref": "Na-hum 1:7",
+          "text": "Đức Giê-hô-va là tốt lành, làm đồn lũy trong ngày hoạn nạn, và biết những kẻ ẩn náu nơi Ngài."
+        },
+        {
+          "ref": "Ha-ba-cúc 3:17-18",
+          "text": "Vì dầu cây vả sẽ không nứt lộc nữa, Và sẽ không có trái trên những cây nho; Cây ô-li-ve không sanh sản, Và chẳng có ruộng nào sanh ra đồ ăn; Bầy chiên sẽ bị dứt khỏi ràn, Và không có bầy bò trong chuồng nữa. Dầu vậy, tôi sẽ vui mừng trong Đức Giê-hô-va, Tôi sẽ hớn hở trong Đức Chúa Trời của sự cứu rỗi tôi."
         }
       ],
       "hymnWords": [
@@ -521,6 +1123,24 @@
         "vuot qua",
         "khai hoan",
         "chien dau"
+      ],
+      "verseRefs": [
+        "Rô-ma 8:28",
+        "Gia-cơ 1:2-3",
+        "Giăng 16:33",
+        "1 Cô-rinh-tô 10:13",
+        "1 Phi-e-rơ 4:12-13",
+        "Rô-ma 5:3-4",
+        "Gia-cơ 1:12",
+        "2 Cô-rinh-tô 4:17",
+        "Ê-sai 43:2",
+        "Thi thiên 34:19",
+        "Rô-ma 8:18",
+        "Rô-ma 8:37",
+        "1 Phi-e-rơ 5:10",
+        "Thi thiên 46:1",
+        "Na-hum 1:7",
+        "Ha-ba-cúc 3:17-18"
       ]
     },
     {
@@ -554,7 +1174,7 @@
       "verses": [
         {
           "ref": "Ê-phê-sô 4:26",
-          "text": "Ví thử anh em đương cơn giận, thì chớ phạm tội; chớ căm giận cho đến khi mặt trời lặn."
+          "text": "Ví bằng anh em đang cơn giận, thì chớ phạm tội; chớ căm giận cho đến khi mặt trời lặn,"
         },
         {
           "ref": "Ê-phê-sô 4:32",
@@ -562,7 +1182,59 @@
         },
         {
           "ref": "Thi thiên 147:3",
-          "text": "Ngài chữa lành người có lòng đau thương, và bó vít của họ."
+          "text": "Chữa lành người có lòng đau thương, Và bó vít của họ."
+        },
+        {
+          "ref": "Gia-cơ 1:19-20",
+          "text": "Hỡi anh em yêu dấu, anh em biết điều đó: người nào cũng phải mau nghe mà chậm nói, chậm giận; vì cơn giận của người ta không làm nên sự công bình của Đức Chúa Trời."
+        },
+        {
+          "ref": "Châm ngôn 15:1",
+          "text": "Lời đáp êm nhẹ làm nguôi cơn giận; Còn lời xẳng xớm trêu thạnh nộ thêm."
+        },
+        {
+          "ref": "Cô-lô-se 3:13",
+          "text": "nếu một người trong anh em có sự gì phàn nàn với kẻ khác thì hãy nhường nhịn nhau và tha thứ nhau: như Chúa đã tha thứ anh em thể nào, thì anh em cũng phải tha thứ thể ấy."
+        },
+        {
+          "ref": "Ma-thi-ơ 6:14",
+          "text": "Vả, nếu các ngươi tha lỗi cho người ta, thì Cha các ngươi ở trên trời cũng sẽ tha thứ các ngươi."
+        },
+        {
+          "ref": "Rô-ma 12:19",
+          "text": "Hỡi kẻ rất yêu dấu của tôi ơi, chính mình chớ trả thù ai, nhưng hãy nhường cho cơn thạnh nộ của Đức Chúa Trời; vì có chép lời Chúa phán rằng: Sự trả thù thuộc về ta, ta sẽ báo ứng."
+        },
+        {
+          "ref": "Rô-ma 12:21",
+          "text": "Đừng để điều ác thắng mình, nhưng hãy lấy điều thiện thắng điều ác."
+        },
+        {
+          "ref": "Châm ngôn 19:11",
+          "text": "Sự khôn ngoan của người khiến cho người chậm nóng giận; Và người lấy làm danh dự mà bỏ qua tội phạm."
+        },
+        {
+          "ref": "Ma-thi-ơ 5:44",
+          "text": "Song ta nói cùng các ngươi rằng: Hãy yêu kẻ thù nghịch, và cầu nguyện cho kẻ bắt bớ các ngươi,"
+        },
+        {
+          "ref": "Lu-ca 6:27-28",
+          "text": "Nhưng ta phán cùng các ngươi, là người nghe ta: Hãy yêu kẻ thù mình, làm ơn cho kẻ ghét mình, chúc phước cho kẻ rủa mình, và cầu nguyện cho kẻ sỉ nhục mình."
+        },
+        {
+          "ref": "Thi thiên 37:8",
+          "text": "Hãy dẹp sự giận, và bỏ sự giận hoảng; Chớ phiền lòng, vì điều đó chỉ gây ra việc ác."
+        },
+        {
+          "ref": "Ê-phê-sô 4:31",
+          "text": "Phải bỏ khỏi anh em những sự cay đắng, buồn giận, tức mình, kêu rêu, mắng nhiếc, cùng mọi điều hung ác."
+        },
+        {
+          "ref": "1 Phi-e-rơ 3:9",
+          "text": "Đừng lấy ác trả ác, cũng đừng lấy rủa sả trả rủa sả; trái lại phải chúc phước, ấy vì điều đó mà anh em được gọi để hưởng phước lành."
+        },
+        {
+          "ref": "Châm ngôn 16:32",
+          "text": "Người chậm nóng giận thắng hơn người dõng sĩ; Và ai cai trị lòng mình thắng hơn kẻ chiếm lấy thành."
         }
       ],
       "hymnWords": [
@@ -571,6 +1243,24 @@
         "hoa binh",
         "binh an",
         "tinh yeu"
+      ],
+      "verseRefs": [
+        "Ê-phê-sô 4:26",
+        "Ê-phê-sô 4:32",
+        "Thi thiên 147:3",
+        "Gia-cơ 1:19-20",
+        "Châm ngôn 15:1",
+        "Cô-lô-se 3:13",
+        "Ma-thi-ơ 6:14",
+        "Rô-ma 12:19",
+        "Rô-ma 12:21",
+        "Châm ngôn 19:11",
+        "Ma-thi-ơ 5:44",
+        "Lu-ca 6:27-28",
+        "Thi thiên 37:8",
+        "Ê-phê-sô 4:31",
+        "1 Phi-e-rơ 3:9",
+        "Châm ngôn 16:32"
       ]
     },
     {
@@ -610,11 +1300,63 @@
         },
         {
           "ref": "Thi thiên 118:24",
-          "text": "Nầy là ngày Đức Giê-hô-va làm nên, chúng ta sẽ mừng rỡ và vui vẻ trong ngày ấy."
+          "text": "Nầy là ngày Đức Giê-hô-va làm nên, Chúng tôi sẽ mừng rỡ và vui vẻ trong ngày ấy."
         },
         {
           "ref": "Thi thiên 100:4",
-          "text": "Hãy cảm tạ mà vào các cửa Ngài, hãy ngợi khen mà vào hành lang Ngài. Khá cảm tạ Ngài, chúc tụng danh của Ngài."
+          "text": "Hãy cảm tạ mà vào các cửa Ngài, Hãy ngợi khen mà vào hành lang Ngài. Khá cảm tạ Ngài, chúc tụng danh của Ngài."
+        },
+        {
+          "ref": "Thi thiên 103:1-2",
+          "text": "Hỡi linh hồn ta, khá ngợi khen Đức Giê-hô-va! Mọi điều gì ở trong ta hãy ca tụng danh thánh của Ngài! Hỡi linh hồn ta, hãy ngợi khen Đức Giê-hô-va, Chớ quên các ân huệ của Ngài."
+        },
+        {
+          "ref": "Thi thiên 107:1",
+          "text": "Hãy ngợi khen Đức Giê-hô-va, vì Ngài là thiện; Sự nhân từ Ngài còn đến đời đời."
+        },
+        {
+          "ref": "Phi-líp 4:4",
+          "text": "Hãy vui mừng trong Chúa luôn luôn. Tôi lại còn nói nữa: hãy vui mừng đi."
+        },
+        {
+          "ref": "Cô-lô-se 3:17",
+          "text": "Mặc dầu anh em nói hãy làm, cũng phải nhân danh Đức Chúa Jêsus mà làm mọi điều, nhờ Ngài mà tạ ơn Đức Chúa Trời, là Đức Chúa Cha."
+        },
+        {
+          "ref": "Thi thiên 9:1",
+          "text": "Tôi sẽ hết lòng cảm tạ Đức Giê-hô-va, Tỏ ra các công việc lạ lùng của Ngài."
+        },
+        {
+          "ref": "Ha-ba-cúc 3:18",
+          "text": "Dầu vậy, tôi sẽ vui mừng trong Đức Giê-hô-va, Tôi sẽ hớn hở trong Đức Chúa Trời của sự cứu rỗi tôi."
+        },
+        {
+          "ref": "Thi thiên 16:11",
+          "text": "Chúa sẽ chỉ cho tôi biết con đường sự sống; Trước mặt Chúa có trọn sự khoái lạc, Tại bên hữu Chúa có điều vui sướng vô cùng."
+        },
+        {
+          "ref": "Nê-hê-mi 8:10",
+          "text": "Nê-hê-mi nói với chúng rằng: Hãy đi ăn vật gì béo, uống đồ gì ngọt, và hãy gởi phần cho những người không có sắm sửa gì hết; vì ngày nay là thánh, biệt riêng ra cho Chúa của chúng ta. Chớ buồn thảm, vì sự vui vẻ của Đức Giê-hô-va là sức lực của các ngươi."
+        },
+        {
+          "ref": "Gia-cơ 1:17",
+          "text": "mọi ân điển tốt lành cùng sự ban cho trọn vẹn đều đến từ nơi cao và bởi Cha sáng láng mà xuống, trong Ngài chẳng có một sự thay đổi, cũng chẳng có bóng của sự biến cải nào."
+        },
+        {
+          "ref": "Thi thiên 136:1",
+          "text": "Hãy cảm tạ Đức Giê-hô-va, vì Ngài là thiện; Sự nhân từ Ngài còn đến đời đời."
+        },
+        {
+          "ref": "Thi thiên 34:1",
+          "text": "Tôi sẽ chúc tụng Đức Giê-hô-va luôn luôn, Sự khen ngợi Ngài hằng ở nơi miệng tôi."
+        },
+        {
+          "ref": "2 Cô-rinh-tô 9:15",
+          "text": "Tạ ơn Đức Chúa Trời, vì sự ban cho của Ngài không xiết kể!"
+        },
+        {
+          "ref": "Ê-phê-sô 5:20",
+          "text": "Hãy thường thường nhân danh Đức Chúa Jêsus Christ chúng ta, vì mọi sự tạ ơn Đức Chúa Trời, là Cha chúng ta."
         }
       ],
       "hymnWords": [
@@ -628,6 +1370,24 @@
         "cam ta",
         "ton vinh",
         "chuc ton"
+      ],
+      "verseRefs": [
+        "1 Tê-sa-lô-ni-ca 5:16-18",
+        "Thi thiên 118:24",
+        "Thi thiên 100:4",
+        "Thi thiên 103:1-2",
+        "Thi thiên 107:1",
+        "Phi-líp 4:4",
+        "Cô-lô-se 3:17",
+        "Thi thiên 9:1",
+        "Ha-ba-cúc 3:18",
+        "Thi thiên 16:11",
+        "Nê-hê-mi 8:10",
+        "Gia-cơ 1:17",
+        "Thi thiên 136:1",
+        "Thi thiên 34:1",
+        "2 Cô-rinh-tô 9:15",
+        "Ê-phê-sô 5:20"
       ]
     }
   ]
